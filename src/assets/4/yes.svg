@@ -1,0 +1,20 @@
+<svg id="Group_62" data-name="Group 62" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="159.453" height="166.219" viewBox="0 0 159.453 166.219">
+  <defs>
+    <clipPath id="clip-path">
+      <rect id="Rectangle_50" data-name="Rectangle 50" width="159.453" height="166.219" fill="none"/>
+    </clipPath>
+  </defs>
+  <rect id="Rectangle_47" data-name="Rectangle 47" width="22.519" height="22.519" transform="translate(62.262 120.125)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+  <g id="Group_61" data-name="Group 61">
+    <g id="Group_60" data-name="Group 60" clip-path="url(#clip-path)">
+      <rect id="Rectangle_48" data-name="Rectangle 48" width="84.688" height="55.615" transform="translate(11.281 108.604)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <rect id="Rectangle_49" data-name="Rectangle 49" width="24.187" height="44.094" transform="translate(26.404 120.125)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <path id="Path_93" data-name="Path 93" d="M2,108.6H105.781L95.969,82.156H11.281Z" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line id="Line_14" data-name="Line 14" x2="133.875" transform="translate(5.094 164.219)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <path id="Path_94" data-name="Path 94" d="M122.094,164.219c.7.2,0-116.375,0-116.375" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line id="Line_15" data-name="Line 15" x1="22.219" y2="26.156" transform="translate(122.093 56)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <line id="Line_16" data-name="Line 16" x2="10.969" y2="9.844" transform="translate(111.125 47.844)" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+      <path id="Path_95" data-name="Path 95" d="M92.3,81.805C89.818,74.391,87.359,64.92,87.359,56c0-29.824,15.691-54,35.047-54s35.047,24.176,35.047,54-15.691,54-35.047,54c-6.471,0-14.289-4.459-19.491-9.171" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="4"/>
+    </g>
+  </g>
+</svg>

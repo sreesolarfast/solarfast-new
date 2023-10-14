@@ -1,0 +1,60 @@
+<div class="progress-bar"></div>
+
+<div class="map">
+  <div class="google-map">
+    <app-googlemap></app-googlemap>
+  </div>
+</div>
+
+<div class="container-fluid justify-content-center" *ngIf="!loading">
+  <div class="container-fluid py-5">
+    <div class="row">
+      <div class="col-md-12">
+        <button>
+          Need help ?
+          <span>Speak to our team</span>
+        </button>
+      </div>
+      <div class="col-md-12 col-md-offset-3 main-content" *ngIf="!activeStep.hideComponent">
+        <div class="card-content">
+          <ng-container *ngIf="activeStep.component == 'step-property-ownership'">
+            <step-property-ownership [step]="activeStep" (newStep)="stepChange($event)" ></step-property-ownership>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.component == 'step-house-type'">
+            <step-house-type [step]="activeStep" (newStep)="stepChange($event)"></step-house-type>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.component == 'step-roof-type'">
+            <step-roof-type [step]="activeStep" (newStep)="stepChange($event)"></step-roof-type>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.component == 'step-shading'">
+            <step-shading [step]="activeStep" (newStep)="stepChange($event)"></step-shading>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.component == 'step-annual-consumption'">
+            <step-annual-consumption [step]="activeStep" (newStep)="stepChange($event)"></step-annual-consumption>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.component == 'step-unit-rate'">
+            <step-unit-rate [step]="activeStep" (newStep)="stepChange($event)"></step-unit-rate>
+          </ng-container>
+
+          <ng-container *ngIf="activeStep.step == 6">
+          </ng-container>
+
+          <ng-container *ngIf="!activeStep.hideNavigation">
+            <div class="btn-toolbar d-flex justify-content-center mt-5" role="group" aria-label="Form Navigation">
+              <button type="button" class="btn btn-primary" (click)="back()" [disabled]="activeStep?.back == null">Back</button>
+              <button type="button" class="btn btn-primary" (click)="next()" [disabled]="activeStep?.next == null">Next</button>
+            </div>
+          </ng-container>
+
+          <p>Progress</p>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

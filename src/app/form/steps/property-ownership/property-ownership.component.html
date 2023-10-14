@@ -1,0 +1,30 @@
+<div class="content-screen">
+  <div class="header">
+    <h2 class="fs-title">
+      Do you own your home?
+    </h2>
+  </div>
+
+  <div>
+    <div class="center-content">
+      <div class="card-items">
+        <div class="card-wrapper">
+          <div class="option" (click)="answerGiven('Homeowner')">
+            <img [src]="'assets/1/homeowner.svg'" [alt]="'Home Owner'" class="svg-image" />
+            <p class="card-title">Home Owner</p>
+          </div>
+
+          <div class="option" (click)="answerGiven('Renting', true)">
+            <img [src]="'assets/1/renting.svg'" [alt]="'Renting'" class="svg-image" />
+            <p class="card-title">Renting</p>
+          </div>
+
+          <div class="option" (click)="answerGiven('Landlord')">
+            <img [src]="'assets/1/landlord.svg'" [alt]="'Landlord'" class="svg-image" />
+            <p class="card-title">Landlord</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

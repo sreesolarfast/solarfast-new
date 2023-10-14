@@ -1,0 +1,29 @@
+<!-- <div>
+    <h2>Step Two</h2>
+    <p>This is the content for Step Two.</p>
+    <button (click)="onPreviousStepClick()">Back</button>
+    <button (click)="onNextStepClick()">Next</button>
+  </div> -->
+  <button (click)="onPreviousStepClick()">Back</button>
+  <div class="google-map">
+    <!-- <app-googlemap></app-googlemap> -->
+</div>
+<div class="container">
+  <div class="zoom-controls">
+    <div class="row">
+      <div class="col-md-4" *ngFor="let option of data[0].itemsList[0].options; let i = index">
+        <div class="text-center">
+          <img [src]="option.img" [alt]="option.type" class="location-pin-image">
+        </div>
+        <h4 class="text-center">{{ option.name }}</h4>
+        <p class="text-center">{{ option.description }}</p>
+      </div>
+    </div>
+    <div class=" ml-auto form-group text-center">
+      <div class="btns-next-prev">
+        <button (click)="getStarted()" type="button" name="next" class="btn btn-success">Get Started</button>
+      </div>
+    </div>
+  </div>
+</div>
+  

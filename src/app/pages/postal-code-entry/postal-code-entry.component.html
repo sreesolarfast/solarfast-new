@@ -1,0 +1,30 @@
+<div class="row">
+    <div class="col ">
+        <div class="row py-4">
+            <div class="col-12 col-md-12 pr-md-0">
+                <div id="info" class="shadow-sm rounded border p-3 h-100">
+                    <form [formGroup]="form" (ngSubmit)="findAddress()">
+                        <div class="row">
+                            <div class="col pr-0 form-group">
+                                <input type="search" class="form-control"
+                                    (keydown.enter)="findAddress()" placeholder="Enter your postcode"
+                                    [disabled]="isWorking" formControlName="postcode"
+                                    [ngClass]="{ 'is-invalid': submitted && validationControls['postcode'].errors }">
+                                    <div *ngIf="submitted && validationControls['postcode'].errors" class="invalid-feedback">
+                                        <div *ngIf="validationControls['postcode'].errors['required']">Postal code is required</div>
+                                        <div *ngIf="validationControls['postcode'].errors['ukpostcode']">Invalid UK postal code format</div>
+                                      </div>
+                            </div>
+                            <div class="col-auto ml-auto form-group">
+                                <button class="btn btn-primary mr-1" type="submit"
+                                    [disabled]="isWorking">
+                                    <i class="bi bi-map mr-md-1"></i> <span class="d-none d-md-inline-block">Submit</span>
+                                </button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
