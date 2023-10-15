@@ -1,0 +1,33 @@
+<div class="container">
+  <h2 class="text-center mb-4">Pay in Installments</h2>
+
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li *ngFor="let period of loanPeriods" class="list-group-item d-flex justify-content-between" [ngClass]="{'active': period === selectedPeriod}" (click)="onSelectPeriod(period)">
+          {{ period.period }} Months
+          <span>{{ period.amount | currency }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <h3 class="mt-4">Select Deposit Amount</h3>
+      <input type="range" min="0" max="100" [(ngModel)]="depositPercent" (input)="calculate()" class="form-control-range">
+      <p class="mb-3">Deposit Amount: {{ depositPercent }}%</p>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table">
+        <tr *ngFor="let calculation of calculations">
+          <td>{{ calculation.label }}</td>
+          <td>{{ calculation.value | currency }}</td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>

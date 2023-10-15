@@ -1,0 +1,23 @@
+.container{
+  background-color: white;
+  height: 100%;
+}
+.list-group-item.active {
+  background-color: #007bff;
+  color: #fff;
+}
+
+.form-control-range {
+  width: 100%;
+  cursor: pointer;
+  height: 25px;
+}
+
+.form-control-range::-webkit-slider-thumb {
+  width: 25px;
+  height: 25px;
+  background: #007bff;
+  border: 2px solid #fff;
+  border-radius: 50%;
+  cursor: pointer;
+}

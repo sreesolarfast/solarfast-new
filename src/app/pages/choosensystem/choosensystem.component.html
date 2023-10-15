@@ -1,3 +1,4 @@
+
   <!--Help-->
   <div class="need-help">
     <div class="d-flex align-items-center">
@@ -13,4 +14,58 @@
     <!--Help Ends-->
 
 
-<p>choosensystem works!</p>
+    <div class="container-fluid justify-content-center" >
+      <div class="container-fluid py-5">
+    <div class="row">
+    <div class="col-md-12">
+      <div class="card">
+        <div class="card-body">
+          <h1><button class="btn btn-primary" routerLink="/solarfastsystem">Back</button> your choosen Solar Fast System</h1>
+          <p>Based on the answers you gave,here is your recommended system.</p>
+          <div class="row">
+
+          <!--Package-->
+          <div class="package-list d-flex align-items-center">
+
+          <div class="col-md-4">
+            <button><i class="bi bi-star-fill"></i> Recommended</button>
+            <video width="" height="360" controls>
+              <source src="../../../../assets/package/package-item.mp4" type="video/mp4">
+              Your browser does not support the video tag.
+            </video>
+          </div>
+
+          <div class="col-md-4">
+            <h2>12X410W Solar Panels & 6.4kWh Battery Storage</h2>
+            <ul>
+              <li>DMEGC 410W black-on-black solar panels</li>
+              <li>3.6kW Luxpower Inverter</li>
+              <li>3.2kWh Greenlinx Battery(s)</li>
+            </ul>
+            <a class="btn"> More Details</a>
+            <a class="btn">Save and Email me this Quote</a>
+          </div>
+
+          <div class="col-md-4">
+            <h3>Payment Options</h3>
+            <h1>£12,500</h1>
+            <h3>Or</h3>
+            <p>£82.60 per month (11.9% APR)</p>
+            <a class="btn btn-primary" routerLink="/chooseinstalldate">Choose your installation date</a>
+            <p>What's included?</p>
+          </div>
+
+          </div>
+
+          <!--Package ends here-->
+
+            </div>
+          </div>
+        </div>
+        <!--Card Ends Here-->
+        <h3>Want to see more options we have selected for you? <a href="">Click here</a></h3>
+      </div>
+    </div>
+    </div>
+    </div>
+    <button (click)="openPopup()">Open Popup</button>
