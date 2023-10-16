@@ -14,7 +14,8 @@ export class ChoosensystemComponent {
   openPopup(): void {
     const dialogRef = this.dialog.open(InstallmentsSummaryComponent, {
       width: '30%',
-      height:'90%'
+      height:'90%',
+      disableClose: true
     });
 
     // Handle dialog close or other events here

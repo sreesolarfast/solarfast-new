@@ -8,6 +8,7 @@ import { PickinstallationdateComponent } from './pages/pickinstallationdate/pick
 import { ChoosesolarfastsystemComponent } from './pages/choosesolarfastsystem/choosesolarfastsystem.component';
 import { CustomerdetailsentryformComponent } from './pages/customerdetailsentryform/customerdetailsentryform.component';
 import { GooglemapComponent } from 'src/shared/components/googlemap/googlemap.component';
+import { ConsumptionprodcutionchartComponent } from './pages/consumptionprodcutionchart/consumptionprodcutionchart.component';
 
 const routes: Routes = [
   {
@@ -46,6 +47,10 @@ const routes: Routes = [
   {
     path:'map',
     component: GooglemapComponent
+  },
+  {
+    path:'chart',
+    component: ConsumptionprodcutionchartComponent
   },
   {
     path:'terminate',
