@@ -17,6 +17,8 @@ import { InstallmentbillingsummaryComponent } from './pages/installmentbillingsu
 import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InstallmentsSummaryComponent } from './pages/installments-summary/installments-summary.component';
+import { NgApexchartsModule } from 'ng-apexcharts';
+import { ConsumptionprodcutionchartComponent } from './pages/consumptionprodcutionchart/consumptionprodcutionchart.component';
 
 
 @NgModule({
@@ -32,6 +34,7 @@ import { InstallmentsSummaryComponent } from './pages/installments-summary/insta
     OrderconfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
+    ConsumptionprodcutionchartComponent,
 
     ],
   imports: [
@@ -41,7 +44,8 @@ import { InstallmentsSummaryComponent } from './pages/installments-summary/insta
     MaterialModule,
     HttpClientModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgApexchartsModule
   ],
   providers: [
     {
