@@ -48,10 +48,8 @@ constructor (private router:Router){
     if (selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth() && selectedDate.toDateString() !== currentDate.toDateString()) {
       return false;
     }
-
     return true;
   }
-
 
 
   isDateSelected(day: number): boolean {

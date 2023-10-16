@@ -7,9 +7,9 @@ import { Component } from '@angular/core';
 })
 export class InstallmentsSummaryComponent {
   loanPeriods = [
-    { period: 12, amount: 1200 },
-    { period: 24, amount: 2200 },
-    { period: 36, amount: 3200 },
+    { period: 60, amount: 1200 },
+    { period: 120, amount: 2200 },
+    { period: 180, amount: 3200 },
   ];
 
   depositPercent: number = 0;
@@ -32,8 +32,8 @@ export class InstallmentsSummaryComponent {
     if (this.selectedPeriod) {
       const depositAmount = (this.depositPercent / 100) * this.selectedPeriod.amount;
 
-      const rateOfInterest = 5.0;
-      const effectiveAPR = 6.0;
+      const rateOfInterest = 11.3;
+      const effectiveAPR = 11.9;
       const numberOfPayments = this.selectedPeriod.period;
       const costOfCredit = 100;
       const totalAmountPayable = depositAmount + costOfCredit;
