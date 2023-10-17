@@ -27,9 +27,11 @@ export class ConsumptionprodcutionchartComponent {
     // xaxis: {
     //   categories: ['0 kWh', '150 kWh', '300 kWh', '450 kWh', '600 kWh'],
     // },
+
     xaxis: {
       categories: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
     },
+    
     series: [
       {
         name: 'Consumption',

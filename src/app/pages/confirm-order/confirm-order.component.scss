@@ -1,0 +1,97 @@
+.google-map{
+  position:fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background:url('/assets/7/slide-7.png');
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center center;
+}
+
+.back-buttons{
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index:100 ;
+}
+
+.user-details{
+  position: fixed;
+  left:0;
+  top:0;
+  width: 38%;
+  height:100vh;
+
+  .heading-title{
+      margin-bottom:30px;
+
+      h1{
+          font-size:2rem;
+          font-weight: 700;
+          margin-bottom:5px;
+      }
+
+      p{
+          font-size:1rem;
+          font-weight: 500;
+      }
+
+      .back{
+          border-radius:30px;
+          background:#000;
+          font-size:1.2rem;
+          font-weight: 700;
+          color: #fff;
+          margin-left:-40px;
+      }
+
+  }
+
+  .card{
+      background: linear-gradient(to bottom, #EFEFEF, #E7E7E7);
+      opacity:0.95;
+      border-radius:0;
+      height:100vh;
+      padding:3rem;
+  }
+
+  .form-control{
+      border-radius:17px;
+      background:#fff;
+      min-height:40px;
+      padding:12px 15px;
+      font-size:15px;
+  }
+
+  .btn-success{
+      width: 100%;
+      min-height:45px;
+      color: #fff;
+  }
+
+  .btn.btn-success{
+      background: linear-gradient(to bottom, #75C043, #44A900);
+      -webkit-box-shadow: inset 0 1px 2px #44A900;
+      -moz-box-shadow: inset 0 1px 2px #44A900;
+  }
+
+
+  .btn.btn-success:hover {
+      background:#75C043;
+      -webkit-transition: box-shadow 0.05s ease-in-out;
+      -moz-transition: box-shadow 0.05s ease-in-out;
+      -o-transition: box-shadow 0.05s ease-in-out;
+      transition: box-shadow 0.05s ease-in-out;
+  }
+
+
+  .btn.btn-success:active {
+      background: linear-gradient(to bottom, #75C043, #44A900);
+      -webkit-box-shadow: 0 0 5px #44A900 inset;
+      -moz-box-shadow: 0 0 5px #44A900 inset;
+  }
+
+
+}

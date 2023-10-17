@@ -21,7 +21,7 @@ export class ShadingComponent implements OnInit {
       this.onlineEnquiryService.result.shading = value;
 
       if (terminate) {
-        this.router.navigate(['/terminate'], { state: { reason: 'Property Type' } });
+        this.router.navigate(['/pages/terminate'], { state: { reason: 'Property Type' } });
         return;
       }
 

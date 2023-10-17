@@ -70,9 +70,11 @@ export class GooglemapComponent {
   ngOnInit(): void {
 this.onlineEnquiryService.result$.subscribe({
   next: (x) => {
+   if (x != null) {
     this.onlineEnquiry = x;
     this.center = {lat: +this.onlineEnquiry.latitude, lng: +this.onlineEnquiry.longitude};
     this.mapCenter = new google.maps.LatLng(this.center);
+   }
   }
 })
   }

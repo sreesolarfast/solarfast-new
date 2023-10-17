@@ -24,7 +24,7 @@ export class HouseTypeComponent implements OnInit {
       this.onlineEnquiryService.result.propertyType = answer;
 
       if (terminate) {
-        this.router.navigate(['/terminate'], { state: { reason: 'Property Type' } });
+        this.router.navigate(['/pages/terminate'], { state: { reason: 'Property Type' } });
         return;
       }
 

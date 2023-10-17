@@ -23,7 +23,7 @@ export class PropertyOwnershipComponent implements OnInit {
     this.onlineEnquiryService.result.propertyOwnership = answer;
 
     if (terminate) {
-      this.router.navigate(['/terminate'], { state: { reason: 'Property Ownership' } });
+      this.router.navigate(['/pages/terminate'], { state: { reason: 'Property Ownership' } });
       return;
     }
 

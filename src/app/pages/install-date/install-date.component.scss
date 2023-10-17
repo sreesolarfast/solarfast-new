@@ -1,0 +1,23 @@
+.date-picker .day-row button.selected {
+  background-color: #00cc66;
+  color: #fff;
+}
+
+.date-picker .day-row button.past {
+  background-color: #000;
+  color: #fff;
+}
+.past-date {
+  background-color: black;
+  color: gray;
+}
+.month.selected {
+  background-color: black;
+}
+.month{
+  margin: 2px;
+}
+.day-row button{
+  // margin: 2px;
+  border-radius: inherit;
+}

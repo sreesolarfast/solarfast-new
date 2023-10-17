@@ -10,9 +10,11 @@ export class PackageDto {
   imageUrl!: string;
   panelDtos!: PackageProductDto[];
   inverterDtos!: PackageProductDto[];
-  batterieDtos!: PackageProductDto[];
+  batteryDtos!: PackageProductDto[];
   productDtos!: PackageProductDto[];
 
+  uplift: number;
+  discount: number;
   totalCostPrice!: number;
   totalSalePrice!: number;
   totalQuantity!: number;

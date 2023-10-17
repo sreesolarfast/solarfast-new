@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-installments-summary',
@@ -7,9 +6,6 @@ import { MatDialog, MatDialogRef } from '@angular/material/dialog';
   styleUrls: ['./installments-summary.component.scss']
 })
 export class InstallmentsSummaryComponent {
-  constructor(private dialogRef: MatDialogRef<InstallmentsSummaryComponent>){
-    dialogRef.disableClose = true;
-  }
   loanPeriods = [
     { period: 60, amount: 1200 },
     { period: 120, amount: 2200 },
