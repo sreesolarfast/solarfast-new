@@ -1,11 +1,27 @@
 <div class="container-fluid justify-content-center">
   <div class="container-fluid py-5">
     <div class="row">
+      <div class="row">
+        <h3 class="text-center">Terms and conditions around average savings goes here <br>
+        Lorem Terms and conditions around average savings goes here Terms and conditions around average savings goes here </h3>
+      </div>
       <h3 class="text-center">Yearly Generation forecast</h3>
       <div class="container">
-        <div id="energy-chart">
-          <apx-chart [series]="chartOptions.series" [chart]="chartOptions.chart"
-            [xaxis]="chartOptions.xaxis"></apx-chart>
+
+        <div id="chart">
+          <apx-chart
+            [series]="chartOptions.series"
+            [chart]="chartOptions.chart"
+            [dataLabels]="chartOptions.dataLabels"
+            [plotOptions]="chartOptions.plotOptions"
+            [xaxis]="chartOptions.xaxis"
+            [stroke]="chartOptions.stroke"
+            [fill]="chartOptions.fill"
+            [yaxis]="chartOptions.yaxis"
+            [title]="chartOptions.title"
+            [tooltip]="chartOptions.tooltip"
+            [legend]="chartOptions.legend"
+          ></apx-chart>
         </div>
       </div>
     </div>

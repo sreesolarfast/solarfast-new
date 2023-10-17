@@ -61,22 +61,83 @@
           </div>
         </div>
         <!--Card Ends Here-->
-        <h3>Want to see more options we have selected for you? <a href="" routerLink="/choosesolarfast">Click here</a></h3>
+        <h3 class="text-center">Want to see more options we have selected for you? <a href="" routerLink="/choosesolarfast">Click here</a></h3>
       </div>
     </div>
 
-    <div class="container-fluid">
-      <div class="row">
-        <div class="col-md-12">
-            <h1>Save up to £1,234 per year on electricity</h1>
+
+
+    <div class="container-fluid justify-content-center">
+      <div class="container-fluid py-5 chart-content">
+        <div class="row">
+          <div class="row">
+            <h3 class="text-center white-color">Save up to £1,234 per year on electricity</h3>
+          </div>
+              <div class="row justify-content-center align-items-center">
+              <div class="row " style="width: 50%;">
+                  <div class="col-md-4">
+                      <div class="card text-center">
+                          <img src="image1.jpg" class="card-img-top" alt="Image 1">
+                          <div class="card-body">
+                              <h5 class="card-title">£1,234</h5>
+                              <p class="des-card-text">Annual Savings</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="card text-center">
+                          <img src="image2.jpg" class="card-img-top" alt="Image 2">
+                          <div class="card-body">
+                              <h5 class="card-title">4,123 kWh</h5>
+                              <p class="des-card-text">Generation P/Y</p>
+                          </div>
+                      </div>
+                  </div>
+
+                  <div class="col-md-4">
+                      <div class="card text-center">
+                          <img src="image3.jpg" class="card-img-top" alt="Image 3">
+                          <div class="card-body">
+                              <h5 class="card-title">4.1 kWh</h5>
+                              <p class="des-card-text">System Size</p>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+            </div>
+        </div>
+        <div class="row py-3">
+          <div class="row">
+            <h3 class="text-center white-color"><i>Terms and conditions around average savings goes here <br>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet <br> dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit lobortis nisl ut aliquip ex</i></h3>
+          </div>
+          <h3 class="text-center white-color">Yearly Generation forecast</h3>
+          <div class="container">
+
+            <div id="chart">
+              <apx-chart
+                [series]="chartOptions.series"
+                [chart]="chartOptions.chart"
+                [dataLabels]="chartOptions.dataLabels"
+                [plotOptions]="chartOptions.plotOptions"
+                [xaxis]="chartOptions.xaxis"
+                [stroke]="chartOptions.stroke"
+                [fill]="chartOptions.fill"
+                [yaxis]="chartOptions.yaxis"
+                [title]="chartOptions.title"
+                [tooltip]="chartOptions.tooltip"
+                [legend]="chartOptions.legend"
+              ></apx-chart>
+            </div>
+          </div>
         </div>
       </div>
     </div>
 
 
-    <div class="row">
+    <div class="row py-4">
         <div class="col-md-12">
-                <h1>Frequently Asked Questions</h1>
+                <h1 class="text-center">Frequently Asked Questions</h1>
             <div class="tabs">
                 <ul class="nav nav-tabs" id="myTab" role="tablist">
                     <li class="nav-item" role="presentation">
