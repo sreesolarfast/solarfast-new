@@ -16,11 +16,12 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     PagesRoutingModule,
     NgApexchartsModule
   ],
-  declarations: [ConfirmOrderComponent,
-  InstallDateComponent,
-OfflineComponent,
-PackageSelectionComponent,
-PackageSelectedComponent,
+  declarations: [
+    ConfirmOrderComponent,
+    InstallDateComponent,
+    OfflineComponent,
+    PackageSelectionComponent,
+    PackageSelectedComponent,
 ]
 })
 export class PagesModule { }
