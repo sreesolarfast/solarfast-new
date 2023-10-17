@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
+import { ApexOptions, ChartType } from 'ng-apexcharts';
 import { InstallmentbillingsummaryComponent } from '../installmentbillingsummary/installmentbillingsummary.component';
 import { InstallmentsSummaryComponent } from '../installments-summary/installments-summary.component';
 
