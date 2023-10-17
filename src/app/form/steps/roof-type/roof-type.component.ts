@@ -23,7 +23,7 @@ export class RoofTypeComponent implements OnInit {
       this.onlineEnquiryService.result.roofType = answer;
 
       if (terminate) {
-        this.router.navigate(['/terminate'], { state: { reason: 'Roof Type' } });
+        this.router.navigate(['/pages/terminate'], { state: { reason: 'Roof Type' } });
         return;
       }
 

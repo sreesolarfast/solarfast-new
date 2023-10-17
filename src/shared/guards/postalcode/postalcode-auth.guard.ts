@@ -17,13 +17,20 @@ export class PostalCodeGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (this.onlineEnquiryService?.result?.postcode != null) {
-        return true;
-      } else {
-        // todo reroute to WP postcode page
-        this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();
-        return false;
-      }
+      if (route.queryParamMap.get('postcode') != null || this.onlineEnquiryService.result.postcode != null)
+      return true;
+
+         this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();
+    return false;
+
+
+      // if (this.onlineEnquiryService?.result?.postcode != null) {
+      //   return true;
+      // } else {
+      //   // todo reroute to WP postcode page
+      //   this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();
+      //   return false;
+      // }
   }
 
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { DEFAULT_CURRENCY_CODE, LOCALE_ID, NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -6,11 +6,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/modules/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SolarfastsystemComponent } from './pages/solarfastsystem/solarfastsystem.component';
-import { ChoosesolarfastsystemComponent } from './pages/choosesolarfastsystem/choosesolarfastsystem.component';
-import { ChoosensystemComponent } from './pages/choosensystem/choosensystem.component';
-import { PickinstallationdateComponent } from './pages/pickinstallationdate/pickinstallationdate.component';
-import { CustomerdetailsentryformComponent } from './pages/customerdetailsentryform/customerdetailsentryform.component';
-import { OrderprogressComponent } from './pages/orderprogress/orderprogress.component';
+import { NextStepsComponent } from './pages/next-steps/next-steps.component';
 import { PhotouploadComponent } from './pages/photoupload/photoupload.component';
 import { OrderconfirmationComponent } from './pages/orderconfirmation/orderconfirmation.component';
 import { InstallmentbillingsummaryComponent } from './pages/installmentbillingsummary/installmentbillingsummary.component';
@@ -18,24 +14,17 @@ import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InstallmentsSummaryComponent } from './pages/installments-summary/installments-summary.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ConsumptionprodcutionchartComponent } from './pages/consumptionprodcutionchart/consumptionprodcutionchart.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     SolarfastsystemComponent,
-    ChoosesolarfastsystemComponent,
-    ChoosensystemComponent,
-    PickinstallationdateComponent,
-    CustomerdetailsentryformComponent,
-    OrderprogressComponent,
+    NextStepsComponent,
     PhotouploadComponent,
     OrderconfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
-    ConsumptionprodcutionchartComponent,
-
     ],
   imports: [
     BrowserModule,
@@ -53,6 +42,8 @@ import { ConsumptionprodcutionchartComponent } from './pages/consumptionprodcuti
       useClass: AuthInterceptor,
       multi: true,
   },
+  { provide: LOCALE_ID, useValue: 'en-GB' },
+  { provide: DEFAULT_CURRENCY_CODE, useValue: 'GBP' },
   ],
   bootstrap: [AppComponent]
 })

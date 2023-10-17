@@ -1,12 +1,7 @@
-<!-- <google-map [zoom]="20" [center]="mapCenter" [options]="mapOptions" width="100%" height="100vh">
-    <map-marker #marker="mapMarker" [position]="mapCenter" [options]="markerOptions"
-        (mapClick)="openInfoWindow(marker)" (mapDragend)="onMapDragEnd($event)">
-    </map-marker>
-    <map-info-window>{{ markerInfoContent }}</map-info-window>
-</google-map> -->
 <google-map [zoom]="20" [center]="mapCenter" [options]="mapOptions" width="100%" height="100vh">
     <map-marker #marker="mapMarker" [position]="mapCenter" [options]="markerOptions"
         (mapClick)="openInfoWindow(marker)" (mapDragend)="onMapDragEnd($event)">
     </map-marker>
     <map-info-window>{{ markerInfoContent }}</map-info-window>
 </google-map>
+

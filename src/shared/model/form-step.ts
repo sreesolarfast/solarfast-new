@@ -6,4 +6,5 @@ export class FormStep {
   component: string;
   hideNavigation: boolean;
   hideComponent: boolean | null;
+  route: string | null;
 }

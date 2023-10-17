@@ -1,12 +1,16 @@
+import { OnlineEnquiryService } from './online-enquiry.service';
 import { Injectable } from '@angular/core';
 import { FormStep } from '../model/form-step';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
+  stepIndex = 0;
+ public activeStep: FormStep;
 
-constructor() { }
+constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) { }
 
 private steps: FormStep[] = [
 
@@ -17,6 +21,7 @@ private steps: FormStep[] = [
     back: null,
     hideNavigation: false,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 1,
@@ -25,6 +30,7 @@ private steps: FormStep[] = [
     back: 0,
     hideNavigation: false,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 2,
@@ -33,6 +39,7 @@ private steps: FormStep[] = [
     back: 1,
     hideNavigation: false,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 3,
@@ -41,6 +48,7 @@ private steps: FormStep[] = [
     back: 2,
     hideNavigation: false,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 4,
@@ -49,6 +57,7 @@ private steps: FormStep[] = [
     back: 3,
     hideNavigation: true,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 5,
@@ -57,6 +66,7 @@ private steps: FormStep[] = [
     back: 4,
     hideNavigation: true,
     hideComponent: false,
+    route: '/solar'
   },
   {
     step: 6,
@@ -64,13 +74,96 @@ private steps: FormStep[] = [
     next: 7,
     back: 5,
     hideNavigation: true,
-    hideComponent: true
+    hideComponent: true,
+    route: '/solar'
+  },
+  {
+    step: 7,
+    component: 'page-package-selection',
+    next: 8,
+    back: 6,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/package-selection'
+  },
+  {
+    step: 8,
+    component: 'page-package-selected',
+    next: 9,
+    back: 7,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/package-selected'
+  },
+  {
+    step: 9,
+    component: 'page-confirm-order',
+    next: 10,
+    back: 8,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/confirm-order'
+  },
+  {
+    step: 10,
+    component: 'page-next-steps',
+    next: 11,
+    back: 9,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/next-steps'
   },
 
 ];
 
 public getSteps() {
   return this.steps;
+}
+
+
+public stepChange(event) {
+  // set the next active step
+  this.activeStep = this.steps.filter((x) => x.step == event)[0];
+
+  // conditionally set the peristed step
+  if (event != this.onlineEnquiryService.step)
+    this.onlineEnquiryService.setStep(event);
+
+    if (this.activeStep.route != null)
+    this.router.navigate([this.activeStep.route])
+
+  // set online enquiry
+  this.onlineEnquiryService
+    .manage(this.onlineEnquiryService.result)
+    .subscribe({
+      next: (x) => {
+        console.info('online enquiry managed', x);
+      },
+    });
+
+
+}
+
+public next() {
+  this.stepChange(this.activeStep.next);
+}
+
+public back() {
+  this.stepChange(this.activeStep.back);
+}
+
+public redirectToCorrectStep() {
+
+  if (this.getActiveStep().route == null) {
+    this.router.navigate(['/solar']);
+  }
+   else
+   this.router.navigate([this.activeStep.route]);
+}
+
+public getActiveStep() {
+  this.activeStep = this.steps.filter((x) => x.step == this.onlineEnquiryService.step)[0];
+  return this.activeStep;
 }
 
 

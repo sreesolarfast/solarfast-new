@@ -1,14 +1,13 @@
 import { RouterModule, Routes } from '@angular/router';
-
 import { NgModule } from '@angular/core';
 import { TerminateComponent } from './pages/terminate/terminate.component';
 import { SolarfastsystemComponent } from './pages/solarfastsystem/solarfastsystem.component';
-import { ChoosensystemComponent } from './pages/choosensystem/choosensystem.component';
-import { PickinstallationdateComponent } from './pages/pickinstallationdate/pickinstallationdate.component';
-import { ChoosesolarfastsystemComponent } from './pages/choosesolarfastsystem/choosesolarfastsystem.component';
-import { CustomerdetailsentryformComponent } from './pages/customerdetailsentryform/customerdetailsentryform.component';
+import { InstallDateComponent } from './pages/install-date/install-date.component';
 import { GooglemapComponent } from 'src/shared/components/googlemap/googlemap.component';
-import { ConsumptionprodcutionchartComponent } from './pages/consumptionprodcutionchart/consumptionprodcutionchart.component';
+import { PostalCodeEntryComponent } from './pages/postal-code-entry/postal-code-entry.component';
+import { PackageSelectedComponent } from './pages/package-selected/package-selected.component';
+import { PackageSelectionComponent } from './pages/package-selection/package-selection.component';
+import { ConfirmOrderComponent } from './pages/confirm-order/confirm-order.component';
 
 const routes: Routes = [
   {
@@ -25,36 +24,32 @@ const routes: Routes = [
     loadChildren: () => import('./pages/postal-code-entry/postal-code-entry.module').then(a => a.PostalCodeEntryModule),
   },
   {
+    path:'pages',
+    loadChildren: () => import('./pages/pages.module').then(a => a.PagesModule),
+  },
+
+
+  {
     path:'solarfastsystem',
     component: SolarfastsystemComponent
   },
   {
-    path:'choosensolarfastsystem',
-    component: ChoosensystemComponent
-  },
-  {
-    path:'choosesolarfast',
-    component: ChoosesolarfastsystemComponent
-  },
-  {
     path:'chooseinstalldate',
-    component: PickinstallationdateComponent
+    component: InstallDateComponent
   },
-  {
-    path:'customerdetails',
-    component: CustomerdetailsentryformComponent
-  },
+
   {
     path:'map',
     component: GooglemapComponent
   },
-  {
-    path:'chart',
-    component: ConsumptionprodcutionchartComponent
-  },
+
   {
     path:'terminate',
     component: TerminateComponent
+  },
+  {
+    path:'**',
+    component: PostalCodeEntryComponent
   }
 ];
 @NgModule({

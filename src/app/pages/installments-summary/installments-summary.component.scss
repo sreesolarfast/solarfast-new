@@ -1,14 +1,28 @@
 .container{
   background-color: white;
-  height: 100%;
+  height: auto;
 }
+
+.pay-installments ul li{
+  line-height:2rem;
+}
+
+.list-group-item:hover {
+  background-color: rgba(115, 189, 66, 0.3);
+  border: 1px solid #74BD42;
+  color: #000;
+  cursor: pointer;
+}
+
 .list-group-item.active {
-  background-color: #007bff;
+  background-color: #74BD42;
+  border: 1px solid #74BD42;
   color: #fff;
 }
 
 .form-control-range {
   width: 100%;
+  background: #74BD42;
   cursor: pointer;
   height: 25px;
 }
@@ -16,8 +30,26 @@
 .form-control-range::-webkit-slider-thumb {
   width: 25px;
   height: 25px;
-  background: #007bff;
-  border: 2px solid #fff;
+  background: #74BD42;
+  border: 2px solid #74BD42;
   border-radius: 50%;
   cursor: pointer;
 }
+
+.cdk-overlay-container{
+  background:#fff;
+  width: 650px;
+}
+
+.pay-installments{
+  padding:1rem;
+  background:#fff;
+}
+
+.pay-installments h2{
+  font-size:1.5rem;
+  font-weight: 700;
+  margin:15px 0;
+}
+
+

@@ -1,8 +1,10 @@
 import { OnlineEnquiryService } from '../../shared/service/online-enquiry.service';
 import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from '../../shared/service/form.service';
 import { FormStep } from '../../shared/model/form-step';
+import { OnlineEnquiryDto } from '../../shared/dto/online-enquiry-dto';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-form',
@@ -12,65 +14,62 @@ import { FormStep } from '../../shared/model/form-step';
 export class FormComponent implements OnInit {
   loading = true;
   steps: FormStep[];
-  stepIndex = 0;
   activeStep: FormStep;
 
   constructor(
     private route: ActivatedRoute,
     private onlineEnquiryService: OnlineEnquiryService,
-    private formService: FormService
+    public formService: FormService,
+    private location: Location,
+    private router: Router
   ) {}
 
   ngOnInit() {
     this.steps = this.formService.getSteps();
-    this.getActiveStep();
+    this.activeStep = this.formService.getActiveStep();
 
     // get online enquiry from param if applicable
     const id = this.route.snapshot.paramMap.get('id');
+
     if (id != null)
       this.onlineEnquiryService.getByUniqueReference(id).subscribe({
         next: (x) => {
           this.loading = false;
         },
       });
-    else this.loading = false;
 
-    this.onlineEnquiryService.step$.subscribe({
+    this.onlineEnquiryService.result$.subscribe({
       next: (x) => {
-        if (x != null)
-        this.stepChange(x);
+        if (x == null) {
+          const postcode = this.route.snapshot.queryParamMap.get('postcode');
+          const companyId = this.route.snapshot.queryParamMap.get('companyId');
+          const repId = this.route.snapshot.queryParamMap.get('repId');
+
+          let dto = { postcode: postcode } as OnlineEnquiryDto;
+          if (companyId != null) dto.companyId = +companyId;
+          if (repId != null) dto.repId = repId;
+
+          this.onlineEnquiryService.manage(dto).subscribe({
+            next: (x) => {
+              this.location.replaceState('/solar');
+              this.loading = false;
+              this.formService.stepChange(0);
+            },
+          });
+        } else {
+          this.location.replaceState('/solar');
+          this.loading = false;
+        }
       },
     });
-  }
 
-  public getActiveStep() {
-    this.activeStep = this.steps.filter((x) => x.step == this.stepIndex)[0];
-    return this.activeStep;
-  }
-
-  stepChange(event) {
-    // set the next active step
-    this.activeStep = this.steps.filter((x) => x.step == event)[0];
-
-    // conditionally set the peristed step
-    if (event != this.onlineEnquiryService.step)
-      this.onlineEnquiryService.setStep(event);
-
-    // set online enquiry
-    this.onlineEnquiryService
-      .manage(this.onlineEnquiryService.result)
-      .subscribe({
+    if (!this.loading)
+      this.onlineEnquiryService.step$.subscribe({
         next: (x) => {
-          console.info('online enquiry managed', x);
+          if (x != null) this.formService.stepChange(x);
         },
       });
   }
 
-  next() {
-    this.stepChange(this.activeStep.next);
-  }
 
-  back() {
-    this.stepChange(this.activeStep.back);
-  }
 }

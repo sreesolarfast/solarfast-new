@@ -1,0 +1,93 @@
+.solar-fast-system{
+    padding:2rem;
+}
+
+.packages{
+
+    .packageOne{
+    background: rgb(239,239,239);
+    background: linear-gradient(90deg, rgba(239,239,239,1), rgba(231,231,231,1));
+    padding:30px;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 29px;
+    }
+
+    .packageTwo{
+        background: rgb(117,192,67);
+        background: linear-gradient(90deg, rgba(117,192,67,1), rgba(70,157,12,1) );
+        padding:30px;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 29px;
+    }
+
+    .packageThree{
+        background: rgb(39,39,39);
+        background: linear-gradient(90deg, rgba(39,39,39,1), rgba(25,25,25,1));
+        padding:30px;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 29px;
+    }
+
+}
+
+
+.package-list{
+    padding:2rem 0;
+}
+
+.package-panel-list{
+    padding:2rem;
+}
+
+.package-panel-list h2{
+    font-size:2.5rem;
+    line-height:3rem;
+    font-weight: 700;
+}
+
+.package-panel-list ul li{
+    font-size:18px;
+    line-height:1.8;
+}
+
+.recommended{
+    position: absolute;
+    padding:15px;
+    overflow: hidden;
+}
+
+
+.payment-options{
+    padding:2rem;
+    text-align: center;
+}
+
+.payment-options h3{
+    font-size:1.5rem;
+    font-weight:500;
+}
+
+.payment-options h1{
+    font-weight: 700;
+    font-size:2.4rem;
+}
+
+.btn-back{
+    background:#000;
+    border-radius:50%;
+  }
+
+.package-content {
+    min-height:420px;
+  }
+
+.per-month{
+    color:#CE0707;
+    font-weight: 500;
+    width:100%;
+    display: block;
+    font-size:18px;
+    cursor: pointer;
+    margin:15px 0;
+}
+

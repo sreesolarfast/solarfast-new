@@ -12,16 +12,20 @@ const routes: Routes = [
   {
     path: '',
     component: FormComponent,
-    // canActivate:[PostalCodeGuard]
+    canActivate:[PostalCodeGuard],
+    // resolve: {
+    //   enquiry: OnlineEnquiryAddResolver
+    // }
+    children: [
+      {
+        path: ':id',
+        component: FormComponent,
+        // canActivate:[PostalCodeGuard]
+      },
+      { path: 'googlemap', component: GooglemapComponent },
+    ]
   },
-  {
-    path: ':id',
-    component: FormComponent,
-    // canActivate:[PostalCodeGuard]
-  },
-  { path: 'googlemap', component: GooglemapComponent },
-  { path: 'terminate', component: TerminateComponent },
-  { path: 'offline', component: OfflineComponent },
+
 
 ];
 
