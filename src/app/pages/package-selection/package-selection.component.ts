@@ -93,7 +93,8 @@ export class PackageSelectionComponent {
       }
     },
     fill: {
-      opacity: 1
+      opacity: 1,
+      colors: ['#FF5733', '#33FF57'],
     },
     yaxis: {
       labels: {
