@@ -10,15 +10,30 @@ export class WhatincludedComponent implements OnInit {
   details: any[] = [
     {
       image: './assets/images/detail-1.png',
-      text: 'Detail 1'
+      title: '10x Longi Full Black Solar Panels 425W',
+      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
     },
     {
       image: './assets/images/detail-2.png',
-      text: 'Detail 2'
+      title: '10x Longi Full Black Solar Panels 425W',
+      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
     },
     {
       image: './assets/images/detail-3.png',
-      text: 'Detail 3'
+      title: '10x Longi Full Black Solar Panels 425W',
+      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+    }
+  ];
+
+  notincludeds: any[] = [
+    {
+      list: 'Repairs to pre-existing electrical faults or non-conformities '
+    },
+    {
+      list: 'Removal of hazardous materials or products'
+    },
+    {
+      list: 'Planning permission applications within conservation areas'
     }
   ];
 
