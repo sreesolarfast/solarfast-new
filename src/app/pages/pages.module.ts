@@ -9,6 +9,7 @@ import { PackageSelectedComponent } from './package-selected/package-selected.co
 import { PagesRoutingModule } from './pages-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { ConsumptionprodcutionchartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
+import { WhatincludedComponent } from '../whatincluded/whatincluded.component';
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import { ConsumptionprodcutionchartComponent } from './consumptionprodcutionchar
     OfflineComponent,
     PackageSelectionComponent,
     PackageSelectedComponent,
-    ConsumptionprodcutionchartComponent
+    ConsumptionprodcutionchartComponent,
+    WhatincludedComponent
 ]
 })
 export class PagesModule { }

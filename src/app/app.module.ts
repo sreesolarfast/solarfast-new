@@ -26,7 +26,6 @@ import { WhatincludedComponent } from './whatincluded/whatincluded.component';
     OrderconfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
-    WhatincludedComponent,
     ],
   imports: [
     BrowserModule,
