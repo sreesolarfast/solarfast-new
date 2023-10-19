@@ -8,6 +8,7 @@ import { PackageSelectionComponent } from './package-selection/package-selection
 import { PackageSelectedComponent } from './package-selected/package-selected.component';
 import { PagesRoutingModule } from './pages-routing.module';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { ConsumptionprodcutionchartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
 
 @NgModule({
   imports: [
@@ -22,6 +23,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     OfflineComponent,
     PackageSelectionComponent,
     PackageSelectedComponent,
+    ConsumptionprodcutionchartComponent
 ]
 })
 export class PagesModule { }
