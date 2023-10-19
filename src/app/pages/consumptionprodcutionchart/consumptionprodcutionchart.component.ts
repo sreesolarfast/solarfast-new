@@ -30,8 +30,6 @@ export type ChartOptions = {
 };
 
 
-
-
 @Component({
   selector: 'app-consumptionprodcutionchart',
   templateUrl: './consumptionprodcutionchart.component.html',

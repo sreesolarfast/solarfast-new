@@ -14,6 +14,7 @@ import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InstallmentsSummaryComponent } from './pages/installments-summary/installments-summary.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
+import { WhatincludedComponent } from './whatincluded/whatincluded.component';
 
 
 @NgModule({
@@ -25,6 +26,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
     OrderconfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
+    WhatincludedComponent,
     ],
   imports: [
     BrowserModule,
