@@ -1,97 +1,268 @@
+.google-map {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url("/assets/7/slide-7.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+.non-clickable-content {
+    cursor: not-allowed; /* Change cursor style to not-allowed */
+    pointer-events: none; /* Disable pointer events */
+    /* Add any other styling as needed */
+  }
+
+.back-buttons {
+    position: fixed;
+    top: 10px;
+    right: 10px;
+    z-index: 100;
+}
+
+.title-bar-heading {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    color: #000;
+
+    .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+    .title-top {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+}
+
+.btn-primary {
+    background: linear-gradient(
+        to bottom,
+        #75c043,
+        #44a900
+    ); //todo change this to sf green
+    border: transparent;
+}
+
+.content-main {
+    margin-top: 100px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+
+
+    --mat-expansion-container-background-color: white;
+    --mat-expansion-container-shape: none;
+
+    .btn-black {
+        background: #000;
+        color: white;
+        border-radius: 100%;
+        padding: 10px;
+    }
+
+    .ml-5 {
+        margin-left: 5px;
+    }
+
+
+    .card{
+        border-radius: 1.5rem;
+        border-color: #ccc;
+        background: #fff;
+        box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
+        padding: 40px;
+        margin-bottom: 20px;
+    }
+
+    .key-container {
+        display: flex;
+        flex-direction: row;
+
+        .green-key {
+            background: #44a900;
+            width: 20px;
+            height: 20px;
+            border-radius: 0%;
+        }
+        .gray-key {
+            background: #ccc;
+            width: 20px;
+            height: 20px;
+            border-radius: 0%;
+        }
+    }
+
+    .months-container {
+        width: 100%;
+        display: flex;
+
+        .month {
+            flex-grow: 1;
+        }
+    }
+
+    .date-picker{
+        padding: 0% 10% 0% 10%;
+        color:#b2b2b2;
+    }
+
+
+    .selected{
+        color:#000;
+    }
+
+    .day-row{
+        //grid with 12 cols and no specified row
+        display: grid;
+        grid-template-columns: repeat(12, 1fr);
+        grid-auto-rows: minmax(25px, auto);
+
+
+
+        .day-element {
+            color: rgb(104, 104, 104);
+            background: #f4f4f4;
+            border-radius: 0%;
+            border-color: transparent;
+            font-weight: bold;
+            position: relative;
+            padding: 0px;
+            width: 100%;
+            aspect-ratio : 1 / 1;
+            height: 100%;
+            font-size: 1.2vw;
+        }
+
+        .selected{
+            background: linear-gradient(to bottom, #75c043, #44a900);
+            color: white;
+        }
+
+        .past-date {
+            background: #000000;
+            color: #3e3e3e;
+
+            border-color: #363636;
+            border-width: 0px;
+            border-right: 1px solid #363636;
+            border-top: 1px solid #363636;
+
+            //allign items center
+            display: flex;
+            justify-content: center;
+            align-items: center;
+
+
+        }
+
+    }
+
+
+}
+
+.confirm-date-button {
+    margin-top: 20px !important;
+    margin-bottom: 20px !important;
+    padding: 20px 40px 20px 40px;
+    font-weight: bold;
+    font-size: x-large;
+    border-radius: 0.5rem;
+    border-color: transparent;
+}
+
+.confirm-selection-disabled{
+    background: #000;
+    background-color: #000;
+}
+
+.personal-details {
+
+    .input-group-text{ //icon
+        border-radius: 17px;
+        background: #fff;
+        min-height: 60px;
+        padding: 12px 15px;
+        font-size: 25px;
+
+        color: #3d3d3d;
+    }
+
+
+    .form-control { //input field
+        border-radius: 17px;
+        background: #fff;
+        min-height: 60px;
+        padding: 12px 15px;
+        font-size: 15px;
+        font-weight: 600;
+
+        color: #3d3d3d;
+
+        border-left-color: transparent;
+    }
+
+    .btn-success {
+        width: 100%;
+        min-height: 45px;
+        color: #fff;
+    }
+
+    .btn.btn-success {
+        background: linear-gradient(to bottom, #75c043, #44a900);
+        -webkit-box-shadow: inset 0 1px 2px #44a900;
+        -moz-box-shadow: inset 0 1px 2px #44a900;
+    }
+
+    .btn.btn-success:hover {
+        background: #75c043;
+        -webkit-transition: box-shadow 0.05s ease-in-out;
+        -moz-transition: box-shadow 0.05s ease-in-out;
+        -o-transition: box-shadow 0.05s ease-in-out;
+        transition: box-shadow 0.05s ease-in-out;
+    }
+
+    .btn.btn-success:active {
+        background: linear-gradient(to bottom, #75c043, #44a900);
+        -webkit-box-shadow: 0 0 5px #44a900 inset;
+        -moz-box-shadow: 0 0 5px #44a900 inset;
+    }
+
+    .submit-button{
+        margin-top: 20px !important;
+        margin-bottom: 20px !important;
+        padding: 20px 40px 20px 40px;
+        font-weight: bold;
+        font-size: x-large;
+        border-radius: 0.5rem;
+        border-color: transparent;
+
+        width: 80%;
+    }
+}
+
 .google-map{
-  position:fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background:url('/assets/7/slide-7.png');
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position: center center;
-}
 
-.back-buttons{
-  position: fixed;
-  top: 10px;
-  right: 10px;
-  z-index:100 ;
-}
+    height: 15px;
+    position: sticky;
+    z-index: 1;
 
-.user-details{
-  position: fixed;
-  left:0;
-  top:0;
-  width: 38%;
-  height:100vh;
+    border-top-right-radius: 1.5rem;
+    border-bottom-right-radius: 1.5rem;
 
-  .heading-title{
-      margin-bottom:30px;
+    /* app-googlemap.component.css */
+    ::ng-deep google-map {
+        ::ng-deep .map-container{
+            height: 100% !important; /* Override the height attribute */
 
-      h1{
-          font-size:2rem;
-          font-weight: 700;
-          margin-bottom:5px;
-      }
-
-      p{
-          font-size:1rem;
-          font-weight: 500;
-      }
-
-      .back{
-          border-radius:30px;
-          background:#000;
-          font-size:1.2rem;
-          font-weight: 700;
-          color: #fff;
-          margin-left:-40px;
-      }
-
-  }
-
-  .card{
-      background: linear-gradient(to bottom, #EFEFEF, #E7E7E7);
-      opacity:0.95;
-      border-radius:0;
-      height:100vh;
-      padding:3rem;
-  }
-
-  .form-control{
-      border-radius:17px;
-      background:#fff;
-      min-height:40px;
-      padding:12px 15px;
-      font-size:15px;
-  }
-
-  .btn-success{
-      width: 100%;
-      min-height:45px;
-      color: #fff;
-  }
-
-  .btn.btn-success{
-      background: linear-gradient(to bottom, #75C043, #44A900);
-      -webkit-box-shadow: inset 0 1px 2px #44A900;
-      -moz-box-shadow: inset 0 1px 2px #44A900;
-  }
-
-
-  .btn.btn-success:hover {
-      background:#75C043;
-      -webkit-transition: box-shadow 0.05s ease-in-out;
-      -moz-transition: box-shadow 0.05s ease-in-out;
-      -o-transition: box-shadow 0.05s ease-in-out;
-      transition: box-shadow 0.05s ease-in-out;
-  }
-
-
-  .btn.btn-success:active {
-      background: linear-gradient(to bottom, #75C043, #44A900);
-      -webkit-box-shadow: 0 0 5px #44A900 inset;
-      -moz-box-shadow: 0 0 5px #44A900 inset;
-  }
-
+            border-top-right-radius: 1.5rem;
+            border-bottom-right-radius: 1.5rem;
+        }
+    }
 
 }

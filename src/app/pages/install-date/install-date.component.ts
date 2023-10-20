@@ -1,89 +1,105 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { FormService } from '../../../shared/service/form.service';
+import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 
 @Component({
-  selector: 'app-install-date',
+  selector: 'page-install-date',
   templateUrl: './install-date.component.html',
   styleUrls: ['./install-date.component.scss']
 })
 export class InstallDateComponent {
-  selectedYear: number = new Date().getFullYear();
-  selectedMonth: number = new Date().getMonth();
-  selectedDate: Date | null = null;
-  selectedButtons: Set<string> = new Set<string>();
-  currentDate: Date = new Date();
+    selectedYear: number = new Date().getFullYear();
+    selectedMonth: number = new Date().getMonth();
+    selectedDate: Date | null = null;
+    selectedButtons: Set<string> = new Set<string>();
+    currentDate: Date = new Date();
 
-  years: number[] = [2023, 2024, 2025]; // Customize with your desired years
-  months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
-constructor (private router:Router){
+    years: number[] = [2023, 2024, 2025]; // Customize with your desired years
+    months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-}
-  get calendarDays(): number[] {
-    const daysInMonth = new Date(this.selectedYear, this.selectedMonth + 1, 0).getDate();
-    return Array.from({ length: daysInMonth }, (_, i) => i + 1);
-  }
-  getAvailableMonths(): string[] {
-    const currentMonthIndex = new Date().getMonth();
-    const availableMonths = [];
+    constructor(
+        private router: Router,
+        private formService: FormService,
+        private onlineEnquiryService: OnlineEnquiryService
+    ) {}
 
-    for (let i = currentMonthIndex; availableMonths.length < 8; i++) {
-      const monthIndex = i % 12; // Wrap around to the next year if needed
-      availableMonths.push(this.months[monthIndex]);
+    ngOnInit(): void {
+        const step = this.formService.getSteps().filter(x => x.component == 'page-install-date')[0];
+        if (step != this.formService.activeStep) {
+          this.formService.redirectToCorrectStep();
+        }
     }
 
-    return availableMonths;
-  }
-
-  isPastDate(day: number): boolean {
-    const currentDate = new Date();
-    const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-
-    return selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth();
-  }
-
-  isDayAvailable(day: number): boolean {
-    const currentDate = new Date();
-    const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-
-    if (selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth() && selectedDate.toDateString() !== currentDate.toDateString()) {
-      return false;
+    get calendarDays(): number[] {
+        const daysInMonth = new Date(this.selectedYear, this.selectedMonth , 0).getDate();
+        return Array.from({ length: daysInMonth }, (_, i) => i + 1);
     }
-    return true;
-  }
 
+    getAvailableMonths(): { name: string; value: number }[] {
+        const currentMonthIndex = new Date().getMonth();
+        const availableMonths = [];
 
-  isDateSelected(day: number): boolean {
-    if (!this.selectedDate) return false;
-    return new Date(this.selectedYear, this.selectedMonth, day).toDateString() === this.selectedDate.toDateString();
-  }
+        for (let i = currentMonthIndex; availableMonths.length < 8; i++) {
+            const monthIndex = i % 12; // Wrap around to the next year if needed
+            const monthValue = monthIndex; // Add 1 to get the actual month value
+            const monthName = this.months[monthIndex];
 
-  selectDate(day: number) {
-    this.selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-  }
+            availableMonths.push({ name: monthName, value: monthValue });
+        }
 
-  isButtonSelected(buttonName: string): boolean {
-    return this.selectedButtons.has(buttonName);
-  }
-  selectMonth(monthIndex: number) {
-    this.selectedMonth = monthIndex;
-}
-
-  toggleButton(buttonName: string) {
-    if (this.selectedButtons.has(buttonName)) {
-      this.selectedButtons.delete(buttonName);
-    } else {
-      this.selectedButtons.add(buttonName);
+        return availableMonths;
     }
-  }
 
-  confirmSelection() {
-    console.log('Selected Year:', this.selectedYear);
-    console.log('Selected Month:', this.months[this.selectedMonth]);
-    console.log('Selected Date:', this.selectedDate?.toDateString());
-    console.log('Selected Buttons:', Array.from(this.selectedButtons));
-    this.router.navigate(['/customerdetails']);
-  }
+    isConfirmSelectionReady(): boolean {
+        return this.selectedDate !== null;
+    }
 
-  updateCalendar() {
-  }
+    isPastDate(day: number): boolean {
+        const currentDate = new Date();
+        currentDate.setMonth(currentDate.getMonth());
+        const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+
+        return selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth();
+    }
+
+    isDayAvailable(day: number): boolean {
+        const currentDate = new Date();
+        const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+
+        if (
+            selectedDate < currentDate &&
+            selectedDate.getMonth() === currentDate.getMonth() &&
+            selectedDate.toDateString() !== currentDate.toDateString()
+        ) {
+            return false;
+        }
+        return true;
+    }
+
+    isDateSelected(day: number): boolean {
+        if (!this.selectedDate) return false;
+        return new Date(this.selectedYear, this.selectedMonth, day).toDateString() === this.selectedDate.toDateString();
+    }
+
+    selectDate(day: number) {
+        this.selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+    }
+
+    selectMonth(monthIndex: number) {
+        this.selectedMonth = monthIndex;
+    }
+
+    answerGiven() {
+        console.log('Selected Year:', this.selectedYear);
+        console.log('Selected Month:', this.months[this.selectedMonth]);
+        console.log('Selected Date:', this.selectedDate);
+        console.log('Selected Buttons:', Array.from(this.selectedButtons));
+        this.onlineEnquiryService.result.provisionalInstallDate = this.selectedDate;
+        this.formService.next();
+    }
+
+    backButton() {
+        this.formService.back();
+    }
 }

@@ -1,35 +1,203 @@
 <!--Help-->
 <div class="need-help">
-  <div class="d-flex align-items-center">
-    <div class="help-icon">
-      <i class="bi bi-question-circle"></i>
+    <div class="d-flex align-items-center">
+        <div class="help-icon">
+            <i class="bi bi-question-circle"></i>
+        </div>
+        <div class="help-body">
+            <h3>Need help?</h3>
+            <p>Speak to our team</p>
+        </div>
     </div>
-    <div class="help-body">
-      <h3>Need help?</h3>
-      <p>Speak to our team</p>
-    </div>
-  </div>
 </div>
 <!--Help Ends-->
 
 <div class="order-progress">
-  <div class="order-details">
-    <div class="heading-title">
-      <h1>
-        <button class="back">
-          <i class="bi bi-arrow-left"></i>
-        </button>
-        Your Order Progress & Next Steps
-      </h1>
-    </div>
+    <div class="order-details">
+        <div class="title-bar-heading">
+            <h1>
+                <a class="btn btn-black" (click)="backButton()">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="37"
+                        height="34"
+                        viewBox="0 0 25 20"
+                    >
+                        <path
+                            d="M20 10 L5 10 M10 5 L5 10 10 15"
+                            stroke="white"
+                            stroke-width="2"
+                            fill="none"
+                        />
+                    </svg>
+                </a>
+            </h1>
 
-    <div class="orderlist">
-      <ul>
-        <li>Order submitted & quote given</li>
-        <li>3D design and installation date confirmed</li>
-        <li>Solar Fast System Installation</li>
-      </ul>
-      <button class="btn btn-success">Confirm</button>
+            <div>
+                <h1 class="title">Your order Progress & Next Steps</h1>
+            </div>
+        </div>
+
+        <div class="bullet-points d-flex flex-column">
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-row align-items-center">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="115"
+                        height="115"
+                        viewBox="0 0 100 100"
+                    >
+                        <!-- Circle -->
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            stroke="#75C043"
+                            stroke-width="5"
+                            fill="none"
+                        />
+
+                        <!-- Tick (Checkmark) -->
+                        <path
+                            d="M30 50 L45 65 L70 40"
+                            stroke="#75C043"
+                            stroke-width="5"
+                            fill="none"
+                        />
+                    </svg>
+
+                    <p class="bullet-point-text text-green">
+                        Order submitted & quote given.
+                    </p>
+                </div>
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="115"
+                    height="115"
+                    viewBox="0 0 100 100"
+                    style="margin-top: -28px"
+                >
+                    <!-- Vertical Line -->
+                    <line
+                        x1="50"
+                        y1="20"
+                        x2="50"
+                        y2="80"
+                        stroke="#75C043"
+                        stroke-width="5"
+                    />
+                </svg>
+            </div>
+
+            <div class="d-flex flex-column">
+                <div class="d-flex flex-row align-items-center">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="115"
+                        height="115"
+                        viewBox="0 0 100 100"
+                        style="margin-top: -28px"
+                    >
+                        <!-- Circle -->
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            stroke="#dedede"
+                            stroke-width="5"
+                            fill="none"
+                        />
+
+                        <!-- Cross -->
+                        <line
+                            x1="30"
+                            y1="30"
+                            x2="70"
+                            y2="70"
+                            stroke="#dedede"
+                            stroke-width="5"
+                        />
+                        <line
+                            x1="30"
+                            y1="70"
+                            x2="70"
+                            y2="30"
+                            stroke="#dedede"
+                            stroke-width="5"
+                        />
+                    </svg>
+
+                    <p class="bullet-point-text" style="margin-top: -14px">
+                        3D design and installation date confirmed.
+                    </p>
+                </div>
+
+                <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    width="115"
+                    height="115"
+                    viewBox="0 0 100 100"
+                    style="margin-top: -28px"
+                >
+                    <!-- Vertical Line -->
+                    <line
+                        x1="50"
+                        y1="20"
+                        x2="50"
+                        y2="80"
+                        stroke="#dedede"
+                        stroke-width="5"
+                    />
+                </svg>
+            </div>
+
+            <div>
+                <div class="d-flex flex-row align-items-center">
+                    <svg
+                        xmlns="http://www.w3.org/2000/svg"
+                        width="115"
+                        height="115"
+                        viewBox="0 0 100 100"
+                        style="margin-top: -28px"
+                    >
+                        <!-- Circle -->
+                        <circle
+                            cx="50"
+                            cy="50"
+                            r="45"
+                            stroke="#dedede"
+                            stroke-width="5"
+                            fill="none"
+                        />
+
+                        <!-- Cross -->
+                        <line
+                            x1="30"
+                            y1="30"
+                            x2="70"
+                            y2="70"
+                            stroke="#dedede"
+                            stroke-width="5"
+                        />
+                        <line
+                            x1="30"
+                            y1="70"
+                            x2="70"
+                            y2="30"
+                            stroke="#dedede"
+                            stroke-width="5"
+                        />
+                    </svg>
+
+                    <p class="bullet-point-text" style="margin-top: -16px">
+                        Solar Fast System Installation.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <button class="btn btn-success">Confirm</button>
+
     </div>
-  </div>
 </div>

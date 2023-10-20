@@ -1,0 +1,106 @@
+.order-progress{
+    background: url("/assets/order-progress/SF-Vans-Carpark.png");
+    background-size: cover;
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    left: 0;
+    overflow: hidden;
+
+    padding-left: 30px;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.7);
+    }
+
+    .order-details{
+        .title-bar-heading {
+            display: flex;
+            flex-direction: row;
+            margin-bottom: 30px;
+            color: #fff;
+            align-items: center;
+
+            .title {
+                font-size: 2.5rem;
+                font-weight: 500;
+                margin-left: 30px;
+            }
+
+            .btn-black {
+                background: #000;
+                color: white;
+                border-radius: 100%;
+                padding: 10px;
+            }
+        }
+
+
+
+    }
+
+
+
+    .btn.btn-success{
+        background: linear-gradient(to bottom, #75c043, #44a900);
+        border: transparent;
+        padding: 20px 170px 20px 170px;
+        font-size: 22px;
+    }
+
+
+    .btn.btn-success:hover {
+        background: linear-gradient(to bottom, #75C043, #44A900);
+        -webkit-transition: box-shadow 0.05s ease-in-out;
+        -moz-transition: box-shadow 0.05s ease-in-out;
+        -o-transition: box-shadow 0.05s ease-in-out;
+        transition: box-shadow 0.05s ease-in-out;
+    }
+
+
+    .btn.btn-success:active {
+        background: linear-gradient(to bottom, #75C043, #44A900);
+        -webkit-box-shadow: 0 0 5px #818d9d inset;
+        -moz-box-shadow: 0 0 5px #818d9d inset;
+    }
+
+   .btn-success{
+        padding:8px 40px;
+        margin-top: 75px;
+        margin-left: 75px;
+    }
+
+ .back-buttons{
+    position:fixed;
+    top: 10px;
+    right: 10px;
+  }
+
+}
+
+.order-details{
+    padding:3rem;
+    position: relative;
+    z-index:1;
+}
+
+
+.bullet-point-text{
+    color: #fff;
+    font-size: 27px;
+    margin-left: 30px;
+}
+
+.text-green{
+    color: #75C043;
+}
+
+.bullet-points{
+    margin-top: 50px;
+}

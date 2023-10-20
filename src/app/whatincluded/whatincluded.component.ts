@@ -1,11 +1,11 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-whatincluded',
   templateUrl: './whatincluded.component.html',
   styleUrls: ['./whatincluded.component.scss']
 })
-export class WhatincludedComponent implements OnInit {
+export class WhatincludedComponent {
 
   details: any[] = [
     {
@@ -27,7 +27,7 @@ export class WhatincludedComponent implements OnInit {
 
   notincludeds: any[] = [
     {
-      list: 'Repairs to pre-existing electrical faults or non-conformities '
+      list: 'Repairs to pre-existing electrical faults or non-conformities'
     },
     {
       list: 'Removal of hazardous materials or products'

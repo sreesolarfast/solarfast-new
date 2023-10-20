@@ -7,16 +7,23 @@ import { OfflineComponent } from './offline/offline.component';
 import { PackageSelectionComponent } from './package-selection/package-selection.component';
 import { PackageSelectedComponent } from './package-selected/package-selected.component';
 import { PagesRoutingModule } from './pages-routing.module';
+import { SharedModule } from 'src/shared/shared.module';
+import { MaterialModule } from 'src/shared/modules/material.module';
+import { MapComponent } from './map/map.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { ConsumptionprodcutionchartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
 import { WhatincludedComponent } from '../whatincluded/whatincluded.component';
+import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
+import { GoogleMapsModule } from '@angular/google-maps';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     PagesRoutingModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    SharedModule,
+    MaterialModule
+
   ],
   declarations: [
     ConfirmOrderComponent,
@@ -24,8 +31,9 @@ import { WhatincludedComponent } from '../whatincluded/whatincluded.component';
     OfflineComponent,
     PackageSelectionComponent,
     PackageSelectedComponent,
-    ConsumptionprodcutionchartComponent,
-    WhatincludedComponent
+    WhatincludedComponent,
+    ConsumptionProdcutionChartComponent,
+    MapComponent,
 ]
 })
 export class PagesModule { }

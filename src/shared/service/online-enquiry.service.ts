@@ -99,6 +99,7 @@ export class OnlineEnquiryService {
 
   public setStep(value: number) {
     localStorage.setItem('step', JSON.stringify(value));
+    this._step.next(value);
   }
 
   public getStep(): number {

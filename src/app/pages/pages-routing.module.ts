@@ -6,23 +6,33 @@ import { PackageSelectionComponent } from './package-selection/package-selection
 import { OfflineComponent } from './offline/offline.component';
 import { TerminateComponent } from './terminate/terminate.component';
 import { NextStepsComponent } from './next-steps/next-steps.component';
-
+import { OrderconfirmationComponent } from './orderconfirmation/orderconfirmation.component';
+import { InstallDateComponent } from './install-date/install-date.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { PostalCodeGuard } from '../../shared/guards/postalcode/postalcode-auth.guard';
+import { MapComponent } from './map/map.component';
 
 const routes: Routes = [
-
-  { path: 'package-selection', component: PackageSelectionComponent },
-  { path: 'package-selected', component: PackageSelectedComponent },
-  { path: 'confirm-order', component: ConfirmOrderComponent },
-  { path: 'next-steps', component: NextStepsComponent },
-  { path: 'terminate', component: TerminateComponent },
-  { path: 'offline', component: OfflineComponent },
-
-
+    { path: 'package-selection', component: PackageSelectionComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'package-selected', component: PackageSelectedComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'confirm-order', component: OrderconfirmationComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'install-date', component: InstallDateComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'next-steps', component: NextStepsComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'terminate', component: TerminateComponent },
+    { path: 'offline', component: OfflineComponent },
+    { path: 'photo-upload', component: PhotoUploadComponent,
+    canActivate:[PostalCodeGuard], },
+    { path: 'map', component: MapComponent,
+    canActivate:[PostalCodeGuard], },
 ];
 
 @NgModule({
-  imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+    imports: [RouterModule.forChild(routes)],
+    exports: [RouterModule],
 })
-export class PagesRoutingModule {
-}
+export class PagesRoutingModule {}

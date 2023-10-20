@@ -7,22 +7,22 @@ import { MaterialModule } from '../shared/modules/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { SolarfastsystemComponent } from './pages/solarfastsystem/solarfastsystem.component';
 import { NextStepsComponent } from './pages/next-steps/next-steps.component';
-import { PhotouploadComponent } from './pages/photoupload/photoupload.component';
+import { PhotoUploadComponent } from './pages/photo-upload/photo-upload.component';
 import { OrderconfirmationComponent } from './pages/orderconfirmation/orderconfirmation.component';
 import { InstallmentbillingsummaryComponent } from './pages/installmentbillingsummary/installmentbillingsummary.component';
 import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { InstallmentsSummaryComponent } from './pages/installments-summary/installments-summary.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { WhatincludedComponent } from './whatincluded/whatincluded.component';
-
+import { GoogleMapsModule } from '@angular/google-maps';
+import { SharedModule } from 'src/shared/shared.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     SolarfastsystemComponent,
     NextStepsComponent,
-    PhotouploadComponent,
+    PhotoUploadComponent,
     OrderconfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
@@ -35,7 +35,9 @@ import { WhatincludedComponent } from './whatincluded/whatincluded.component';
     HttpClientModule,
     FormsModule,
     ReactiveFormsModule,
-    NgApexchartsModule
+    NgApexchartsModule,
+    GoogleMapsModule,
+    SharedModule,
   ],
   providers: [
     {

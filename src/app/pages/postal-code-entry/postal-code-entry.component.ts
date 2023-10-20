@@ -160,7 +160,8 @@ export class PostalCodeEntryComponent {
       return;
     }
 
-    this.route.navigateByUrl(`/solar?postcode=${onlineEnquiry.postcode}&companyId=1&repId=c9ec7efb-c7de-4437-93d1-876e4a94b4bd`);
+    this.route.navigateByUrl(`/solar?postcode=${onlineEnquiry.postcode}`);
+    // this.route.navigateByUrl(`/solar?postcode=${onlineEnquiry.postcode}&companyId=1&repId=c9ec7efb-c7de-4437-93d1-876e4a94b4bd`);
     return;
 
     this.geocoderWorking = true;

@@ -28,6 +28,13 @@ export class FormComponent implements OnInit {
     this.steps = this.formService.getSteps();
     this.activeStep = this.formService.getActiveStep();
 
+    this.formService.activeStep$.subscribe({
+      next: (x) => {
+        if (x != null)
+          this.activeStep = x;
+      }
+    });
+
     // get online enquiry from param if applicable
     const id = this.route.snapshot.paramMap.get('id');
 

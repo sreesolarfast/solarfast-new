@@ -4,8 +4,6 @@ import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { MaterialModule } from '../../shared/modules/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-import { GoogleMapsModule } from '@angular/google-maps';
-import { GooglemapComponent } from '../../shared/components/googlemap/googlemap.component';
 
 // steps
 import { PropertyOwnershipComponent } from './steps/property-ownership/property-ownership.component';
@@ -14,11 +12,12 @@ import { UnitRateComponent } from './steps/unit-rate/unit-rate.component';
 import { ShadingComponent } from './steps/shading/shading.component';
 import { AnnualConsumptionComponent } from './steps/annual-consumption/annual-consumption.component';
 import { RoofTypeComponent } from './steps/roof-type/roof-type.component';
+import { SharedModule } from 'src/shared/shared.module';
 
 
 
 @NgModule({
-  declarations: [FormComponent, GooglemapComponent
+  declarations: [FormComponent
 
     // steps
   , PropertyOwnershipComponent, HouseTypeComponent, AnnualConsumptionComponent, UnitRateComponent, ShadingComponent, RoofTypeComponent],
@@ -28,7 +27,7 @@ import { RoofTypeComponent } from './steps/roof-type/roof-type.component';
     MaterialModule,
     FormsModule,
     ReactiveFormsModule,
-    GoogleMapsModule
+    SharedModule,
   ]
 })
 export class FormModule { }

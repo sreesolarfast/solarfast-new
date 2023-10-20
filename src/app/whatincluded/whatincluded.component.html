@@ -1,31 +1,29 @@
 <div class="what-included">
-  <div class="includedList">
-    <h1>What's included</h1>
-    <p>The main items included in your installation are listed below.</p>
-    <ul>
-      <li *ngFor="let detail of details">
-        <div class="row">
-          <div class="row-group">
-            <div class="col-md-4">
-              <img [src]="detail.image" alt="" />
-            </div>
-            <div class="col-md-8">
-              <h2>{{ detail.title }}</h2>
-              <p>{{ detail.subtitle }}</p>
-            </div>
-          </div>
-        </div>
-      </li>
-    </ul>
-  </div>
+    <div class="includedList">
+        <h1>What's included</h1>
+        <p>The main items included in your installation are listed below.</p>
+        <ul>
+            <li *ngFor="let detail of details">
+                <div class="row ">
+                    <div class="col-md-4">
+                        <img [src]="detail.image" alt="" />
+                    </div>
+                    <div class="col-md-8">
+                        <h2>{{ detail.title }}</h2>
+                        <p>{{ detail.subtitle }}</p>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </div>
 
-  <!--Not included-->
-  <div class="what-notincluded">
-    <h2>What's not included</h2>
-    <ul>
-      <li *ngFor="let notincluded of notincludeds">
-        <span><i class="bi bi-x-circle-fill"></i></span> {{ notincluded.list }}
-      </li>
-    </ul>
-  </div>
+    <!--Not included-->
+    <div class="what-notincluded">
+        <h2>What's not included</h2>
+        <ul>
+            <li *ngFor="let notincluded of notincludeds">
+             <span><i class="bi bi-x-circle-fill"></i></span>  {{ notincluded.list }}
+            </li>
+        </ul>
+    </div>
 </div>

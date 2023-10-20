@@ -2,12 +2,21 @@ import { OnlineEnquiryService } from './online-enquiry.service';
 import { Injectable } from '@angular/core';
 import { FormStep } from '../model/form-step';
 import { Router } from '@angular/router';
+import { BehaviorSubject, Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class FormService {
   stepIndex = 0;
+
+  private _activeStep: BehaviorSubject<FormStep> =
+  new BehaviorSubject(null);
+
+  get activeStep$(): Observable<FormStep> {
+    return this._activeStep.asObservable();
+  }
+
  public activeStep: FormStep;
 
 constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) { }
@@ -70,12 +79,12 @@ private steps: FormStep[] = [
   },
   {
     step: 6,
-    component: null,
+    component: 'page-map',
     next: 7,
     back: 5,
     hideNavigation: true,
     hideComponent: true,
-    route: '/solar'
+    route: '/pages/map'
   },
   {
     step: 7,
@@ -97,22 +106,32 @@ private steps: FormStep[] = [
   },
   {
     step: 9,
-    component: 'page-confirm-order',
+    component: 'page-install-date',
     next: 10,
     back: 8,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/install-date'
+  },
+  {
+    step:10,
+    component: 'page-confirm-order',
+    next: 11,
+    back: 9,
     hideNavigation: true,
     hideComponent: false,
     route: '/pages/confirm-order'
   },
   {
-    step: 10,
+    step: 11,
     component: 'page-next-steps',
-    next: 11,
-    back: 9,
+    next: 12,
+    back: 10,
     hideNavigation: true,
     hideComponent: false,
     route: '/pages/next-steps'
   },
+
 
 ];
 
@@ -131,6 +150,8 @@ public stepChange(event) {
 
     if (this.activeStep.route != null)
     this.router.navigate([this.activeStep.route])
+
+    this._activeStep.next(this.activeStep);
 
   // set online enquiry
   this.onlineEnquiryService

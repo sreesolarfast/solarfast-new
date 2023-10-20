@@ -17,7 +17,7 @@ export class PostalCodeGuard implements CanActivate {
   canActivate(
     route: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (route.queryParamMap.get('postcode') != null || this.onlineEnquiryService.result.postcode != null)
+      if (route.queryParamMap.get('postcode') != null || this.onlineEnquiryService?.result?.postcode != null)
       return true;
 
          this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();

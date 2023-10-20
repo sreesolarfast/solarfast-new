@@ -1,5 +1,4 @@
 
-
 <ng-container  *ngIf="!loading">
 
   <div class="progress-bar"></div>
@@ -10,17 +9,25 @@
     </div>
   </div>
 
+  <!--Help-->
+<div class="need-help">
+  <div class="d-flex align-items-center">
+      <div class="help-icon">
+          <i class="bi bi-question-circle"></i>
+      </div>
+      <div class="help-body">
+          <h3>Need help?</h3>
+          <p>Speak to our team</p>
+      </div>
+  </div>
+</div>
+<!--Help Ends-->
+
   <div class="container-fluid justify-content-center">
     <div class="container-fluid py-5">
       <div class="row">
-        <div class="col-md-12">
-          <button>
-            Need help ?
-            <span>Speak to our team</span>
-          </button>
-        </div>
         <div class="col-md-12 col-md-offset-3 main-content" *ngIf="!activeStep.hideComponent">
-          <div class="card-content">
+          <div id="#msform" class="card-content">
             <ng-container *ngIf="activeStep.component == 'step-property-ownership'">
               <step-property-ownership [step]="activeStep" (newStep)="formService.stepChange($event)" ></step-property-ownership>
             </ng-container>
@@ -51,7 +58,7 @@
             <ng-container *ngIf="!activeStep.hideNavigation">
               <div class="btn-toolbar d-flex justify-content-center mt-5" role="group" aria-label="Form Navigation">
                 <button type="button" class="btn btn-primary" (click)="formService.back()" [disabled]="activeStep?.back == null">Back</button>
-                <button type="button" class="btn btn-primary" (click)="formService.next()" [disabled]="activeStep?.next == null">Next</button>
+                <!-- <button type="button" class="btn btn-primary" (click)="formService.next()" [disabled]="activeStep?.next == null">Next</button> -->
               </div>
             </ng-container>
 

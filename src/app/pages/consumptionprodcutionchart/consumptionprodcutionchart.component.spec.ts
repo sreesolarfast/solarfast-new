@@ -1,16 +1,16 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConsumptionprodcutionchartComponent } from './consumptionprodcutionchart.component';
+import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart.component';
 
 describe('ConsumptionprodcutionchartComponent', () => {
-  let component: ConsumptionprodcutionchartComponent;
-  let fixture: ComponentFixture<ConsumptionprodcutionchartComponent>;
+  let component: ConsumptionProdcutionChartComponent;
+  let fixture: ComponentFixture<ConsumptionProdcutionChartComponent>;
 
   beforeEach(() => {
     TestBed.configureTestingModule({
-      declarations: [ConsumptionprodcutionchartComponent]
+      declarations: [ConsumptionProdcutionChartComponent]
     });
-    fixture = TestBed.createComponent(ConsumptionprodcutionchartComponent);
+    fixture = TestBed.createComponent(ConsumptionProdcutionChartComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
