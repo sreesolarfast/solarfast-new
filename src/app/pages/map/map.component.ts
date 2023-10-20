@@ -17,7 +17,7 @@ import { FormService } from '../../../shared/service/form.service';
 export class MapComponent implements OnInit {
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
-
+ 
     submitted= false;
     onlineEnquiry: OnlineEnquiryDto | null;
 
@@ -37,13 +37,13 @@ export class MapComponent implements OnInit {
     markerOptions: google.maps.MarkerOptions = {
       draggable: true,
       animation: google.maps.Animation.DROP,
-      icon: 'assets/7/map-icon.png',
+      icon: 'assets/map/map-icon.png',
     };
     geocoderWorking = false;
     geolocationWorking = false;
 
-    /*
-     {
+    
+     /*{
                 "img": 'assets/7/drag-the-map-bg.png',
                 "type": '',
                 "description": "Locate your house by dragging the map.",
@@ -68,6 +68,8 @@ export class MapComponent implements OnInit {
    , private formService: FormService ) {
 
     }
+    
+
     ngOnInit(): void {
 
         const step = this.formService.getSteps().filter(x => x.component == 'page-map')[0];
@@ -100,6 +102,15 @@ export class MapComponent implements OnInit {
       this.display = event.latLng.toJSON();
     }
 
+    zoomIn() {
+      this.map.zoom++;
+    }
+  
+    zoomOut() {
+      this.map.zoom--;
+    }
+  
+
     onMapDragEnd(event: any) {
       this.onlineEnquiry.latitude = event.latLng?.lat();
       this.onlineEnquiry.longitude = event.latLng?.lng()
@@ -115,7 +126,7 @@ export class MapComponent implements OnInit {
         .then((response: GeocoderResponse) => {
           if (response.status === 'OK') {
             if (response.results.length) {
-                debugger;
+                // debugger;
               const value = response.results[0];
 
               this.mapCenter = new google.maps.LatLng(point);
