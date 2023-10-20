@@ -1,0 +1,13 @@
+<div class="sidenav" [class.active]="isOpen">
+  <button (click)="toggleSidenav()" class="close-button">&times;</button>
+  <!-- Add your content here -->
+  <ul>
+    <li>Item 1</li>
+    <li>Item 2</li>
+    <li>Item 3</li>
+  </ul>
+</div>
+<button (click)="toggleSidenav()" class="open-button">Open SideNav</button>
+<div class="main-content">
+  Content of your main page.
+</div>

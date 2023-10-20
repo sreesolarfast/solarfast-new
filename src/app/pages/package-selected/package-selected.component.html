@@ -26,7 +26,7 @@
     <div class="row">
 
       <!--Package item-->
-      
+
       <div class="col-md-4">
         <div class="packageOne">
           <div class="package-item">
@@ -42,7 +42,7 @@
               </ul>
             </div>
             <a class="btn btn-success">Proceed to Next Step</a>
-            <p><a href="">What's included?</a></p>
+            <p><button (click)="toggleSidenav()">What's included?</button></p>
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@
               </ul>
             </div>
             <a class="btn btn-success">Proceed to Next Step</a>
-            <p><a href="">What's included?</a></p>
+            <p><button (click)="toggleSidenav()">What's included?</button></p>
           </div>
         </div>
       </div>
@@ -86,7 +86,7 @@
               </ul>
             </div>
             <a class="btn btn-success">Proceed to Next Step</a>
-            <p><a href="">What's included?</a></p>
+            <p><button (click)="toggleSidenav()">What's included?</button></p>
           </div>
         </div>
       </div>
@@ -284,3 +284,21 @@
     </div>
   </div>
 </div>
+
+<div class="sidenav" [class.active]="isOpen">
+  <button (click)="toggleSidenav()" class="close-button">&times;</button>
+  <div class="container">
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+  <div class="row">The items name of the </div>
+</div>
+</div>
+
+
+

@@ -14,6 +14,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { WhatincludedComponent } from '../whatincluded/whatincluded.component';
 import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
 import { GoogleMapsModule } from '@angular/google-maps';
+import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component';
 
 @NgModule({
   imports: [
@@ -34,6 +35,7 @@ import { GoogleMapsModule } from '@angular/google-maps';
     WhatincludedComponent,
     ConsumptionProdcutionChartComponent,
     MapComponent,
+    WhatsincludedComponent,
 ]
 })
 export class PagesModule { }
