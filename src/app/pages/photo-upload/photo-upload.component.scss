@@ -1,0 +1,145 @@
+.title-bar-heading {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 30px;
+    color: #000;
+
+    text-align: center;
+
+    .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+
+    .title-top {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+}
+
+.need-help{
+    margin-top: -30px;
+}
+
+.btn-primary {
+    background: linear-gradient(to bottom, #75c043, #44a900);
+    border: transparent;
+}
+
+.content-main {
+    margin-top: 70px;
+    margin-left: 50px;
+    margin-right: 50px;
+
+    .btn-black {
+        background: #000;
+        color: white;
+        border-radius: 100%;
+        padding: 10px;
+    }
+
+    .card{
+        border-color: transparent;
+        background: #e8e8e8;
+        border-radius: 1.5rem;
+        padding: 20px 40px 40px 40px;
+        margin-bottom: 20px;
+    }
+
+
+    .date-picker {
+        padding: 0% 10% 0% 10%;
+        color: #b2b2b2;
+    }
+
+
+    .confirm-button {
+        padding: 10px 60px 10px 60px;
+        font-weight: bold;
+        font-size: x-large;
+        border-radius: 1rem;
+        border-color: transparent;
+
+        align-self: flex-end;
+        margin-left: auto;
+    }
+
+    .confirm-selection-disabled {
+        opacity: 0.3;
+    }
+
+
+    .image-card{
+        margin-top: 20px;
+
+        border-radius: 1.5rem;
+        border: 2px dashed #999;
+
+        padding: 20px;
+        width: 100%;
+
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .image-grid {
+        padding: 1% 5% 7% 5%;
+        display: grid;
+
+        width: 100%;
+        max-width: 1400px;
+
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(min(100%/1, max(270px, 100%/4)), 1fr));
+        row-gap: 80px;
+    }
+
+
+    .image-item-body{
+        width: 270px;
+
+        .image-item-white{
+            background: #fff;
+            color: #999;
+
+            aspect-ratio: 1/1;
+
+            border-radius: 1.5rem;
+            padding: 20px;
+            height: 100%;
+            width: 100%;
+
+            display: flex;
+            flex-direction: column;
+            font-weight: 600;
+            font-size: 16px;
+            align-items: center;
+
+            justify-content: center;
+
+
+            position: relative;
+
+            .image-item-footer{
+                display: flex;
+                flex-direction: column;
+                align-content: center;
+
+                position: absolute;
+                bottom: -50px;
+                left: 0;
+                right: 0;
+
+                color: #000;
+                text-align: center;
+                font-weight: 600;
+                font-size: 1.2rem;
+            }
+        }
+    }
+
+
+}
+

@@ -20,81 +20,77 @@
     </div>
   </div>
 
-  <!--Package Card-->
+<ng-container *ngIf="activePackage">
+      <!--Package Card-->
   <div class="container-fluid">
     <div class="packages">
     <div class="row">
 
-      <!--Package item-->
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-body">
+                    <div class="row row-flex">
+                        <!--Package-->
+                        <div class="col-md-3">
+                            <div class="package-content">
+                                <a class="recommended"><i class="bi bi-star-fill"></i>Recommended</a>
+                                <img class="w-100" src="assets/package/full-system-posterImage.png"/>
+                            </div>
+                        </div>
 
-      <div class="col-md-4">
-        <div class="packageOne">
-          <div class="package-item">
-            <img class="w-100" src="assets/package/package_2.png">
-            <h3>6x 410W Solar Panels & 2.4kWh Battery Storage</h3>
-            <h1>From £8995</h1>
-            <p>or £68.50 per month (11.9% APR)</p>
-            <div class="list-items">
-              <ul>
-                <li>DMEGC 410W black-0n-black solar panels</li>
-                <li>3.6kW Luxpower Inverter</li>
-                <li>2.4kWh Uhome Battery</li>
-              </ul>
+                        <div class="col-md-4">
+                            <div class="package-content border-right">
+                                <div class="package-panel-list">
+                                    <h2>{{ activePackage.name }}</h2>
+                                    <span [innerHTML]="activePackage.htmlListDescription"></span>
+                                    <a class="btn">More Details</a>
+                                    <a class="btn"
+                                        >Save and Email me this Quote</a
+                                    >
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-md-4">
+                            <div class="package-content">
+                                <div class="payment-options">
+                                    <h3>Payment Options</h3>
+                                    <h1>
+                                        {{
+                                            activePackage.totalSalePrice
+                                                | currency
+                                        }}
+                                    </h1>
+                                    <h3>Or</h3>
+                                    <span class="per-month"
+                                        ><a (click)="openPopup()"
+                                            ><u>£82.60 per month</u>
+                                            (11.9% APR)</a
+                                        ></span
+                                    >
+                                    <a
+                                        class="btn btn-primary"
+                                        (click)="formService.next()"
+                                        >Proceed to Next Step</a
+                                    >
+                                    <p><a (click)="toggleSidenav()">
+                                        What's included?</a
+                                        >
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <!--Package ends here-->
+                </div>
             </div>
-            <a class="btn btn-success">Proceed to Next Step</a>
-            <p><button (click)="toggleSidenav()">What's included?</button></p>
-          </div>
         </div>
-      </div>
-
-      <!--Package item-->
-
-      <div class="col-md-4">
-        <div class="packageTwo">
-          <div class="package-item">
-            <img class="w-100" src="assets/package/package_3.png">
-            <h3>6x 410W Solar Panels & 2.4kWh Battery Storage</h3>
-            <h1>From £8995</h1>
-            <p>or £68.50 per month (11.9% APR)</p>
-            <div class="list-items">
-              <ul>
-                <li>DMEGC 410W black-0n-black solar panels</li>
-                <li>3.6kW Luxpower Inverter</li>
-                <li>2.4kWh Uhome Battery</li>
-              </ul>
-            </div>
-            <a class="btn btn-success">Proceed to Next Step</a>
-            <p><button (click)="toggleSidenav()">What's included?</button></p>
-          </div>
-        </div>
-      </div>
-
-      <!--Package item-->
-
-       <div class="col-md-4">
-        <div class="packageThree">
-          <div class="package-item">
-            <img class="w-100" src="assets/package/supercharged.png">
-            <h3>6x 410W Solar Panels & 2.4kWh Battery Storage</h3>
-            <h1>From £8995</h1>
-            <p>or £68.50 per month (11.9% APR)</p>
-            <div class="list-items">
-              <ul>
-                <li>DMEGC 410W black-0n-black solar panels</li>
-                <li>3.6kW Luxpower Inverter</li>
-                <li>2.4kWh Uhome Battery</li>
-              </ul>
-            </div>
-            <a class="btn btn-success">Proceed to Next Step</a>
-            <p><button (click)="toggleSidenav()">What's included?</button></p>
-          </div>
-        </div>
-      </div>
-      <!--Package item ends-->
 
     </div>
   </div>
 </div>
+</ng-container>
+
 
   <div class="container-fluid">
     <div class="row">
@@ -284,21 +280,3 @@
     </div>
   </div>
 </div>
-
-<div class="sidenav" [class.active]="isOpen">
-  <button (click)="toggleSidenav()" class="close-button">&times;</button>
-  <div class="container">
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-  <div class="row">The items name of the </div>
-</div>
-</div>
-
-
-

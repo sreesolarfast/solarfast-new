@@ -1,31 +1,42 @@
-.sidenav {
-  width: 250px;
-  position: fixed;
-  top: 0;
-  right: -250px;
-  height: 100%;
-  background-color: #333;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
+
+.includedList{
+  padding: 30px;
 }
 
-.sidenav.active {
-  right: 0;
+.includedList h1{
+  font-size:1.5rem;
+  font-weight: 700;
 }
 
-.close-button {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  font-size: 30px;
-  cursor: pointer;
-  color: white;
+.includedList ul{
+  padding:0;
 }
 
-.main-content {
-  margin-right: 260px;
-  padding: 15px;
-  transition: 0.5s;
-  background-color: #f1f1f1;
+.includedList ul li{
+  list-style-type: none;
+  padding: 15px 0;
+  border-bottom:1px solid rgba(215, 214, 214, 0.5);
+}
+
+.includedList h3{
+  font-size:1.2rem;
+  font-weight: 700;
+  margin-bottom:15px;
+}
+
+.what-notincluded{
+  padding:0 30px;
+}
+
+.what-notincluded h2{
+  font-size:1.8rem;
+  font-weight: 700;
+}
+
+.what-notincluded ul{
+  padding:0;
+}
+.what-notincluded ul li{
+  list-style-type: none;
+  margin:10px 0;
 }

@@ -3,101 +3,80 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InstallmentsSummaryComponent } from '../installments-summary/installments-summary.component';
 import { FormStep } from '../../../shared/model/form-step';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { FormService } from '../../../shared/service/form.service';
-import { ApexOptions, ChartType } from 'ng-apexcharts';
+import { PackageService } from '../../../shared/service/package.service';
+import { PackageDto } from '../../../shared/dto/package-dto';
+import { OnlineEnquiryDto } from '../../../shared/dto/online-enquiry-dto';
 
 @Component({
-  selector: 'page-package-selected',
-  templateUrl: './package-selected.component.html',
-  styleUrls: ['./package-selected.component.scss'],
+    selector: 'page-package-selected',
+    templateUrl: './package-selected.component.html',
+    styleUrls: ['./package-selected.component.scss'],
 })
 export class PackageSelectedComponent implements OnInit {
+    @Input() step: FormStep;
+    @Output() newStep = new EventEmitter<number | null>();
+    activePackage: PackageDto;
 
-  //Apex Charts
+    constructor(
+        public dialog: MatDialog,
+        private onlineEnquiryService: OnlineEnquiryService,
+        private router: Router,
+        public formService: FormService,
+        private packageService: PackageService,
+        private route: ActivatedRoute,
+    ) {}
 
-  chartOptions: ApexOptions = {
-    chart: {
-      type: 'bar',
-      height: 500,
-      toolbar: {
-        show: true,
-      },
-    },
-    colors: ['#000', '#fffff'],
-    plotOptions: {
-      bar: {
-        horizontal: true,
-      },
-    },
-    dataLabels: {
-      enabled: false,
-    },
-    // xaxis: {
-    //   categories: ['0 kWh', '150 kWh', '300 kWh', '450 kWh', '600 kWh'],
-    // },
-    xaxis: {
-      categories: [
-        'Jan',
-        'Feb',
-        'Mar',
-        'Apr',
-        'May',
-        'Jun',
-        'Jul',
-        'Aug',
-        'Sep',
-        'Oct',
-        'Nov',
-        'Dec',
-      ],
-    },
-    series: [
-      {
-        name: 'Consumption',
-        data: [50, 75, 80, 60, 90, 50, 75, 80, 60, 90, 50, 75, 120],
-      },
-      {
-        name: 'Production',
-        data: [30, 40, 50, 60, 70, 30, 40, 50, 60, 70, 30, 40, 50],
-      },
-    ],
-  };
+    ngOnInit(): void {
+        const step = this.formService.getSteps().filter(x => x.component == 'page-package-selected')[0];
 
-  @Input() step: FormStep;
-  @Output() newStep = new EventEmitter<number | null>();
+        this.onlineEnquiryService.result$.subscribe({
+            next: x => {
+                if (x != null) this.activePackage = x.selectedPackage;
+            },
+        });
 
-  constructor(
-    public dialog: MatDialog,
-    private onlineEnquiryService: OnlineEnquiryService,
-    private router: Router,
-    public formService: FormService
-  ) {}
 
-  ngOnInit(): void {
-    const step = this.formService
-      .getSteps()
-      .filter((x) => x.component == 'page-package-selected')[0];
-    // if (step != this.formService.activeStep) {
-    //   this.formService.redirectToCorrectStep();
-    // }
-  }
+        this.packageService.result$.subscribe({
+            next: x => {
+                if (x == null) return;
 
-  openPopup(): void {
-    const dialogRef = this.dialog.open(InstallmentsSummaryComponent, {
-      width: '30%',
-      height: '90%',
-    });
+                const postcode = this.route.snapshot.queryParamMap.get('postcode');
+                const companyId = this.route.snapshot.queryParamMap.get('companyId');
+                const repId = this.route.snapshot.queryParamMap.get('repId');
+                const uniqueRef = this.route.snapshot.queryParamMap.get('uniqueReference');
 
-    // Handle dialog close or other events here
-    dialogRef.afterClosed().subscribe((result) => {
-      console.log(`Dialog result: ${result}`);
-    });
-  }
+                let dto = { postcode: postcode } as OnlineEnquiryDto;
+                if (companyId != null) dto.companyId = +companyId;
+                if (repId != null) dto.repId = repId;
 
-  isOpen = false;
+                // we have come in through a package selected by id route
+                dto.selectedPackageId = x.dtoId;
+                dto.selectedPackage = x;
+                this.formService.activeStep = step;
+                this.activePackage = x;
 
-  toggleSidenav() {
-    this.isOpen = !this.isOpen;
-  }
+                this.onlineEnquiryService.result = dto;
+            },
+        });
+
+        if (step != this.formService.activeStep) {
+            this.formService.redirectToCorrectStep();
+        }
+    }
+
+    openPopup(): void {
+        const dialogRef = this.dialog.open(InstallmentsSummaryComponent, {
+            width: '30%',
+            height: '90%',
+        });
+
+        // Handle dialog close or other events here
+        dialogRef.afterClosed().subscribe(result => {
+            console.log(`Dialog result: ${result}`);
+        });
+    }
+
+    toggleSidenav() {}
 }

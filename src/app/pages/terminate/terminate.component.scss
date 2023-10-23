@@ -22,6 +22,7 @@
 }
 
 .renting h1{
+
 font-size: 38px;
 line-height:1.3;
 font-weight: 700;
@@ -54,12 +55,33 @@ margin-bottom:30px;
 
 @media screen and (max-width:1024px){
 
+    .renting{
+        padding-top:25%;
+    }
 
-
+    .renting h1{
+        font-size:1.8rem ;
+    }
+    .renting p{
+        font-size: 1rem;
+        line-height:1.5;
+    }
 
 }
 
 @media screen and (max-width:786px){
 
+    .renting{
+        padding-top:35%;
+    }
+
+    .renting h1{
+        font-size:1.6rem ;
+    }
+
+    .renting p{
+        font-size: 1rem;
+        line-height:1.5;
+    }
 
 }

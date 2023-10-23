@@ -51,6 +51,7 @@ export class FormComponent implements OnInit {
           const postcode = this.route.snapshot.queryParamMap.get('postcode');
           const companyId = this.route.snapshot.queryParamMap.get('companyId');
           const repId = this.route.snapshot.queryParamMap.get('repId');
+          const step = +this.route.snapshot.queryParamMap.get('step') ?? 0;
 
           let dto = { postcode: postcode } as OnlineEnquiryDto;
           if (companyId != null) dto.companyId = +companyId;
@@ -60,7 +61,7 @@ export class FormComponent implements OnInit {
             next: (x) => {
               this.location.replaceState('/solar');
               this.loading = false;
-              this.formService.stepChange(0);
+              this.formService.stepChange(step);
             },
           });
         } else {

@@ -1,3 +1,17 @@
+<!--Help-->
+<div class="need-help margin-top">
+    <div class="d-flex align-items-center">
+        <div class="help-icon">
+            <i class="bi bi-question-circle"></i>
+        </div>
+        <div class="help-body">
+            <h3>Need help?</h3>
+            <p>Speak to our team</p>
+        </div>
+    </div>
+</div>
+<!--Help Ends-->
+
 <div class="google-map-component">
 <google-map
     [zoom]="20"
@@ -16,6 +30,21 @@
     </map-marker>
     <map-info-window>{{ markerInfoContent }}</map-info-window>
 </google-map>
+<a class="btn btn-black" (click)="backButton()">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="20"
+        viewBox="0 0 25 20"
+    >
+        <path
+            d="M20 10 L5 10 M10 5 L5 10 10 15"
+            stroke="white"
+            stroke-width="2"
+            fill="none"
+        />
+    </svg>
+</a>
 
 <div class="roof-selected" *ngIf="markerInfoContent.length > 0">
     <div class="d-flex justify-content-between">
@@ -25,19 +54,20 @@
         <div class="roof-content">
             <h3>Roof selected</h3>
             <p>Is this where you would like panels installed?</p>
-        </div> 
+        </div>
         <div class="roof-btn">
-            <button (click)="continue()"  class="btn btn-success">Continue</button>
+            <button class="btn btn-success" (click)="formService.next()">Continue</button>
         </div>
     </div>
 </div>
 
-<div class="zoom-controls">
-    <button class="zoom-in" (click)="zoomIn()">
-        <i class="bi bi-plus-lg"></i>
-    </button>
+<div class="map-zoom-controls">
+
     <button class="zoom-out" (click)="zoomOut()">
         <i class="bi bi-dash-lg"></i>
+    </button>
+    <button class="zoom-in" (click)="zoomIn()">
+        <i class="bi bi-plus-lg"></i>
     </button>
 </div>
 </div>

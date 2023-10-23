@@ -1,4 +1,7 @@
+import { PackageType } from '../enum/package-type';
+import { ImageFileDto } from './image-file-dto';
 import { PackageProductDto } from './package-product-dto';
+
 
 export class PackageDto {
   dtoId!: number;
@@ -12,10 +15,14 @@ export class PackageDto {
   inverterDtos!: PackageProductDto[];
   batteryDtos!: PackageProductDto[];
   productDtos!: PackageProductDto[];
+  imageDtos!: ImageFileDto[];
+
+  type: PackageType | null;
 
   uplift: number;
   discount: number;
   totalCostPrice!: number;
   totalSalePrice!: number;
   totalQuantity!: number;
+  htmlListDescription: string;
 }

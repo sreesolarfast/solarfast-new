@@ -6,12 +6,23 @@
     height: 100%;
 }
 
+.btn-black{
+    position: absolute;
+    top:30px;
+    background:#000;
+    width:40px;
+    height: 40px;
+    border-radius:50%;
+    left:20px;
+    top:30px;
+}
+
 .roof-selected{
     position: absolute;
-    bottom: 10%;
+    bottom: 15%;
     background:#fff;
     transform: translateY(-50%);
-    right: calc(50% - 18.4375rem);
+    right: calc(50% - 17rem);
     display: grid;
     gap: 1rem;
     border-radius: 12px;
@@ -28,7 +39,7 @@
     }
 
     .roof-content{
-        width: 80%;
+        width:80%;
     }
 
     .roof-content h3{
@@ -51,14 +62,15 @@
 
 
 
-.zoom-controls {
+.map-zoom-controls {
     position: absolute;
     bottom: 0%;
     right: 10px;
     transform: translateY(-50%);
+    right: calc(50% - 8rem);
   }
   
-  .zoom-controls button {
+  .map-zoom-controls button {
     width: 60px;
     height: 60px;
     margin:10px 20px;

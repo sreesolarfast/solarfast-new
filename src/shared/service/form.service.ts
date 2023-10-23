@@ -64,7 +64,7 @@ private steps: FormStep[] = [
     component: 'step-annual-consumption',
     next: 5,
     back: 3,
-    hideNavigation: true,
+    hideNavigation: false,
     hideComponent: false,
     route: '/solar'
   },
@@ -73,7 +73,7 @@ private steps: FormStep[] = [
     component: 'step-unit-rate',
     next: 6,
     back: 4,
-    hideNavigation: true,
+    hideNavigation: false,
     hideComponent: false,
     route: '/solar'
   },
@@ -130,6 +130,24 @@ private steps: FormStep[] = [
     hideNavigation: true,
     hideComponent: false,
     route: '/pages/next-steps'
+  },
+  {
+    step: 12,
+    component: 'photo-upload',
+    next: 13,
+    back: 11,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/photo-upload'
+  },
+  {
+    step: 13,
+    component: 'thank-you',
+    next: 14,
+    back: 12,
+    hideNavigation: true,
+    hideComponent: false,
+    route: '/pages/thank-you'
   },
 
 

@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Router } from '@angular/router';
@@ -8,45 +8,41 @@ import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalc
 import { GeocodingService } from '../../../shared/service/geocoding.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 import { FormService } from '../../../shared/service/form.service';
-import { FormStep } from 'src/shared/model/form-step';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+    selector: 'app-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
-   @Input() step: FormStep;
-    @Output() newStep = new EventEmitter<number | null>();
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
- 
-    submitted= false;
+
+    submitted = false;
     onlineEnquiry: OnlineEnquiryDto | null;
 
-    display : any;
+    display: any;
     center!: google.maps.LatLngLiteral;
     mapCenter!: google.maps.LatLng;
     mapOptions: google.maps.MapOptions = {
-      mapTypeId: google.maps.MapTypeId.SATELLITE,
-      zoomControl: true,
-      scrollwheel: false,
-      disableDoubleClickZoom: true,
-      maxZoom: 18,
-      minZoom: 12,
-      disableDefaultUI: true,
+        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        zoomControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        maxZoom: 18,
+        minZoom: 12,
+        disableDefaultUI: true,
     };
     markerInfoContent = '';
     markerOptions: google.maps.MarkerOptions = {
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      icon: 'assets/map/map-icon.png',
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        icon: 'assets/map/map-icon.png',
     };
     geocoderWorking = false;
     geolocationWorking = false;
 
-    
-     /*{
+    /*{
                 "img": 'assets/7/drag-the-map-bg.png',
                 "type": '',
                 "description": "Locate your house by dragging the map.",
@@ -67,93 +63,86 @@ export class MapComponent implements OnInit {
     */
 
     constructor(
-      private geocodingService: GeocodingService, private route: Router, private formBuilder: FormBuilder, private postalCodeService:EnteredPostalCodeService, private onlineEnquiryService: OnlineEnquiryService
-   , private formService: FormService ) {
-
-    }
-    
+        private geocodingService: GeocodingService,
+        private route: Router,
+        private formBuilder: FormBuilder,
+        private postalCodeService: EnteredPostalCodeService,
+        private onlineEnquiryService: OnlineEnquiryService,
+        public formService: FormService
+    ) {}
 
     ngOnInit(): void {
-
         const step = this.formService.getSteps().filter(x => x.component == 'page-map')[0];
         if (step != this.formService.activeStep) {
-          this.formService.redirectToCorrectStep();
+            this.formService.redirectToCorrectStep();
         }
 
-  this.onlineEnquiryService.result$.subscribe({
-    next: (x) => {
-     if (x != null) {
-      this.onlineEnquiry = x;
-      this.center = {lat: +this.onlineEnquiry.latitude, lng: +this.onlineEnquiry.longitude};
-      this.mapCenter = new google.maps.LatLng(this.center);
-     }
-    }
-  })
+        this.onlineEnquiryService.result$.subscribe({
+            next: x => {
+                if (x != null) {
+                    this.onlineEnquiry = x;
+                    this.center = { lat: +this.onlineEnquiry.latitude, lng: +this.onlineEnquiry.longitude };
+                    this.mapCenter = new google.maps.LatLng(this.center);
+                }
+            },
+        });
     }
 
     openInfoWindow(marker: MapMarker) {
-      this.infoWindow.open(marker);
+        this.infoWindow.open(marker);
     }
 
     moveMap(event: google.maps.MapMouseEvent) {
-      if(event.latLng!= null)
-      this.center = (event.latLng.toJSON());
+        if (event.latLng != null) this.center = event.latLng.toJSON();
     }
 
     move(event: google.maps.MapMouseEvent) {
-      if(event.latLng != null)
-      this.display = event.latLng.toJSON();
+        if (event.latLng != null) this.display = event.latLng.toJSON();
     }
 
     zoomIn() {
-      this.map.zoom++;
+        this.map.zoom++;
     }
-  
+
     zoomOut() {
-      this.map.zoom--;
+        this.map.zoom--;
     }
-  
 
     onMapDragEnd(event: any) {
-      this.onlineEnquiry.latitude = event.latLng?.lat();
-      this.onlineEnquiry.longitude = event.latLng?.lng()
+        this.onlineEnquiry.latitude = event.latLng?.lat();
+        this.onlineEnquiry.longitude = event.latLng?.lng();
 
-      const point: google.maps.LatLngLiteral = {
-        lat: +this.onlineEnquiry.latitude,
-        lng: +this.onlineEnquiry.longitude,
-      };
+        const point: google.maps.LatLngLiteral = {
+            lat: +this.onlineEnquiry.latitude,
+            lng: +this.onlineEnquiry.longitude,
+        };
 
-      this.geocoderWorking = true;
-      this.geocodingService
-        .geocodeLatLng(point)
-        .then((response: GeocoderResponse) => {
-          if (response.status === 'OK') {
-            if (response.results.length) {
-                // debugger;
-              const value = response.results[0];
+        this.geocoderWorking = true;
+        this.geocodingService
+            .geocodeLatLng(point)
+            .then((response: GeocoderResponse) => {
+                if (response.status === 'OK') {
+                    if (response.results.length) {
+                        // debugger;
+                        const value = response.results[0];
 
-              this.mapCenter = new google.maps.LatLng(point);
-              this.map.panTo(point);
+                        this.mapCenter = new google.maps.LatLng(point);
+                        this.map.panTo(point);
 
-              this.onlineEnquiryService.setOnlineEnquiry(this.onlineEnquiry);
+                        this.onlineEnquiryService.setOnlineEnquiry(this.onlineEnquiry);
 
-              this.markerOptions = {
-                draggable: true,
-                animation: google.maps.Animation.DROP,
-              };
+                        this.markerInfoContent = value.formatted_address;
 
-              this.markerInfoContent = value.formatted_address;
-
-              // todo direct to next step
-            }
-          }
-        })
-        .finally(() => {
-          this.geocoderWorking = false;
-        });
-
+                        // todo direct to next step
+                    }
+                }
+            })
+            .finally(() => {
+                this.geocoderWorking = false;
+            });
     }
-    continue(){
-      this.newStep.emit(this.step.next);
+
+    backButton() {
+        this.formService.back();
     }
-  }
+}

@@ -81,7 +81,6 @@ export class OnlineEnquiryService {
     );
   }
 
-
   public setOnlineEnquiry(onlineEnquiry: OnlineEnquiryDto) {
     if (onlineEnquiry == null) {
       // todo identify where has called a null object
