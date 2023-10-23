@@ -78,9 +78,9 @@ export class PackageSelectedComponent implements OnInit {
     const step = this.formService
       .getSteps()
       .filter((x) => x.component == 'page-package-selected')[0];
-    if (step != this.formService.activeStep) {
-      this.formService.redirectToCorrectStep();
-    }
+    // if (step != this.formService.activeStep) {
+    //   this.formService.redirectToCorrectStep();
+    // }
   }
 
   openPopup(): void {

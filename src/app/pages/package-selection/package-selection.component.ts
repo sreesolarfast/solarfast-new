@@ -49,4 +49,5 @@ export class PackageSelectionComponent {
       console.log(`Dialog result: ${result}`);
     });
   }
+  
 }

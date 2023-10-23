@@ -17,7 +17,7 @@
     <map-info-window>{{ markerInfoContent }}</map-info-window>
 </google-map>
 
-<div class="roof-selected">
+<div class="roof-selected" *ngIf="markerInfoContent.length > 0">
     <div class="d-flex justify-content-between">
         <div class="roof-icon">
             <img src="assets/map/map-icon.png" />
@@ -25,9 +25,9 @@
         <div class="roof-content">
             <h3>Roof selected</h3>
             <p>Is this where you would like panels installed?</p>
-        </div>
+        </div> 
         <div class="roof-btn">
-            <button class="btn btn-success">Continue</button>
+            <button (click)="continue()"  class="btn btn-success">Continue</button>
         </div>
     </div>
 </div>

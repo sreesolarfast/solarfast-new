@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { FormBuilder } from '@angular/forms';
 import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Router } from '@angular/router';
@@ -8,6 +8,7 @@ import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalc
 import { GeocodingService } from '../../../shared/service/geocoding.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 import { FormService } from '../../../shared/service/form.service';
+import { FormStep } from 'src/shared/model/form-step';
 
 @Component({
   selector: 'app-map',
@@ -15,6 +16,8 @@ import { FormService } from '../../../shared/service/form.service';
   styleUrls: ['./map.component.scss']
 })
 export class MapComponent implements OnInit {
+   @Input() step: FormStep;
+    @Output() newStep = new EventEmitter<number | null>();
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
  
@@ -148,6 +151,9 @@ export class MapComponent implements OnInit {
         .finally(() => {
           this.geocoderWorking = false;
         });
-    }
 
+    }
+    continue(){
+      this.newStep.emit(this.step.next);
+    }
   }

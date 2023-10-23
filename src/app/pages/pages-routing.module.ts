@@ -16,7 +16,9 @@ const routes: Routes = [
     { path: 'package-selection', component: PackageSelectionComponent,
     canActivate:[PostalCodeGuard], },
     { path: 'package-selected', component: PackageSelectedComponent,
-    canActivate:[PostalCodeGuard], },
+    // canActivate:[PostalCodeGuard], 
+
+},
     { path: 'confirm-order', component: OrderconfirmationComponent,
     canActivate:[PostalCodeGuard], },
     { path: 'install-date', component: InstallDateComponent,
