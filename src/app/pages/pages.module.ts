@@ -11,9 +11,8 @@ import { SharedModule } from 'src/shared/shared.module';
 import { MaterialModule } from 'src/shared/modules/material.module';
 import { MapComponent } from './map/map.component';
 import { NgApexchartsModule } from 'ng-apexcharts';
-import { WhatincludedComponent } from '../whatincluded/whatincluded.component';
 import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
-import { GoogleMapsModule } from '@angular/google-maps';
+import { ThankYouComponent } from './thank-you/thank-you.component';
 import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component';
 
 @NgModule({
@@ -32,10 +31,10 @@ import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component'
     OfflineComponent,
     PackageSelectionComponent,
     PackageSelectedComponent,
-    WhatincludedComponent,
     ConsumptionProdcutionChartComponent,
     MapComponent,
     WhatsincludedComponent,
+    ThankYouComponent,
 ]
 })
 export class PagesModule { }

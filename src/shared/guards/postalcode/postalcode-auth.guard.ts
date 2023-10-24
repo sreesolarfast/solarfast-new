@@ -6,31 +6,17 @@ import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalc
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 
 @Injectable({
-  providedIn: 'root'
+    providedIn: 'root',
 })
-
-
 export class PostalCodeGuard implements CanActivate {
-  constructor (private onlineEnquiryService:OnlineEnquiryService,private router:Router){
+    constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) {}
+    canActivate(
+        route: ActivatedRouteSnapshot,
+        state: RouterStateSnapshot
+    ): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+        if (route.queryParamMap.get('postcode') != null || this.onlineEnquiryService?.result?.postcode != null) return true;
 
-  }
-  canActivate(
-    route: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      if (route.queryParamMap.get('postcode') != null || this.onlineEnquiryService?.result?.postcode != null)
-      return true;
-
-         this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();
-    return false;
-
-
-      // if (this.onlineEnquiryService?.result?.postcode != null) {
-      //   return true;
-      // } else {
-      //   // todo reroute to WP postcode page
-      //   this.router.navigate(['/postcode'], {queryParams: {returnUrl: state.url}}).then();
-      //   return false;
-      // }
-  }
-
+        this.router.navigate(['/postcode'], { queryParams: { returnUrl: state.url } }).then();
+        return false;
+    }
 }

@@ -11,9 +11,9 @@ import { FormService } from '../../../shared/service/form.service';
 import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
-  selector: 'app-map',
-  templateUrl: './map.component.html',
-  styleUrls: ['./map.component.scss']
+    selector: 'app-map',
+    templateUrl: './map.component.html',
+    styleUrls: ['./map.component.scss'],
 })
 export class MapComponent implements OnInit {
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
@@ -22,7 +22,7 @@ export class MapComponent implements OnInit {
     submitted= false;
     onlineEnquiry: OnlineEnquiryDto | null;
 
-    display : any;
+    display: any;
     center!: google.maps.LatLngLiteral;
     mapCenter!: google.maps.LatLng;
     mapOptions: google.maps.MapOptions = {
@@ -37,9 +37,9 @@ export class MapComponent implements OnInit {
     zoom: number = 20;
     markerInfoContent = '';
     markerOptions: google.maps.MarkerOptions = {
-      draggable: true,
-      animation: google.maps.Animation.DROP,
-      icon: 'assets/map/map-icon.png',
+        draggable: true,
+        animation: google.maps.Animation.DROP,
+        icon: 'assets/map/map-icon.png',
     };
     geocoderWorking = false;
     geolocationWorking = false;
@@ -73,10 +73,9 @@ export class MapComponent implements OnInit {
 
 
     ngOnInit(): void {
-
         const step = this.formService.getSteps().filter(x => x.component == 'page-map')[0];
         if (step != this.formService.activeStep) {
-          this.formService.redirectToCorrectStep();
+            this.formService.redirectToCorrectStep();
         }
 
   this.onlineEnquiryService.result$.subscribe({

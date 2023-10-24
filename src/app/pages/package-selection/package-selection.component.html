@@ -1,24 +1,3 @@
-<mat-sidenav-container>
-    <mat-sidenav position="end">
-        <mat-nav-list>
-            <a mat-list-item href="#">Home</a>
-            <a mat-list-item href="#">About</a>
-            <a mat-list-item href="#">Contact</a>
-
-            <mat-nav-list class="submenu">
-                <a mat-list-item href="#">Submenu Item 1</a>
-                <a mat-list-item href="#">Submenu Item 2</a>
-                <a mat-list-item href="#">Submenu Item 3</a>
-            </mat-nav-list>
-        </mat-nav-list>
-
-        <!--<button mat-icon-button (click)="closeSidebar()">
-      <mat-icon>close</mat-icon>
-    </button> -->
-    </mat-sidenav>
-    <mat-sidenav-content> </mat-sidenav-content>
-</mat-sidenav-container>
-
 <!--Help-->
 <div class="need-help">
     <div class="d-flex align-items-center">
@@ -49,66 +28,66 @@
 
         <!--Package Card-->
         <div class="package-list">
+
             <div class="row mt-3" *ngFor="let item of packages">
                 <div class="col-md-12">
-                    <div class="card">
-                        <div class="card-body">
+
+                    <div class="card" [class.card-recommended]="item.type == packageType.Recommended" [class.card-premium]="item.type == packageType.Supercharged">
+                        <div class="">
                             <div class="row row-flex">
                                 <!--Package-->
-                                <div class="col-md-3">
+                                <div class="col-md-4">
                                     <div class="package-content">
-                                        <a class="recommended"><i class="bi bi-star-fill"></i>Recommended</a>
-                                        <img class="w-100" src="assets/package/full-system-posterImage.png"/>
+                                        <ng-container *ngIf="item.type == packageType.Recommended" >
+                                            <a class="recommended-tag"><i class="bi bi-star-fill"></i>Recommended</a>
+                                        </ng-container>
+                                        <ng-container *ngIf="item.type == packageType.Supercharged" >
+                                            <a class="premium-tag"><i class="bi bi-star-fill"></i>Supercharged</a>
+                                        </ng-container>
+
+                                        <ng-container *ngIf="item?.imageDtos && item.imageDtos[0]?.dataFileUrl !== '' && item.imageDtos[0].dataFileUrl !== null; else placeHolderImage">
+                                            <img class="w-100 package-image" [src]="item.imageDtos[0].dataFileUrl" />
+                                            {{ item.imageDtos[0].dataFileUrl }}
+                                        </ng-container>
+
+
+                                        <ng-template #placeHolderImage>
+                                            <img class="w-100 package-image" src="assets/package/full-system-posterImage.png" />
+                                        </ng-template>
+
+
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="package-content border-right">
                                         <div class="package-panel-list">
-                                            <h2>{{ item.name }}</h2>
-                                            <ul>
-                                                <li>
-                                                    DMEGC 410W black-on-black
-                                                    solar panels
-                                                </li>
-                                                <li>3.6kW Luxpower Inverter</li>
-                                                <li>
-                                                    3.2kWh Greenlinx Battery(s)
-                                                </li>
-                                            </ul>
-                                            <a class="btn">More Details</a>
-                                            <a class="btn"
-                                                >Save and Email me this Quote</a
-                                            >
+                                            <h2 >{{ item.name }}</h2>
+
+                                            <span class="features-list" [innerHTML]="item.htmlListDescription"></span>
+
+
+                                            <button class="btn">
+                                                Save and Email me this Quote
+                                            </button>
+
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="package-content">
-                                        <div class="payment-options">
-                                            <h3>Payment Options</h3>
+                                    <div class="package-content w-100">
+                                        <div class="payment-options w-100">
+
                                             <h1>
-                                                {{
-                                                    item.totalSalePrice
-                                                        | currency
-                                                }}
+                                                From {{ item.totalSalePrice | currency }}
                                             </h1>
-                                            <h3>Or</h3>
                                             <span class="per-month"
-                                                ><a (click)="openPopup()"
-                                                    ><u>£82.60 per month</u>
-                                                    (11.9% APR)</a
-                                                ></span
+                                                ><a (click)="openPopup()"><u>or £82.60 per month</u> (11.9% APR)</a></span
                                             >
-                                            <a
-                                                class="btn btn-primary"
-                                                (click)="answerGiven(8)"
-                                                >Proceed to Next Step</a
-                                            >
-                                            <p>
-                                                <a (click)="openPopup()"
-                                                    >What's included?</a
+                                            <a class="btn btn-primary" (click)="answerGiven(item.dtoId)">Proceed to Next Step</a>
+                                            <p><a (click)="toggleSidenav()">
+                                                What's included?</a
                                                 >
                                             </p>
                                         </div>
@@ -124,137 +103,14 @@
         </div>
     </div>
 
-    <!--New Package-->
-    <div class="container-fluid">
-        <div class="packages">
-            <div class="row">
-                <!--Package item-->
-                <div class="col-md-12">
-                    <div class="packageOne">
-                        <div class="package-item">
-                            <div class="d-flex justify-content-between">
-                                <div class="package-image">
-                                    <img src="assets/package/package_2.png" />
-                                </div>
 
-                                <div class="package-details">
-                                    <h3>
-                                        6x 410W Solar Panels & 2.4kWh Battery
-                                        Storage
-                                    </h3>
-                                    <div class="list-items">
-                                        <ul>
-                                            <li>
-                                                DMEGC 410W black-0n-black solar
-                                                panels
-                                            </li>
-                                            <li>3.6kW Luxpower Inverter</li>
-                                            <li>2.4kWh Uhome Battery</li>
-                                        </ul>
-                                    </div>
-                                </div>
+    <div class="sidenav" [class.active]="isOpen">
+        <button (click)="toggleSidenav()" class="close-button">&times;</button>
+        <div class="container">
+            <app-whatsincluded></app-whatsincluded>
+      </div>
+      </div>
 
-                                <div class="proceed-next">
-                                    <h1>From £8995</h1>
-                                    <a class="btn btn-success"
-                                        >Proceed to Next Step</a
-                                    >
-                                    <p>
-                                        <a (click)="openPopup()"
-                                            >or £68.50 per month (11.9% APR)</a
-                                        >
-                                    </p>
-                                    <p><a href="">What's included?</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Package item-->
-
-                <div class="col-md-12">
-                    <div class="packageTwo">
-                        <div class="package-item">
-                            <div class="d-flex justify-content-between">
-                                <div class="package-image">
-                                    <img
-                                        class="w-100"
-                                        src="assets/package/package_3.png"
-                                    />
-                                </div>
-                                <div class="package-details">
-                                    <h3>
-                                        6x 410W Solar Panels & 2.4kWh Battery
-                                        Storage
-                                    </h3>
-                                    <h1>From £8995</h1>
-                                    <p>or £68.50 per month (11.9% APR)</p>
-                                    <div class="list-items">
-                                        <ul>
-                                            <li>
-                                                DMEGC 410W black-0n-black solar
-                                                panels
-                                            </li>
-                                            <li>3.6kW Luxpower Inverter</li>
-                                            <li>2.4kWh Uhome Battery</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="proceed-next">
-                                    <a class="btn btn-success"
-                                        >Proceed to Next Step</a
-                                    >
-                                    <p><a href="">What's included?</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-                <!--Package item-->
-
-                <div class="col-md-12">
-                    <div class="packageThree">
-                        <div class="package-item">
-                            <div class="d-flex justify-content-between">
-                                <div class="package-image">
-                                    <img
-                                        class="w-100"
-                                        src="assets/package/supercharged.png"
-                                    />
-                                </div>
-                                <div class="package-details">
-                                    <h3>
-                                        6x 410W Solar Panels & 2.4kWh Battery
-                                        Storage
-                                    </h3>
-                                    <h1>From £8995</h1>
-                                    <p>or £68.50 per month (11.9% APR)</p>
-                                    <div class="list-items">
-                                        <ul>
-                                            <li>
-                                                DMEGC 410W black-0n-black solar
-                                                panels
-                                            </li>
-                                            <li>3.6kW Luxpower Inverter</li>
-                                            <li>2.4kWh Uhome Battery</li>
-                                        </ul>
-                                    </div>
-                                </div>
-                                <div class="proceed-next">
-                                    <a class="btn btn-success"
-                                        >Proceed to Next Step</a
-                                    >
-                                    <p><a href="">What's included?</a></p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Package item ends-->
-            </div>
-        </div>
-    </div>
 
     <!--Get in touch-->
     <div class="get-in-touch">
@@ -264,10 +120,7 @@
             </div>
             <div class="get-details">
                 <h1>Can't find what you're looking for?</h1>
-                <p>
-                    Speak to a member of the Solar Fast team who will help build
-                    a system to your needs.
-                </p>
+                <p>Speak to a member of the Solar Fast team who will help build a system to your needs.</p>
             </div>
             <div class="get-btn">
                 <a class="btn btn-success">Get in touch</a>
@@ -281,52 +134,34 @@
                 <div class="row">
                     <div class="row">
                         <div class="heading-title">
-                            <h1 class="text-center">
-                                Save up to £1,234 per year on electricity
-                            </h1>
+                            <h1 class="text-center">Save up to £1,234 per year on electricity</h1>
                         </div>
                     </div>
                     <div class="row justify-content-center align-items-center">
                         <div class="row chart-content">
                             <div class="col-md-4">
                                 <div class="card text-center">
-                                    <img
-                                        src="assets/package/annual-savings.svg"
-                                        class="card-img-top"
-                                        alt="Image 1"
-                                    />
+                                    <img src="assets/package/annual-savings.svg" class="card-img-top" alt="Image 1" />
                                     <div class="card-body">
                                         <h3 class="card-title">£1,234</h3>
-                                        <p class="des-card-text">
-                                            Annual Savings
-                                        </p>
+                                        <p class="des-card-text">Annual Savings</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="card text-center">
-                                    <img
-                                        src="assets/package/generation.svg"
-                                        class="card-img-top"
-                                        alt="Image 2"
-                                    />
+                                    <img src="assets/package/generation.svg" class="card-img-top" alt="Image 2" />
                                     <div class="card-body">
                                         <h3 class="card-title">4,123 kWh</h3>
-                                        <p class="des-card-text">
-                                            Generation P/Y
-                                        </p>
+                                        <p class="des-card-text">Generation P/Y</p>
                                     </div>
                                 </div>
                             </div>
 
                             <div class="col-md-4">
                                 <div class="card text-center">
-                                    <img
-                                        src="/assets/package/system-size.svg"
-                                        class="card-img-top"
-                                        alt="Image 3"
-                                    />
+                                    <img src="/assets/package/system-size.svg" class="card-img-top" alt="Image 3" />
                                     <div class="card-body">
                                         <h3 class="card-title">4.1 kWh</h3>
                                         <p class="des-card-text">System Size</p>
@@ -342,15 +177,11 @@
                         <div class="row">
                             <h3 class="text-center">
                                 <i
-                                    >Terms and conditions around average savings
-                                    goes here <br />Lorem ipsum dolor sit amet,
-                                    consectetuer adipiscing elit, sed diam
-                                    nonummy nibh euismod tincidunt ut laoreet
+                                    >Terms and conditions around average savings goes here <br />Lorem ipsum dolor sit amet, consectetuer adipiscing
+                                    elit, sed diam nonummy nibh euismod tincidunt ut laoreet
                                     <br />
-                                    dolore magna aliquam erat volutpat. Ut wisi
-                                    enim ad minim veniam, quis nostrud exerci
-                                    tation ullamcorper suscipit lobortis nisl ut
-                                    aliquip ex</i
+                                    dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit
+                                    lobortis nisl ut aliquip ex</i
                                 >
                             </h3>
                         </div>
@@ -366,6 +197,15 @@
         </div>
     </div>
 
+    <!--What Included-->
+
+    <div class="sidenav" [class.active]="isOpen">
+        <button (click)="toggleSidenav()" class="close-button">&times;</button>
+        <div class="container">
+            <app-whatsincluded></app-whatsincluded>
+        </div>
+    </div>
+
     <!--Faq Starts here-->
     <div class="faq">
         <div class="container-fluid">
@@ -373,11 +213,7 @@
                 <div class="col-md-12">
                     <h1>Frequently Asked Questions</h1>
                     <div class="tabs">
-                        <ul
-                            class="nav nav-tabs justify-content-center"
-                            id="myTab"
-                            role="tablist"
-                        >
+                        <ul class="nav nav-tabs justify-content-center" id="myTab" role="tablist">
                             <li class="nav-item" role="presentation">
                                 <button
                                     class="nav-link active"
@@ -387,8 +223,7 @@
                                     type="button"
                                     role="tab"
                                     aria-controls="home"
-                                    aria-selected="true"
-                                >
+                                    aria-selected="true">
                                     Solar
                                 </button>
                             </li>
@@ -401,8 +236,7 @@
                                     type="button"
                                     role="tab"
                                     aria-controls="profile"
-                                    aria-selected="false"
-                                >
+                                    aria-selected="false">
                                     Battery storage
                                 </button>
                             </li>
@@ -415,36 +249,23 @@
                                     type="button"
                                     role="tab"
                                     aria-controls="contact"
-                                    aria-selected="false"
-                                >
+                                    aria-selected="false">
                                     Aftercare
                                 </button>
                             </li>
                         </ul>
                         <div class="tab-content" id="myTabContent">
-                            <div
-                                class="tab-pane fade show active"
-                                id="home"
-                                role="tabpanel"
-                                aria-labelledby="home-tab"
-                            >
-                                <div
-                                    class="accordion accordion-flush"
-                                    id="accordionFlushExample"
-                                >
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                <div class="accordion accordion-flush" id="accordionFlushExample">
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingOne"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingOne">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseOne"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseOne"
-                                            >
+                                                aria-controls="flush-collapseOne">
                                                 Are solar panels worth it?
                                             </button>
                                         </h2>
@@ -452,68 +273,47 @@
                                             id="flush-collapseOne"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingOne"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingTwo"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingTwo">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseTwo"
-                                            >
-                                                Do solar panels increase the
-                                                value of my home?
+                                                aria-controls="flush-collapseTwo">
+                                                Do solar panels increase the value of my home?
                                             </button>
                                         </h2>
                                         <div
                                             id="flush-collapseTwo"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingTwo"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingThree"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingThree">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseThree"
-                                            >
+                                                aria-controls="flush-collapseThree">
                                                 How many panels do i need?
                                             </button>
                                         </h2>
@@ -521,52 +321,31 @@
                                             id="flush-collapseThree"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingThree"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Placeholder content for this
-                                                accordion, which is intended to
-                                                demonstrate the class. This is
-                                                the third item's accordion body.
-                                                Nothing more exciting happening
-                                                here in terms of content, but
-                                                just filling up the space to
-                                                make it look, at least at first
-                                                glance, a bit more
-                                                representative of how this would
-                                                look in a real-world
-                                                application.
+                                                Placeholder content for this accordion, which is intended to demonstrate the class. This is the third
+                                                item's accordion body. Nothing more exciting happening here in terms of content, but just filling up
+                                                the space to make it look, at least at first glance, a bit more representative of how this would look
+                                                in a real-world application.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-                            <div
-                                class="tab-pane fade"
-                                id="profile"
-                                role="tabpanel"
-                                aria-labelledby="profile-tab"
-                            >
+                            <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
                                 <!--Tab2-->
 
-                                <div
-                                    class="accordion accordion-flush"
-                                    id="accordionFlushExampleTwo"
-                                >
+                                <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingOne"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingOne">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseOne"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseOne"
-                                            >
+                                                aria-controls="flush-collapseOne">
                                                 Are solar panels worth it?
                                             </button>
                                         </h2>
@@ -574,68 +353,47 @@
                                             id="flush-collapseOne"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingOne"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingTwo"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingTwo">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseTwo"
-                                            >
-                                                Do solar panels increase the
-                                                value of my home?
+                                                aria-controls="flush-collapseTwo">
+                                                Do solar panels increase the value of my home?
                                             </button>
                                         </h2>
                                         <div
                                             id="flush-collapseTwo"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingTwo"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingThree"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingThree">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseThree"
-                                            >
+                                                aria-controls="flush-collapseThree">
                                                 How many panels do i need?
                                             </button>
                                         </h2>
@@ -643,49 +401,28 @@
                                             id="flush-collapseThree"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingThree"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Placeholder content for this
-                                                accordion, which is intended to
-                                                demonstrate the class. This is
-                                                the third item's accordion body.
-                                                Nothing more exciting happening
-                                                here in terms of content, but
-                                                just filling up the space to
-                                                make it look, at least at first
-                                                glance, a bit more
-                                                representative of how this would
-                                                look in a real-world
-                                                application.
+                                                Placeholder content for this accordion, which is intended to demonstrate the class. This is the third
+                                                item's accordion body. Nothing more exciting happening here in terms of content, but just filling up
+                                                the space to make it look, at least at first glance, a bit more representative of how this would look
+                                                in a real-world application.
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             </div>
-                            <div
-                                class="tab-pane fade"
-                                id="contact"
-                                role="tabpanel"
-                                aria-labelledby="contact-tab"
-                            >
-                                <div
-                                    class="accordion accordion-flush"
-                                    id="accordionFlushExampleTwo"
-                                >
+                            <div class="tab-pane fade" id="contact" role="tabpanel" aria-labelledby="contact-tab">
+                                <div class="accordion accordion-flush" id="accordionFlushExampleTwo">
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingOne"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingOne">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseOne"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseOne"
-                                            >
+                                                aria-controls="flush-collapseOne">
                                                 Are solar panels worth it?
                                             </button>
                                         </h2>
@@ -693,68 +430,47 @@
                                             id="flush-collapseOne"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingOne"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingTwo"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingTwo">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseTwo"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseTwo"
-                                            >
-                                                Do solar panels increase the
-                                                value of my home?
+                                                aria-controls="flush-collapseTwo">
+                                                Do solar panels increase the value of my home?
                                             </button>
                                         </h2>
                                         <div
                                             id="flush-collapseTwo"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingTwo"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Lorem ipsum dolor sit amet,
-                                                consectetur adipiscing elit, sed
-                                                do eiusmod tempor incididunt ut
-                                                labore et dolore magna aliqua.
-                                                Ut enim ad minim veniam, quis
-                                                nostrud exercitation ullamco
-                                                laboris nisi ut aliquip ex ea
-                                                commodo consequat.
+                                                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                                dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+                                                aliquip ex ea commodo consequat.
                                             </div>
                                         </div>
                                     </div>
                                     <div class="accordion-item">
-                                        <h2
-                                            class="accordion-header"
-                                            id="flush-headingThree"
-                                        >
+                                        <h2 class="accordion-header" id="flush-headingThree">
                                             <button
                                                 class="accordion-button collapsed"
                                                 type="button"
                                                 data-bs-toggle="collapse"
                                                 data-bs-target="#flush-collapseThree"
                                                 aria-expanded="false"
-                                                aria-controls="flush-collapseThree"
-                                            >
+                                                aria-controls="flush-collapseThree">
                                                 How many panels do i need?
                                             </button>
                                         </h2>
@@ -762,21 +478,12 @@
                                             id="flush-collapseThree"
                                             class="accordion-collapse collapse"
                                             aria-labelledby="flush-headingThree"
-                                            data-bs-parent="#accordionFlushExample"
-                                        >
+                                            data-bs-parent="#accordionFlushExample">
                                             <div class="accordion-body">
-                                                Placeholder content for this
-                                                accordion, which is intended to
-                                                demonstrate the class. This is
-                                                the third item's accordion body.
-                                                Nothing more exciting happening
-                                                here in terms of content, but
-                                                just filling up the space to
-                                                make it look, at least at first
-                                                glance, a bit more
-                                                representative of how this would
-                                                look in a real-world
-                                                application.
+                                                Placeholder content for this accordion, which is intended to demonstrate the class. This is the third
+                                                item's accordion body. Nothing more exciting happening here in terms of content, but just filling up
+                                                the space to make it look, at least at first glance, a bit more representative of how this would look
+                                                in a real-world application.
                                             </div>
                                         </div>
                                     </div>

@@ -16,15 +16,18 @@ export class NextStepsComponent {
     ) {}
 
     ngOnInit(): void {
-        const step = this.formService.getSteps().filter(x => x.component == 'page-install-date')[0];
+        const step = this.formService.getSteps().filter(x => x.component == 'page-next-steps')[0];
         if (step != this.formService.activeStep) {
-          this.formService.redirectToCorrectStep();
+            this.formService.redirectToCorrectStep();
         }
     }
 
     backButton() {
-        console.log("back button clicked");
         this.formService.back();
+    }
+
+    confirmButton() {
+        this.formService.next();
     }
 
 }

@@ -41,27 +41,6 @@ export class GooglemapComponent {
   geocoderWorking = false;
   geolocationWorking = false;
 
-  /*
-   {
-              "img": 'assets/7/drag-the-map-bg.png',
-              "type": '',
-              "description": "Locate your house by dragging the map.",
-              "name": "Drag the map"
-            },
-            {
-              "img": 'assets/7/use-zoom-bg.png',
-              "type": '',
-              "description": "Locate your house by dragging the map.",
-              "name": "Use the zoom controls"
-            },
-            {
-              "img": 'assets/7/drop-pin-bg.png',
-              "type": '',
-              "description": "Tap to drop the pin on your rooftop.",
-              "name": "Drop the pin"
-            },
-  */
-
   constructor(
     private geocodingService: GeocodingService, private route: Router, private formBuilder: FormBuilder, private postalCodeService:EnteredPostalCodeService, private onlineEnquiryService: OnlineEnquiryService
   ) {
@@ -118,6 +97,7 @@ this.onlineEnquiryService.result$.subscribe({
             this.markerOptions = {
               draggable: true,
               animation: google.maps.Animation.DROP,
+              icon: 'assets/7/map-icon.png',
             };
 
             this.markerInfoContent = value.formatted_address;
