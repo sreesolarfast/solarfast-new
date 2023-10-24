@@ -1,9 +1,34 @@
 
-.get-started{
-    position:relative;
-    left: 0;
+
+.get-started {
+    width: 60%;
+    margin: auto;
+}
+
+.zoom-controls{
+    margin:15% 0 0 0;
+    background:#fff;
+    padding:3rem;
+    border-radius:22px;
+}
+
+.zoom-controls img{
     width:100%;
-    height: 100%;
+}
+
+.zoom-controls h4{
+    margin-top:15px;
+    margin-bottom:10px;
+    font-weight: 700;
+    font-size:1.25rem;
+}
+
+.zoom-controls p{
+    font-size:1rem;
+}
+
+.zoom-controls .btn{
+    padding:8px 30px;
 }
 
 

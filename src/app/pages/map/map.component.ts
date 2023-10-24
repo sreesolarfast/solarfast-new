@@ -19,6 +19,35 @@ export class MapComponent implements OnInit {
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
 
+    data = [
+        {
+          itemsList: [
+            {
+              options: [
+                {
+                  img: 'assets/map/drag-the-map-bg.png',
+                  type: 'Drag the map',
+                  name: 'Drag the map',
+                  description: 'Locate your house by dragging the map.'
+                },
+                {
+                  img: 'assets/map/use-zoom-bg.png',
+                  type: 'Use zoom controls',
+                  name: 'Zoom Controls',
+                  description: 'Then, use the controls to zoom in on your roof.'
+                },
+                {
+                  img: 'assets/map/drop-pin-bg.png',
+                  type: 'Drop a pin',
+                  name: 'Drop a pin',
+                  description: 'Description for Option 3'
+                }
+              ]
+            }
+          ]
+        }
+      ];
+
     submitted = false;
     onlineEnquiry: OnlineEnquiryDto | null;
 
