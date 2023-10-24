@@ -16,6 +16,15 @@
 .progress-bar {
     padding: 0%;
     margin-top: 70px;
+
+    display: flex !important;
+    flex-direction: row;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+    align-content: center;
+
+    width: 100%;
 }
 
 .back-button {
@@ -385,7 +394,7 @@ img {
 }
 
 .show {
-    display: block !important;
+    display: flex !important;
 }
 
 .hide {

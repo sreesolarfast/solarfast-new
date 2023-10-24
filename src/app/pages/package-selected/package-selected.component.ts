@@ -3,11 +3,11 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InstallmentsSummaryComponent } from '../installments-summary/installments-summary.component';
 import { FormStep } from '../../../shared/model/form-step';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../../../shared/service/form.service';
 import { PackageService } from '../../../shared/service/package.service';
 import { PackageDto } from '../../../shared/dto/package-dto';
-import { OnlineEnquiryDto } from '../../../shared/dto/online-enquiry-dto';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'page-package-selected',
@@ -22,10 +22,10 @@ export class PackageSelectedComponent implements OnInit {
     constructor(
         public dialog: MatDialog,
         private onlineEnquiryService: OnlineEnquiryService,
-        private router: Router,
         public formService: FormService,
         private packageService: PackageService,
         private route: ActivatedRoute,
+        private location: Location
     ) {}
 
     ngOnInit(): void {
@@ -33,35 +33,35 @@ export class PackageSelectedComponent implements OnInit {
 
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
-                if (x != null) this.activePackage = x.selectedPackage;
+                if (x != null && x.packageOptions != null) this.activePackage = x.packageOptions.filter(p => p.dtoId == x.selectedPackageId)[0];
             },
         });
 
+        let uniqueRef = null;
+        this.route.paramMap.subscribe(x => {
+            uniqueRef = x.get('uniqueReference');
+        });
 
-        this.packageService.result$.subscribe({
+        this.packageService.result$?.subscribe({
             next: x => {
                 if (x == null) return;
-
-                const postcode = this.route.snapshot.queryParamMap.get('postcode');
-                const companyId = this.route.snapshot.queryParamMap.get('companyId');
-                const repId = this.route.snapshot.queryParamMap.get('repId');
-                const uniqueRef = this.route.snapshot.queryParamMap.get('uniqueReference');
-
-                let dto = { postcode: postcode } as OnlineEnquiryDto;
-                if (companyId != null) dto.companyId = +companyId;
-                if (repId != null) dto.repId = repId;
-
-                // we have come in through a package selected by id route
-                dto.selectedPackageId = x.dtoId;
-                dto.selectedPackage = x;
-                this.formService.activeStep = step;
                 this.activePackage = x;
 
-                this.onlineEnquiryService.result = dto;
+                if (uniqueRef != null)
+                    this.onlineEnquiryService.getByUniqueReference(uniqueRef).subscribe({
+                        next: o => {
+                            o.selectedPackage = x;
+                            o.selectedPackageId = x.dtoId;
+                            this.formService.activeStep = step;
+                            this.onlineEnquiryService.result = o;
+                            this.onlineEnquiryService.setStep(step.step);
+                            this.location.replaceState('/pages/package-selected');
+                        },
+                    });
             },
         });
 
-        if (step != this.formService.activeStep) {
+        if (this.formService.activeStep != null && step != this.formService.activeStep) {
             this.formService.redirectToCorrectStep();
         }
     }

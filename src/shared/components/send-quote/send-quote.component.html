@@ -1,0 +1,144 @@
+<div class="modal fade" id="sendQuoteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+aria-hidden="true">
+<div class="modal-dialog" role="document">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLabel">Save and Send Quote</h5>
+            <button class="btn btn-back" data-bs-dismiss="modal" aria-label="Close">
+                <i class="bi bi-x"></i>
+            </button>
+        </div>
+
+              <!-- Customer details fields -->
+              <form
+              class="m-5"
+              [formGroup]="form"
+              (ngSubmit)="submitForm()"
+          >
+              <div class="form-group pb-3">
+                  <div class="">
+                      <div class="form-group">
+                          <div class="input-group">
+                              <span
+                                  class="input-group-text"
+                                  id="firstname"
+                                  ><i class="bi bi-person-fill"></i
+                              ></span>
+                              <input
+                                  type="text"
+                                  class="form-control"
+                                  placeholder="First Name"
+                                  formControlName="firstName"
+                              />
+                          </div>
+                          <div
+                              *ngIf="
+                                  form.get('firstName').invalid &&
+                                  form.get('firstName').touched
+                              "
+                              class="text-danger"
+                          >
+                              First name is required.
+                          </div>
+                      </div>
+                  </div>
+              </div>
+
+              <div class="form-group pb-3">
+                <div class="">
+                    <div class="form-group">
+                        <div class="input-group">
+                            <span class="input-group-text" id="lastname"
+                                ><i class="bi bi-person-fill"></i
+                            ></span>
+                            <input
+                                type="text"
+                                class="form-control"
+                                placeholder="Last Name"
+                                formControlName="lastName"
+                            />
+                        </div>
+                        <div
+                            *ngIf="
+                                form.get('lastName').invalid &&
+                                form.get('lastName').touched
+                            "
+                            class="text-danger"
+                        >
+                            Last name is required.
+                        </div>
+                    </div>
+                </div>
+              </div>
+
+              <div class="form-group pb-3">
+                  <div class="input-group">
+                      <span class="input-group-text" id="email"
+                          ><i class="bi bi-envelope-fill"></i
+                      ></span>
+                      <input
+                          type="email"
+                          class="form-control"
+                          placeholder="Email"
+                          formControlName="email"
+                      />
+                  </div>
+                  <div
+                      *ngIf="
+                          form.get('email').invalid &&
+                          form.get('email').touched
+                      "
+                      class="text-danger"
+                  >
+                      Enter a valid email address.
+                  </div>
+              </div>
+
+              <div class="form-group pb-3">
+                  <div class="input-group">
+                      <span class="input-group-text" id="lastname"
+                          ><i class="bi bi-telephone-fill"></i
+                      ></span>
+                      <input
+                          type="tel"
+                          class="form-control"
+                          placeholder="Phone"
+                          formControlName="phone"
+                      />
+                  </div>
+                  <div
+                      *ngIf="
+                          form.get('phone').invalid &&
+                          form.get('phone').touched
+                      "
+                      class="text-danger"
+                  >
+                      Enter a valid phone number.
+                  </div>
+              </div>
+
+              <div class="w-100 d-flex justify-content-center">
+                  <div class="form-check pb-3">
+                      <input
+                          type="checkbox"
+                          class="form-check-input"
+                          formControlName="subscribe"
+                      />
+                      <label class="form-check-label ">
+                          I want to stay updated with the latest news,
+                          offers and updates.
+                      </label>
+                  </div>
+              </div>
+          </form>
+
+
+        <div class="modal-footer">
+            <button (click)="submitForm()" class="btn btn-primary" data-bs-dismiss="modal"
+            [class.confirm-selection-disabled]="!form.valid"
+                      [disabled]="!form.valid"
+            >Send Quote</button>
+        </div>
+    </div>
+</div>
+</div>

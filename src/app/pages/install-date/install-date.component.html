@@ -1,3 +1,5 @@
+<progression-bar-top></progression-bar-top>
+
 <!--Help-->
 <div class="need-help margin-top">
     <div class="d-flex align-items-center">
@@ -87,7 +89,7 @@
                                     {{ selectedYear }}
                                 </div>
 
-                                <div class="months-container d-flex">
+                                <div class="months-container d-flex gap-3">
                                     <span
                                         *ngFor="
                                             let month of getAvailableMonths();
@@ -108,11 +110,13 @@
                                 <button
                                     *ngFor="let day of calendarDays"
                                     (click)="selectDate(day)"
-                                    [class.available]="isDayAvailable(day)"
+
                                     class="btn day-element"
                                     [class.selected]="isDateSelected(day)"
+                                    [class.weekend]="!isDayAvailable(day)"
                                     [class.past-date]="isPastDate(day)"
-                                    [disabled]="isPastDate(day)"
+
+                                    [disabled]="isPastDate(day) || !isDayAvailable(day)"
                                 >
                                     {{ day }}
                                 </button>

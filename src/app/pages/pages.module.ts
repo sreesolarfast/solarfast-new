@@ -14,6 +14,7 @@ import { NgApexchartsModule } from 'ng-apexcharts';
 import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component';
+import { SelecthouseonmapComponent } from './selecthouseonmap/selecthouseonmap.component';
 
 @NgModule({
   imports: [
@@ -32,6 +33,7 @@ import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component'
     PackageSelectionComponent,
     PackageSelectedComponent,
     ConsumptionProdcutionChartComponent,
+    SelecthouseonmapComponent,
     MapComponent,
     WhatsincludedComponent,
     ThankYouComponent,

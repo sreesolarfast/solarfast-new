@@ -518,3 +518,18 @@ img {
 
 
 
+.btn-primary {
+    background: linear-gradient(to bottom, #75c043, #44a900);
+    border: transparent !important;
+    padding: 15px;
+    width: 100%;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.btn-back {
+    background: #000 !important;
+    color: #fff !important;
+    border-radius: 50% !important;
+}
+

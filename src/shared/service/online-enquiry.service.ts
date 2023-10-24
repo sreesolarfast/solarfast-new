@@ -67,6 +67,21 @@ export class OnlineEnquiryService {
       );
   }
 
+  public createOrder(dto: OnlineEnquiryDto): Observable<OnlineEnquiryDto> {
+    return this.http
+      .post<OnlineEnquiryDto>(`${environment.apiUrl}/onlineenquiry/order`, dto, {withCredentials: false, responseType: 'json'})
+      .pipe(
+        map((result) => {
+          this._result.next(result);
+          this.setOnlineEnquiry(result);
+          return result;
+        }),
+        catchError((err) => {
+          return throwError(() => err);
+        })
+      );
+  }
+
   public getByUniqueReference(id: string): Observable<OnlineEnquiryDto> {
     if (id == null) return null;
 

@@ -1,4 +1,7 @@
 <ng-container *ngIf="!loading">
+
+    <progression-bar-top></progression-bar-top>
+
     <div class="map">
         <div class="google-map">
             <app-googlemap></app-googlemap>
@@ -122,13 +125,12 @@
                         </ng-container>
 
                         <ul
-                            class="progress-bar"
+
                             id="progressbar"
                             [ngClass]="0 <= 2 ? 'show' : 'hide'"
+
+                            class="progress-bar"
                         >
-                            <li class="col-md-12" [ngClass]="'active'">
-                                Start
-                            </li>
 
                             <li
                                 class="col-md-12"

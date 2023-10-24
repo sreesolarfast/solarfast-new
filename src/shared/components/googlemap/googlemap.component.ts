@@ -36,7 +36,7 @@ export class GooglemapComponent {
   markerOptions: google.maps.MarkerOptions = {
     draggable: true,
     animation: google.maps.Animation.DROP,
-    icon: 'assets/7/map-icon.png',
+    icon: 'assets/map/map-icon.png',
   };
   geocoderWorking = false;
   geolocationWorking = false;

@@ -8,39 +8,62 @@
         <div class="center-content">
             <div class="card-items">
                 <div class="">
-
                     <ng-container *ngIf="!dayAndNight; else different">
-                        <div class="w-100 mt-5">
+                        <div class="w-100 position-relative mt-5">
                             <input [formControl]="controlDay" class="w-100 form-control" type="number" placeholder="Unit rate in pence." />
                         </div>
                     </ng-container>
 
                     <ng-template #different>
-                        <div class="d-flex flex-row">
-                            <div class="w-100 mt-3">
+                        <div class="d-flex flex-row gap-3">
+                            <div class="w-100 position-relative mt-5">
                                 <input [formControl]="controlDay" class="w-100 form-control" type="number" placeholder="Day rate in pence" />
                             </div>
 
-                            <div class="w-100 mt-3">
+                            <div class="w-100 position-relative mt-5">
                                 <input [formControl]="controlNight" class="w-100 form-control" type="number" placeholder="Night rate in pence" />
                             </div>
                         </div>
                     </ng-template>
 
-                    <div class="mt-3 d-flex flex-column w-100 align-items-center"s>
-                        <div class="d-flex flex-row gap-3 ">
-                            <button type="button" class="btn btn-primary" (click)="answerGiven()" type="number" placeholder="UK average is 3,421 kWh">
+                    <div class="mt-3 d-flex flex-column w-100 align-items-center" >
+                        <div class="d-flex flex-row gap-3">
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                [class.btn-disabled]="!(controlDay.value > 0 && (dayAndNight ? controlNight.value > 0 : true))"
+                                [disabled]="!(controlDay.value > 0 && (dayAndNight ? controlNight.value > 0 : true))"
+                                (click)="answerGiven()"
+                                type="number"
+                                placeholder="UK average is 3,421 kWh">
                                 Next Step
                             </button>
 
-                            <!-- button to set dayAndNight as true-->
-                            <button type="button" class="btn btn-secondary" (click)="dayAndNight = true" type="number" placeholder="UK average is 3,421 kWh">
-                                I have different day / night rates.
-                            </button>
+                            <ng-container *ngIf="!dayAndNight">
+                                <!-- button to set dayAndNight as true-->
+                                <button
+                                    type="button"
+                                    class="btn-secondary"
+                                    (click)="dayAndNight = true"
+                                    type="number"
+                                    placeholder="UK average is 3,421 kWh">
+                                    I have different day / night rates.
+                                </button>
+                            </ng-container>
+
+                            <ng-container *ngIf="dayAndNight">
+                                <!-- button to set dayAndNight as false-->
+                                <button
+                                    type="button"
+                                    class="btn-secondary"
+                                    (click)="dayAndNight = false; controlNight.setValue(0)"
+                                    type="number"
+                                    placeholder="UK average is 3,421 kWh">
+                                    I have only one unit rate.
+                                </button>
+                            </ng-container>
                         </div>
                     </div>
-
-
                 </div>
             </div>
         </div>

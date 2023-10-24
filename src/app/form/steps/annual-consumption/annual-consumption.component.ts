@@ -6,25 +6,24 @@ import { OnlineEnquiryService } from '../../../../shared/service/online-enquiry.
 import { FormControl } from '@angular/forms';
 
 @Component({
-  selector: 'step-annual-consumption',
-  templateUrl: './annual-consumption.component.html',
-  styleUrls: ['./annual-consumption.component.scss']
+    selector: 'step-annual-consumption',
+    templateUrl: './annual-consumption.component.html',
+    styleUrls: ['./annual-consumption.component.scss'],
 })
 export class AnnualConsumptionComponent implements OnInit {
-  @Input() step: FormStep;
-  @Output() newStep = new EventEmitter<number | null>();
-  control = new FormControl(null);
+    @Input() step: FormStep;
+    @Output() newStep = new EventEmitter<number | null>();
+    control = new FormControl(null);
 
-    constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) { }
+    constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) {}
 
     ngOnInit() {
-      this.control.setValue(this.onlineEnquiryService.result.annualConsumption);
+        this.control.setValue(this.onlineEnquiryService.result.annualConsumption);
     }
 
     answerGiven() {
-      this.onlineEnquiryService.result.annualConsumption = this.control.value;
+        this.onlineEnquiryService.result.annualConsumption = this.control.value;
 
-      this.newStep.emit(this.step.next);
+        this.newStep.emit(this.step.next);
     }
-
-  }
+}

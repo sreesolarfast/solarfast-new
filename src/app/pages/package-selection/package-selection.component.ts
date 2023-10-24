@@ -1,8 +1,6 @@
-import { ApexOptions } from 'ng-apexcharts';
-import { Component, ViewChild } from '@angular/core';
+import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { InstallmentsSummaryComponent } from '../installments-summary/installments-summary.component';
-import { Router } from '@angular/router';
 import { FormService } from '../../../shared/service/form.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 import { PackageDto } from '../../../shared/dto/package-dto';
@@ -15,13 +13,12 @@ import { PackageType } from 'src/shared/enum/package-type';
 })
 export class PackageSelectionComponent {
     packages: PackageDto[];
-
     packageType = PackageType;
+    isOpen = false;
 
     constructor(
         public dialog: MatDialog,
         private onlineEnquiryService: OnlineEnquiryService,
-        private router: Router,
         public formService: FormService
     ) {}
 
@@ -35,28 +32,18 @@ export class PackageSelectionComponent {
             next: x => {
 
 
-                x.packageOptions.forEach(item => {
-                    if(item?.imageDtos?.length > 0)
-
-
-                        item.type = PackageType.Recommended;
-
-                        console.log(item);
-                });
-
+                // x.packageOptions.forEach(item => {
+                //     if (item?.imageDtos?.length > 0) item.type = PackageType.Recommended;
+                // });
 
                 this.packages = x.packageOptions;
-                console.log(this.packages);
-
-
             },
         });
-
-
     }
 
     answerGiven(value: number) {
         this.onlineEnquiryService.result.selectedPackageId = value;
+        this.onlineEnquiryService.result.selectedPackage = this.packages.filter(x => x.dtoId == value)[0];
         this.formService.next();
     }
 
@@ -71,7 +58,6 @@ export class PackageSelectionComponent {
             console.log(`Dialog result: ${result}`);
         });
     }
-    isOpen = false;
 
     toggleSidenav() {
         this.isOpen = !this.isOpen;

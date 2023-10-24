@@ -1,6 +1,25 @@
+<progression-bar-top></progression-bar-top>
+
+<!--Help-->
+<div class="need-help margin-top">
+    <div class="d-flex align-items-center">
+        <div class="help-icon">
+            <i class="bi bi-question-circle"></i>
+        </div>
+        <div class="help-body">
+            <h3>Need help?</h3>
+            <p>Speak to our team</p>
+        </div>
+    </div>
+</div>
+<!--Help Ends-->
+
+<!--Googke Map-->
+
 <div class="google-map-component">
 <google-map
-[zoom]="zoom"
+    [zoom]="20"
+    [zoom]="zoom"
     [center]="mapCenter"
     [options]="mapOptions"
     width="100%"
@@ -10,14 +29,30 @@
         #marker="mapMarker"
         [position]="mapCenter"
         [options]="markerOptions"
-        (mapClick)="openInfoWindow(marker)"
         (mapDragend)="onMapDragEnd($event)"
     >
     </map-marker>
     <map-info-window>{{ markerInfoContent }}</map-info-window>
 </google-map>
+<a class="btn btn-black" (click)="formService.back()">
+    <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="25"
+        height="20"
+        viewBox="0 0 35 30"
+    >
+        <path
+            d="M20 10 L5 10 M10 5 L5 10 10 15"
+            stroke="white"
+            stroke-width="2"
+            fill="none"
+        />
+    </svg>
+</a>
 
-<div class="roof-selected">
+
+
+<div class="roof-selected" *ngIf="markerInfoContent.length > 0">
     <div class="d-flex justify-content-between">
         <div class="roof-icon">
             <img src="assets/map/map-icon.png" />
@@ -27,18 +62,18 @@
             <p>Is this where you would like panels installed?</p>
         </div>
         <div class="roof-btn">
-            <button class="btn btn-success" (click)="continuebtn()">Continue</button>
+            <button class="btn btn-success" (click)="formService.next()">Continue</button>
         </div>
     </div>
 </div>
 
-<div class="zoom-controls">
+<div class="map-zoom-controls">
+
     <button class="zoom-in" (click)="zoomIn()" [ngClass]="{'active': zoom === mapOptions.maxZoom || zoom >= mapOptions.maxZoom}">
         <i class="bi bi-plus-lg"></i>
     </button>
     <button class="zoom-out" (click)="zoomOut()" [ngClass]="{'active': zoom === mapOptions.minZoom }">
         <i class="bi bi-dash-lg"></i>
     </button>
-
 </div>
 </div>

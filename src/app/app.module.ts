@@ -5,10 +5,9 @@ import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from '../shared/modules/material.module';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
-import { SolarfastsystemComponent } from './pages/solarfastsystem/solarfastsystem.component';
 import { NextStepsComponent } from './pages/next-steps/next-steps.component';
 import { PhotoUploadComponent } from './pages/photo-upload/photo-upload.component';
-import { OrderconfirmationComponent } from './pages/orderconfirmation/orderconfirmation.component';
+import { OrderConfirmationComponent } from './pages/order-confirmation/order-confirmation.component';
 import { InstallmentbillingsummaryComponent } from './pages/installmentbillingsummary/installmentbillingsummary.component';
 import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -20,10 +19,9 @@ import { SharedModule } from 'src/shared/shared.module';
 @NgModule({
   declarations: [
     AppComponent,
-    SolarfastsystemComponent,
     NextStepsComponent,
     PhotoUploadComponent,
-    OrderconfirmationComponent,
+    OrderConfirmationComponent,
     InstallmentbillingsummaryComponent,
     InstallmentsSummaryComponent,
     ],

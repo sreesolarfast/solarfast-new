@@ -1,3 +1,6 @@
+<progression-bar-top></progression-bar-top>
+
+
 <!--Help-->
 <div class="need-help">
     <div class="d-flex align-items-center">
@@ -15,81 +18,93 @@
 <div class="solar-fast-system">
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-12">
+            <div class="title-bar-heading">
                 <h1>
-                    <button class="btn btn-back" (click)="formService.back()">
-                        <i class="bi bi-arrow-left"></i>
-                    </button>
-                    Choose Your Solar Fast System
+                    <a class="btn btn-black" (click)="formService.back()">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            width="25"
+                            height="20"
+                            viewBox="0 0 25 20"
+                        >
+                            <path
+                                d="M20 10 L5 10 M10 5 L5 10 10 15"
+                                stroke="white"
+                                stroke-width="2"
+                                fill="none"
+                            />
+                        </svg>
+                    </a>
                 </h1>
-                <p>Based on the answers you gave,here is your recommended system.</p>
+
+                <div>
+                    <h1 class="title title-top">Pick your Installation Date</h1>
+                    <p class="title">
+                        Let us know when we can install your Solar Fast system.
+                    </p>
+                </div>
             </div>
         </div>
 
         <!--Package Card-->
         <div class="package-list">
-
             <div class="row mt-3" *ngFor="let item of packages">
                 <div class="col-md-12">
-
-                    <div class="card" [class.card-recommended]="item.type == packageType.Recommended" [class.card-premium]="item.type == packageType.Supercharged">
+                    <div
+                        class="card"
+                        [class.card-recommended]="item.type == packageType.Recommended"
+                        [class.card-supercharged]="item.type == packageType.Supercharged">
                         <div class="">
                             <div class="row row-flex">
                                 <!--Package-->
                                 <div class="col-md-4">
                                     <div class="package-content">
-                                        <ng-container *ngIf="item.type == packageType.Recommended" >
+                                        <ng-container *ngIf="item.type == packageType.Recommended">
                                             <a class="recommended-tag"><i class="bi bi-star-fill"></i>Recommended</a>
                                         </ng-container>
-                                        <ng-container *ngIf="item.type == packageType.Supercharged" >
-                                            <a class="premium-tag"><i class="bi bi-star-fill"></i>Supercharged</a>
+                                        <ng-container *ngIf="item.type == packageType.Supercharged">
+                                            <a class="supercharged-tag"><i class="bi bi-star-fill"></i>Supercharged</a>
                                         </ng-container>
 
-                                        <ng-container *ngIf="item?.imageDtos && item.imageDtos[0]?.dataFileUrl !== '' && item.imageDtos[0].dataFileUrl !== null; else placeHolderImage">
+                                        <ng-container
+                                            *ngIf="
+                                                item?.imageDtos && item.imageDtos[0]?.dataFileUrl !== '' && item.imageDtos[0].dataFileUrl !== null;
+                                                else placeHolderImage
+                                            ">
                                             <img class="w-100 package-image" [src]="item.imageDtos[0].dataFileUrl" />
                                             {{ item.imageDtos[0].dataFileUrl }}
                                         </ng-container>
 
-
                                         <ng-template #placeHolderImage>
                                             <img class="w-100 package-image" src="assets/package/full-system-posterImage.png" />
                                         </ng-template>
-
-
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
                                     <div class="package-content border-right">
                                         <div class="package-panel-list">
-                                            <h2 >{{ item.name }}</h2>
+                                            <h2 class="lh-1 mt-3">{{ item.name }}</h2>
 
-                                            <span class="features-list" [innerHTML]="item.htmlListDescription"></span>
+                                            <span class="features-list mt-3" [class.feature-list-recommended]="item.type == packageType.Recommended" [class.feature-list-supercharged]="item.type == packageType.Recommended" [innerHTML]="item.htmlListDescription"></span>
 
-
-                                            <button class="btn">
-                                                Save and Email me this Quote
+                                            <button type="button" class="btn btn-secondary mt-3" data-bs-toggle="modal" data-bs-target="#sendQuoteModal">
+                                                <i class="bi bi-envelope"></i>
+                                                <span class="fs-8 mx-2">Save and Email me this Quote</span>
                                             </button>
-
                                         </div>
                                     </div>
                                 </div>
 
                                 <div class="col-md-4">
-                                    <div class="package-content w-100">
+                                    <div class="package-content justify-content-center w-100">
                                         <div class="payment-options w-100">
-
-                                            <h1>
-                                                From {{ item.totalSalePrice | currency }}
-                                            </h1>
+                                            <h1 class="lh-1">From {{ item.totalSalePrice | currency }}</h1>
                                             <span class="per-month"
                                                 ><a (click)="openPopup()"><u>or £82.60 per month</u> (11.9% APR)</a></span
                                             >
                                             <a class="btn btn-primary" (click)="answerGiven(item.dtoId)">Proceed to Next Step</a>
-                                            <p><a (click)="toggleSidenav()">
-                                                What's included?</a
-                                                >
-                                            </p>
+                                            <p class="mt-3"><a (click)="toggleSidenav()"> What's included?</a></p>
                                         </div>
                                     </div>
                                 </div>
@@ -103,14 +118,12 @@
         </div>
     </div>
 
-
     <div class="sidenav" [class.active]="isOpen">
         <button (click)="toggleSidenav()" class="close-button">&times;</button>
         <div class="container">
             <app-whatsincluded></app-whatsincluded>
-      </div>
-      </div>
-
+        </div>
+    </div>
 
     <!--Get in touch-->
     <div class="get-in-touch">
@@ -498,3 +511,5 @@
         </div>
     </div>
 </div>
+
+<app-send-quote></app-send-quote>

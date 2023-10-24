@@ -1,18 +1,42 @@
 <div class="content-screen annual-consumption">
-  <div class="header">
-    <h2>What's your annual electricity usage in kWh?</h2>
-    <p>You can find this on your smart meter or a copy of your latest bill.</p>
-  </div>
-
-  <div>
-    <div class="center-content">
-      <div class="card-items">
-        <div class="card-wrapper">
-            <input [formControl]="control" class="w-100 form-control" />
-
-            <button type="button" class="btn btn-primary" (click)="answerGiven()" type="number" placeholder="UK average is 3,421 kWh" >Ok</button>
-        </div>
-      </div>
+    <div class="header">
+        <h2 class="fs-title">What's your annual electricity usage in kWh?</h2>
+        <p>You can find this on your smart meter or a copy of your latest bill.</p>
     </div>
-  </div>
+
+    <div>
+        <div class="center-content">
+            <div class="card-items">
+                <div>
+                    <div class="w-100 position-relative mt-5">
+                        <input [formControl]="control" class="w-100 form-control" type="number" placeholder="UK average is 3,421 kWh" />
+                    </div>
+
+                    <div class="mt-3 d-flex flex-column w-100 align-items-center">
+                        <div class="d-flex flex-row gap-3">
+                            <button
+                                type="button"
+                                class="btn btn-primary"
+                                [class.btn-disabled]="!(control.value > 0)"
+                                [disabled]="!(control.value > 0)"
+                                (click)="answerGiven()"
+                                type="number"
+                                placeholder="UK average is 3,421 kWh">
+                                Next Step
+                            </button>
+
+                            <button
+                                    type="button"
+                                    class="btn-secondary"
+                                    (click)="answerGiven()"
+                                    type="number"
+                                    placeholder="UK average is 3,421 kWh">
+                                    I don't know
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>

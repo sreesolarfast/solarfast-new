@@ -40,7 +40,7 @@ export class InstallDateComponent {
         const currentMonthIndex = new Date().getMonth();
         const availableMonths = [];
 
-        for (let i = currentMonthIndex; availableMonths.length < 8; i++) {
+        for (let i = currentMonthIndex; availableMonths.length < 3; i++) {
             const monthIndex = i % 12; // Wrap around to the next year if needed
             const monthValue = monthIndex; // Add 1 to get the actual month value
             const monthName = this.months[monthIndex];
@@ -66,6 +66,10 @@ export class InstallDateComponent {
     isDayAvailable(day: number): boolean {
         const currentDate = new Date();
         const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+
+        if(selectedDate.getDay() == 0 || selectedDate.getDay() == 6) {
+            return false;
+        }
 
         if (
             selectedDate < currentDate &&

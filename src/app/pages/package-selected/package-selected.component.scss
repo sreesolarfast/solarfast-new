@@ -1,93 +1,491 @@
-.solar-fast-system{
-    padding:2rem;
+.solar-fast-system {
+    padding: 2rem;
 }
 
-.packages{
+.card {
+    padding: 1.5rem;
+    border-radius: 20px;
+    border-color: transparent;
+    background-color: #E9E9E9;
+}
 
-    .packageOne{
-    background: rgb(239,239,239);
-    background: linear-gradient(90deg, rgba(239,239,239,1), rgba(231,231,231,1));
-    padding:30px;
-    box-shadow: 0px 3px 6px #00000029;
+.card-recommended {
+    background-color: #50A518;
+    color: white;
+
+}
+
+.card-premium {
+    background-color: #1a1a1a;
+}
+
+.package-image{
+    border-radius: 15px;
+}
+
+.btn-black {
+    background: #000;
+    color: white;
+    border-radius: 100%;
+    padding: 10px;
+}
+
+
+.package-chat {
+    background: url('/assets/package/whiteoak-flyer-cover.png');
+    background-size: cover;
     border-radius: 29px;
+    background-position: center center;
+
+    .chart-content {
+        width: 80%;
     }
 
-    .packageTwo{
-        background: rgb(117,192,67);
-        background: linear-gradient(90deg, rgba(117,192,67,1), rgba(70,157,12,1) );
-        padding:30px;
+    .heading-title h1 {
+        color: #fff;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    .card-img-top {
+        height: 80px;
+    }
+
+
+
+
+    .card h3 {
+        font-size: 1.8rem;
+        color: #272727;
+        font-weight: 700;
+    }
+
+    .card p {
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    .terms-conditions {
+        padding: 15px 0;
+    }
+
+    .terms-conditions h3 {
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+    .terms-conditions h2 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 30px;
+    }
+}
+
+.packages {
+    .packageOne,
+    .packageTwo,
+    .packageThree {
+        margin-bottom: 30px;
+    }
+
+    .package-image {
+        width: 29%;
+    }
+
+    .package-details {
+        width: 40%;
+    }
+
+    .package-nextstep {
+        width: 29%;
+    }
+
+    .packageOne {
+        background: rgb(239, 239, 239);
+        background: linear-gradient(90deg, rgba(239, 239, 239, 1), rgba(231, 231, 231, 1));
+        padding: 30px;
+        box-shadow: 0px 3px 6px #00000029;
+        border-radius: 29px;
+
+        .package-item {
+            padding: 10px;
+
+            h3 {
+                font-size: 1.3rem;
+                font-weight: 700;
+            }
+            h1 {
+                color: #1a1a1a;
+                font-size: 3rem;
+                font-weight: 700;
+            }
+            p {
+                color: #1a1a1a;
+                font-size: 1.5rem;
+            }
+        }
+    }
+
+    .packageTwo {
+        background: rgb(117, 192, 67);
+        background: linear-gradient(90deg, rgba(117, 192, 67, 1), rgba(70, 157, 12, 1));
+        padding: 30px;
         box-shadow: 0px 3px 6px #00000029;
         border-radius: 29px;
     }
 
-    .packageThree{
-        background: rgb(39,39,39);
-        background: linear-gradient(90deg, rgba(39,39,39,1), rgba(25,25,25,1));
-        padding:30px;
+    .packageThree {
+        background: rgb(39, 39, 39);
+        background: linear-gradient(90deg, rgba(39, 39, 39, 1), rgba(25, 25, 25, 1));
+        padding: 30px;
         box-shadow: 0px 3px 6px #00000029;
         border-radius: 29px;
     }
+}
+
+.package-list {
+    padding: 2rem 0;
+}
+
+.package-panel-list {
+    padding: .5rem;
+    padding-right: 1rem;
+    align-self: center;
+    justify-self: center;
+}
+
+// <svg
+// xmlns="http://www.w3.org/2000/svg"
+// width="115"
+// height="115"
+// viewBox="0 0 100 100"
+// >
+// <!-- Circle -->
+// <circle
+//     cx="50"
+//     cy="50"
+//     r="45"
+//     stroke="#75C043"
+//     stroke-width="5"
+//     fill="none"
+// />
+
+// <!-- Tick (Checkmark) -->
+// <path
+//     d="M30 50 L45 65 L70 40"
+//     stroke="#75C043"
+//     stroke-width="5"
+//     fill="none"
+// />
+// </svg>
+
+.features-list {
+    ::ng-deep ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            list-style-position: outside; /* Place the bullet point/icon outside the text content */
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%2375C043' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='%2375C043' stroke-width='5' fill='none'/></svg>");
+            background-size: cover;
+            margin-right: 8px;
+            position: absolute;
+            left: -23px;
+        }
+    }
+
 
 }
 
-
-.package-list{
-    padding:2rem 0;
+.package-panel-list h2 {
+    font-size: 32px;
+    //line-height: 3rem;
+    font-weight: 600;
 }
 
-.package-panel-list{
-    padding:2rem;
+.package-panel-list ul li {
+    font-size: 18px;
+    line-height: 1.8;
+    color: #9ae488;
 }
 
-.package-panel-list h2{
-    font-size:2.5rem;
-    line-height:3rem;
-    font-weight: 700;
-}
-
-.package-panel-list ul li{
-    font-size:18px;
-    line-height:1.8;
-}
-
-.recommended{
+.recommended-tag {
     position: absolute;
-    padding:15px;
+    padding: 15px;
     overflow: hidden;
+    background-color: orangered;
+    color: white;
+    text-decoration: none;
+
+    border-radius: 1rem;
+    border-color: transparent;
 }
 
+.premium-tag {
+    position: absolute;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #50A518; //todo change color to solarfast
+    color: white;
+    text-decoration: none;
 
-.payment-options{
-    padding:2rem;
+    border-radius: 1rem;
+    border-color: transparent;
+}
+
+.border-right {
+    border-right: 1px solid #707070;
+}
+
+.payment-options {
+    padding: .5rem;
     text-align: center;
 }
 
-.payment-options h3{
-    font-size:1.5rem;
-    font-weight:500;
+.payment-options h3 {
+    font-size: 1.5rem;
+    font-weight: 500;
 }
 
-.payment-options h1{
+.payment-options h1 {
     font-weight: 700;
-    font-size:2.4rem;
+    font-size: 2.4rem;
 }
 
-.btn-back{
-    background:#000;
-    border-radius:50%;
-  }
 
 .package-content {
-    min-height:420px;
+    height: 100%;
+    min-height: 420px;
+}
+
+.per-month {
+    font-weight: 500;
+    width: 100%;
+    display: block;
+    font-size: 18px;
+    cursor: pointer;
+    margin: 15px 0;
+}
+
+.form-range {
+    width: 100%;
+    height: 1rem;
+    padding: 0;
+    cursor: pointer;
+    background-color: #dee2e6;
+    border-radius: 0.25rem;
+}
+
+.form-range-track {
+    width: 100%;
+    height: 100%;
+    color: transparent;
+    border-radius: 0.25rem;
+}
+
+.form-range-thumb {
+    width: 1rem;
+    height: 1rem;
+    background-color: #0d6efd;
+    border: 0;
+    border-radius: 0.25rem;
+    transition: all 0.15s ease-in-out;
+}
+
+.form-range-ticks {
+    visibility: hidden;
+}
+
+.form-range-labels {
+    display: none;
+}
+
+.get-in-touch {
+    width: 85%;
+    background-color: #ebebeb;
+    padding: 30px 30px 0px 30px;
+    margin: auto;
+    margin-bottom: 30px;
+    border-radius: 29px;
+}
+
+.get-user {
+    width: 15%;
+    margin: 0;
+}
+
+.get-user img {
+    border-radius: 29px;
+    margin-bottom: 0;
+}
+
+.get-details {
+    margin-top: 15px;
+    width: 70%;
+}
+
+.get-details h1 {
+    color: #242424;
+    font-weight: 700;
+    margin-bottom: 10px;
+    font-size: 1.85rem;
+}
+
+.get-details p {
+    font-size: 0.9rem;
+}
+
+.get-btn {
+    margin-top: 20px;
+    width: 200px;
+}
+
+.get-btn .btn-success {
+    padding: 15px 30px;
+    border-radius: 12px;
+}
+
+.faq {
+    margin: 60px 0;
+
+    h1 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        text-align: center;
+        margin-bottom: 30px;
+    }
+}
+
+.tabs {
+    padding: 20px;
+    border-radius: 0px;
+}
+
+.nav-tabs {
+    margin-bottom: 30px;
+    border-bottom: none;
+}
+
+.nav-tabs .nav-link {
+    background-color: #fff;
+    color: #2a2a2a;
+    border: 1px solid #fff;
+    border-radius: 0px;
+    padding: 8px 30px;
+    margin: 5px;
+    outline: none;
+    font-weight: 700;
+}
+
+.nav-tabs .nav-link.active {
+    background-color: #eaeaea;
+    color: #333;
+    outline: none;
+}
+
+/* Style for the accordion */
+.accordion-header button {
+    background-color: #fff;
+    color: #2a2a2a;
+    border: none;
+    border-radius: 5px;
+    width: 100%;
+    text-align: left;
+    font-weight: 600;
+}
+
+.accordion {
+    --bs-accordion-btn-focus-border-color: transparent;
+    --bs-accordion-btn-focus-box-shadow: none;
+}
+
+.accordion-header button:hover {
+    background-color: #fff;
+}
+
+.accordion-button {
+    padding-bottom: 0;
+}
+
+.accordion-body {
+    background-color: #fff;
+    border: 1px solid #fff;
+    padding: 10px;
+    border-radius: 0px;
+}
+
+/* Optional: Remove default list-style for the accordion bullets */
+.accordion-item {
+    list-style: none;
+    padding: 0;
+}
+
+
+/***Slide Nav ****/
+
+
+.example-sidenav-content {
+  display: flex;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.example-sidenav {
+  padding: 20px;
+}
+
+
+
+//side nav bar
+
+.sidenav {
+  width: 45%;
+  position: fixed;
+  top: 0;
+  right: -45%;
+  height: 100%;
+  background-color: #fff;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav.active {
+  right: 0;
+  z-index: 11;
+  border-left: 0.1px solid orange;
+}
+
+.close-button {
+  position: absolute;
+  top: 3rem;
+  right: 1rem;
+  background: rgb(251, 96, 88);
+  border: none;
+  color: rgb(255, 255, 255);
+  width: 2rem;
+  height: 2rem;
+  border-radius: 100%;
+  cursor: pointer;
+  outline: none;
+  z-index: 15;
+}
+
+
+@media (min-width: 66rem){
+
   }
 
-.per-month{
-    color:#CE0707;
-    font-weight: 500;
-    width:100%;
-    display: block;
-    font-size:18px;
-    cursor: pointer;
-    margin:15px 0;
-}
+  @media (min-width: 42rem){
+ }
 

@@ -1,7 +1,6 @@
 import { RouterModule, Routes } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { TerminateComponent } from './pages/terminate/terminate.component';
-import { SolarfastsystemComponent } from './pages/solarfastsystem/solarfastsystem.component';
 import { InstallDateComponent } from './pages/install-date/install-date.component';
 import { GooglemapComponent } from 'src/shared/components/googlemap/googlemap.component';
 import { PostalCodeEntryComponent } from './pages/postal-code-entry/postal-code-entry.component';
@@ -28,11 +27,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/pages.module').then(a => a.PagesModule),
   },
 
-
-  {
-    path:'solarfastsystem',
-    component: SolarfastsystemComponent
-  },
   {
     path:'chooseinstalldate',
     component: InstallDateComponent

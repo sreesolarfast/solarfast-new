@@ -41,6 +41,7 @@ export class OnlineEnquiryDto {
   dateCompleted!: Date | string | null;
   preferredContactTime!: Date | string | null;
   initialEnquriyDate!: Date | string | null;
+  dateLastQuoted: Date | string | null;
 
   selectedPackageId!: number | null;
   selectedPackage!: PackageDto;
@@ -50,4 +51,6 @@ export class OnlineEnquiryDto {
 
   companyId: number | null;
   repId: string;
+    sendQuote: boolean;
+    subscribe: boolean | null;
 }

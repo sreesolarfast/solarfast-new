@@ -2,7 +2,7 @@ import { OnlineEnquiryService } from './online-enquiry.service';
 import { Injectable } from '@angular/core';
 import { FormStep } from '../model/form-step';
 import { Router } from '@angular/router';
-import { BehaviorSubject, Observable } from 'rxjs';
+import { BehaviorSubject, Observable, of } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -17,7 +17,13 @@ export class FormService {
     return this._activeStep.asObservable();
   }
 
- public activeStep: FormStep;
+//   get activeStep(): FormStep {
+//     return this._activeStep.value;
+//   }
+
+  set activeStep(step: FormStep) {
+    this._activeStep.next(step);
+  }
 
 constructor(private onlineEnquiryService: OnlineEnquiryService, private router: Router) { }
 
@@ -30,7 +36,7 @@ private steps: FormStep[] = [
     back: null,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 1,
@@ -39,7 +45,7 @@ private steps: FormStep[] = [
     back: 0,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 2,
@@ -48,7 +54,7 @@ private steps: FormStep[] = [
     back: 1,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 3,
@@ -57,7 +63,7 @@ private steps: FormStep[] = [
     back: 2,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 4,
@@ -66,7 +72,7 @@ private steps: FormStep[] = [
     back: 3,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 5,
@@ -75,7 +81,7 @@ private steps: FormStep[] = [
     back: 4,
     hideNavigation: false,
     hideComponent: false,
-    route: '/solar'
+    route: null
   },
   {
     step: 6,
@@ -160,16 +166,16 @@ public getSteps() {
 
 public stepChange(event) {
   // set the next active step
-  this.activeStep = this.steps.filter((x) => x.step == event)[0];
+  const activeStep = this.steps.filter((x) => x.step == event)[0];
 
   // conditionally set the peristed step
   if (event != this.onlineEnquiryService.step)
     this.onlineEnquiryService.setStep(event);
 
-    if (this.activeStep.route != null)
-    this.router.navigate([this.activeStep.route])
+    if (activeStep.route != null)
+    this.router.navigate([activeStep.route])
 
-    this._activeStep.next(this.activeStep);
+    this._activeStep.next(activeStep);
 
   // set online enquiry
   this.onlineEnquiryService
@@ -184,26 +190,27 @@ public stepChange(event) {
 }
 
 public next() {
-  this.stepChange(this.activeStep.next);
+    if (this._activeStep.value == null)
+        this._activeStep.next(this.getSteps().filter(x => x.step == this.onlineEnquiryService.step)[0]);
+  this.stepChange(this._activeStep.value.next);
 }
 
 public back() {
-  this.stepChange(this.activeStep.back);
+    if (this._activeStep.value == null)
+        this._activeStep.next(this.getSteps().filter(x => x.step == this.onlineEnquiryService.step)[0]);;
+
+  this.stepChange(this._activeStep.value.back);
 }
 
 public redirectToCorrectStep() {
 
-  if (this.getActiveStep().route == null) {
+  if (this._activeStep?.value?.route == null) {
     this.router.navigate(['/solar']);
   }
    else
-   this.router.navigate([this.activeStep.route]);
+   this.router.navigate([this._activeStep.value.route]);
 }
 
-public getActiveStep() {
-  this.activeStep = this.steps.filter((x) => x.step == this.onlineEnquiryService.step)[0];
-  return this.activeStep;
-}
 
 
 }

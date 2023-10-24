@@ -10,6 +10,37 @@ export class SelecthouseonmapComponent implements OnInit{
     throw new Error('Method not implemented.');
   }
 
+
+  data = [
+    {
+      itemsList: [
+        {
+          options: [
+            {
+              img: 'assets/map/drag-the-map-bg.png',
+              type: 'Drag the map',
+              name: 'Drag the map',
+              description: 'Locate your house by dragging the map.'
+            },
+            {
+              img: 'assets/map/use-zoom-bg.png',
+              type: 'Use zoom controls',
+              name: 'Zoom Controls',
+              description: 'Then, use the controls to zoom in on your roof.'
+            },
+            {
+              img: 'assets/map/drop-pin-bg.png',
+              type: 'Drop a pin',
+              name: 'Drop a pin',
+              description: 'Description for Option 3'
+            }
+          ]
+        }
+      ]
+    }
+  ];
+
+
   // todo @sree I have removed all this code as it depended on the old method for building the form
   // data: any;
   // activeChildStep: number = 0;
@@ -39,10 +70,9 @@ export class SelecthouseonmapComponent implements OnInit{
   //   }
   // }
 
-  // getStarted() {
-  //   this. onNextStepClick()
-  //   // Handle "Get Started" button click
-  // }
+  getStarted() {
+    
+  }
 
   
 

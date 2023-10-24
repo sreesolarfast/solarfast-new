@@ -26,7 +26,6 @@ export class FormComponent implements OnInit {
 
   ngOnInit() {
     this.steps = this.formService.getSteps();
-    this.activeStep = this.formService.getActiveStep();
 
     this.formService.activeStep$.subscribe({
       next: (x) => {
@@ -74,7 +73,9 @@ export class FormComponent implements OnInit {
     if (!this.loading)
       this.onlineEnquiryService.step$.subscribe({
         next: (x) => {
-          if (x != null) this.formService.stepChange(x);
+          if (x != null) {this.formService.stepChange(x);
+            // this.activeStep = this.formService.getSteps().filter(s => s.step == x)[0];
+          }
         },
       });
   }
