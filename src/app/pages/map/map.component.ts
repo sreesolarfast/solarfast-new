@@ -8,6 +8,7 @@ import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalc
 import { GeocodingService } from '../../../shared/service/geocoding.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 import { FormService } from '../../../shared/service/form.service';
+import { ChangeDetectorRef } from '@angular/core';
 
 @Component({
   selector: 'app-map',
@@ -17,7 +18,7 @@ import { FormService } from '../../../shared/service/form.service';
 export class MapComponent implements OnInit {
     @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
     @ViewChild(MapInfoWindow, { static: false }) infoWindow!: MapInfoWindow;
- 
+
     submitted= false;
     onlineEnquiry: OnlineEnquiryDto | null;
 
@@ -26,13 +27,14 @@ export class MapComponent implements OnInit {
     mapCenter!: google.maps.LatLng;
     mapOptions: google.maps.MapOptions = {
       mapTypeId: google.maps.MapTypeId.SATELLITE,
-      zoomControl: true,
+      zoomControl: false,
       scrollwheel: false,
       disableDoubleClickZoom: true,
-      maxZoom: 18,
+      maxZoom: 20,
       minZoom: 12,
       disableDefaultUI: true,
     };
+    zoom: number = 20;
     markerInfoContent = '';
     markerOptions: google.maps.MarkerOptions = {
       draggable: true,
@@ -42,7 +44,7 @@ export class MapComponent implements OnInit {
     geocoderWorking = false;
     geolocationWorking = false;
 
-    
+
      /*{
                 "img": 'assets/7/drag-the-map-bg.png',
                 "type": '',
@@ -65,10 +67,10 @@ export class MapComponent implements OnInit {
 
     constructor(
       private geocodingService: GeocodingService, private route: Router, private formBuilder: FormBuilder, private postalCodeService:EnteredPostalCodeService, private onlineEnquiryService: OnlineEnquiryService
-   , private formService: FormService ) {
+   , private formService: FormService, private mapZoomDetected: ChangeDetectorRef ) {
 
     }
-    
+
 
     ngOnInit(): void {
 
@@ -103,13 +105,25 @@ export class MapComponent implements OnInit {
     }
 
     zoomIn() {
-      this.map.zoom++;
+      if(!(this.zoom === this.mapOptions.maxZoom || this.zoom >= this.mapOptions.maxZoom)){
+        if (this.map) {
+          this.zoom++;
+          this.mapZoomDetected.detectChanges();
+        }
+      }
+
     }
-  
+
     zoomOut() {
-      this.map.zoom--;
+      if(!(this.zoom === this.mapOptions.minZoom)){
+        if (this.map) {
+          this.zoom--;
+          this.mapZoomDetected.detectChanges();
+        }
+      }
+
     }
-  
+
 
     onMapDragEnd(event: any) {
       this.onlineEnquiry.latitude = event.latLng?.lat();
@@ -148,6 +162,10 @@ export class MapComponent implements OnInit {
         .finally(() => {
           this.geocoderWorking = false;
         });
+    }
+
+    continuebtn(){
+      this.formService.next();
     }
 
   }

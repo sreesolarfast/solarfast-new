@@ -57,7 +57,7 @@
     right: 10px;
     transform: translateY(-50%);
   }
-  
+
   .zoom-controls button {
     width: 60px;
     height: 60px;
@@ -69,4 +69,10 @@
     background-color: white;
     box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
     cursor: pointer;
+  }
+
+  .zoom-controls .active{
+    color: gray;
+    cursor: not-allowed;
+    content: '';
   }
