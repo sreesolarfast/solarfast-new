@@ -26,17 +26,22 @@ export class InstallmentsSummaryComponent {
     this.calculate();
   }
 
+  closeDialog(): void {
+    
+  }
+
   calculate(): void {
     this.calculations = [];
 
     if (this.selectedPeriod) {
-      const depositAmount = (this.depositPercent / 100) * this.selectedPeriod.amount;
+      const depositAmount = (this.depositPercent / 50) * this.selectedPeriod.amount;
 
       const rateOfInterest = 11.3;
       const effectiveAPR = 11.9;
       const numberOfPayments = this.selectedPeriod.period;
       const costOfCredit = 100;
       const totalAmountPayable = depositAmount + costOfCredit;
+      const setupFee = 0;
 
       this.calculations.push(
         { label: 'Deposit Amount', value: depositAmount },
@@ -44,7 +49,8 @@ export class InstallmentsSummaryComponent {
         { label: 'Effective APR', value: effectiveAPR },
         { label: 'Number of Payments', value: numberOfPayments },
         { label: 'Cost of Credit', value: costOfCredit },
-        { label: 'Total Amount Payable', value: totalAmountPayable }
+        { label: 'Total Amount Payable', value: totalAmountPayable },
+        { label: 'Setup fee', value: setupFee }
       );
     }
   }
