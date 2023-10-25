@@ -5,6 +5,7 @@ import { PackageProductDto } from './package-product-dto';
 
 export class PackageDto {
   dtoId!: number;
+  emi!:string;
   dateCreated!: Date | string;
   dateUpdated!: Date | string | null;
   dateDeleted!: Date | string | null;

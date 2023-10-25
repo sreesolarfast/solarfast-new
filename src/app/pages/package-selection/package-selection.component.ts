@@ -19,14 +19,22 @@ export class PackageSelectionComponent {
     getItemData = ""
     @ViewChild(WhatsincludedComponent) ChildComponent;
     dataToSendToPopup: any;
-
-
+    tenureMonths = 120;
+    calculations: any[] = [];
+    interestRate = 11.9;
 
     constructor(
         public dialog: MatDialog,
         private onlineEnquiryService: OnlineEnquiryService,
         public formService: FormService
-    ) {}
+    ) {
+
+    }
+    calculateEMI(loanAmount: number, interestRate: number, tenureMonths: number): number {
+      const monthlyInterestRate = (interestRate / 100) / 12;
+      const emi = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -tenureMonths));
+      return emi;
+    }
 
     ngOnInit(): void {
         const step = this.formService.getSteps().filter(x => x.component == 'page-package-selection')[0];
@@ -43,6 +51,14 @@ export class PackageSelectionComponent {
                 // });
 
                 this.packages = x.packageOptions;
+
+                this.packages = this.packages.map(loan => ({
+                  ...loan,
+                  emi: this.calculateEMI(loan.totalCostPrice, this.interestRate, this.tenureMonths).toFixed(2)
+                }));
+
+                console.log(this.packages, "::::::::::::::")
+
             },
         });
     }

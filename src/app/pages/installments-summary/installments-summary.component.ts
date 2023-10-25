@@ -9,8 +9,8 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 export class InstallmentsSummaryComponent {
   loanPeriods: any[] = [];
   totalLoanAmount: number;
-  annualInterestRate = 11.3;
-  effectiveAPR = 11.9;
+  annualInterestRate = 11.9;
+  effectiveAPR = 11.3;
   depositPercent = 50;
   calculations: any[] = [];
   selectedPeriod: any;
