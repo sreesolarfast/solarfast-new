@@ -5,7 +5,7 @@ import { PackageProductDto } from './package-product-dto';
 
 export class PackageDto {
   dtoId!: number;
-  emi!:string;
+  emi!:string; // sree addeed 
   dateCreated!: Date | string;
   dateUpdated!: Date | string | null;
   dateDeleted!: Date | string | null;
@@ -18,7 +18,7 @@ export class PackageDto {
   productDtos!: PackageProductDto[];
   imageDtos!: ImageFileDto[];
 
-  type: PackageType | null;
+  packageType: PackageType | null;
 
   uplift: number;
   discount: number;

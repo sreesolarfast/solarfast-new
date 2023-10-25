@@ -1,5 +1,4 @@
 <ng-container *ngIf="!loading">
-
     <progression-bar-top></progression-bar-top>
 
     <div class="map">
@@ -8,92 +7,47 @@
         </div>
     </div>
 
-    <!--Help-->
-    <div class="need-help">
-        <div class="d-flex align-items-center">
-            <div class="help-icon">
-                <i class="bi bi-question-circle"></i>
-            </div>
-            <div class="help-body">
-                <h3>Need help?</h3>
-                <p>Speak to our team</p>
-            </div>
-        </div>
-    </div>
-    <!--Help Ends-->
+    <app-need-help></app-need-help>
+
+    <!--Back button-->
+    <a class="btn-black" (click)="backButton()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
+            <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
+        </svg>
+    </a>
 
     <div id="#msform" class="container-fluid justify-content-center">
         <div class="container-fluid py-5">
             <div class="row">
-                <div
-                    class="col-md-12 col-md-offset-3 main-content"
-                    *ngIf="!activeStep.hideComponent"
-                >
+                <div class="col-md-12 col-md-offset-3 main-content" *ngIf="!activeStep.hideComponent">
                     <div class="card-content">
-                        <ng-container
-                            *ngIf="
-                                activeStep.component ==
-                                'step-property-ownership'
-                            "
-                        >
-                            <step-property-ownership
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-property-ownership>
+                        <ng-container *ngIf="activeStep.component == 'step-property-ownership'">
+                            <step-property-ownership [step]="activeStep" (newStep)="formService.stepChange($event)"></step-property-ownership>
                         </ng-container>
 
-                        <ng-container
-                            *ngIf="activeStep.component == 'step-house-type'"
-                        >
-                            <step-house-type
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-house-type>
+                        <ng-container *ngIf="activeStep.component == 'step-house-type'">
+                            <step-house-type [step]="activeStep" (newStep)="formService.stepChange($event)"></step-house-type>
                         </ng-container>
 
-                        <ng-container
-                            *ngIf="activeStep.component == 'step-roof-type'"
-                        >
-                            <step-roof-type
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-roof-type>
+                        <ng-container *ngIf="activeStep.component == 'step-roof-type'">
+                            <step-roof-type [step]="activeStep" (newStep)="formService.stepChange($event)"></step-roof-type>
                         </ng-container>
 
-                        <ng-container
-                            *ngIf="activeStep.component == 'step-shading'"
-                        >
-                            <step-shading
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-shading>
+                        <ng-container *ngIf="activeStep.component == 'step-shading'">
+                            <step-shading [step]="activeStep" (newStep)="formService.stepChange($event)"></step-shading>
                         </ng-container>
 
-                        <ng-container
-                            *ngIf="
-                                activeStep.component ==
-                                'step-annual-consumption'
-                            "
-                        >
-                            <step-annual-consumption
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-annual-consumption>
+                        <ng-container *ngIf="activeStep.component == 'step-annual-consumption'">
+                            <step-annual-consumption [step]="activeStep" (newStep)="formService.stepChange($event)"></step-annual-consumption>
                         </ng-container>
 
-                        <ng-container
-                            *ngIf="activeStep.component == 'step-unit-rate'"
-                        >
-                            <step-unit-rate
-                                [step]="activeStep"
-                                (newStep)="formService.stepChange($event)"
-                            ></step-unit-rate>
+                        <ng-container *ngIf="activeStep.component == 'step-unit-rate'">
+                            <step-unit-rate [step]="activeStep" (newStep)="formService.stepChange($event)"></step-unit-rate>
                         </ng-container>
 
-                        <ng-container *ngIf="activeStep.step == 6">
-                        </ng-container>
+                        <ng-container *ngIf="activeStep.step == 6"> </ng-container>
 
-                        <ng-container *ngIf="!activeStep.hideNavigation && activeStep.back != null">
+                        <!-- <ng-container *ngIf="!activeStep.hideNavigation && activeStep.back != null">
                             <div
                                 class="btn-toolbar d-flex justify-content-center mt-5"
                                 role="group"
@@ -120,44 +74,16 @@
 
                                     Back
                                 </button>
-                                <!-- <button type="button" class="btn btn-primary" (click)="formService.next()" [disabled]="activeStep?.next == null">Next</button> -->
+
                             </div>
-                        </ng-container>
+                        </ng-container> -->
 
-                        <ul
+                        <ul id="progressbar" [ngClass]="0 <= 2 ? 'show' : 'hide'" class="progress-bar">
+                            <li class="col-md-12" [ngClass]="[0 <= activeStep.step ? 'active' : 'inactive']">Your Home</li>
 
-                            id="progressbar"
-                            [ngClass]="0 <= 2 ? 'show' : 'hide'"
+                            <li class="col-md-12" [ngClass]="[4 <= activeStep.step ? 'active' : 'inactive']">Your Consumption</li>
 
-                            class="progress-bar"
-                        >
-
-                            <li
-                                class="col-md-12"
-                                [ngClass]="[
-                                    0 <= activeStep.step ? 'active' : 'inactive'
-                                ]"
-                            >
-                                Your Home
-                            </li>
-
-                            <li
-                                class="col-md-12"
-                                [ngClass]="[
-                                    4 <= activeStep.step ? 'active' : 'inactive'
-                                ]"
-                            >
-                                Your Consumption
-                            </li>
-
-                            <li
-                                class="col-md-12"
-                                [ngClass]="[
-                                    6 <= activeStep.step ? 'active' : 'inactive'
-                                ]"
-                            >
-                                Location Pin
-                            </li>
+                            <li class="col-md-12" [ngClass]="[6 <= activeStep.step ? 'active' : 'inactive']">Location Pin</li>
                         </ul>
                     </div>
                 </div>

@@ -10,18 +10,17 @@ import { PagesRoutingModule } from './pages-routing.module';
 import { SharedModule } from 'src/shared/shared.module';
 import { MaterialModule } from 'src/shared/modules/material.module';
 import { MapComponent } from './map/map.component';
-import { NgApexchartsModule } from 'ng-apexcharts';
-import { ConsumptionProdcutionChartComponent } from './consumptionprodcutionchart/consumptionprodcutionchart.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
-import { WhatsincludedComponent } from './whatsincluded/whatsincluded.component';
-import { SelecthouseonmapComponent } from './selecthouseonmap/selecthouseonmap.component';
+import { TerminateComponent } from './terminate/terminate.component';
+import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
+import { NextStepsComponent } from './next-steps/next-steps.component';
+import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
 
 @NgModule({
   imports: [
     CommonModule,
     ReactiveFormsModule,
     PagesRoutingModule,
-    NgApexchartsModule,
     SharedModule,
     MaterialModule
 
@@ -32,11 +31,12 @@ import { SelecthouseonmapComponent } from './selecthouseonmap/selecthouseonmap.c
     OfflineComponent,
     PackageSelectionComponent,
     PackageSelectedComponent,
-    ConsumptionProdcutionChartComponent,
-    SelecthouseonmapComponent,
     MapComponent,
-    WhatsincludedComponent,
     ThankYouComponent,
+    TerminateComponent,
+    PhotoUploadComponent,
+    NextStepsComponent,
+    OrderConfirmationComponent,
 ]
 })
 export class PagesModule { }

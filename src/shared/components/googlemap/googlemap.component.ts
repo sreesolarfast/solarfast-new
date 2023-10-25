@@ -24,8 +24,8 @@ export class GooglemapComponent {
   center!: google.maps.LatLngLiteral;
   mapCenter!: google.maps.LatLng;
   mapOptions: google.maps.MapOptions = {
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
-    zoomControl: true,
+    mapTypeId: google.maps.MapTypeId.HYBRID,
+    zoomControl: false,
     scrollwheel: false,
     disableDoubleClickZoom: true,
     maxZoom: 18,
@@ -36,7 +36,7 @@ export class GooglemapComponent {
   markerOptions: google.maps.MarkerOptions = {
     draggable: true,
     animation: google.maps.Animation.DROP,
-    icon: 'assets/map/map-icon.png',
+    icon: './assets/map/map-icon.svg',
   };
   geocoderWorking = false;
   geolocationWorking = false;
@@ -52,6 +52,7 @@ this.onlineEnquiryService.result$.subscribe({
    if (x != null) {
     this.onlineEnquiry = x;
     this.center = {lat: +this.onlineEnquiry.latitude, lng: +this.onlineEnquiry.longitude};
+
     this.mapCenter = new google.maps.LatLng(this.center);
    }
   }
@@ -97,7 +98,7 @@ this.onlineEnquiryService.result$.subscribe({
             this.markerOptions = {
               draggable: true,
               animation: google.maps.Animation.DROP,
-              icon: 'assets/7/map-icon.png',
+              icon: './assets/7/map-icon.svg',
             };
 
             this.markerInfoContent = value.formatted_address;

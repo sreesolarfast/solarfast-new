@@ -1,0 +1,51 @@
+<ng-container *ngIf="package != null">
+    <div class="what-included">
+        <div class="includedList">
+            <h1 class="title">What's included</h1>
+            <p>The main items included in your installation are listed below.</p>
+            <ul>
+                <ng-container *ngIf="package?.panelDtos.length > 0">
+                    <h1>Panels</h1>
+                    <hr
+                /></ng-container>
+                <li *ngFor="let item of package?.panelDtos">
+                    <app-whats-included-product [product]="item"></app-whats-included-product>
+                </li>
+
+                <ng-container *ngIf="package?.inverterDtos.length > 0">
+                    <h1>Inverters</h1>
+                    <hr
+                /></ng-container>
+                <li *ngFor="let item of package?.inverterDtos">
+                    <app-whats-included-product [product]="item"></app-whats-included-product>
+                </li>
+
+                <ng-container *ngIf="package?.batteryDtos.length > 0">
+                    <h1>Batteries</h1>
+                    <hr
+                /></ng-container>
+                <li *ngFor="let item of package?.batteryDtos">
+                    <app-whats-included-product [product]="item"></app-whats-included-product>
+                </li>
+
+                <ng-container *ngIf="package?.productDtos?.length > 0">
+                    <h1>Other Products</h1>
+                    <hr />
+                </ng-container>
+                <li *ngFor="let item of package?.productDtos">
+                    <app-whats-included-product [product]="item"></app-whats-included-product>
+                </li>
+            </ul>
+        </div>
+
+        <!--Not included-->
+        <div class="what-notincluded">
+            <h2 class="title">What's not included</h2>
+            <ul>
+                <li *ngFor="let notincluded of notincludeds">
+                    <span class="pe-3"><i class="bi bi-x-circle-fill"></i></span> {{ notincluded.list }}
+                </li>
+            </ul>
+        </div>
+    </div>
+</ng-container>

@@ -1,7 +1,17 @@
 .progression-bar{
     width: 100%;
-    height: 20px;
+    height: 10px;
     background-color: #75C043;
+    position: absolute;
+    left: 0;
+    top: 0;
+    z-index: 99999;
+}
+
+.progress-bar{
+    width: 100%;
+    height: 10px;
+    background-color: #1a1a1a;
     position: absolute;
     left: 0;
     top: 0;

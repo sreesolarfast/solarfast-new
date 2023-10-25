@@ -1,41 +1,29 @@
 <progression-bar-top></progression-bar-top>
 
-<!--Help-->
-<div class="need-help margin-top">
-    <div class="d-flex align-items-center">
-        <div class="help-icon">
-            <i class="bi bi-question-circle"></i>
-        </div>
-        <div class="help-body">
-            <h3>Need help?</h3>
-            <p>Speak to our team</p>
-        </div>
-    </div>
-</div>
-<!--Help Ends-->
+<app-need-help></app-need-help>
 
-<div class="get-started">
-    <div class="container">
-        <div class="row">
-        <div class="zoom-controls">
-          <div class="row">
-            <div class="col-md-4" *ngFor="let option of data[0].itemsList[0].options; let i = index">
-              <div class="text-center">
-                <img [src]="option.img" [alt]="option.type" class="location-pin-image">
-              </div>
-              <h4 class="text-center">{{ option.name }}</h4>
-              <p class="text-center">{{ option.description }}</p>
-            </div>
+<div *ngIf="addressAvilable" class="get-started">
+<div class="container">
+    <div class="row">
+    <div class="zoom-controls">
+      <div class="row">
+        <div class="col-md-4" *ngFor="let option of data[0].itemsList[0].options; let i = index">
+          <div class="text-center">
+            <img [src]="option.img" [alt]="option.type" class="location-pin-image">
           </div>
-          <div class=" ml-auto form-group text-center">
-            <div class="btns-next-prev">
-              <button (click)="formService.next()" type="button" name="next" class="btn btn-success">Get Started</button>
-            </div>
-          </div>
+          <h4 class="text-center">{{ option.name }}</h4>
+          <p class="text-center">{{ option.description }}</p>
+        </div>
+      </div>
+      <div class=" ml-auto form-group text-center">
+        <div class="btns-next-prev">
+          <button (click)="getStarted()" type="button" name="next" class="btn btn-success">Get Started</button>
         </div>
       </div>
     </div>
-    </div>
+  </div>
+</div>
+</div>
 
 <!--Googke Map-->
 
@@ -57,28 +45,17 @@
     </map-marker>
     <map-info-window>{{ markerInfoContent }}</map-info-window>
 </google-map>
-<a class="btn btn-black" (click)="formService.back()">
-    <svg
-        xmlns="http://www.w3.org/2000/svg"
-        width="25"
-        height="20"
-        viewBox="0 0 35 30"
-    >
-        <path
-            d="M20 10 L5 10 M10 5 L5 10 10 15"
-            stroke="white"
-            stroke-width="2"
-            fill="none"
-        />
+<!--Back button-->
+<a class="btn-black" (click)="formService.back()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
+        <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
     </svg>
 </a>
 
-
-
-<div class="roof-selected" *ngIf="markerInfoContent.length > 0">
+<div class="roof-selected" *ngIf="markerInfoContent.length > 0 || addressAvilable == false">
     <div class="d-flex justify-content-between">
         <div class="roof-icon">
-            <img src="assets/map/map-icon.png" />
+            <img src="./assets/map/map-icon.png" />
         </div>
         <div class="roof-content">
             <h3>Roof selected</h3>
@@ -91,7 +68,6 @@
 </div>
 
 <div class="map-zoom-controls">
-
     <button class="zoom-in" (click)="zoomIn()" [ngClass]="{'active': zoom === mapOptions.maxZoom || zoom >= mapOptions.maxZoom}">
         <i class="bi bi-plus-lg"></i>
     </button>

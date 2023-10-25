@@ -10,6 +10,7 @@ import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
   styleUrls: ['./property-ownership.component.scss']
 })
 export class PropertyOwnershipComponent implements OnInit {
+  
 @Input() step: FormStep;
 @Output() newStep = new EventEmitter<number | null>();
 

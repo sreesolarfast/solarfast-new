@@ -1,8 +1,6 @@
-import { OnlineEnquiryDto } from './../../../shared/dto/online-enquiry-dto';
 import { Injectable } from '@angular/core';
 import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot, UrlTree } from '@angular/router';
 import { Observable } from 'rxjs';
-import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalcode.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 
 @Injectable({

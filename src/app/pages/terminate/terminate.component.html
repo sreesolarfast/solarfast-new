@@ -1,16 +1,4 @@
-  <!--Help-->
-  <div class="need-help">
-    <div class="d-flex align-items-center">
-      <div class="help-icon">
-          <i class="bi bi-question-circle"></i>
-      </div>
-      <div class="help-body">
-          <h3>Need help?</h3>
-          <p>Speak to our team</p>
-      </div>
-    </div>
-    </div>
-    <!--Help Ends-->
+<app-need-help></app-need-help>
 
 <div class="property-bg"></div>
 <div class="overlay"></div>
@@ -19,21 +7,18 @@
       <div class="col-md-6">
         <div class="">
           <div class="card-contents renting">
-            <div class="row">
-              <div class="col-md-12">
-                <h1>
-                  We are sorry but we can install only if your the owner of the
-                  property
-                </h1>
-              </div>
-            </div>
-            <div class="row">
-              <div class="col-md-12">
-                <p>
-                    If you are enquiring on behalf of the property owner, please have them get in touch directly with us and we'll be more than happy to help.
-                </p>
-              </div>
-            </div>
+
+            <ng-container *ngIf="reason === 'Property Ownership'">
+                <ng-container
+                    *ngTemplateOutlet="propertyOwnership"></ng-container>
+            </ng-container>
+
+            <ng-container *ngIf="reason === 'Property Type'">
+                <ng-container
+                    *ngTemplateOutlet="propertyType"></ng-container>
+            </ng-container>
+
+
             <div class="row text-center">
               <div class="col-md-12">
                 <a class="btn btn-success" (click)="backButton()"
@@ -45,3 +30,41 @@
       </div>
     </div>
   </div>
+
+
+
+  <ng-template #propertyOwnership let-result>
+    <div class="row">
+        <div class="col-md-12">
+          <h1>
+            We are sorry but we can install only if your the owner of the
+            property
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+              If you are enquiring on behalf of the property owner, please have them get in touch directly with us and we'll be more than happy to help.
+          </p>
+        </div>
+      </div>
+</ng-template>
+
+
+<ng-template #propertyType let-result>
+    <div class="row">
+        <div class="col-md-12">
+          <h1>
+            We are sorry but we don't currently offer installations on your selected property type.
+          </h1>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-md-12">
+          <p>
+              If you leave your contact details we will get in touch when we are able to offer a solution for your property type.
+          </p>
+        </div>
+      </div>
+</ng-template>

@@ -1,0 +1,101 @@
+.container{
+  background-color: white;
+  height: auto;
+}
+
+.pay-installments ul li{
+  line-height:2rem;
+  font-weight:600;
+  font-size:1.1rem;
+}
+
+.list-group-item:hover {
+  background-color: rgba(115, 189, 66, 0.3);
+  border: 1px solid #74BD42;
+  color: #000;
+  cursor: pointer;
+}
+
+.list-group-item.active {
+  background-color: #74BD42;
+  border: 1px solid #74BD42;
+  color: #fff;
+}
+
+.form-control-range {
+  width: 100%;
+  background: #74BD42;
+  cursor: pointer;
+  height: 25px;
+}
+
+.form-control-range::-webkit-slider-thumb {
+  width: 25px;
+  height: 25px;
+  background: #74BD42;
+  border: 2px solid #74BD42;
+  border-radius: 50%;
+  cursor: pointer;
+}
+
+.cdk-overlay-container{
+  background:#fff;
+  width: 650px;
+}
+
+.pay-installments{
+  padding:1rem;
+  background:#fff;
+  border-radius:32px;
+}
+
+.pay-installments h2{
+  font-size:1.5rem;
+  font-weight: 700;
+  margin:15px 0;
+}
+
+.apr-tr{
+  border:1px solid #d8d8d8;
+  padding:15px;
+
+}
+
+.pay-installments .apr-tr input[type="range"] {
+  --thumb-color: #ff0000;
+  --track-color: #aaaaaa;
+  --progress-color: #00ff00;
+  height: 20px;
+  border-radius: 10px;
+}
+
+.close-button{
+  position: absolute;
+    top: 10px;
+    right: 10px;
+    background: #000;
+    border: none;
+    color: rgb(255, 255, 255);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+    text-align: center;
+    z-index: 15;
+    font-size: 1.3rem;
+}
+
+.close-button .mat-icon{
+  font-size: 1.3rem;
+  margin-top:-15px;
+  margin-left:-8px;
+  cursor: pointer;
+  z-index: 100;
+}
+
+@media (max-width: 576px) {
+  .mat-dialog {
+    width: 100%;
+  }
+}

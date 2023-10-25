@@ -533,3 +533,40 @@ img {
     border-radius: 50% !important;
 }
 
+.mat-drawer-container, .mat-drawer-inner-container {
+    background: transparent !important;
+}
+
+.whats-included-button {
+    cursor: pointer;
+}
+
+.modal-backdrop {
+    z-index: 1 !important;
+  }
+
+  .modal {
+    z-index: 99999 !important;
+  }
+
+
+  .property-bg{
+    background: url('assets/renting/CS_Whiteoak_House.png');
+    width: 100%;
+    position: fixed;
+    top:0;
+    left: 0;
+    z-index: -1;
+    height: 100%;
+
+  /* Center and scale the image nicely */
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+.hover {
+    &:hover {
+    cursor: pointer;
+}
+}

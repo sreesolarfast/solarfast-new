@@ -10,8 +10,10 @@ export class PackageProductDto {
   packageDto!: PackageDto;
 
   productId!: number;
+  productDto: any;
 
   costPrice!: number;
   salePrice!: number;
   quantity!: number;
+  description!: string;
 }

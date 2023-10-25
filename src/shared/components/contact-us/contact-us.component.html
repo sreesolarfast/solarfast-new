@@ -1,0 +1,48 @@
+<div class="container-fluid">
+    <form class="w-50 m-5" [formGroup]="form" (ngSubmit)="submitForm()">
+        <div class="row">
+            <div class="form-group pb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="firstname"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
+                </div>
+                <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">First name is required.</div>
+            </div>
+            <div class="form-group pb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="lastname"><i class="bi bi-person-fill"></i></span>
+                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
+                </div>
+                <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">Last name is required.</div>
+            </div>
+
+            <div class="form-group pb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="email"><i class="bi bi-envelope-fill"></i></span>
+                    <input type="email" class="form-control" placeholder="Email" formControlName="email" />
+                </div>
+                <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
+            </div>
+
+            <div class="form-group pb-3">
+                <div class="input-group">
+                    <span class="input-group-text" id="lastname"><i class="bi bi-telephone-fill"></i></span>
+                    <input type="tel" class="form-control" placeholder="Phone" formControlName="phoneNumber" />
+                </div>
+                <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Enter a valid phone number.</div>
+            </div>
+
+            <div class="form-group pb-3">
+                <label>Reason for Contact</label>
+                <div class="input-group">
+                    <textarea class="form-control" placeholder="Reason" rows="3" formControlName="reason"></textarea>
+                </div>
+                <div *ngIf="form.get('reason').invalid && form.get('reason').touched" class="text-danger">A reason is required.</div>
+            </div>
+
+            <div class="w-100 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary submit-button fs-5" [disabled]="!form.valid">Submit</button>
+            </div>
+        </div>
+    </form>
+</div>

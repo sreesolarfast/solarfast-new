@@ -34,4 +34,20 @@ const routes: Routes = [
   exports: [RouterModule]
 })
 export class FormRoutingModule {
+
+  center!: google.maps.LatLngLiteral;
+  mapCenter!: google.maps.LatLng;
+  mapOptions: google.maps.MapOptions = {
+      mapTypeId: google.maps.MapTypeId.HYBRID,
+      zoomControl: false,
+      scrollwheel: false,
+      disableDoubleClickZoom: true,
+      maxZoom: 20,
+      minZoom: 12,
+      disableDefaultUI: true,
+      // zoomControlOptions:{
+      //     position:google.maps.ControlPosition.BOTTOM_CENTER,
+      // }
+
+  };
 }

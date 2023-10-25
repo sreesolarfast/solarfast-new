@@ -4,7 +4,7 @@
     left: 0;
     width: 100%;
     height: 100%;
-    background: url("/assets/7/slide-7.png");
+    background: url('/assets/7/slide-7.png');
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center center;
@@ -14,7 +14,7 @@
     cursor: not-allowed; /* Change cursor style to not-allowed */
     pointer-events: none; /* Disable pointer events */
     /* Add any other styling as needed */
-  }
+}
 
 .back-buttons {
     position: fixed;
@@ -41,11 +41,7 @@
 }
 
 .btn-primary {
-    background: linear-gradient(
-        to bottom,
-        #75c043,
-        #44a900
-    ); //todo change this to sf green
+    background: linear-gradient(to bottom, #75c043, #44a900); //todo change this to sf green
     border: transparent;
 }
 
@@ -53,8 +49,6 @@
     margin-top: 100px;
     margin-left: 50px;
     margin-right: 50px;
-
-
 
     --mat-expansion-container-background-color: white;
     --mat-expansion-container-shape: none;
@@ -70,8 +64,7 @@
         margin-left: 5px;
     }
 
-
-    .card{
+    .card {
         border-radius: 1.5rem;
         border-color: #ccc;
         background: #fff;
@@ -107,23 +100,20 @@
         }
     }
 
-    .date-picker{
+    .date-picker {
         padding: 0% 10% 0% 10%;
-        color:#b2b2b2;
+        color: #b2b2b2;
     }
 
-
-    .selected{
-        color:#000;
+    .selected {
+        color: #000;
     }
 
-    .day-row{
+    .day-row {
         //grid with 12 cols and no specified row
         display: grid;
         grid-template-columns: repeat(12, 1fr);
         grid-auto-rows: minmax(25px, auto);
-
-
 
         .day-element {
             color: rgb(104, 104, 104);
@@ -134,12 +124,12 @@
             position: relative;
             padding: 0px;
             width: 100%;
-            aspect-ratio : 1 / 1;
+            aspect-ratio: 1 / 1;
             height: 100%;
             font-size: 1.2vw;
         }
 
-        .selected{
+        .selected {
             background: linear-gradient(to bottom, #75c043, #44a900);
             color: white;
         }
@@ -157,13 +147,8 @@
             display: flex;
             justify-content: center;
             align-items: center;
-
-
         }
-
     }
-
-
 }
 
 .confirm-date-button {
@@ -176,14 +161,14 @@
     border-color: transparent;
 }
 
-.confirm-selection-disabled{
+.confirm-selection-disabled {
     background: #000;
     background-color: #000;
 }
 
 .personal-details {
-
-    .input-group-text{ //icon
+    .input-group-text {
+        //icon
         border-radius: 17px;
         background: #fff;
         min-height: 60px;
@@ -193,8 +178,8 @@
         color: #3d3d3d;
     }
 
-
-    .form-control { //input field
+    .form-control {
+        //input field
         border-radius: 17px;
         background: #fff;
         min-height: 60px;
@@ -233,7 +218,7 @@
         -moz-box-shadow: 0 0 5px #44a900 inset;
     }
 
-    .submit-button{
+    .submit-button {
         margin-top: 20px !important;
         margin-bottom: 20px !important;
         padding: 20px 40px 20px 40px;
@@ -246,8 +231,7 @@
     }
 }
 
-.google-map{
-
+.google-map {
     height: 15px;
     position: sticky;
     z-index: 1;
@@ -257,12 +241,11 @@
 
     /* app-googlemap.component.css */
     ::ng-deep google-map {
-        ::ng-deep .map-container{
+        ::ng-deep .map-container {
             height: 100% !important; /* Override the height attribute */
 
             border-top-right-radius: 1.5rem;
             border-bottom-right-radius: 1.5rem;
         }
     }
-
 }

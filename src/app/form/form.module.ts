@@ -1,10 +1,10 @@
-import { NgModule } from '@angular/core';
+import { NgModule, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormRoutingModule } from './form-routing.module';
 import { FormComponent } from './form.component';
 import { MaterialModule } from '../../shared/modules/material.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 // steps
 import { PropertyOwnershipComponent } from './steps/property-ownership/property-ownership.component';
 import { HouseTypeComponent } from './steps/house-type/house-type.component';
@@ -32,5 +32,22 @@ import { SharedModule } from 'src/shared/shared.module';
 })
 export class FormModule {
 
+  @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
+
+  center!: google.maps.LatLngLiteral;
+    mapCenter!: google.maps.LatLng;
+    mapOptions: google.maps.MapOptions = {
+        mapTypeId: google.maps.MapTypeId.HYBRID,
+        zoomControl: false,
+        scrollwheel: false,
+        disableDoubleClickZoom: true,
+        maxZoom: 20,
+        minZoom: 12,
+        disableDefaultUI: true,
+        // zoomControlOptions:{
+        //     position:google.maps.ControlPosition.BOTTOM_CENTER,
+        // }
+
+    };
 
  }

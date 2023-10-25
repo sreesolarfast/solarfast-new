@@ -15,7 +15,6 @@ export class InstallDateComponent {
     selectedButtons: Set<string> = new Set<string>();
     currentDate: Date = new Date();
 
-    years: number[] = [2023, 2024, 2025]; // Customize with your desired years
     months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     constructor(
@@ -92,6 +91,7 @@ export class InstallDateComponent {
 
     selectMonth(monthIndex: number) {
         this.selectedMonth = monthIndex;
+        //todo set the selectedYear to the year the month belongs to.
     }
 
     answerGiven() {

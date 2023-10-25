@@ -7,16 +7,7 @@
     border-radius: 20px;
     border-color: transparent;
     background-color: #E9E9E9;
-}
-
-.card-recommended {
-    background-color: #50A518;
-    color: white;
-
-}
-
-.card-premium {
-    background-color: #1a1a1a;
+    margin: 40px 0px;
 }
 
 .package-image{
@@ -28,10 +19,17 @@
     color: white;
     border-radius: 100%;
     padding: 10px;
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    cursor: pointer;
 }
 
 
 .package-chat {
+    //background: url('/assets/package/whiteoak-flyer-cover.png');
+    background-color: #333;
+    border-radius: 2rem;
     background: url('/assets/package/whiteoak-flyer-cover.png');
     background-size: cover;
     border-radius: 29px;
@@ -158,31 +156,6 @@
     justify-self: center;
 }
 
-// <svg
-// xmlns="http://www.w3.org/2000/svg"
-// width="115"
-// height="115"
-// viewBox="0 0 100 100"
-// >
-// <!-- Circle -->
-// <circle
-//     cx="50"
-//     cy="50"
-//     r="45"
-//     stroke="#75C043"
-//     stroke-width="5"
-//     fill="none"
-// />
-
-// <!-- Tick (Checkmark) -->
-// <path
-//     d="M30 50 L45 65 L70 40"
-//     stroke="#75C043"
-//     stroke-width="5"
-//     fill="none"
-// />
-// </svg>
-
 .features-list {
     ::ng-deep ul {
         list-style: none;
@@ -264,7 +237,10 @@
 
 .package-content {
     height: 100%;
-    min-height: 420px;
+    min-height: max-content;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .per-month {
@@ -445,41 +421,27 @@
 }
 
 
-
 //side nav bar
 
 .sidenav {
-  width: 45%;
-  position: fixed;
-  top: 0;
-  right: -45%;
-  height: 100%;
-  background-color: #fff;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-}
+    width: 45%;
+    position: fixed;
+    top: 0;
+    right: -45%;
+    height: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    z-index: 100;
+  }
 
-.sidenav.active {
-  right: 0;
-  z-index: 11;
-  border-left: 0.1px solid orange;
-}
+  .sidenav.active {
+    right: 0;
+    z-index: 1000;
+    border-left: 0.1px solid #f2f2f2;
+  }
 
-.close-button {
-  position: absolute;
-  top: 3rem;
-  right: 1rem;
-  background: rgb(251, 96, 88);
-  border: none;
-  color: rgb(255, 255, 255);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 100%;
-  cursor: pointer;
-  outline: none;
-  z-index: 15;
-}
 
 
 @media (min-width: 66rem){
@@ -489,3 +451,156 @@
   @media (min-width: 42rem){
  }
 
+ .title-bar-heading {
+    display: flex;
+    flex-direction: row;
+    margin-bottom: 10px;
+    margin-top: 35px;
+    color: #000;
+
+    .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+        margin-left: 75px;
+    }
+
+    .title-top {
+        font-size: 2.5rem;
+        font-weight: bold;
+    }
+}
+
+.features-list {
+    ::ng-deep ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+
+        margin-left: 26px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            list-style-position: outside; /* Place the bullet point/icon outside the text content */
+            width: 16px;
+            height: 16px;
+
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
+
+            background-size: cover;
+            margin-right: 8px;
+            position: absolute;
+            left: -23px;
+        }
+    }
+}
+
+.feature-list-recommended {
+    ::ng-deep ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+
+        margin-left: 26px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            list-style-position: outside; /* Place the bullet point/icon outside the text content */
+            width: 16px;
+            height: 16px;
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
+
+            background-size: cover;
+            margin-right: 8px;
+            position: absolute;
+            left: -23px;
+        }
+    }
+}
+
+.feature-list-supercharged {
+    ::ng-deep ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+
+        margin-left: 26px;
+
+        display: flex;
+        flex-direction: column;
+        gap: 7px;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            list-style-position: outside; /* Place the bullet point/icon outside the text content */
+            width: 16px;
+            height: 16px;
+
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
+
+            background-size: cover;
+            margin-right: 8px;
+            position: absolute;
+            left: -23px;
+        }
+    }
+}
+
+.recommended-tag {
+    position: absolute;
+    padding: 15px;
+    overflow: hidden;
+    background-color: orangered;
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+    margin: -10px 0px 0px -10px;
+
+    border-radius: 1rem;
+    border-color: transparent;
+
+    i {
+        margin-right: 7px;
+    }
+}
+
+.supercharged-tag {
+    position: absolute;
+    padding: 15px;
+    overflow: hidden;
+    background-color: #50a518; //todo change color to solarfast
+    color: white;
+    text-decoration: none;
+    font-weight: 600;
+
+    margin: -10px 0px 0px -10px;
+
+    border-radius: 1rem;
+    border-color: transparent;
+}
+
+
+.card-recommended {
+    background-color: #50a518;
+    color: white;
+}
+
+.card-title {
+    white-space: nowrap;
+}
+
+.card-supercharged {
+    background-color: #1a1a1a;
+    color: white;
+}

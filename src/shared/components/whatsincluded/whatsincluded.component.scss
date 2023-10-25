@@ -1,0 +1,66 @@
+.includedList {
+    padding: 50px 50px 0px 50px;
+    background-color: white;
+    color: black;
+}
+
+.includedList h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.includedList ul {
+    padding: 0px 20px;
+}
+
+.includedList ul li {
+list-style-type: none;
+    padding: 15px 0;
+    //border-bottom: 1px solid rgba(215, 214, 214, 0.5);
+}
+
+.includedList p {
+    margin-left: 20px;
+}
+
+
+.includedList h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.what-notincluded {
+    color: black;
+    background-color: white;
+    padding: 0px 50px;
+}
+
+.includedList .w-100 {
+    width: 100;
+    height: auto;
+}
+
+.what-notincluded h2 {
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+.what-notincluded ul {
+    padding: 20px;
+}
+.what-notincluded ul li {
+    list-style-type: none;
+    margin: 10px 0;
+}
+
+h1 {
+    margin-top: 20px;
+    margin-left: 20px;
+}
+
+
+.title {
+    font-size: 32px;
+    margin-top: 10px;
+}

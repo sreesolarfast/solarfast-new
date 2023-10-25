@@ -45,7 +45,7 @@ export class PostalCodeEntryComponent {
   mapZoom = 14;
   mapCenter!: google.maps.LatLng;
   mapOptions: google.maps.MapOptions = {
-    mapTypeId: google.maps.MapTypeId.SATELLITE,
+    mapTypeId: google.maps.MapTypeId.HYBRID,
     zoomControl: true,
     scrollwheel: false,
     disableDoubleClickZoom: true,

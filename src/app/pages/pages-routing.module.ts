@@ -13,7 +13,6 @@ import { MapComponent } from './map/map.component';
 import { ThankYouComponent } from './thank-you/thank-you.component';
 import { packageResolver } from '../../shared/resolver/package.resolver';
 import { onlineEnquiryResolver } from '../../shared/resolver/online-enquiry.resolver';
-import { SelecthouseonmapComponent } from './selecthouseonmap/selecthouseonmap.component';
 
 const routes: Routes = [
     { path: 'package-selection', component: PackageSelectionComponent, canActivate: [PostalCodeGuard] },
@@ -26,7 +25,6 @@ const routes: Routes = [
     { path: 'terminate', component: TerminateComponent },
     { path: 'offline', component: OfflineComponent },
     { path: 'photo-upload', component: PhotoUploadComponent, canActivate: [PostalCodeGuard] },
-    { path:'select-map',component: SelecthouseonmapComponent, canActivate: [PostalCodeGuard]},
     { path: 'map', component: MapComponent, canActivate: [PostalCodeGuard] },
 ];
 

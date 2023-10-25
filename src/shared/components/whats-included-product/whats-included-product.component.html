@@ -1,0 +1,34 @@
+<div class="row">
+    <div class="col-md-4 d-flex justify-content-center">
+        <img
+            class="w-75 object-fit-scale"
+            [src]="product?.productDto?.imageFileDtos[0]?.dataFileUrl ?? environment.productImageFallback"
+            [alt]="product?.productDto?.name" />
+    </div>
+    <div class="col-md-8">
+        <h2>{{ product?.productDto?.name }}</h2>
+        <p>{{ product?.description ?? product?.productDto?.description }}</p>
+    </div>
+</div>
+
+<!--divider-->
+
+<ng-container *ngIf="product.productDto?.childProductDtos != null">
+    <div>
+        <span *ngFor="let child of product.productDto?.childProductDtos">
+
+            <div class="row mt-2">
+                <div class="col-md-4 d-flex justify-content-center ">
+                    <img
+                        class="w-50 object-fit-scale"
+                        [src]="child?.childDto?.imageFileDtos[0]?.dataFileUrl ?? environment.productImageFallback"
+                        [alt]="child?.childDto?.name" />
+                </div>
+                <div class="col-md-8">
+                    <h3>{{ child?.childDto?.name }}</h3>
+                    <p>{{ child?.childDto?.description ?? child?.childDto?.description }}</p>
+                </div>
+            </div>
+        </span>
+    </div>
+</ng-container>

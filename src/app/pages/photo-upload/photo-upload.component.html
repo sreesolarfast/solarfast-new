@@ -1,40 +1,17 @@
 <progression-bar-top></progression-bar-top>
 
-<!--Help-->
-<div class="need-help mt-3">
-    <div class="d-flex align-items-center">
-        <div class="help-icon">
-            <i class="bi bi-question-circle"></i>
-        </div>
-        <div class="help-body">
-            <h3>Need help?</h3>
-            <p>Speak to our team</p>
-        </div>
-    </div>
-</div>
-<!--Help Ends-->
+<app-need-help></app-need-help>
 
 <div>
     <div class="content-main">
         <div class="install-date">
             <div class="title-bar-heading">
-                <h1>
-                    <a class="btn btn-black" (click)="backButton()">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="20"
-                            viewBox="0 0 25 20"
-                        >
-                            <path
-                                d="M20 10 L5 10 M10 5 L5 10 10 15"
-                                stroke="white"
-                                stroke-width="2"
-                                fill="none"
-                            />
-                        </svg>
-                    </a>
-                </h1>
+              <!--Back button-->
+<a class="btn-black" (click)="backButton()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
+        <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
+    </svg>
+</a>
 
                 <div class="w-100" style="align-content: center">
                     <h1 class="title title-top">Photo Upload</h1>

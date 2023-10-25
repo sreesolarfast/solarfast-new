@@ -6,24 +6,29 @@
     padding: 1.5rem;
     border-radius: 20px;
     border-color: transparent;
-    background-color: #E9E9E9;
+    background-color: #e9e9e9;
 }
 
 .card-recommended {
-    background-color: #50A518;
+    background-color: #50a518;
     color: white;
+}
 
+.card-title {
+    white-space: nowrap;
 }
 
 .card-supercharged {
     background-color: #1a1a1a;
+    color: white;
 }
 
-.package-image{
+
+
+.package-image {
     border-radius: 15px;
     width: 100%;
     height: max-content;
-
 }
 
 .btn-black {
@@ -31,19 +36,23 @@
     color: white;
     border-radius: 100%;
     padding: 10px;
+    position: absolute;
+    top: 60px;
+    left: 50px;
+    cursor: pointer;
 }
 
 .title-bar-heading {
     display: flex;
     flex-direction: row;
     margin-bottom: 10px;
-    margin-top: 40px;
+    margin-top: 35px;
     color: #000;
 
     .title {
         font-size: 1.25rem;
         font-weight: 600;
-        margin-left: 20px;
+        margin-left: 65px;
     }
 
     .title-top {
@@ -52,59 +61,6 @@
     }
 }
 
-.package-chat {
-    background: url('/assets/package/whiteoak-flyer-cover.png');
-    background-size: cover;
-    border-radius: 29px;
-    background-position: center center;
-
-    .chart-content {
-        width: 80%;
-    }
-
-    .heading-title h1 {
-        color: #fff;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-top: 30px;
-        margin-bottom: 60px;
-    }
-
-    .card-img-top {
-        height: 80px;
-    }
-
-
-
-
-    .card h3 {
-        font-size: 1.8rem;
-        color: #272727;
-        font-weight: 700;
-    }
-
-    .card p {
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        font-weight: 500;
-    }
-
-    .terms-conditions {
-        padding: 15px 0;
-    }
-
-    .terms-conditions h3 {
-        color: #fff;
-        margin-bottom: 30px;
-    }
-
-    .terms-conditions h2 {
-        color: #fff;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-top: 30px;
-    }
-}
 
 .packages {
     .packageOne,
@@ -169,11 +125,11 @@
 }
 
 .package-list {
-    padding: 2rem 0;
+    padding: 3rem 0;
 }
 
 .package-panel-list {
-    padding: .5rem;
+    padding: 0.5rem;
     padding-right: 1rem;
     align-self: center;
     justify-self: center;
@@ -233,7 +189,7 @@
     }
 }
 
-.features-list-recommended {
+.feature-list-recommended {
     ::ng-deep ul {
         list-style: none;
         padding: 0;
@@ -251,8 +207,7 @@
             list-style-position: outside; /* Place the bullet point/icon outside the text content */
             width: 16px;
             height: 16px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%2375C043' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='%2375C043' stroke-width='5' fill='none'/></svg>");
-            //background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
 
             background-size: cover;
             margin-right: 8px;
@@ -310,18 +265,28 @@
     background-color: orangered;
     color: white;
     text-decoration: none;
+    font-weight: 600;
+
+    margin: -10px 0px 0px -10px;
 
     border-radius: 1rem;
     border-color: transparent;
+
+    i {
+        margin-right: 7px;
+    }
 }
 
 .supercharged-tag {
     position: absolute;
     padding: 15px;
     overflow: hidden;
-    background-color: #50A518; //todo change color to solarfast
+    background-color: #50a518; //todo change color to solarfast
     color: white;
     text-decoration: none;
+    font-weight: 600;
+
+    margin: -10px 0px 0px -10px;
 
     border-radius: 1rem;
     border-color: transparent;
@@ -332,7 +297,7 @@
 }
 
 .payment-options {
-    padding: .5rem;
+    padding: 0.5rem;
     text-align: center;
 }
 
@@ -346,14 +311,12 @@
     font-size: 2.4rem;
 }
 
-
 .package-content {
     height: 100%;
     min-height: max-content;
 
     display: flex;
     flex-direction: column;
-
 }
 
 .per-month {
@@ -398,50 +361,7 @@
     display: none;
 }
 
-.get-in-touch {
-    width: 85%;
-    background-color: #ebebeb;
-    padding: 30px 30px 0px 30px;
-    margin: auto;
-    margin-bottom: 30px;
-    border-radius: 29px;
-}
 
-.get-user {
-    width: 15%;
-    margin: 0;
-}
-
-.get-user img {
-    border-radius: 29px;
-    margin-bottom: 0;
-}
-
-.get-details {
-    margin-top: 15px;
-    width: 70%;
-}
-
-.get-details h1 {
-    color: #242424;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 1.85rem;
-}
-
-.get-details p {
-    font-size: 0.9rem;
-}
-
-.get-btn {
-    margin-top: 20px;
-    width: 200px;
-}
-
-.get-btn .btn-success {
-    padding: 15px 30px;
-    border-radius: 12px;
-}
 
 .faq {
     margin: 60px 0;
@@ -454,7 +374,7 @@
     }
 }
 
-.spacer{
+.spacer {
     flex: 1;
     height: 100%;
 }
@@ -524,87 +444,94 @@
     padding: 0;
 }
 
-.btn.btn-success{
-    background: linear-gradient(to bottom, #75C043, #44A900);
-    -webkit-box-shadow: inset 0 1px 2px #44A900;
-    -moz-box-shadow: inset 0 1px 2px #44A900;
+.btn.btn-success {
+    background: linear-gradient(to bottom, #75c043, #44a900);
+    -webkit-box-shadow: inset 0 1px 2px #44a900;
+    -moz-box-shadow: inset 0 1px 2px #44a900;
 }
 
-
 .btn.btn-success:hover {
-    background: linear-gradient(to bottom, #75C043, #44A900);
+    background: linear-gradient(to bottom, #75c043, #44a900);
     -webkit-transition: box-shadow 0.05s ease-in-out;
     -moz-transition: box-shadow 0.05s ease-in-out;
     -o-transition: box-shadow 0.05s ease-in-out;
-    transition: box-shadow 0.05s ease-in-out; 
+    transition: box-shadow 0.05s ease-in-out;
 }
-
 
 .btn.btn-success:active {
-    background: linear-gradient(to bottom, #75C043, #44A900);
-    -webkit-box-shadow: 0 0 5px #44A900 inset;
-    -moz-box-shadow: 0 0 5px #44A900 inset;
+    background: linear-gradient(to bottom, #75c043, #44a900);
+    -webkit-box-shadow: 0 0 5px #44a900 inset;
+    -moz-box-shadow: 0 0 5px #44a900 inset;
 }
-
 
 /***Slide Nav ****/
 
-
 .example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-content: center;
 }
 
 .example-sidenav {
-  padding: 20px;
+    padding: 20px;
 }
 
-
-
 //side nav bar
-
 .sidenav {
-  width: 45%;
-  position: fixed;
-  top: 0;
-  right: -45%;
-  height: 100%;
-  background-color: #fff;
-  overflow-x: hidden;
-  transition: 0.5s;
-  padding-top: 60px;
-  z-index: 100;
+    width: 45%;
+    position: fixed;
+    top: 0;
+    right: -45%;
+    height: 100%;
+    background-color: #fff;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
 }
 
 .sidenav.active {
-  right: 0;
-  z-index: 1000;
-  border-left: 0.1px solid orange;
+    right: 0;
+    z-index: 11;
+    border-left: 0.1px solid #f2f2f2;
 }
+
+// .sidenav.active .overlay {
+//     position: fixed;
+//     top: 0;
+//     left: 0;
+//     width: 100%;
+//     height: 100%;
+//     background-color: rgba(0, 0, 0, 0.8); /* Adjust the transparency as needed */
+//     z-index: 10; /* Place it below the sidenav */
+
+// }
 
 .close-button {
-  position: absolute;
-  top: 3rem;
-  right: 1rem;
-  background:#000;
-  border: none;
-  color: rgb(255, 255, 255);
-  width: 2rem;
-  height: 2rem;
-  border-radius: 100%;
-  cursor: pointer;
-  outline: none;
-  z-index: 15;
-  font-size:1.3rem;
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    background: #000;
+    border: none;
+    color: rgb(255, 255, 255);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+    z-index: 15;
+    font-size: 1.3rem;
 }
 
 
-@media (min-width: 66rem){
+@media (min-width: 66rem) {
+}
 
+@media (min-width: 42rem) {
+}
+
+@media (max-width: 576px) {
+    .my-custom-class {
+      width: 100%;
+    }
   }
-
-  @media (min-width: 42rem){
- }
-

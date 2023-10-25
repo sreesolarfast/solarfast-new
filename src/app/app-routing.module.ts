@@ -11,7 +11,7 @@ import { ConfirmOrderComponent } from './pages/confirm-order/confirm-order.compo
 const routes: Routes = [
   {
     path: '',
-    redirectTo:'postcode',
+    redirectTo:'solar',
     pathMatch:'full'
   },
   {

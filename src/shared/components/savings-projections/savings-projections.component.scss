@@ -1,0 +1,65 @@
+
+.package-chat {
+    //background: url('/assets/package/whiteoak-flyer-cover');
+    background-color: #333;
+    border-radius: 2rem;
+    background: url('../../../assets/package/whiteoak-flyer-cover.png');
+    background-size: cover;
+    border-radius: 29px;
+    background-position: center center;
+
+    .chart-content {
+        width: 80%;
+    }
+
+    .heading-title h1 {
+        color: #fff;
+        font-size: 2.2rem;
+        font-weight: 700;
+        margin-top: 30px;
+        margin-bottom: 60px;
+    }
+
+    .card-img-top {
+        height: 80px;
+    }
+
+    .card h3 {
+        font-size: 1.8rem;
+        color: #272727;
+        font-weight: 700;
+    }
+
+    .card p {
+        font-size: 1.25rem;
+        margin-bottom: 0;
+        font-weight: 500;
+    }
+
+    .terms-conditions {
+        padding: 15px 0;
+    }
+
+    .terms-conditions h3 {
+        color: #fff;
+        margin-bottom: 30px;
+    }
+
+    .terms-conditions h2 {
+        color: #fff;
+        font-weight: 700;
+        font-size: 2rem;
+        margin-top: 30px;
+    }
+}
+
+.card{
+    padding: 45px 0px;
+    border-radius: 1rem;
+}
+
+
+
+.card-title {
+    white-space: nowrap;
+}

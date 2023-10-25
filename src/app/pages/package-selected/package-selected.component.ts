@@ -1,13 +1,15 @@
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output, ViewChild } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { InstallmentsSummaryComponent } from '../installments-summary/installments-summary.component';
+import { InstallmentSummaryComponent } from '../../../shared/components/installments-summary/installment-summary.component';
 import { FormStep } from '../../../shared/model/form-step';
 import { ActivatedRoute } from '@angular/router';
 import { FormService } from '../../../shared/service/form.service';
 import { PackageService } from '../../../shared/service/package.service';
 import { PackageDto } from '../../../shared/dto/package-dto';
 import { Location } from '@angular/common';
+import { PackageType } from 'src/shared/enum/package-type';
+import { MatDrawer } from '@angular/material/sidenav';
 
 @Component({
     selector: 'page-package-selected',
@@ -15,9 +17,11 @@ import { Location } from '@angular/common';
     styleUrls: ['./package-selected.component.scss'],
 })
 export class PackageSelectedComponent implements OnInit {
+    @ViewChild('drawer', { static: true }) public drawer!: MatDrawer;
     @Input() step: FormStep;
     @Output() newStep = new EventEmitter<number | null>();
     activePackage: PackageDto;
+    packageType = PackageType;
 
     constructor(
         public dialog: MatDialog,
@@ -67,9 +71,10 @@ export class PackageSelectedComponent implements OnInit {
     }
 
     openPopup(): void {
-        const dialogRef = this.dialog.open(InstallmentsSummaryComponent, {
+        const dialogRef = this.dialog.open(InstallmentSummaryComponent, {
             width: '30%',
             height: '90%',
+            disableClose: false
         });
 
         // Handle dialog close or other events here
@@ -78,5 +83,7 @@ export class PackageSelectedComponent implements OnInit {
         });
     }
 
-    toggleSidenav() {}
+    whatsIncluded() {
+        this.drawer.open();
+    }
 }

@@ -26,21 +26,21 @@ export class MapComponent implements OnInit {
               options: [
                 {
                   img: 'assets/map/drag-the-map-bg.png',
-                  type: 'Drag the map',
-                  name: 'Drag the map',
-                  description: 'Locate your house by dragging the map.'
+                  type: 'Find your home ',
+                  name: 'Find your home',
+                  description: 'We’ve located your area using your post code, so just look for your house.'
                 },
                 {
                   img: 'assets/map/use-zoom-bg.png',
-                  type: 'Use zoom controls',
-                  name: 'Zoom Controls',
-                  description: 'Then, use the controls to zoom in on your roof.'
+                  type: 'Zoom In',
+                  name: 'Zoom In',
+                  description:'Use the zoom control to get as close as possible to your roof.'
                 },
                 {
                   img: 'assets/map/drop-pin-bg.png',
-                  type: 'Drop a pin',
-                  name: 'Drop a pin',
-                  description: 'Description for Option 3'
+                  type: 'Pin it!',
+                  name: 'Pin it!',
+                  description: 'Simply tap your roof to drop a pin in it, we’ll do the rest.'
                 }
               ]
             }
@@ -50,12 +50,13 @@ export class MapComponent implements OnInit {
 
     submitted = false;
     onlineEnquiry: OnlineEnquiryDto | null;
+    addressAvilable=true;
 
     display: any;
     center!: google.maps.LatLngLiteral;
     mapCenter!: google.maps.LatLng;
     mapOptions: google.maps.MapOptions = {
-        mapTypeId: google.maps.MapTypeId.SATELLITE,
+        mapTypeId: google.maps.MapTypeId.HYBRID,
         zoomControl: false,
         scrollwheel: false,
         disableDoubleClickZoom: true,
@@ -72,7 +73,7 @@ export class MapComponent implements OnInit {
     markerOptions: google.maps.MarkerOptions = {
         draggable: true,
         animation: google.maps.Animation.DROP,
-        icon: 'assets/map/map-icon.png',
+        icon: './assets/map/map-icon.png',
     };
     geocoderWorking = false;
     geolocationWorking = false;
@@ -121,6 +122,9 @@ export class MapComponent implements OnInit {
                 }
             },
         });
+        if(this.onlineEnquiry.latitude && this.onlineEnquiry.longitude){
+          this.addressAvilable=false;
+        }
     }
 
     openInfoWindow(marker: MapMarker) {

@@ -1,0 +1,41 @@
+<div class="pay-installments">
+<div class="container">
+  <button class="close-button" mat-icon-button mat-dialog-close aria-label="Close">
+    <mat-icon>&times;</mat-icon>
+  </button>
+  <h2 class="text-center mb-4">Pay in Installments</h2>
+  <div class="row">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li *ngFor="let period of loanPeriods" class="list-group-item d-flex justify-content-between" [ngClass]="{'active': period === selectedPeriod}" (click)="onSelectPeriod(period)">
+          {{ period.period }} Months
+          <span>{{ period.amount | currency }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="row mt-2 mb-2">
+    <div class="col-md-12">
+      <div class="apr-tr">
+      <h3 class="mt-4 text-center"><b>Select Deposit Amount</b></h3>
+      <input type="range" min="0" max="100" [(ngModel)]="depositPercent" (input)="calculate()" class="form-control-range">
+      <p class="mb-3">Deposit Amount: {{ depositPercent }}%</p>
+    </div>
+  </div>
+</div>
+
+  <div class="row">
+    <div class="col-md-12">
+      <table class="table table-striped">
+        <tr class="apr-tr" *ngFor="let calculation of calculations">
+          <td class="p-3">{{ calculation.label }}</td>
+          <!-- <td class="p-2"><b>{{ calculation.value | currency }}</b></td> -->
+          <td class="p-3" *ngIf="calculation.label!=='Number of Payments'"><b>{{ calculation.value | currency }}</b></td>
+          <td class="p-2" *ngIf="calculation.label=='Number of Payments'"><b>{{ calculation.value }}</b></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+</div>
