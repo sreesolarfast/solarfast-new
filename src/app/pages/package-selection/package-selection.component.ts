@@ -38,9 +38,9 @@ export class PackageSelectionComponent {
 
     ngOnInit(): void {
         const step = this.formService.getSteps().filter(x => x.component == 'page-package-selection')[0];
-        // if (step != this.formService.activeStep) {
-        //     this.formService.redirectToCorrectStep();
-        // }
+        if (step != this.formService.activeStep) {
+            this.formService.redirectToCorrectStep();
+        }
 
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
