@@ -67,9 +67,7 @@ export class InstallmentsSummaryComponent {
     const monthlyInterestRate = annualInterestRate / 12;
     const loanAmount = this.totalLoanAmount;
     const numberOfPayments = period;
-
     const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
-
     this.loanPeriods.push({ period: numberOfPayments, amount: monthlyPayment });
   }
 }
