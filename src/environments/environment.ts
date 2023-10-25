@@ -4,5 +4,6 @@ export const environment = {
   baseServiceURL: '',
   googleMapsApiKey: 'AIzaSyBrxrArxmCCNdXeWWyCZUwH42gb6p7iqK4',
   bypassGoogle: false,
-  apiUrl: 'https://localhost:5001/v1',
+  apiUrl: 'https://api.demo.solarfast.co.uk/v1',
+  // apiUrl: 'https://localhost:5001/v1',
 };

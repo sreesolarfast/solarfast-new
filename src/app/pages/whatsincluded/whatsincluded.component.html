@@ -2,7 +2,17 @@
   <div class="includedList">
       <h1>What's included</h1>
       <p>The main items included in your installation are listed below.</p>
-      <ul>
+      <div class="col-md-12">
+        <div class="package-content border-right">
+            <div class="package-panel-list">
+
+                <span class="features-list mt-3"  [innerHTML]="getItemData.htmlListDescription"></span>
+
+
+            </div>
+        </div>
+    </div>
+      <!-- <ul>
           <li *ngFor="let detail of details">
               <div class="row ">
                   <div class="col-md-2">
@@ -14,7 +24,7 @@
                   </div>
               </div>
           </li>
-      </ul>
+      </ul> -->
   </div>
 
   <!--Not included-->

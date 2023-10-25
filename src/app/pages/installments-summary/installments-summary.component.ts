@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Inject } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-installments-summary',
@@ -6,15 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./installments-summary.component.scss']
 })
 export class InstallmentsSummaryComponent {
-  loanPeriods = [
-    { period: 60, amount: 1200 },
-    { period: 120, amount: 2200 },
-    { period: 180, amount: 3200 },
-  ];
-
-  depositPercent: number = 0;
+  loanPeriods: any[] = [];
+  totalLoanAmount: number;
+  annualInterestRate = 11.3;
+  effectiveAPR = 11.9;
+  depositPercent = 50;
   calculations: any[] = [];
   selectedPeriod: any;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    console.log('Data received in InstallmentsSummaryComponent:', this.data);
+    this.totalLoanAmount = this.data.totalCostPrice;
+    this.calculateLoanDetails(36);
+    this.calculateLoanDetails(60);
+    this.calculateLoanDetails(84);
+    this.calculateLoanDetails(120);
+  }
 
   ngOnInit() {
     this.selectedPeriod = this.loanPeriods[1];
@@ -30,22 +38,32 @@ export class InstallmentsSummaryComponent {
     this.calculations = [];
 
     if (this.selectedPeriod) {
-      const depositAmount = (this.depositPercent / 100) * this.selectedPeriod.amount;
-
-      const rateOfInterest = 11.3;
-      const effectiveAPR = 11.9;
       const numberOfPayments = this.selectedPeriod.period;
-      const costOfCredit = 100;
+      const depositAmount = (this.depositPercent / 100) * this.totalLoanAmount;
+
+      const costOfCredit = this.totalLoanAmount - depositAmount;
+      const effectiveAPR = this.effectiveAPR;
       const totalAmountPayable = depositAmount + costOfCredit;
 
       this.calculations.push(
-        { label: 'Deposit Amount', value: depositAmount },
-        { label: 'Rate of Interest', value: rateOfInterest },
+        { label: 'Rate of Interest', value: this.annualInterestRate },
         { label: 'Effective APR', value: effectiveAPR },
         { label: 'Number of Payments', value: numberOfPayments },
+        // { label: 'Deposit Amount', value: depositAmount },
         { label: 'Cost of Credit', value: costOfCredit },
         { label: 'Total Amount Payable', value: totalAmountPayable }
       );
     }
+  }
+
+  calculateLoanDetails(period: number): void {
+    const annualInterestRate = this.annualInterestRate / 100;
+    const monthlyInterestRate = annualInterestRate / 12;
+    const loanAmount = this.totalLoanAmount;
+    const numberOfPayments = period;
+
+    const monthlyPayment = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -numberOfPayments));
+
+    this.loanPeriods.push({ period: numberOfPayments, amount: monthlyPayment });
   }
 }

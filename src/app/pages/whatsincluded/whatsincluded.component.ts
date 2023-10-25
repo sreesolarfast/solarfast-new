@@ -7,38 +7,43 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
 })
 export class WhatsincludedComponent {
 
-  details: any[] = [
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    },
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    },
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    },
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    },
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    },
-    {
-      image: './assets/package/what-include.webp',
-      title: '10x Longi Full Black Solar Panels 425W',
-      subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
-    }
-  ];
+  @Input() getItemData: any
+
+  constructor(){
+    console.log(this.getItemData);
+  }
+  // details: any[] = [
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   },
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   },
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   },
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   },
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   },
+  //   {
+  //     image: './assets/package/what-include.webp',
+  //     title: '10x Longi Full Black Solar Panels 425W',
+  //     subtitle: 'Your 25 year manufacturer guarantee will be activated automatically'
+  //   }
+  // ];
 
   public notincludeds: any[] = [
     {
@@ -56,5 +61,9 @@ export class WhatsincludedComponent {
 
   toggleSidenav() {
     this.isOpen = !this.isOpen;
+  }
+  childMethod(item) {
+    this.getItemData = item;
+    console.log(this.getItemData)
   }
 }

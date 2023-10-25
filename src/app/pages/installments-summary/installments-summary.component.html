@@ -26,7 +26,9 @@
       <table class="table">
         <tr *ngFor="let calculation of calculations">
           <td>{{ calculation.label }}</td>
-          <td>{{ calculation.value | currency }}</td>
+          <td *ngIf="calculation.label!=='Number of Payments'">{{ calculation.value | currency }}</td>
+          <td *ngIf="calculation.label=='Number of Payments'">{{ calculation.value }}</td>
+
         </tr>
       </table>
     </div>
