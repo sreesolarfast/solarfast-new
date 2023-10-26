@@ -95,10 +95,7 @@ export class InstallDateComponent {
     }
 
     answerGiven() {
-        console.log('Selected Year:', this.selectedYear);
-        console.log('Selected Month:', this.months[this.selectedMonth]);
-        console.log('Selected Date:', this.selectedDate);
-        console.log('Selected Buttons:', Array.from(this.selectedButtons));
+        debugger;
         this.onlineEnquiryService.result.provisionalInstallDate = this.selectedDate;
         this.formService.next();
     }

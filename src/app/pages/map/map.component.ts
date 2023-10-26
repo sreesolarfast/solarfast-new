@@ -73,8 +73,9 @@ export class MapComponent implements OnInit {
     markerOptions: google.maps.MarkerOptions = {
         draggable: true,
         animation: google.maps.Animation.DROP,
-        icon: './assets/map/map-icon.png',
+        icon: './assets/map/map-icon.svg',
     };
+    
     geocoderWorking = false;
     geolocationWorking = false;
 
@@ -122,6 +123,7 @@ export class MapComponent implements OnInit {
                 }
             },
         });
+        
         if(this.onlineEnquiry.latitude && this.onlineEnquiry.longitude){
           this.addressAvilable=false;
         }

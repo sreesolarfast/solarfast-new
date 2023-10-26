@@ -17,7 +17,7 @@ export class GetInTouchComponent implements OnInit {
   open() {
     const dialogRef = this.dialog.open(ContactUsComponent, {
         panelClass: ['my-custom-class'],
-        width: '40%',
+        width: '60%',
         height: 'auto',
         maxHeight: '90vh',
         disableClose: false,

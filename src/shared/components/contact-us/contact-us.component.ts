@@ -4,21 +4,24 @@ import { FormService } from '../../service/form.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OnlineEnquiryService } from '../../service/online-enquiry.service';
 import { OnlineEnquiryDto } from '../../dto/online-enquiry-dto';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-contact-us',
   templateUrl: './contact-us.component.html',
-  styleUrls: ['./contact-us.component.css']
+  styleUrls: ['./contact-us.component.scss']
 })
 export class ContactUsComponent implements OnInit {
     form: FormGroup;
     dto: OnlineEnquiryDto;
 
+    environment = environment;
+
     constructor(
         public dialogRef: MatDialogRef<ContactUsComponent>,
         private formService: FormService,
         private fb: FormBuilder,
-        private onlineEnquiryService: OnlineEnquiryService
+        private onlineEnquiryService: OnlineEnquiryService,
     ) {}
 
     ngOnInit(): void {

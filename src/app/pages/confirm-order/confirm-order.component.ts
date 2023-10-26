@@ -12,14 +12,6 @@ import { OnlineEnquiryDto } from '../../../shared/dto/online-enquiry-dto';
 })
 export class ConfirmOrderComponent implements OnInit {
     form: FormGroup;
-    selectedYear: number = new Date().getFullYear();
-    selectedMonth: number = new Date().getMonth();
-    selectedDate: Date | null = null;
-    selectedButtons: Set<string> = new Set<string>();
-    currentDate: Date = new Date();
-
-    years: number[] = [2023, 2024, 2025]; // Customize with your desired years
-    months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
     constructor(
         private router: Router,
@@ -27,6 +19,7 @@ export class ConfirmOrderComponent implements OnInit {
         private onlineEnquiryService: OnlineEnquiryService,
         public formService: FormService
     ) {}
+
     ngOnInit(): void {
         const step = this.formService.getSteps().filter(x => x.component == 'page-confirm-order')[0];
         if (step != this.formService.activeStep) {
@@ -37,7 +30,7 @@ export class ConfirmOrderComponent implements OnInit {
             firstName: [null, [Validators.required]],
             lastName: [null, [Validators.required]],
             email: [null, [Validators.required, Validators.email]],
-            phone: [null, [Validators.required, Validators.maxLength(11), Validators.pattern('^[0-9]*$')]],
+            phoneNumber: [null, [Validators.required, Validators.maxLength(11), Validators.pattern('^[0-9]*$')]],
             addressLine1: [null],
             addressLine2: [null],
             city: [null],
@@ -50,98 +43,21 @@ export class ConfirmOrderComponent implements OnInit {
             subscribe: [null],
         });
     }
-    get calendarDays(): number[] {
-        const daysInMonth = new Date(this.selectedYear, this.selectedMonth , 0).getDate();
-        return Array.from({ length: daysInMonth }, (_, i) => i + 1);
-    }
-    getAvailableMonths(): { name: string; value: number }[] {
-        const currentMonthIndex = new Date().getMonth();
-        const availableMonths = [];
-
-        for (let i = currentMonthIndex; availableMonths.length < 8; i++) {
-            const monthIndex = i % 12; // Wrap around to the next year if needed
-            const monthValue = monthIndex; // Add 1 to get the actual month value
-            const monthName = this.months[monthIndex];
-
-            availableMonths.push({ name: monthName, value: monthValue });
-        }
-
-        return availableMonths;
-    }
-
-    isConfirmSelectionReady(): boolean {
-        return this.selectedDate !== null;
-    }
-
-    isPastDate(day: number): boolean {
-        const currentDate = new Date();
-        currentDate.setMonth(currentDate.getMonth());
-        const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-
-        return selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth();
-    }
-
-    isDayAvailable(day: number): boolean {
-        const currentDate = new Date();
-        const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-
-        if (
-            selectedDate < currentDate &&
-            selectedDate.getMonth() === currentDate.getMonth() &&
-            selectedDate.toDateString() !== currentDate.toDateString()
-        ) {
-            return false;
-        }
-        return true;
-    }
-
-    isDateSelected(day: number): boolean {
-        if (!this.selectedDate) return false;
-        return new Date(this.selectedYear, this.selectedMonth, day).toDateString() === this.selectedDate.toDateString();
-    }
-
-    selectDate(day: number) {
-        this.selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
-    }
-
-    isButtonSelected(buttonName: string): boolean {
-        return this.selectedButtons.has(buttonName);
-    }
-    selectMonth(monthIndex: number) {
-        this.selectedMonth = monthIndex;
-    }
-
-    toggleButton(buttonName: string) {
-        if (this.selectedButtons.has(buttonName)) {
-            this.selectedButtons.delete(buttonName);
-        } else {
-            this.selectedButtons.add(buttonName);
-        }
-    }
-
-    confirmSelection() {
-        console.log('Selected Year:', this.selectedYear);
-        console.log('Selected Month:', this.months[this.selectedMonth]);
-        console.log('Selected Date:', this.selectedDate);
-        console.log('Selected Buttons:', Array.from(this.selectedButtons));
-       // this.router.navigate(['/customerdetails']);
-    }
-
-    updateCalendar() {}
-
     submitForm() {
-        if (this.form.valid) {
-            const value: OnlineEnquiryDto = this.form.getRawValue();
-
-            // todo patch value to saved value
-
-            // Handle form submission
-            console.log(this.form.value);
-
-            this.formService.next();
-        } else {
+        debugger;
+        if (!this.form.valid) {
             this.form.markAsDirty();
-            // Form is not valid, show error messages or take appropriate action
+            return;
         }
+        const value: OnlineEnquiryDto = this.form.getRawValue();
+        this.onlineEnquiryService.result.firstName = value.firstName;
+        this.onlineEnquiryService.result.lastName = value.lastName;
+        this.onlineEnquiryService.result.email = value.email;
+        this.onlineEnquiryService.result.phoneNumber = value.phoneNumber;
+        this.onlineEnquiryService.result.addressLine1 = value.addressLine1;
+        this.onlineEnquiryService.result.addressLine2 = value.addressLine2;
+        this.onlineEnquiryService.result.addressLine3 = value.addressLine3;
+
+        this.formService.next();
     }
 }

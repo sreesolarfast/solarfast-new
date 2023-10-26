@@ -13,6 +13,19 @@
     text-rendering: optimizelegibility;
 }
 
+@media screen and (max-width: 1920px) {
+    .form-control {
+        //some padding top and bottom
+        padding: 20px;
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: inset 0 0 5px rgba(173, 173, 173, 0.5);
+        margin-bottom: 40px;
+        width: 50%;
+    }
+
+}
+
 @media screen and (max-width: 1024px) {
     .unit-rate h2 {
         font-size: 1.85rem;
@@ -25,6 +38,15 @@
         margin-bottom: 10px;
         flex-direction: inherit;
         justify-content: space-around;
+    }
+    .form-control {
+        //some padding top and bottom
+        padding: 20px;
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: inset 0 0 5px rgba(173, 173, 173, 0.5);
+        margin-bottom: 40px;
+        width: 50%;
     }
 }
 
@@ -45,16 +67,18 @@
         flex-direction: inherit;
         justify-content: space-around;
     }
+    .form-control {
+        //some padding top and bottom
+        padding: 20px;
+        border-radius: 1rem;
+        text-align: center;
+        box-shadow: inset 0 0 5px rgba(173, 173, 173, 0.5);
+        margin-bottom: 40px;
+        width: 100%;
+    }
 }
 
-.form-control {
-    //some padding top and bottom
-    padding: 20px;
-    border-radius: 1rem;
-    text-align: center;
-    box-shadow: inset 0 0 5px rgba(173, 173, 173, 0.5);
-    margin-bottom: 40px;
-}
+
 
 .btn-primary {
     background: linear-gradient(to bottom, #75c043, #44a900);

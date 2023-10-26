@@ -9,8 +9,8 @@
             <div class="card-items">
                 <div class="">
                     <ng-container *ngIf="!dayAndNight; else different">
-                        <div class="w-100 position-relative mt-5">
-                            <input [formControl]="controlDay" class="w-100 form-control" type="number" placeholder="Unit rate in pence." />
+                        <div class="w-100 position-relative d-flex flex-column align-items-center mt-5">
+                            <input [formControl]="controlDay" class="form-control" type="number" placeholder="Unit rate in pence." />
                         </div>
                     </ng-container>
 

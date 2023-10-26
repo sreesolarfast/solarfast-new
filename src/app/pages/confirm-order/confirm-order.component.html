@@ -2,150 +2,6 @@
 
 <div>
     <div class="content-main">
-        <!-- Install Date -->
-        <div class="install-date">
-            <div class="title-bar-heading">
-                <h1>
-                    <a class="btn btn-black" (click)="formService.back()">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            width="25"
-                            height="20"
-                            viewBox="0 0 25 20"
-                        >
-                            <path
-                                d="M20 10 L5 10 M10 5 L5 10 10 15"
-                                stroke="white"
-                                stroke-width="2"
-                                fill="none"
-                            />
-                        </svg>
-                    </a>
-                </h1>
-
-                <div>
-                    <h1 class="title title-top">Pick your Installation Date</h1>
-                    <p class="title">
-                        Let us know when we can install your Solar Fast system.
-                    </p>
-                </div>
-            </div>
-
-            <div class="card">
-                <!--Package-->
-                <div class="package-list d-flex align-items-center">
-                    <div class="" style="max-width: 40%">
-                        <div class="me-3">
-                            <img
-                                src="../../../assets/package/Panels Pallet@2x.png"
-                                alt=""
-                                height="100%"
-                                width="100%"
-                            />
-                        </div>
-                    </div>
-
-                    <div
-                        class="w-100"
-                        style="
-                            display: flex;
-                            flex-direction: column;
-                            justify-content: center;
-                            align-items: center;
-                        "
-                    >
-                        <div class="mb-5">
-                            <h1 class="fw-bold fs-2">
-                                Your installation is included the price!
-                            </h1>
-                            <p class="fs-6">
-                                *Please note we will need to speak to the
-                                account holder to confirm your installation
-                                dates.
-                            </p>
-                        </div>
-
-                        <!-- Date Picker -->
-                        <div class="date-picker w-100">
-                            <!-- Year and Month Selection -->
-                            <div
-                                class="year-month-row d-flex w-100 align-items-center mb-2 fw-bold fs-6"
-                            >
-                                <div class="year-selection me-3">
-                                    {{ selectedYear }}
-                                </div>
-
-                                <div class="months-container d-flex">
-                                    <span
-                                        *ngFor=" let month of getAvailableMonths(); let i = index "
-                                        class="month"
-                                        [class.selected]="month.value  === selectedMonth"
-                                        (click)="selectMonth(month.value)"
-                                    >
-                                        {{ month.name }}
-                                    </span>
-                                </div>
-                            </div>
-
-                            <div class="day-row">
-                                <button
-                                    *ngFor="let day of calendarDays"
-
-                                    (click)="selectDate(day)"
-
-                                    [class.available]="isDayAvailable(day)"
-                                    class="btn day-element"
-                                    [class.selected]="isDateSelected(day)"
-                                    [class.past-date]="isPastDate(day)"
-
-                                    [disabled]="isPastDate(day)"
-                                >
-                                    {{ day }}
-                                </button>
-                            </div>
-
-                            <!-- Color coding key -->
-                            <div class="py-2 my-3 key-container text-black">
-                                <div class="green-key"></div>
-                                <span class="px-2 me-3"> Selected </span>
-
-                                <div class="gray-key"></div>
-                                <span class="px-2"> Available </span>
-                            </div>
-
-                            <!-- Confirm Date Selection -->
-                            <div
-                                class="confirm-row d-flex flex-column align-items-center justify-content-center"
-                            >
-                                <button
-                                    (click)="confirmSelection()"
-                                    class="btn btn-primary confirm-date-button"
-                                    [class.confirm-selection-disabled]="!isConfirmSelectionReady()"
-                                    [disabled]="!isConfirmSelectionReady()"
-
-                                >
-                                    Confirm Date Selection
-                                </button>
-                                <div
-                                    class="text-black"
-                                    style="margin-top: -12px"
-                                >
-                                    *Please note install dates are subject to
-                                    change.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <!--Package-->
-            </div>
-            <!-- Install Date -->
-
-
-
-        </div>
-        <!-- Install-->
-
         <!-- Customer Details -->
         <div class="personal-details text-black pt-5 pb-5">
             <div class="title-bar-heading d-flex flex-column mt-5">
@@ -153,36 +9,16 @@
                 <p class="title">So we can begin your order process.</p>
             </div>
 
-            <div class="card d-flex flex-row" style="padding: 0%;">
-                <!-- Customer details fields -->
-                <form
-                    class="w-50 m-5"
-                    [formGroup]="form"
-                    (ngSubmit)="submitForm()"
-                >
+            <div class="card d-flex flex-row" style="padding: 0%">
+                <form class="w-50 m-5" [formGroup]="form" (ngSubmit)="submitForm()">
                     <div class="row pb-3">
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span
-                                        class="input-group-text"
-                                        id="firstname"
-                                        ><i class="bi bi-person-fill"></i
-                                    ></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="First Name"
-                                        formControlName="firstName"
-                                    />
+                                    <span class="input-group-text" id="firstname"><i class="bi bi-person-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
                                 </div>
-                                <div
-                                    *ngIf="
-                                        form.get('firstName').invalid &&
-                                        form.get('firstName').touched
-                                    "
-                                    class="text-danger"
-                                >
+                                <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">
                                     First name is required.
                                 </div>
                             </div>
@@ -190,25 +26,10 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <div class="input-group">
-                                    <span
-                                        class="input-group-text"
-                                        id="lastname"
-                                        ><i class="bi bi-person-fill"></i
-                                    ></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Last Name"
-                                        formControlName="lastName"
-                                    />
+                                    <span class="input-group-text" id="lastname"><i class="bi bi-person-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
                                 </div>
-                                <div
-                                    *ngIf="
-                                        form.get('lastName').invalid &&
-                                        form.get('lastName').touched
-                                    "
-                                    class="text-danger"
-                                >
+                                <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">
                                     Last name is required.
                                 </div>
                             </div>
@@ -217,75 +38,33 @@
 
                     <div class="form-group pb-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="email"
-                                ><i class="bi bi-envelope-fill"></i
-                            ></span>
-                            <input
-                                type="email"
-                                class="form-control"
-                                placeholder="Email"
-                                formControlName="email"
-                            />
+                            <span class="input-group-text" id="email"><i class="bi bi-envelope-fill"></i></span>
+                            <input type="email" class="form-control" placeholder="Email" formControlName="email" />
                         </div>
-                        <div
-                            *ngIf="
-                                form.get('email').invalid &&
-                                form.get('email').touched
-                            "
-                            class="text-danger"
-                        >
-                            Enter a valid email address.
-                        </div>
+                        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
                     </div>
 
                     <div class="form-group pb-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="lastname"
-                                ><i class="bi bi-telephone-fill"></i
-                            ></span>
-                            <input
-                                type="tel"
-                                class="form-control"
-                                placeholder="Phone"
-                                formControlName="phone"
-                            />
+                            <span class="input-group-text" id="phoneNumber"><i class="bi bi-telephone-fill"></i></span>
+                            <input type="tel" class="form-control" placeholder="Phone" formControlName="phoneNumber" />
                         </div>
-                        <div
-                            *ngIf="
-                                form.get('phone').invalid &&
-                                form.get('phone').touched
-                            "
-                            class="text-danger"
-                        >
+                        <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">
                             Enter a valid phone number.
                         </div>
                     </div>
 
                     <div class="form-group pb-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="lastname"
-                                ><i class="bi bi-geo-alt-fill"></i
-                            ></span>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Address Line 1"
-                                formControlName="addressLine1"
-                            />
+                            <span class="input-group-text" id="addressLine1"><i class="bi bi-geo-alt-fill"></i></span>
+                            <input type="text" class="form-control" placeholder="Address Line 1" formControlName="addressLine1" />
                         </div>
                     </div>
 
                     <div class="form-group pb-3">
                         <div class="input-group">
-                            <span class="input-group-text" id="lastname"
-                                ><i class="bi bi-geo-alt-fill"></i
-                            ></span>
-                            <input
-                                type="text"
-                                class="form-control"
-                                placeholder="Address Line 2"
-                                formControlName="addressLine2"
-                            />
+                            <span class="input-group-text" id="addressLine2"><i class="bi bi-geo-alt-fill"></i></span>
+                            <input type="text" class="form-control" placeholder="Address Line 2" formControlName="addressLine2" />
                         </div>
                     </div>
 
@@ -293,17 +72,8 @@
                         <div class="col-md-6">
                             <div class="form-group pb-3">
                                 <div class="input-group">
-                                    <span
-                                        class="input-group-text"
-                                        id="lastname"
-                                        ><i class="bi bi-geo-alt-fill"></i
-                                    ></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Town/City"
-                                        formControlName="city"
-                                    />
+                                    <span class="input-group-text" id="city"><i class="bi bi-geo-alt-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="Town/City" formControlName="city" />
                                 </div>
                             </div>
                         </div>
@@ -311,52 +81,31 @@
                         <div class="col-md-6">
                             <div class="form-group pb-3">
                                 <div class="input-group">
-                                    <span
-                                        class="input-group-text"
-                                        id="lastname"
-                                        ><i class="bi bi-geo-alt-fill"></i
-                                    ></span>
-                                    <input
-                                        type="text"
-                                        class="form-control"
-                                        placeholder="Postcode"
-                                        formControlName="postcode"
-                                    />
+                                    <span class="input-group-text" id="postcode"><i class="bi bi-geo-alt-fill"></i></span>
+                                    <input type="text" class="form-control" placeholder="Postcode" formControlName="postcode" />
                                 </div>
                             </div>
                         </div>
                     </div>
 
                     <div class="w-100 d-flex justify-content-center">
-                        <div class="form-check  pb-3">
-                            <input
-                                type="checkbox"
-                                class="form-check-input"
-                                formControlName="subscribe"
-                            />
-                            <label class="form-check-label">
-                                I want to stay updated with the latest news, offers and updates.
-                            </label>
+                        <div class="form-check pb-3">
+                            <input type="checkbox" class="form-check-input" formControlName="subscribe" />
+                            <label class="form-check-label"> I want to stay updated with the latest news, offers and updates. </label>
                         </div>
                     </div>
-                    <div class="w-100 d-flex justify-content-center">
-                        <button
-                            type="submit"
-                            class="btn btn-primary submit-button fs-5"
-                        >
-                            Submit
-                        </button>
+                    <div class="w-100 d-flex justify-content-center pb-5">
+                        <button type="submit" class="btn btn-primary submit-button fs-5">Submit</button>
                     </div>
                 </form>
 
                 <!-- Map -->
-                <div class="w-50" >
-
+                <div class="w-50">
                     <app-googlemap class="google-map"></app-googlemap>
-
                 </div>
             </div>
         </div>
         <!-- Customer Details -->
     </div>
-<div>
+    <div></div>
+</div>

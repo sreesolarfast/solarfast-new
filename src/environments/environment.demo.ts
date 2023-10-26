@@ -6,5 +6,6 @@ export const environment = {
   bypassGoogle: true,
   apiUrl: 'https://api.demo.solarfast.co.uk/v1',
   productImageFallback: 'https://solarfast.blob.core.windows.net/solarfast/files/logo-200.png',
-  originUrl: 'https://solarfast.co.uk/postcode/'
+  originUrl: 'https://solarfast.co.uk/postcode/',
+  contactNumber: '0330 818 3116',
 };
