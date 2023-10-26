@@ -17,6 +17,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "baseHref": "/solar/",
             "outputPath": "dist/sfo",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -46,17 +47,42 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "1mb"
                 }
               ],
-              "outputHashing": "all"
+              "fileReplacements": [
+                {
+                  "replace": "/src/environments/environment.ts",
+                  "with": "/src/environments/environment.prod.ts"
+                }
+              ]
             },
+            "demo": {
+                "budgets": [
+                  {
+                    "type": "initial",
+                    "maximumWarning": "2mb",
+                    "maximumError": "5mb"
+                  },
+                  {
+                    "type": "anyComponentStyle",
+                    "maximumWarning": "2kb",
+                    "maximumError": "1mb"
+                  }
+                ],
+                "fileReplacements": [
+                  {
+                    "replace": "/src/environments/environment.ts",
+                    "with": "/src/environments/environment.demo.ts"
+                  }
+                ]
+              },
             "development": {
               "buildOptimizer": false,
               "optimization": false,
@@ -109,8 +135,7 @@
               "node_modules/bootstrap-icons/font/bootstrap-icons.css"
             ],
             "scripts": [
-              "node_modules/bootstrap/dist/js/bootstrap.min.js",
-              "node_modules/apexcharts/dist/apexcharts.min.js"
+              "node_modules/bootstrap/dist/js/bootstrap.min.js"
             ]
           }
         }
