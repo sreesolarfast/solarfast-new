@@ -6,6 +6,8 @@ import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.ser
 import { PackageDto } from '../../../shared/dto/package-dto';
 import { PackageType } from 'src/shared/enum/package-type';
 import { MatDrawer } from '@angular/material/sidenav';
+import { environment } from 'src/environments/environment';
+import { SendQuoteComponent } from '../../../shared/components/send-quote/send-quote.component';
 
 @Component({
     selector: 'page-package-selection',
@@ -18,6 +20,7 @@ export class PackageSelectionComponent {
     packageType = PackageType;
     selectedPackage: PackageDto;
     dataToSendToPopup: any;
+    environment = environment;
 
     tenureMonths = 180;
     calculations: any[] = [];
@@ -30,8 +33,10 @@ export class PackageSelectionComponent {
     ) {}
 
     calculateEMI(loanAmount: number, interestRate: number, tenureMonths: number): number {
-        const monthlyInterestRate = (interestRate / 100) / 12;
-        const emi = (loanAmount * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -tenureMonths));
+        const depositAmount = (50/100) * loanAmount;
+        const loanCost = loanAmount - depositAmount;
+        const monthlyInterestRate = (interestRate / 12) / 100;
+        const emi = (loanCost * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -tenureMonths));
         return emi;
       }
 
@@ -53,7 +58,7 @@ export class PackageSelectionComponent {
 
                 this.packages = this.packages.map(loan => ({
                     ...loan,
-                    emi: this.calculateEMI(loan.totalCostPrice, this.interestRate, this.tenureMonths).toFixed(2)
+                    emi: this.calculateEMI(loan.totalSalePrice, this.interestRate, this.tenureMonths).toFixed(2)
                   }));
             },
         });
@@ -66,9 +71,18 @@ export class PackageSelectionComponent {
     }
 
     openPopup(item): void {
+        const isMobile = window.innerWidth < 600; // Define your breakpoint for mobile here
+        const isTablet = window.innerWidth >= 600 && window.innerWidth < 1024; // Define your breakpoint for tablet here
+        let dialogRefWidth = '40%'; // Default width for larger screens
+        if (isMobile) {
+            dialogRefWidth = '90%'; // Custom width for mobile devices
+        } else if (isTablet) {
+            dialogRefWidth = '70%'; // Custom width for tablet devices
+        }
+
         const dialogRef = this.dialog.open(InstallmentSummaryComponent, {
             panelClass: ['my-custom-class'],
-            width: '40%',
+            width: dialogRefWidth,
             height: 'auto',
             maxHeight: '90vh',
             disableClose: false,
@@ -79,5 +93,11 @@ export class PackageSelectionComponent {
     whatsIncluded(item: PackageDto) {
         this.selectedPackage = item;
         this.drawer.open();
+    }
+
+    sendQuote(packageId: number)  {
+        const dialog = this.dialog.open(SendQuoteComponent, {
+            data: packageId
+        });
     }
 }

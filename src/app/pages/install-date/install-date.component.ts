@@ -28,6 +28,16 @@ export class InstallDateComponent {
         if (step != this.formService.activeStep) {
           this.formService.redirectToCorrectStep();
         }
+
+        this.onlineEnquiryService.result$.subscribe({
+            next: (x) => {
+                if (x.provisionalInstallDate == null) return;
+                const date = new Date(x.provisionalInstallDate);
+                this.selectedYear = date.getFullYear();
+                this.selectedMonth = date.getMonth();
+                this.selectedDate = date;
+            }
+        })
     }
 
     get calendarDays(): number[] {
@@ -82,7 +92,7 @@ export class InstallDateComponent {
 
     isDateSelected(day: number): boolean {
         if (!this.selectedDate) return false;
-        return new Date(this.selectedYear, this.selectedMonth, day).toDateString() === this.selectedDate.toDateString();
+        return new Date(this.selectedYear, this.selectedMonth, day, 13, 0).toDateString() === this.selectedDate.toDateString();
     }
 
     selectDate(day: number) {
@@ -90,13 +100,30 @@ export class InstallDateComponent {
     }
 
     selectMonth(monthIndex: number) {
+
         this.selectedMonth = monthIndex;
-        //todo set the selectedYear to the year the month belongs to.
+
+        const currentDate = new Date();
+
+        const currentMonth = currentDate.getMonth() + 1;
+
+        const monthsAway = (monthIndex + 12 - currentMonth) % 12;
+
+        const futureMonth = currentMonth + 1 + monthsAway;
+
+        var selectedYear = currentDate.getFullYear();
+
+
+        if (futureMonth > 12 && ! (this.selectedMonth == this.currentDate.getMonth())) {
+            selectedYear = selectedYear + 1;
+        }
+
+        this.selectedYear = selectedYear;
     }
 
+
     answerGiven() {
-        debugger;
-        this.onlineEnquiryService.result.provisionalInstallDate = this.selectedDate;
+        this.onlineEnquiryService.result.provisionalInstallDate =  new Date(this.selectedYear, this.selectedMonth, this.selectedDate.getDate(), 13, 0);
         this.formService.next();
     }
 

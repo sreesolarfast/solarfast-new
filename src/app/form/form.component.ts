@@ -52,13 +52,13 @@ export class FormComponent implements OnInit {
 
                     this.onlineEnquiryService.manage(dto).subscribe({
                         next: x => {
-                            this.location.replaceState('/solar');
+                            this.location.replaceState('/');
                             this.loading = false;
                             this.formService.stepChange(step);
                         },
                     });
                 } else {
-                    this.location.replaceState('/solar');
+                    this.location.replaceState('/');
                     this.loading = false;
                 }
             },
@@ -73,6 +73,12 @@ export class FormComponent implements OnInit {
                     }
                 },
             });
+
+
+          // we should have a lat and long
+          if (this.onlineEnquiryService?.result?.latitude == null && this.onlineEnquiryService?.result?.longitude == null) {
+            this.router.navigate(['/pages/invalid-postcode']);
+          }
     }
 
     backButton() {
@@ -88,8 +94,8 @@ export class FormComponent implements OnInit {
 
     private getDtoFromQueryStringParams(): OnlineEnquiryDto {
         const postcode = this.route.snapshot.queryParamMap.get('postcode');
-        const companyId = this.route.snapshot.queryParamMap.get('companyId');
-        const repId = this.route.snapshot.queryParamMap.get('repId');
+        const companyId = this.route.snapshot.queryParamMap.get('companyid');
+        const repId = this.route.snapshot.queryParamMap.get('repid');
 
         let dto = { postcode: postcode } as OnlineEnquiryDto;
         if (companyId != null) dto.companyId = +companyId;

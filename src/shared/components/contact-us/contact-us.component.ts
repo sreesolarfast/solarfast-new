@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { MatDialogRef } from '@angular/material/dialog';
 import { FormService } from '../../service/form.service';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { OnlineEnquiryService } from '../../service/online-enquiry.service';
 import { OnlineEnquiryDto } from '../../dto/online-enquiry-dto';
 import { environment } from 'src/environments/environment';
+import { MatDialogRef } from '@angular/material/dialog';
 
 @Component({
   selector: 'app-contact-us',

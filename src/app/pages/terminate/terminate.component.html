@@ -18,11 +18,62 @@
                     *ngTemplateOutlet="propertyType"></ng-container>
             </ng-container>
 
+            <div class="container">
+                <div class="container-fluid">
+                    <form [formGroup]="form" (ngSubmit)="submitForm()" class="card p-5">
+                        <div class="row">
+                            <h1 class="mb-4">Your Details</h1>
+                            <div class="form-group pb-3">
+                                <div class="input-group position-relative">
+                                    <input type="text" class="input-text-field" placeholder="First Name" formControlName="firstName">
+                                    <i class="bi bi-person-fill icon"></i>
+                                </div>
+                                <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">First name is required.</div>
+                            </div>
+                            <div class="form-group pb-3">
+                                <div class="input-group position-relative">
+                                    <input type="text" class="input-text-field" placeholder="Last Name" formControlName="lastName" />
+                                    <i class="bi bi-person-fill icon"></i>
+                                </div>
+                                <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">Last name is required.</div>
+                            </div>
+
+                            <div class="form-group pb-3">
+                                <div class="input-group position-relative">
+                                    <input type="email" class="input-text-field" placeholder="Email" formControlName="email" />
+                                    <i class="bi bi-envelope-fill icon"></i>
+                                </div>
+                                <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
+                            </div>
+
+                            <div class="form-group pb-3">
+                                <div class="input-group position-relative">
+                                    <input type="tel" class="input-text-field" placeholder="Phone" formControlName="phoneNumber" />
+                                    <i class="bi bi-telephone-fill icon"></i>
+                                </div>
+                                <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Enter a valid phone number.</div>
+                            </div>
+
+                            <div class="form-group pb-3">
+                                <label>Reason for Contact</label>
+                                <div class="input-group position-relative">
+                                    <textarea class="reason-box input-text-field w-100" placeholder="Reason" rows="3" formControlName="reason"></textarea>
+                                </div>
+                                <div *ngIf="form.get('reason').invalid && form.get('reason').touched" class="text-danger">A reason is required.</div>
+                            </div>
+
+                            <div class="w-100 d-flex justify-content-center">
+                                <button type="submit" class="button-primary submit-button fs-5" [disabled]="!form.valid">Submit</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+
+            </div>
 
             <div class="row text-center">
               <div class="col-md-12">
-                <a class="btn btn-success" (click)="backButton()"
-                  >Go Back</a>
+                <a class="btn btn-success" (click)="backButton()">Go Back</a>
               </div>
             </div>
           </div>
@@ -68,3 +119,5 @@
         </div>
       </div>
 </ng-template>
+
+

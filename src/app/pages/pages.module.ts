@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule } from '@angular/forms';
-import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
 import { InstallDateComponent } from './install-date/install-date.component';
 import { OfflineComponent } from './offline/offline.component';
 import { PackageSelectionComponent } from './package-selection/package-selection.component';
@@ -14,7 +13,8 @@ import { ThankYouComponent } from './thank-you/thank-you.component';
 import { TerminateComponent } from './terminate/terminate.component';
 import { PhotoUploadComponent } from './photo-upload/photo-upload.component';
 import { NextStepsComponent } from './next-steps/next-steps.component';
-import { OrderConfirmationComponent } from './order-confirmation/order-confirmation.component';
+import { ConfirmOrderComponent } from './confirm-order/confirm-order.component';
+import { InvalidPostcodeComponent } from './invalid-postcode/invalid-postcode.component';
 
 @NgModule({
   imports: [
@@ -22,11 +22,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     ReactiveFormsModule,
     PagesRoutingModule,
     SharedModule,
-    MaterialModule
-
   ],
   declarations: [
-    ConfirmOrderComponent,
     InstallDateComponent,
     OfflineComponent,
     PackageSelectionComponent,
@@ -36,7 +33,8 @@ import { OrderConfirmationComponent } from './order-confirmation/order-confirmat
     TerminateComponent,
     PhotoUploadComponent,
     NextStepsComponent,
-    OrderConfirmationComponent,
+    ConfirmOrderComponent,
+    InvalidPostcodeComponent
 ]
 })
 export class PagesModule { }

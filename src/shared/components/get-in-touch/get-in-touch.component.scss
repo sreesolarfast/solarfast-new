@@ -1,10 +1,14 @@
 .get-in-touch {
     width: 85%;
     background-color: #ebebeb;
-    padding: 30px 30px 0px 30px;
+    padding: 20px 30px 20px 30px;
     margin: auto;
     margin-bottom: 30px;
     border-radius: 29px;
+
+    @media screen and (max-width: 768px) {
+        margin-top: 30px;
+    }
 }
 
 .get-in-touch-button {
@@ -15,62 +19,6 @@
     border-color: #75c043;
     border-style: solid;
 }
-
-
-.package-chat {
-    background-color: #333;
-    border-radius: 2rem;
-    background: url('/assets/package/whiteoak-flyer-cover.png');
-    background-size: cover;
-    border-radius: 29px;
-    background-position: center center;
-
-    .chart-content {
-        width: 80%;
-    }
-
-    .heading-title h1 {
-        color: #fff;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-top: 30px;
-        margin-bottom: 60px;
-    }
-
-    .card-img-top {
-        height: 80px;
-    }
-
-    .card h3 {
-        font-size: 1.8rem;
-        color: #272727;
-        font-weight: 700;
-    }
-
-    .card p {
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        font-weight: 500;
-    }
-
-    .terms-conditions {
-        padding: 15px 0;
-    }
-
-    .terms-conditions h3 {
-        color: #fff;
-        margin-bottom: 30px;
-    }
-
-    .terms-conditions h2 {
-        color: #fff;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-top: 30px;
-    }
-}
-
-
 
 .get-user {
     width: 15%;
@@ -103,7 +51,12 @@
     width: 200px;
 }
 
-.get-btn .btn-success {
-    padding: 15px 30px;
-    border-radius: 12px;
+.flex-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    @media screen and (max-width: 768px) {
+        flex-direction: column;
+    }
 }

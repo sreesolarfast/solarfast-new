@@ -3,6 +3,7 @@ import { OnlineEnquiryDto } from '../dto/online-enquiry-dto';
 import { BehaviorSubject, Observable, catchError, map, of, tap, throwError } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { environment } from '../../environments/environment';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
@@ -50,7 +51,7 @@ export class OnlineEnquiryService {
     this._step.next(value);
   }
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient, private router: Router) {}
 
   public manage(dto: OnlineEnquiryDto): Observable<OnlineEnquiryDto> {
     return this.http
@@ -67,13 +68,12 @@ export class OnlineEnquiryService {
       );
   }
 
-  public createOrder(dto: OnlineEnquiryDto): Observable<OnlineEnquiryDto> {
+  public createOrder(dto: OnlineEnquiryDto): Observable<any> {
     return this.http
-      .post<OnlineEnquiryDto>(`${environment.apiUrl}/onlineenquiry/order`, dto, {withCredentials: false, responseType: 'json'})
+      .post<any>(`${environment.apiUrl}/onlineenquiry/order`, dto, {withCredentials: false, responseType: 'json'})
       .pipe(
         map((result) => {
-          this._result.next(result);
-          this.setOnlineEnquiry(result);
+            this.result.orderId = result.orderId;
           return result;
         }),
         catchError((err) => {
@@ -97,7 +97,6 @@ export class OnlineEnquiryService {
 
   public getByUniqueReference(id: string): Observable<OnlineEnquiryDto> {
     if (id == null) return null;
-
     return this.http
     .get<OnlineEnquiryDto>(`${environment.apiUrl}/onlineenquiry/${id}`)
     .pipe(
@@ -112,7 +111,6 @@ export class OnlineEnquiryService {
   public setOnlineEnquiry(onlineEnquiry: OnlineEnquiryDto) {
     if (onlineEnquiry == null) {
       // todo identify where has called a null object
-      alert('null online enquiry');
       return;
     }
     this._result.next(onlineEnquiry);

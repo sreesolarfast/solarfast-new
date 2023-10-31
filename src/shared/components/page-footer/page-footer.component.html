@@ -1,43 +1,101 @@
 <div class="footer">
+    <div class="footer-grid">
+        <div class="d-flex flex-column">
+            <h2>For Sales</h2>
+            <a [href]="'tel:' + environment.contactNumberSales" class="font-green">
+                {{ environment.contactNumberSales }}
+            </a>
+            <a [href]="'mailto:' + environment.contactEmail" class="font-green">
+                {{ environment.contactEmail }}
+            </a>
+        </div>
+        <div class="d-flex flex-column">
+            <h2>For Careers</h2>
+            <a href="https://solarfast.co.uk/careers/" class="font-green"> Job Openings </a>
+        </div>
+        <div class="d-flex flex-column">
+            <h2>For Press</h2>
+            <a href="mailto:marketing@solarfast.co.uk" class="font-green"> marketing@solarfast.co.uk </a>
+        </div>
+        <div class="d-flex flex-column">
+            <h2>Become a Partner</h2>
+            <p class="font-faded">Coming soon</p>
+        </div>
+    </div>
 
+    <div class="bottom-card">
+        <div class="footer-grid">
+            <div class="d-flex flex-column">
+                <h2>Offices</h2>
+                <p>
+                    {{ environment.singleLineBusinessAddress }}
+                </p>
+            </div>
 
-    <div class="p-grid col-md-4">
+            <div class="d-flex flex-column">
+                <h2>About Us</h2>
+                <a href="https://solarfast.co.uk/about/"> About </a>
+                <a href="https://solarfast.co.uk/case-studies/"> Case Studies </a>
+                <a href="https://solarfast.co.uk/blog/"> Blog </a>
+                <a href="https://solarfast.co.uk/contact/"> Contact Us </a>
+                <a href="https://solarfast.co.uk/get-solar-panels-quote/"> Get Quote </a>
+            </div>
 
-        <div>
-            <h3>
-                For Sales
-            </h3>
+            <div class="d-flex flex-column">
+                <h2>Services</h2>
+                <a href="https://solarfast.co.uk/solar-for-residential/"> Solar For Residential </a>
+                <a href="https://solarfast.co.uk/solar-for-businesses/"> Solar For Commercial </a>
+                <a href="https://solarfast.co.uk/solar-battery-storage/"> Solar Batteries </a>
+                <a href="https://solarfast.co.uk/solar-fast-warranties/"> Warranties </a>
+            </div>
+
+            <div></div>
+
+            <div class="d-flex flex-column">
+                <h2>Follow Us</h2>
+                <div class="d-flex flex-row gap-4">
+                    <p>
+                        <a href="https://www.facebook.com/SolarFast.co.uk">
+                            <i class="fab fa-facebook"></i>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://twitter.com/solarfastuk?lang=en-GB">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.instagram.com/solarfastuk/">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    </p>
+                    <p>
+                        <a href="https://www.linkedin.com/company/solar-fast/">
+                            <i class="fab fa-linkedin"></i>
+                        </a>
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="final-section">
+            <h1 class="sf-logo"><span class="font-green">Solar </span>Fast</h1>
             <p>
-                1-800-555-5555
+                Solar Fast © 2023 | All rights reserved | <a class="font-green clickable">Privacy Policy</a> |
+                <a class="font-green clickable">Complaints Procedure</a>
             </p>
-            <p>
-                contact@solarfast.co.uk
+
+            <div class="d-flex flex-row logos gap-2 mt-3">
+                <div class="w-100">
+                    <img src="https://solarfast.co.uk/wp-content/uploads/2023/03/Accreditations-List.png">
+                </div>
+            </div>
+
+            <p class="disclaimer">
+                Solar Fast is a trading style of Gas Fast Ltd. Reg No. 05784955. Unit 17, Allerton Bywater Network Centre, Letchmire Road, Castleford,
+                WF10 2DB. We are authorised and regulated by the Financial Conduct Authority FRN 799102. We are a credit broker, not a lender and have
+                facilities with a panel of lenders.
             </p>
         </div>
-        <div>
-            <h3>
-                For Careers
-            </h3>
-            <p>
-                Job Openings
-            </p>
-        </div>
-        <div>
-            <h3>
-                For Press
-            </h3>
-            <p>
-                Job Openings
-            </p>
-        </div>
-        <div>
-            <h3>
-                Become a Partner
-            </h3>
-            <p>
-                Coming soon
-            </p>
-        </div>
-
     </div>
 </div>

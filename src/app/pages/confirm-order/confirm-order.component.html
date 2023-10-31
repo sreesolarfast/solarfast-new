@@ -1,111 +1,120 @@
+<progression-bar-top></progression-bar-top>
+
 <app-need-help></app-need-help>
 
-<div>
-    <div class="content-main">
-        <!-- Customer Details -->
-        <div class="personal-details text-black pt-5 pb-5">
-            <div class="title-bar-heading d-flex flex-column mt-5">
+<!--Back button-->
+<a class="btn-black" (click)="formService.back()">
+    <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
+        <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
+    </svg>
+</a>
+
+<div class="content-main">
+    <!-- Customer Details -->
+    <div class="personal-details text-black">
+        <div class="title-bar-heading">
+            <div>
                 <h1 class="title title-top">Your Details</h1>
                 <p class="title">So we can begin your order process.</p>
             </div>
-
-            <div class="card d-flex flex-row" style="padding: 0%">
-                <form class="w-50 m-5" [formGroup]="form" (ngSubmit)="submitForm()">
-                    <div class="row pb-3">
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="firstname"><i class="bi bi-person-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="First Name" formControlName="firstName" />
-                                </div>
-                                <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">
-                                    First name is required.
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-md-6">
-                            <div class="form-group">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="lastname"><i class="bi bi-person-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="Last Name" formControlName="lastName" />
-                                </div>
-                                <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">
-                                    Last name is required.
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="form-group pb-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="email"><i class="bi bi-envelope-fill"></i></span>
-                            <input type="email" class="form-control" placeholder="Email" formControlName="email" />
-                        </div>
-                        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
-                    </div>
-
-                    <div class="form-group pb-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="phoneNumber"><i class="bi bi-telephone-fill"></i></span>
-                            <input type="tel" class="form-control" placeholder="Phone" formControlName="phoneNumber" />
-                        </div>
-                        <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">
-                            Enter a valid phone number.
-                        </div>
-                    </div>
-
-                    <div class="form-group pb-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="addressLine1"><i class="bi bi-geo-alt-fill"></i></span>
-                            <input type="text" class="form-control" placeholder="Address Line 1" formControlName="addressLine1" />
-                        </div>
-                    </div>
-
-                    <div class="form-group pb-3">
-                        <div class="input-group">
-                            <span class="input-group-text" id="addressLine2"><i class="bi bi-geo-alt-fill"></i></span>
-                            <input type="text" class="form-control" placeholder="Address Line 2" formControlName="addressLine2" />
-                        </div>
-                    </div>
-
-                    <div class="row">
-                        <div class="col-md-6">
-                            <div class="form-group pb-3">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="city"><i class="bi bi-geo-alt-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="Town/City" formControlName="city" />
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-md-6">
-                            <div class="form-group pb-3">
-                                <div class="input-group">
-                                    <span class="input-group-text" id="postcode"><i class="bi bi-geo-alt-fill"></i></span>
-                                    <input type="text" class="form-control" placeholder="Postcode" formControlName="postcode" />
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="w-100 d-flex justify-content-center">
-                        <div class="form-check pb-3">
-                            <input type="checkbox" class="form-check-input" formControlName="subscribe" />
-                            <label class="form-check-label"> I want to stay updated with the latest news, offers and updates. </label>
-                        </div>
-                    </div>
-                    <div class="w-100 d-flex justify-content-center pb-5">
-                        <button type="submit" class="btn btn-primary submit-button fs-5">Submit</button>
-                    </div>
-                </form>
-
-                <!-- Map -->
-                <div class="w-50">
-                    <app-googlemap class="google-map"></app-googlemap>
-                </div>
-            </div>
         </div>
-        <!-- Customer Details -->
+
+        <div class="w-100 flex-row" style="padding: 0%">
+            <!-- Customer details fields -->
+            <form class="m-5 form" [formGroup]="form" (ngSubmit)="submitForm()">
+                <div class="row pb-3">
+                    <div class="col-md-6 first-name-box">
+                        <div class="form-group">
+                            <div class="input-group position-relative">
+                                <input type="text" class="input-text-field" placeholder="First Name" formControlName="firstName" />
+                                <i class="bi bi-person-fill icon"></i>
+                            </div>
+                            <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">
+                                First name is required.
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            <div class="input-group position-relative">
+                                <input type="text" class="input-text-field" placeholder="Last Name" formControlName="lastName" />
+                                <i class="bi bi-person-fill icon"></i>
+                            </div>
+                            <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">Last name is required.</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="form-group pb-3">
+                    <div class="input-group position-relative">
+                        <input type="email" class="input-text-field" placeholder="Email" formControlName="email" />
+                        <i class="bi bi-envelope-fill icon"></i>
+                    </div>
+                    <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
+                </div>
+
+                <div class="form-group pb-3">
+                    <div class="input-group position-relative">
+                        <input type="tel" class="input-text-field" placeholder="Phone" formControlName="phoneNumber" />
+                        <i class="bi bi-telephone-fill icon"></i>
+                    </div>
+                    <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">
+                        Enter a valid phone number.
+                    </div>
+                </div>
+
+                <div class="form-group pb-3">
+                    <div class="input-group position-relative">
+                        <input type="text" class="input-text-field" placeholder="Address Line 1" formControlName="addressLine1" />
+                        <i class="bi bi-geo-alt-fill icon"></i>
+                    </div>
+                </div>
+
+                <div class="form-group pb-3">
+                    <div class="input-group position-relative">
+                        <input type="text" class="input-text-field" placeholder="Address Line 2" formControlName="addressLine2" />
+                        <i class="bi bi-geo-alt-fill icon"></i>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group pb-3">
+                            <div class="input-group position-relative">
+                                <input type="text" class="input-text-field" placeholder="City" formControlName="city" />
+                                <i class="bi bi-geo-alt-fill icon"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <div class="form-group pb-3">
+                            <div class="input-group position-relative">
+                                <input type="text" class="input-text-field" placeholder="Postcode" formControlName="postcode" />
+                                <i class="bi bi-geo-alt-fill icon"></i>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="w-100 d-flex justify-content-center">
+                    <div class="form-check pb-3">
+                        <input type="checkbox" class="form-check-input" formControlName="subscribe" />
+                        <label class="form-check-label"> I want to stay updated with the latest news, offers and updates. </label>
+                    </div>
+                </div>
+                <div class="w-100 d-flex justify-content-center">
+                    <button type="submit" class="button-primary w-50 mt-3" [class.button-disabled]="!form.valid || formSubmitted" [disabled]="!form.valid || formSubmitted">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
     </div>
-    <div></div>
+    <!-- Customer Details -->
+
+    <!-- Map -->
+    <div class="w-50">
+        <app-googlemap class="google-map"></app-googlemap>
+    </div>
 </div>

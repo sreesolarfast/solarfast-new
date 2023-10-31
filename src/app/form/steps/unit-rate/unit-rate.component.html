@@ -9,29 +9,29 @@
             <div class="card-items">
                 <div class="">
                     <ng-container *ngIf="!dayAndNight; else different">
-                        <div class="w-100 position-relative d-flex flex-column align-items-center mt-5">
-                            <input [formControl]="controlDay" class="form-control" type="number" placeholder="Unit rate in pence." />
+                        <div class="input-field-container-single">
+                            <input [formControl]="controlDay" class="input-text-field" type="number" placeholder="Unit rate in pence." />
                         </div>
                     </ng-container>
 
                     <ng-template #different>
-                        <div class="d-flex flex-row gap-3">
-                            <div class="w-100 position-relative mt-5">
-                                <input [formControl]="controlDay" class="w-100 form-control" type="number" placeholder="Day rate in pence" />
+                        <div class="input-field-container-double">
+                            <div class="w-100 position-relative ">
+                                <input [formControl]="controlDay" class="w-100 input-text-field" type="number" placeholder="Day rate in pence" />
                             </div>
 
-                            <div class="w-100 position-relative mt-5">
-                                <input [formControl]="controlNight" class="w-100 form-control" type="number" placeholder="Night rate in pence" />
+                            <div class="w-100 position-relative ">
+                                <input [formControl]="controlNight" class="w-100 input-text-field" type="number" placeholder="Night rate in pence" />
                             </div>
                         </div>
                     </ng-template>
 
                     <div class="mt-3 d-flex flex-column w-100 align-items-center" >
-                        <div class="d-flex flex-row gap-3">
+                        <div class="button-container">
                             <button
                                 type="button"
-                                class="btn btn-primary"
-                                [class.btn-disabled]="!(controlDay.value > 0 && (dayAndNight ? controlNight.value > 0 : true))"
+                                class="button-primary"
+                                [class.button-disabled]="!(controlDay.value > 0 && (dayAndNight ? controlNight.value > 0 : true))"
                                 [disabled]="!(controlDay.value > 0 && (dayAndNight ? controlNight.value > 0 : true))"
                                 (click)="answerGiven()"
                                 type="number"
@@ -43,11 +43,11 @@
                                 <!-- button to set dayAndNight as true-->
                                 <button
                                     type="button"
-                                    class="btn-secondary"
+                                    class="button-secondary"
                                     (click)="dayAndNight = true"
                                     type="number"
                                     placeholder="UK average is 3,421 kWh">
-                                    I have different day / night rates.
+                                    I have different day/night rates.
                                 </button>
                             </ng-container>
 
@@ -55,7 +55,7 @@
                                 <!-- button to set dayAndNight as false-->
                                 <button
                                     type="button"
-                                    class="btn-secondary"
+                                    class="button-secondary"
                                     (click)="dayAndNight = false; controlNight.setValue(null)"
                                     type="number"
                                     placeholder="UK average is 3,421 kWh">

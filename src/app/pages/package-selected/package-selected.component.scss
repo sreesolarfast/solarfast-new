@@ -1,188 +1,134 @@
 .solar-fast-system {
     padding: 2rem;
+
+    @media screen and (max-width: 768px) {
+        padding: 0px;
+    }
 }
 
 .card {
-    padding: 1.5rem;
-    border-radius: 20px;
+    padding: 2rem 1.5rem;
+    border-radius: 1px;
     border-color: transparent;
-    background-color: #E9E9E9;
-    margin: 40px 0px;
+    background-color: #e9e9e9;
+
+    @media screen and (max-width: 768px) {
+        padding: 1rem 1rem;
+    }
 }
 
-.package-image{
-    border-radius: 15px;
+.card-recommended {
+    //background-color: #50a518;
+    border: #75c043;
+    border-width: 3px;
+    border-style: solid;
+    box-shadow: 0 0 10px #75c04391;
 }
 
-.btn-black {
-    background: #000;
+.card-supercharged {
+    background-color: #1a1a1a;
     color: white;
-    border-radius: 100%;
-    padding: 10px;
-    position: absolute;
-    top: 60px;
-    left: 50px;
-    cursor: pointer;
 }
 
+.package-image {
+    border-radius: 15px;
+    width: 100%;
+    height: max-content;
 
-.package-chat {
-    //background: url('/assets/package/whiteoak-flyer-cover.png');
-    background-color: #333;
-    border-radius: 2rem;
-    background: url('/assets/package/whiteoak-flyer-cover.png');
-    background-size: cover;
-    border-radius: 29px;
-    background-position: center center;
-
-    .chart-content {
-        width: 80%;
-    }
-
-    .heading-title h1 {
-        color: #fff;
-        font-size: 2.2rem;
-        font-weight: 700;
-        margin-top: 30px;
-        margin-bottom: 60px;
-    }
-
-    .card-img-top {
-        height: 80px;
-    }
-
-
-
-
-    .card h3 {
-        font-size: 1.8rem;
-        color: #272727;
-        font-weight: 700;
-    }
-
-    .card p {
-        font-size: 1.25rem;
-        margin-bottom: 0;
-        font-weight: 500;
-    }
-
-    .terms-conditions {
-        padding: 15px 0;
-    }
-
-    .terms-conditions h3 {
-        color: #fff;
-        margin-bottom: 30px;
-    }
-
-    .terms-conditions h2 {
-        color: #fff;
-        font-weight: 700;
-        font-size: 2rem;
-        margin-top: 30px;
-    }
-}
-
-.packages {
-    .packageOne,
-    .packageTwo,
-    .packageThree {
-        margin-bottom: 30px;
-    }
-
-    .package-image {
-        width: 29%;
-    }
-
-    .package-details {
+    @media screen and (max-width: 1024px) {
         width: 40%;
     }
 
-    .package-nextstep {
-        width: 29%;
+    @media screen and (max-width: 480px) {
+        width: 100%;
     }
+}
 
-    .packageOne {
-        background: rgb(239, 239, 239);
-        background: linear-gradient(90deg, rgba(239, 239, 239, 1), rgba(231, 231, 231, 1));
-        padding: 30px;
-        box-shadow: 0px 3px 6px #00000029;
-        border-radius: 29px;
+.title-bar-heading {
+    display: flex;
+    flex-direction: row;
+    color: #000;
 
-        .package-item {
-            padding: 10px;
+    margin: 35px 0px 10px 65px;
 
-            h3 {
-                font-size: 1.3rem;
-                font-weight: 700;
-            }
-            h1 {
-                color: #1a1a1a;
-                font-size: 3rem;
-                font-weight: 700;
-            }
-            p {
-                color: #1a1a1a;
-                font-size: 1.5rem;
-            }
+    .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1rem;
+            padding: 0px 5px;
+            margin: 0px;
         }
     }
 
-    .packageTwo {
-        background: rgb(117, 192, 67);
-        background: linear-gradient(90deg, rgba(117, 192, 67, 1), rgba(70, 157, 12, 1));
-        padding: 30px;
-        box-shadow: 0px 3px 6px #00000029;
-        border-radius: 29px;
+    .title-top {
+        font-size: 2.5rem;
+        font-weight: bold;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.8rem;
+            margin: 7px 0px;
+        }
     }
 
-    .packageThree {
-        background: rgb(39, 39, 39);
-        background: linear-gradient(90deg, rgba(39, 39, 39, 1), rgba(25, 25, 25, 1));
-        padding: 30px;
-        box-shadow: 0px 3px 6px #00000029;
-        border-radius: 29px;
+    @media screen and (max-width: 768px) {
+        margin: 90px 0px 10px 0px;
+        padding: 0px 35px;
     }
 }
 
 .package-list {
-    padding: 2rem 0;
-}
+    padding: 3rem 0;
 
-.package-panel-list {
-    padding: .5rem;
-    padding-right: 1rem;
-    align-self: center;
-    justify-self: center;
-}
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 
-.features-list {
-    ::ng-deep ul {
-        list-style: none;
-        padding: 0;
-        position: relative;
+    > div {
+        width: 100%;
+        max-width: 1500px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        > div {
+            @media screen and (min-width: 768px) {
+                width: 90%;
+            }
 
-        li::before {
-            content: '';
-            display: inline-block;
-            list-style-position: outside; /* Place the bullet point/icon outside the text content */
-            width: 16px;
-            height: 16px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='%2375C043' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='%2375C043' stroke-width='5' fill='none'/></svg>");
-            background-size: cover;
-            margin-right: 8px;
-            position: absolute;
-            left: -23px;
+            //one of these elements is spanning less space than other elements.
         }
     }
 
+    > div:first-child > div {
+        width: 100%;
+    }
 
+    @media screen and (max-width: 768px) {
+        padding: 0px;
+    }
+}
+
+.package-panel-list {
+    padding: 0.5rem;
+    padding-right: 1rem;
+    align-self: center;
+    justify-self: center;
+    width: 100%;
+
+    display: flex;
+    flex-direction: column;
 }
 
 .package-panel-list h2 {
-    font-size: 32px;
+    font-size: 37px;
     //line-height: 3rem;
     font-weight: 600;
+
+    @media screen and (max-width: 768px) {
+        font-size: 37px;
+    }
 }
 
 .package-panel-list ul li {
@@ -191,49 +137,13 @@
     color: #9ae488;
 }
 
-.recommended-tag {
-    position: absolute;
-    padding: 15px;
-    overflow: hidden;
-    background-color: orangered;
-    color: white;
-    text-decoration: none;
-
-    border-radius: 1rem;
-    border-color: transparent;
-}
-
-.premium-tag {
-    position: absolute;
-    padding: 15px;
-    overflow: hidden;
-    background-color: #50A518; //todo change color to solarfast
-    color: white;
-    text-decoration: none;
-
-    border-radius: 1rem;
-    border-color: transparent;
-}
-
-.border-right {
-    border-right: 1px solid #707070;
-}
-
 .payment-options {
-    padding: .5rem;
+    padding: 0.5rem;
     text-align: center;
+    @media screen and (max-width: 768px) {
+        margin-bottom: 50px;
+    }
 }
-
-.payment-options h3 {
-    font-size: 1.5rem;
-    font-weight: 500;
-}
-
-.payment-options h1 {
-    font-weight: 700;
-    font-size: 2.4rem;
-}
-
 
 .package-content {
     height: 100%;
@@ -241,366 +151,318 @@
 
     display: flex;
     flex-direction: column;
-}
-
-.per-month {
-    font-weight: 500;
-    width: 100%;
-    display: block;
-    font-size: 18px;
-    cursor: pointer;
-    margin: 15px 0;
-}
-
-.form-range {
-    width: 100%;
-    height: 1rem;
-    padding: 0;
-    cursor: pointer;
-    background-color: #dee2e6;
-    border-radius: 0.25rem;
-}
-
-.form-range-track {
-    width: 100%;
-    height: 100%;
-    color: transparent;
-    border-radius: 0.25rem;
-}
-
-.form-range-thumb {
-    width: 1rem;
-    height: 1rem;
-    background-color: #0d6efd;
-    border: 0;
-    border-radius: 0.25rem;
-    transition: all 0.15s ease-in-out;
-}
-
-.form-range-ticks {
-    visibility: hidden;
-}
-
-.form-range-labels {
-    display: none;
-}
-
-.get-in-touch {
-    width: 85%;
-    background-color: #ebebeb;
-    padding: 30px 30px 0px 30px;
-    margin: auto;
-    margin-bottom: 30px;
-    border-radius: 29px;
-}
-
-.get-user {
-    width: 15%;
-    margin: 0;
-}
-
-.get-user img {
-    border-radius: 29px;
-    margin-bottom: 0;
-}
-
-.get-details {
-    margin-top: 15px;
-    width: 70%;
-}
-
-.get-details h1 {
-    color: #242424;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 1.85rem;
-}
-
-.get-details p {
-    font-size: 0.9rem;
-}
-
-.get-btn {
-    margin-top: 20px;
-    width: 200px;
-}
-
-.get-btn .btn-success {
-    padding: 15px 30px;
-    border-radius: 12px;
-}
-
-.faq {
-    margin: 60px 0;
-
-    h1 {
-        font-size: 2.25rem;
-        font-weight: 700;
-        text-align: center;
-        margin-bottom: 30px;
+    @media screen and (max-width: 1024px) {
+        border-right: #2a2a2a;
     }
 }
 
-.tabs {
-    padding: 20px;
-    border-radius: 0px;
-}
-
-.nav-tabs {
-    margin-bottom: 30px;
-    border-bottom: none;
-}
-
-.nav-tabs .nav-link {
-    background-color: #fff;
-    color: #2a2a2a;
-    border: 1px solid #fff;
-    border-radius: 0px;
-    padding: 8px 30px;
-    margin: 5px;
-    outline: none;
-    font-weight: 700;
-}
-
-.nav-tabs .nav-link.active {
-    background-color: #eaeaea;
-    color: #333;
-    outline: none;
-}
-
-/* Style for the accordion */
-.accordion-header button {
-    background-color: #fff;
-    color: #2a2a2a;
+.close-button {
+    position: absolute;
+    top: 3rem;
+    right: 1rem;
+    background: #000;
     border: none;
-    border-radius: 5px;
-    width: 100%;
-    text-align: left;
-    font-weight: 600;
+    color: rgb(255, 255, 255);
+    width: 2rem;
+    height: 2rem;
+    border-radius: 100%;
+    cursor: pointer;
+    outline: none;
+    z-index: 15;
+    font-size: 1.3rem;
 }
 
-.accordion {
-    --bs-accordion-btn-focus-border-color: transparent;
-    --bs-accordion-btn-focus-box-shadow: none;
+.mat-mdc-icon-button .mat-mdc-button-touch-target {
+    cursor: progress;
 }
 
-.accordion-header button:hover {
-    background-color: #fff;
-}
-
-.accordion-button {
-    padding-bottom: 0;
-}
-
-.accordion-body {
-    background-color: #fff;
-    border: 1px solid #fff;
-    padding: 10px;
-    border-radius: 0px;
-}
-
-/* Optional: Remove default list-style for the accordion bullets */
-.accordion-item {
-    list-style: none;
-    padding: 0;
-}
-
-
-/***Slide Nav ****/
-
-
-.example-sidenav-content {
-  display: flex;
-  height: 100%;
-  align-items: center;
-  justify-content: center;
-}
-
-.example-sidenav {
-  padding: 20px;
-}
-
-
-//side nav bar
-
-.sidenav {
-    width: 45%;
-    position: fixed;
-    top: 0;
-    right: -45%;
-    height: 100%;
-    background-color: #fff;
-    overflow-x: hidden;
-    transition: 0.5s;
-    padding-top: 60px;
-    z-index: 100;
-  }
-
-  .sidenav.active {
-    right: 0;
-    z-index: 1000;
-    border-left: 0.1px solid #f2f2f2;
-  }
-
-
-
-@media (min-width: 66rem){
-
-  }
-
-  @media (min-width: 42rem){
- }
-
- .title-bar-heading {
+.finance-price {
     display: flex;
     flex-direction: row;
-    margin-bottom: 10px;
-    margin-top: 35px;
-    color: #000;
+    justify-content: center;
 
-    .title {
-        font-size: 1.25rem;
+    p {
+        font-size: 1rem;
         font-weight: 600;
-        margin-left: 75px;
+        margin-bottom: 0px;
+        margin-top: 5px;
     }
 
-    .title-top {
-        font-size: 2.5rem;
-        font-weight: bold;
-    }
-}
-
-.features-list {
-    ::ng-deep ul {
-        list-style: none;
-        padding: 0;
-        position: relative;
-
-        margin-left: 26px;
-
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-
-        li::before {
-            content: '';
-            display: inline-block;
-            list-style-position: outside; /* Place the bullet point/icon outside the text content */
-            width: 16px;
-            height: 16px;
-
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
-
-            background-size: cover;
-            margin-right: 8px;
-            position: absolute;
-            left: -23px;
-        }
+    h1 {
+        font-size: 3rem;
+        font-weight: 700;
+        margin-bottom: 0px;
     }
 }
 
-.feature-list-recommended {
-    ::ng-deep ul {
-        list-style: none;
-        padding: 0;
-        position: relative;
-
-        margin-left: 26px;
-
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-
-        li::before {
-            content: '';
-            display: inline-block;
-            list-style-position: outside; /* Place the bullet point/icon outside the text content */
-            width: 16px;
-            height: 16px;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
-
-            background-size: cover;
-            margin-right: 8px;
-            position: absolute;
-            left: -23px;
-        }
+.next-step-button {
+    @media screen and (min-width: 1024px) {
+        margin-top: 3rem;
     }
 }
 
-.feature-list-supercharged {
-    ::ng-deep ul {
-        list-style: none;
-        padding: 0;
-        position: relative;
-
-        margin-left: 26px;
-
-        display: flex;
-        flex-direction: column;
-        gap: 7px;
-
-        li::before {
-            content: '';
-            display: inline-block;
-            list-style-position: outside; /* Place the bullet point/icon outside the text content */
-            width: 16px;
-            height: 16px;
-
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
-
-            background-size: cover;
-            margin-right: 8px;
-            position: absolute;
-            left: -23px;
-        }
-    }
-}
-
-.recommended-tag {
+.tags {
     position: absolute;
-    padding: 15px;
-    overflow: hidden;
-    background-color: orangered;
+    bottom: 10px;
+    display: flex;
+    flex-direction: row;
     color: white;
-    text-decoration: none;
-    font-weight: 600;
 
-    margin: -10px 0px 0px -10px;
+    .tag-container {
+        display: flex;
+        flex-direction: row;
+        margin-bottom: 12px;
+        margin-left: -20px;
 
-    border-radius: 1rem;
-    border-color: transparent;
+        svg polygon {
+            fill: orangered;
+        }
 
-    i {
-        margin-right: 7px;
+        .tag {
+            display: flex;
+            flex-direction: row;
+            padding: 12px 15px 12px 0px;
+            background-color: orangered;
+            align-items: center;
+            position: relative;
+
+            .svg {
+                position: absolute;
+                left: 0;
+            }
+
+            p {
+                margin: 0px;
+                margin-left: 4px;
+                white-space: nowrap;
+            }
+        }
+
+        @media screen and (max-width: 1024px) {
+            margin-left: -20px;
+        }
+    }
+
+    .tag-container.tag-green {
+        svg polygon {
+            fill: #50a518;
+        }
+
+        .tag {
+            background-color: #50a518;
+        }
+    }
+
+    .tag-container.tag-blue {
+        svg polygon {
+            fill: rgb(70, 166, 230);
+        }
+
+        .tag {
+            background-color: rgb(70, 166, 230);
+        }
     }
 }
 
-.supercharged-tag {
-    position: absolute;
-    padding: 15px;
-    overflow: hidden;
-    background-color: #50a518; //todo change color to solarfast
-    color: white;
-    text-decoration: none;
-    font-weight: 600;
-
-    margin: -10px 0px 0px -10px;
-
-    border-radius: 1rem;
-    border-color: transparent;
+.text-green {
+    color: #75c043;
 }
 
+@media screen and (min-width: 700px) {
+    .payment-options h1 {
+        font-weight: 700;
+        font-size: 2.4rem;
+    }
 
-.card-recommended {
-    background-color: #50a518;
-    color: white;
+    .package-panel-list h2 {
+        font-size: 36px;
+        //line-height: 3rem;
+        font-weight: 600;
+    }
+
+    .package-panel-list h3 {
+        font-size: 18px;
+        //line-height: 3rem;
+        font-weight: 600;
+    }
+
+    .features-list {
+        ::ng-deep ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+
+            font-size: 18px;
+
+            margin-left: 26px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            margin-top: 1rem;
+
+            li::before {
+                content: '';
+                display: inline-block;
+                list-style-position: outside; /* Place the bullet point/icon outside the text content */
+                width: 20px;
+                height: 20px;
+
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
+
+                background-size: cover;
+                margin-right: 10px;
+                position: absolute;
+                left: -23px;
+            }
+        }
+    }
+
+    .feature-list-recommended {
+        ::ng-deep ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+
+            margin-left: 26px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+
+            li::before {
+                content: '';
+                display: inline-block;
+                list-style-position: outside; /* Place the bullet point/icon outside the text content */
+                width: 20px;
+                height: 20px;
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
+
+                background-size: cover;
+                margin-right: 10px;
+                position: absolute;
+                left: -23px;
+            }
+        }
+    }
+
+    .feature-list-supercharged {
+        ::ng-deep ul {
+            list-style: none;
+            padding: 0;
+            position: relative;
+
+            margin-left: 26px;
+
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+
+            li::before {
+                content: '';
+                display: inline-block;
+                list-style-position: outside; /* Place the bullet point/icon outside the text content */
+                width: 20px;
+                height: 20px;
+
+                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
+
+                background-size: cover;
+                margin-right: 10px;
+                position: absolute;
+                left: -23px;
+            }
+        }
+    }
 }
 
-.card-title {
-    white-space: nowrap;
+@media screen and (min-width: 1450px) {
+    .payment-options h1 {
+        font-weight: 700;
+        font-size: 3.5rem;
+    }
+
+    .payment-options p {
+        font-weight: 500;
+        font-size: 1.2rem;
+    }
+
+    .features-list {
+        ::ng-deep ul {
+            font-size: 22px;
+        }
+    }
+
+    .package-panel-list h2 {
+        font-size: 40px;
+        //line-height: 3rem;
+        font-weight: 600;
+    }
+
+    .package-panel-list h3 {
+        font-size: 22px;
+        //line-height: 3rem;
+        font-weight: 600;
+    }
 }
 
-.card-supercharged {
-    background-color: #1a1a1a;
-    color: white;
+@media screen and (min-width: 1920px) {
+    .payment-options h1 {
+        font-weight: 700;
+        font-size: 4.5rem;
+    }
+
+    .package-panel-list h3 {
+        font-size: 28px;
+        //line-height: 3rem;
+        font-weight: 600;
+    }
+}
+
+.send-quote-button {
+    margin: 15px 0px;
+
+    @media screen and (min-width: 1024px) {
+        margin-bottom: 50px;
+        margin-top: 1rem;
+    }
+}
+
+.row-card {
+    --bs-gutter-x: 1.5rem;
+    --bs-gutter-y: 0;
+    flex-wrap: wrap;
+    margin-top: calc(-1 * var(--bs-gutter-y));
+    margin-right: calc(-0.5 * var(--bs-gutter-x));
+    margin-left: calc(-0.5 * var(--bs-gutter-x));
+
+    @media screen and (min-width: 0px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media screen and (min-width: 768px) {
+        display: flex;
+        flex-direction: column;
+    }
+
+    @media screen and (min-width: 1024px) {
+        display: flex;
+        flex-direction: row;
+    }
+}
+
+.package-column {
+    @media screen and (max-width: 1024px) {
+        width: 100%;
+    }
+}
+
+.find-out-more-finance {
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.whats-included-button {
+    margin-bottom: 50px;
 }

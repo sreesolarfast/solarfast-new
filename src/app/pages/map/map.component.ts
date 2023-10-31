@@ -4,7 +4,6 @@ import { GoogleMap, MapInfoWindow, MapMarker } from '@angular/google-maps';
 import { Router } from '@angular/router';
 import { OnlineEnquiryDto } from '../../../shared/dto/online-enquiry-dto';
 import { GeocoderResponse } from '../../../shared/model/geocoder-response.model';
-import { EnteredPostalCodeService } from '../../../shared/service/enteredpostalcode.service';
 import { GeocodingService } from '../../../shared/service/geocoding.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
 import { FormService } from '../../../shared/service/form.service';
@@ -48,6 +47,8 @@ export class MapComponent implements OnInit {
         }
       ];
 
+    
+
     submitted = false;
     onlineEnquiry: OnlineEnquiryDto | null;
     addressAvilable=true;
@@ -75,40 +76,20 @@ export class MapComponent implements OnInit {
         animation: google.maps.Animation.DROP,
         icon: './assets/map/map-icon.svg',
     };
-    
+
     geocoderWorking = false;
     geolocationWorking = false;
-
-    /*{
-                "img": 'assets/7/drag-the-map-bg.png',
-                "type": '',
-                "description": "Locate your house by dragging the map.",
-                "name": "Drag the map"
-              },
-              {
-                "img": 'assets/7/use-zoom-bg.png',
-                "type": '',
-                "description": "Locate your house by dragging the map.",
-                "name": "Use the zoom controls"
-              },
-              {
-                "img": 'assets/7/drop-pin-bg.png',
-                "type": '',
-                "description": "Tap to drop the pin on your rooftop.",
-                "name": "Drop the pin"
-              },
-    */
 
     constructor(
         private geocodingService: GeocodingService,
         private route: Router,
         private formBuilder: FormBuilder,
-        private postalCodeService: EnteredPostalCodeService,
         private onlineEnquiryService: OnlineEnquiryService,
         public formService: FormService, private mapZoomDetected: ChangeDetectorRef
     ) {}
 
     ngOnInit(): void {
+
         const step = this.formService.getSteps().filter(x => x.component == 'page-map')[0];
         if (step != this.formService.activeStep) {
             this.formService.redirectToCorrectStep();
@@ -123,7 +104,7 @@ export class MapComponent implements OnInit {
                 }
             },
         });
-        
+
         if(this.onlineEnquiry.latitude && this.onlineEnquiry.longitude){
           this.addressAvilable=false;
         }

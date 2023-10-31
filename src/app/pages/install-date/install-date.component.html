@@ -80,12 +80,12 @@
                             <div class="confirm-row d-flex flex-column align-items-center justify-content-center">
                                 <button
                                     (click)="answerGiven()"
-                                    class="btn btn-primary confirm-date-button"
-                                    [class.confirm-selection-disabled]="!isConfirmSelectionReady()"
+                                    class="button-primary"
+                                    [class.button-disabled]="!isConfirmSelectionReady()"
                                     [disabled]="!isConfirmSelectionReady()">
                                     Confirm Date Selection
                                 </button>
-                                <div class="text-black" style="margin-top: -12px">*Please note install dates are subject to change.</div>
+                                <div class="text-black" >*Please note install dates are subject to change.</div>
                             </div>
                         </div>
                     </div>

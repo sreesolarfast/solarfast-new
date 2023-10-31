@@ -2,7 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { GeocoderResponse } from '../model/geocoder-response.model';
-import { Observable, of } from 'rxjs';
+import { Observable, catchError, map, of, throwError } from 'rxjs';
+import { IAddress } from '../interface/address';
 
 @Injectable({
   providedIn: 'root',
@@ -30,4 +31,18 @@ export class GeocodingService {
     const url = `https://maps.google.com/maps/api/geocode/json?address=${term}&sensor=false&key=${environment.googleMapsApiKey}`;
     return this.http.get<GeocoderResponse>(url);
   }
+
+  getAddressesFromPostcode(postcode: string): Observable<IAddress> {
+    return this.http
+        .get<IAddress>(`${environment.apiUrl}/address/online-form/${postcode}`)
+        .pipe(
+            map((result) => {
+                return result;
+            }),
+            catchError((err) => {
+                return throwError(() => err);
+            })
+        );
+}
+
 }

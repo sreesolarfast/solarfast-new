@@ -2,7 +2,7 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { FormService } from 'src/shared/service/form.service';
 
 @Component({
-    selector: 'thank-you',
+    selector: 'page-thank-you',
     templateUrl: './thank-you.component.html',
     styleUrls: ['./thank-you.component.scss'],
 })

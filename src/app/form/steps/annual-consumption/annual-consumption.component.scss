@@ -56,7 +56,11 @@
 @media screen and (max-width: 786px) {
     .annual-consumption h2 {
         font-size: 1.55rem;
-        margin-bottom: 30px;
+        margin-bottom: 15px;
+    }
+
+    p{
+        margin-bottom: 0px;
     }
 
     .card-title {
@@ -84,13 +88,13 @@
 
 
 
-.btn-primary {
-    background: linear-gradient(to bottom, #75c043, #44a900);
-    padding: 15px 70px 15px 70px;
-    border-radius: 0.75rem;
-    border: transparent;
-    font-size: 20px;
-}
+// .btn-primary {
+//     background: linear-gradient(to bottom, #75c043, #44a900);
+//     padding: 15px 70px 15px 70px;
+//     border-radius: 0.75rem;
+//     border: transparent;
+//     font-size: 20px;
+// }
 
 .btn-secondary {
     background: transparent;
@@ -107,8 +111,39 @@
 
 .header {
     color: #2c2c2c;
+        height: 100%;
+
 }
 
 .fs-title {
-    line-height: 42px;
+    line-height: 2rem;
+}
+
+.button-container{
+    display: flex;
+    flex-direction: row;
+    gap: 9px;
+
+    @media screen and (max-width: 729px) {
+        flex-direction: column;
+    }
+}
+
+.input-field-container{
+    width: 100%;
+    position: relative;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+
+    @media screen and (min-width: 1024px) {
+        margin-top: 30px;
+        margin-bottom: 30px;
+    }
+
+    @media screen and (min-width: 0px) {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+
 }

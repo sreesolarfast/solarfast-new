@@ -49,6 +49,8 @@ export class OnlineEnquiryDto {
     images!: ImageFileDto[];
     packageOptions!: PackageDto[];
 
+    orderId: number | null;
+
     companyId: number | null;
     repId: string;
     sendQuote: boolean;

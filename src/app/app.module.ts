@@ -8,6 +8,7 @@ import { AuthInterceptor } from '../shared/guards/http.interceptor';
 import { NgApexchartsModule } from 'ng-apexcharts';
 import { GoogleMapsModule } from '@angular/google-maps';
 import { SharedModule } from 'src/shared/shared.module';
+import { PostalCodeEntryModule } from './pages/postal-code-entry/postal-code-entry.module';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,8 @@ import { SharedModule } from 'src/shared/shared.module';
     GoogleMapsModule,
     HttpClientModule,
     SharedModule,
+
+    PostalCodeEntryModule
   ],
   providers: [
     {

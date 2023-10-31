@@ -51,12 +51,10 @@
         margin-bottom: 20px;
     }
 
-
     .date-picker {
         padding: 0% 10% 0% 10%;
         color: #b2b2b2;
     }
-
 
     .confirm-button {
         padding: 10px 60px 10px 60px;
@@ -73,16 +71,12 @@
         opacity: 0.3;
     }
 
-
     .image-card{
         margin-top: 20px;
-
         border-radius: 1.5rem;
         border: 2px dashed #999;
-
         padding: 20px;
         width: 100%;
-
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -99,7 +93,6 @@
         grid-template-columns: repeat(auto-fit, minmax(min(100%/1, max(270px, 100%/4)), 1fr));
         row-gap: 80px;
     }
-
 
     .image-item-body{
         width: 270px;
@@ -144,6 +137,33 @@
         }
     }
 
+}
+
+/*** Tab ***/
+@media screen and (max-width:1024px) {
+
+    .content-main .image-item-body{
+        width: 95%;
+    }
 
 }
+
+
+/*** Mobile ***/
+
+@media screen and (max-width:768px) {
+    .content-main .image-item-body{
+        width: 95%;
+    }
+
+}
+
+@media screen and (max-width:767px) {
+
+    .content-main .image-item-body{
+        width: 100%;
+    }
+
+}
+
 

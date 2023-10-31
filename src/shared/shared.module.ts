@@ -31,15 +31,14 @@ const importAndExport = [
     ContactUsComponent,
     NeedHelpComponent,
     InstallmentSummaryComponent,
-    PageFooterComponent
+    PageFooterComponent,
 ];
 
 @NgModule({
     declarations: [
     importAndExport
     ],
-
     imports: [CommonModule, GoogleMapsModule, ReactiveFormsModule, FormsModule, NgApexchartsModule, MaterialModule],
-    exports: [importAndExport, GoogleMapsModule],
+    exports: [importAndExport, GoogleMapsModule, MaterialModule],
 })
 export class SharedModule {}

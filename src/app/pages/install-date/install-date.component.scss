@@ -95,7 +95,7 @@
         }
 
         .selected {
-            background: linear-gradient(to bottom, #75c043, #44a900);
+            background: linear-gradient(to bottom, #75c043, #6cb13e);
             color: white;
         }
 
@@ -110,22 +110,6 @@
             justify-content: center;
             align-items: center;
         }
-    }
-
-    .confirm-date-button {
-        margin-top: 20px !important;
-        margin-bottom: 20px !important;
-        padding: 17px 40px 17px 40px;
-        font-weight: bold;
-        font-size: 20px;
-        border-radius: 0.5rem;
-        border-color: transparent;
-    }
-
-    .confirm-selection-disabled {
-        background: #000;
-        background-color: #000;
-        color: #3e3e3e;
     }
 
     .key-container {

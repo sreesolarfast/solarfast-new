@@ -212,6 +212,14 @@
     // margin: 0 10%;
     position: relative;
     margin: 3rem 0;
+
+    @media screen and (min-width: 0px) {
+        padding: 1.3rem;
+    }
+    @media screen and (min-width: 750px) {
+
+        padding: 2rem;
+    }
 }
 
 .card-wrapper {
@@ -220,6 +228,10 @@
     align-items: center;
     /* justify-content: space-between; */
     gap: 20px;
+
+    @media screen and (max-width: 1024px) {
+        display: block;
+    }
 }
 
 .card-wrapper > div {
@@ -237,6 +249,15 @@
     flex-direction: column;
     gap: 20px;
     background: #fff;
+
+    @media screen and (max-width: 1024px) {
+
+            width: auto;
+            min-height: auto;
+            margin-bottom: 10px;
+            flex-direction: inherit;
+            justify-content: space-around;
+    }
 }
 
 .card-wrapper > div:hover {
@@ -246,6 +267,10 @@
 
 img {
     height: 80%;
+
+    @media screen and (max-width: 1024px) {
+        height: 60px;
+    }
 }
 
 .card-title {
@@ -254,28 +279,56 @@ img {
     font-weight: 700;
 }
 
-/*progressbar*/
-#progressbar {
+.show {
+    display: flex !important;
+}
+
+.hide {
+    display: none !important;
+}
+
+.progress-bar {
     margin-bottom: 30px;
     overflow: hidden;
     counter-reset: step;
     font-family: 'Poppins', sans-serif;
-}
 
-#progressbar li {
-    list-style-type: none;
-    font-weight: 600;
-    font-size: 15px;
-    width: 25%;
-    float: left;
-    color: #000;
-    position: relative;
-    letter-spacing: 0px;
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-family: 'Poppins', sans-serif;
+    padding: 0%;
+    margin-top: 70px;
+    width: 100%;
+
+    li {
+        list-style-type: none;
+        font-weight: 600;
+        font-size: 15px;
+        width: 25%;
+        float: left;
+        color: #000;
+        position: relative;
+        letter-spacing: 0px;
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        font-family: 'Poppins', sans-serif;
+
+        @media screen and (max-width: 768px) {
+            font-size: 12px;
+        }
+    }
+
+    @media screen and (min-width: 0px) {
+        display: none !important;
+    }
+
+    @media screen and (min-width: 1024px) {
+        display: flex !important;
+        flex-direction: row;
+        justify-content: center;
+        justify-items: center;
+        align-items: center;
+        align-content: center;
+    }
 }
 
 #progressbar li:before {
@@ -301,8 +354,6 @@ img {
     }
 }
 
-/*progressbar connectors*/
-
 #progressbar li:after {
     content: '';
     width: 100%;
@@ -315,6 +366,7 @@ img {
     top: 9px;
     z-index: 0;
     /*put it behind the numbers*/
+    display: block;
 }
 
 #progressbar li:first-child:after {
@@ -323,8 +375,6 @@ img {
     z-index: 0;
 }
 
-/*marking active/completed steps green*/
-/*The number of the step and the connector before it = green*/
 #progressbar li.active:before {
     z-index: 1;
     background: #70c91b;
@@ -335,8 +385,6 @@ img {
 #progressbar li.active:after {
     z-index: 0;
     background: #70c91b;
-    // background-color: #007bff;
-    // color: transparent;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -351,87 +399,11 @@ img {
     align-items: center;
 }
 
-/***Tab View***/
-@media screen and (max-width: 1920px) {
-    .progress-bar {
-        padding: 0%;
-        margin-top: 70px;
-
-        display: flex !important;
-        flex-direction: row;
-        justify-content: center;
-        justify-items: center;
-        align-items: center;
-        align-content: center;
-
-        width: 100%;
-    }
-
-    #progressbar li:after {
-        display: block;
-    }
-}
-
-@media screen and (max-width: 1024px) {
-    .card-wrapper {
-        display: block;
-    }
-
-    .card-content {
-        padding: 2rem;
-    }
-
-    .fs-title {
+.fs-title {
+    @media screen and (min-width: 0px) {
         font-size: 2rem;
         color: #2c2c2c;
         margin-bottom: 30px;
         line-height: 1.3;
     }
-
-    .card-wrapper > div {
-        width: auto;
-        min-height: auto;
-        margin-bottom: 10px;
-        flex-direction: inherit;
-        justify-content: space-around;
-    }
-
-    img {
-        height: 60px;
-    }
-}
-
-.show {
-    display: flex !important;
-}
-
-.hide {
-    display: none !important;
-}
-
-/*** Mobile View***/
-
-@media screen and (max-width: 768px) {
-    #progressbar li {
-        font-size: 12px;
-    }
-
-    .progress-bar {
-        display: none !important;
-    }
-
-}
-
-@media screen and (max-width: 767px) {
-}
-
-.btn-black {
-    background: #000;
-    color: white;
-    border-radius: 100%;
-    padding: 10px;
-    position: absolute;
-    top: 60px;
-    left: 50px;
-    cursor: pointer;
 }

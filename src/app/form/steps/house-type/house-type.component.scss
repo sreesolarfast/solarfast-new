@@ -24,8 +24,8 @@
     .card-wrapper>div {
         width: auto;
         min-height: auto;
-        margin-bottom: 10px;
-        flex-direction: inherit;
+        margin-bottom: 0px !important;
+
         justify-content: space-around;
     }
 }
@@ -34,18 +34,46 @@
 
     .house-type h2{
         font-size:1.55rem ;
-        margin-bottom:30px;
+        margin-bottom:20px;
     }
 
     .card-title{
-        font-size:1.1rem;
+        font-size:1rem;
     }
 
     .card-wrapper>div {
         width: auto;
         min-height: auto;
-        margin-bottom: 10px;
-        flex-direction: inherit;
+        margin-bottom: 0px !important;
+
         justify-content: space-around;
     }
+}
+
+.svg-image {
+    @media screen and (max-width: 750px) {
+        object-fit: scale-down;
+        width: 50%;
+    }
+}
+
+.card-wrapper {
+
+    @media screen and (max-width: 1024px) {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 9px;
+    }
+
+}
+
+.header{
+    @media screen and (max-width: 1024px) {
+        height: 100%;
+    }
+
+}
+
+.option {
+    height: 100%;
 }

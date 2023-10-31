@@ -14,40 +14,18 @@ import { AnnualConsumptionComponent } from './steps/annual-consumption/annual-co
 import { RoofTypeComponent } from './steps/roof-type/roof-type.component';
 import { SharedModule } from 'src/shared/shared.module';
 
-
-
 @NgModule({
-  declarations: [FormComponent
+    declarations: [
+        FormComponent,
 
-    // steps
-  , PropertyOwnershipComponent, HouseTypeComponent, AnnualConsumptionComponent, UnitRateComponent, ShadingComponent, RoofTypeComponent],
-  imports: [
-    CommonModule,
-    FormRoutingModule,
-    MaterialModule,
-    FormsModule,
-    ReactiveFormsModule,
-    SharedModule,
-  ]
+        // steps
+        PropertyOwnershipComponent,
+        HouseTypeComponent,
+        AnnualConsumptionComponent,
+        UnitRateComponent,
+        ShadingComponent,
+        RoofTypeComponent,
+    ],
+    imports: [CommonModule, FormRoutingModule, MaterialModule, FormsModule, ReactiveFormsModule, SharedModule],
 })
-export class FormModule {
-
-  @ViewChild(GoogleMap, { static: false }) map!: GoogleMap;
-
-  center!: google.maps.LatLngLiteral;
-    mapCenter!: google.maps.LatLng;
-    mapOptions: google.maps.MapOptions = {
-        mapTypeId: google.maps.MapTypeId.HYBRID,
-        zoomControl: false,
-        scrollwheel: false,
-        disableDoubleClickZoom: true,
-        maxZoom: 20,
-        minZoom: 12,
-        disableDefaultUI: true,
-        // zoomControlOptions:{
-        //     position:google.maps.ControlPosition.BOTTOM_CENTER,
-        // }
-
-    };
-
- }
+export class FormModule {}

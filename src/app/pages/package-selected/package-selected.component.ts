@@ -10,6 +10,8 @@ import { PackageDto } from '../../../shared/dto/package-dto';
 import { Location } from '@angular/common';
 import { PackageType } from 'src/shared/enum/package-type';
 import { MatDrawer } from '@angular/material/sidenav';
+import { environment } from 'src/environments/environment';
+import { SendQuoteComponent } from '../../../shared/components/send-quote/send-quote.component';
 
 @Component({
     selector: 'page-package-selected',
@@ -22,6 +24,12 @@ export class PackageSelectedComponent implements OnInit {
     @Output() newStep = new EventEmitter<number | null>();
     activePackage: PackageDto;
     packageType = PackageType;
+    dataToSendToPopup: any;
+
+    tenureMonths = 180;
+    calculations: any[] = [];
+    interestRate = 11.9;
+    environment = environment;
 
     constructor(
         public dialog: MatDialog,
@@ -32,12 +40,25 @@ export class PackageSelectedComponent implements OnInit {
         private location: Location
     ) {}
 
+    calculateEMI(loanAmount: number, interestRate: number, tenureMonths: number): number {
+        const depositAmount = (50/100) * loanAmount;
+        const loanCost = loanAmount - depositAmount;
+        const monthlyInterestRate = (interestRate / 12) / 100;
+        const emi = (loanCost * monthlyInterestRate) / (1 - Math.pow(1 + monthlyInterestRate, -tenureMonths));
+        return emi;
+      }
+
+
     ngOnInit(): void {
         const step = this.formService.getSteps().filter(x => x.component == 'page-package-selected')[0];
 
+
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
-                if (x != null && x.packageOptions != null) this.activePackage = x.packageOptions.filter(p => p.dtoId == x.selectedPackageId)[0];
+                if (x != null && x.packageOptions == null)  return;
+
+                this.activePackage = x.packageOptions.filter(p => p.dtoId == x.selectedPackageId)[0];
+                this.activePackage.emi = this.calculateEMI(this.activePackage.totalSalePrice, this.interestRate, this.tenureMonths).toFixed(2);
             },
         });
 
@@ -50,18 +71,21 @@ export class PackageSelectedComponent implements OnInit {
             next: x => {
                 if (x == null) return;
                 this.activePackage = x;
+            },
+        });
 
-                if (uniqueRef != null)
-                    this.onlineEnquiryService.getByUniqueReference(uniqueRef).subscribe({
-                        next: o => {
-                            o.selectedPackage = x;
-                            o.selectedPackageId = x.dtoId;
-                            this.formService.activeStep = step;
-                            this.onlineEnquiryService.result = o;
-                            this.onlineEnquiryService.setStep(step.step);
-                            this.location.replaceState('/pages/package-selected');
-                        },
-                    });
+        if (uniqueRef != null)
+        this.onlineEnquiryService.getByUniqueReference(uniqueRef).subscribe({
+            next: o => {
+                if (o == null) return;
+                o.selectedPackage = this.activePackage;
+                o.selectedPackageId = this.activePackage.dtoId;
+                o.selectedPackage.emi = this.calculateEMI(this.activePackage.totalSalePrice, this.interestRate, this.tenureMonths).toFixed(2);
+                this.formService.activeStep = step;
+                this.onlineEnquiryService.setOnlineEnquiry(o);
+                this.activePackage = o.selectedPackage;
+                this.onlineEnquiryService.setStep(step.step);
+                this.location.replaceState('/pages/package-selected');
             },
         });
 
@@ -70,20 +94,24 @@ export class PackageSelectedComponent implements OnInit {
         }
     }
 
-    openPopup(): void {
+    openPopup(item): void {
         const dialogRef = this.dialog.open(InstallmentSummaryComponent, {
-            width: '30%',
-            height: '90%',
-            disableClose: false
-        });
-
-        // Handle dialog close or other events here
-        dialogRef.afterClosed().subscribe(result => {
-            console.log(`Dialog result: ${result}`);
+            panelClass: ['my-custom-class'],
+            width: '40%',
+            height: 'auto',
+            maxHeight: '90vh',
+            disableClose: false,
+            data: item
         });
     }
 
     whatsIncluded() {
         this.drawer.open();
+    }
+
+    sendQuote(packageId: number)  {
+        const dialog = this.dialog.open(SendQuoteComponent, {
+            data: packageId
+        });
     }
 }

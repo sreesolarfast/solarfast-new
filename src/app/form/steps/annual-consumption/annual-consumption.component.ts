@@ -34,10 +34,5 @@ export class AnnualConsumptionComponent implements OnInit {
         const dialogRef = this.dialog.open(UnknownConsumptionDialogComponent, {
             width: '520px',
         });
-
-        dialogRef.afterClosed().subscribe(result => {
-            console.log('The dialog was closed', result);
-            // Handle the result after the dialog is closed
-        });
     }
 }

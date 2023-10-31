@@ -26,6 +26,11 @@ const routes: Routes = [
     ]
   },
 
+  {
+    path: ':postcode',
+    component: FormComponent
+  }
+
 
 ];
 

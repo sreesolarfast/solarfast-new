@@ -6,7 +6,7 @@
                     <form [formGroup]="form" (ngSubmit)="findAddress()">
                         <div class="row">
                             <div class="col pr-0 form-group">
-                                <input type="search" class="form-control"
+                                <input type="search" class="input-text-field"
                                     (keydown.enter)="findAddress()" placeholder="Enter your postcode"
                                     [disabled]="isWorking" formControlName="postcode"
                                     [ngClass]="{ 'is-invalid': submitted && validationControls['postcode'].errors }">
@@ -16,7 +16,7 @@
                                       </div>
                             </div>
                             <div class="col-auto ml-auto form-group">
-                                <button class="btn btn-primary mr-1" type="submit"
+                                <button class="button-primary mr-1" type="submit"
                                     [disabled]="isWorking">
                                     <i class="bi bi-map mr-md-1"></i> <span class="d-none d-md-inline-block">Submit</span>
                                 </button>

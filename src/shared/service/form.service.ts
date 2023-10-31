@@ -79,7 +79,7 @@ export class FormService {
             back: 4,
             hideNavigation: false,
             hideComponent: false,
-            route: '/solar',
+            route: '/',
         },
         {
             step: 6,
@@ -146,7 +146,7 @@ export class FormService {
         },
         {
             step: 13,
-            component: 'thank-you',
+            component: 'page-thank-you',
             next: 14,
             back: 12,
             hideNavigation: true,
@@ -191,7 +191,7 @@ export class FormService {
 
     public redirectToCorrectStep() {
         if (this._activeStep?.value?.route == null) {
-            this.router.navigate(['/solar']);
+            this.router.navigate(['/']);
         } else this.router.navigate([this._activeStep.value.route]);
     }
 }

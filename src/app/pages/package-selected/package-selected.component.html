@@ -1,7 +1,7 @@
 <progression-bar-top></progression-bar-top>
 
 <mat-drawer-container [hasBackdrop]="true">
-    <mat-drawer #drawer [mode]="'over'" [position]="'end'">
+    <mat-drawer #drawer [mode]="'over'" [position]="'end'" style="width: 50%; background-color: white">
         <button (click)="drawer.close()" class="close-button">&times;</button>
         <app-whatsincluded [package]="activePackage"></app-whatsincluded>
     </mat-drawer>
@@ -29,26 +29,19 @@
 
             <ng-container *ngIf="activePackage">
                 <!--Package Card-->
-                <div class="container-fluid">
-                    <div class="packages">
+                <div class="container-fluid my-5">
+                    <div class="package-list">
                         <div class="row">
-                            <div class="col-md-12">
+                            <div class="col-md-12 position-relative">
                                 <div
                                     class="card"
                                     [class.card-recommended]="activePackage.packageType == 'Recommended'"
                                     [class.card-supercharged]="activePackage.packageType == 'Supercharged'">
                                     <div class="card-body">
-                                        <div class="row row-flex">
+                                        <div class="row row-card">
                                             <!--Package-->
-                                            <div class="col-md-4">
-                                                <div class="package-content">
-                                                    <ng-container *ngIf="activePackage.packageType == packageType.Recommended">
-                                                        <a class="recommended-tag"><i class="bi bi-star-fill"></i>Recommended</a>
-                                                    </ng-container>
-                                                    <ng-container *ngIf="activePackage.packageType == packageType.Supercharged">
-                                                        <a class="supercharged-tag">Supercharged</a>
-                                                    </ng-container>
-
+                                            <div class="col-md-3 package-column">
+                                                <div class="package-content d-flex align-items-center">
                                                     <ng-container
                                                         *ngIf="
                                                             activePackage?.imageDtos &&
@@ -56,20 +49,21 @@
                                                                 activePackage.imageDtos[0].dataFileUrl !== null;
                                                             else placeHolderImage
                                                         ">
-                                                        <img class="w-100 package-image" [src]="activePackage.imageDtos[0].dataFileUrl" />
+                                                        <img class="package-image" [src]="activePackage.imageDtos[0].dataFileUrl" />
                                                         {{ activePackage.imageDtos[0].dataFileUrl }}
                                                     </ng-container>
 
                                                     <ng-template #placeHolderImage>
-                                                        <img class="w-100 package-image" src="./assets/package/full-system-posterImage.png" />
+                                                        <img class="package-image" src="./assets/package/full-system-posterImage.png" />
                                                     </ng-template>
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
-                                                <div class="package-content border-right">
+                                            <div class="col-md-5 package-column">
+                                                <div class="package-content">
                                                     <div class="package-panel-list">
                                                         <h2 class="lh-1 mt-3">{{ activePackage?.name | titlecase }}</h2>
+                                                        <h3 class="lh-1">{{ activePackage?.panelDtos[0]?.productDto.name }} {{activePackage?.batteryDtos[0]?.productDto?.name != null ? " + " + activePackage?.batteryDtos[0]?.productDto?.name : ""}}</h3>
 
                                                         <span
                                                             class="features-list mt-3"
@@ -79,34 +73,91 @@
 
                                                         <button
                                                             type="button"
-                                                            class="btn btn-secondary mt-3"
-                                                            data-bs-toggle="modal"
-                                                            data-bs-target="#sendQuoteModal">
+                                                            class="button-secondary send-quote-button w-75"
+                                                            (click)="sendQuote(activePackage.dtoId)">
                                                             <i class="bi bi-envelope"></i>
-                                                            <span class="fs-8 mx-2">Save and Email me this Quote</span>
+                                                            <span class="fs-8 mx-2">Email Quote</span>
                                                         </button>
                                                     </div>
+
+                                                    <div class="tags">
+                                                        <ng-container *ngIf="activePackage.packageType == packageType.Recommended">
+                                                            <div class="tag-container">
+                                                                <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="50,50 100,0 100,100" fill="blue" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                </svg>
+                                                                <div class="tag">
+                                                                    <i class="bi bi-star-fill"></i>
+                                                                    <p>Recommended</p>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+
+                                                        <div class="tag-container tag-blue">
+                                                            <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                                                                <polygon points="50,50 100,0 100,100" fill="orangered" transform="rotate(-0 50 50) scale(0.5)" />
+                                                            </svg>
+                                                            <div class="tag">
+                                                                <p>G98 Compliant</p>
+                                                            </div>
+                                                        </div>
+
+                                                        <ng-container *ngIf="activePackage.packageType == packageType.Supercharged">
+                                                            <div class="tag-container tag-green">
+                                                                <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="50,50 100,0 100,100" fill="orangered" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                </svg>
+                                                                <div class="tag">
+                                                                    <p>Supercharged</p>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+
+                                                        <ng-container *ngIf="activePackage.systemSize > 0">
+                                                            <div class="tag-container tag-green">
+                                                                <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
+                                                                    <polygon points="50,50 100,0 100,100" fill="green" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                </svg>
+                                                                <div class="tag">
+                                                                    <p>{{activePackage.systemSize}}kW System</p>
+                                                                </div>
+                                                            </div>
+                                                        </ng-container>
+                                                    </div>
+
                                                 </div>
                                             </div>
 
-                                            <div class="col-md-4">
+                                            <div class="col-md-4 package-column">
                                                 <div class="package-content justify-content-center w-100">
                                                     <div class="payment-options w-100">
-                                                        <h1 class="lh-1">From {{ activePackage.totalSalePrice | currency }}</h1>
-                                                        <span class="per-month"
-                                                            ><a (click)="openPopup()"><u>or £82.60 per month</u> (11.9% APR)</a></span
-                                                        >
-                                                        <a class="btn btn-primary" (click)="formService.next()">Proceed to Next Step</a>
+                                                        <div class="finance-price d-flex flex-row gap-1 clickable" (click)="openPopup(activePackage)">
+                                                            <p class="fst-italic">From</p>
+                                                            <h1 class="lh-1">{{ activePackage?.emi ?? 0 | currency }}</h1>
+                                                            <p class="text-start">
+                                                                Per <br />
+                                                                Month
+                                                            </p>
+                                                        </div>
+                                                        <p (click)="openPopup(activePackage)">({{ environment.interestRate }}% APR) <a class="find-out-more-finance clickable" >Find out more</a> </p>
+
+                                                        <hr />
+
+                                                        <h1 class="lh-1 fs-2 text-green">or {{ activePackage.totalSalePrice | currency }}</h1>
+
+                                                        <button class="button-primary mt-3 w-75" (click)="formService.next()">Next Step</button>
                                                         <p class="mt-3 whats-included-button">
                                                             <i class="bi bi-info-circle-fill"></i><a (click)="whatsIncluded()"> What's included?</a>
                                                         </p>
                                                     </div>
                                                 </div>
                                             </div>
-                                            <!--daoismdoamsdoamsd-->
+                                            <!--PACKAGE-->
                                         </div>
                                     </div>
                                 </div>
+
+
                             </div>
                         </div>
                     </div>
@@ -119,7 +170,8 @@
 
             <faq-component></faq-component>
         </div>
+        <!--footer-->
+        <page-footer></page-footer>
     </mat-drawer-content>
 </mat-drawer-container>
 
-<app-send-quote></app-send-quote>
