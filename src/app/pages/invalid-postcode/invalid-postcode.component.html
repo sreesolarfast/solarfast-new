@@ -7,59 +7,71 @@
     </svg>
 </a>
 
-<div class="content-main">
-    <p>This is where the user will be redirected to when they enter a valid format postcode but invalid in terms of existing.</p>
+<div @fadeIn class="content-main">
+    <h1>
+        We couldn't find that address...
+    </h1>
 
     <p>
-        We will want the customer to enter their address manually and then we call onlineenquiryservice.manage to try and get lat and long but if its
-        still null then we need to feedback that we can't find their postcode and to leave their details for a callback. Essentially a need help form
-        submission.
+        Try enter your postcode below and select your address.
     </p>
-</div>
 
-<form [formGroup]="form">
-    <div class="row">
-        <div class="col-md-7">
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="form-group pb-3">
-                        <div class="input-group position-relative">
-                            <input type="text" class="input-text-field w-100" placeholder="Postcode" formControlName="postcode" autocomplete="postal-code" />
+    <form [formGroup]="form">
+        <div class="row card">
+            <div>
+
+                <h1>
+                    Find your address
+                </h1>
+
+                <div class="row">
+                    <div class="col-sm-6">
+                        <div class="form-group pb-3">
+                            <div class="input-group position-relative">
+                                <input type="text" class="input-text-field w-100" placeholder="Postcode" formControlName="postcode" autocomplete="postal-code" />
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-sm-6">
+                        <div class="form-group pb-3">
+                            <button
+                                type="submit"
+                                class="button-primary w-100"
+                                [matTooltip]="'Find Address'"
+                                (click)="getLocation()"
+                                [disabled]="!form.valid"
+                                [class.button-disabled]="!form.valid">
+                                Find Address
+                            </button>
                         </div>
                     </div>
                 </div>
 
-                <div class="col-sm-6">
-                    <div class="form-group pb-3">
-                        <button
-                            type="submit"
-                            class="button-primary w-100"
-                            [matTooltip]="'Find Address'"
-                            (click)="getLocation()"
-                            [disabled]="!form.valid">
-                            Find Address
-                        </button>
+                <div class="row">
+                    <div @fadeIn class="col-sm-12" *ngIf="addressLookup?.addresses?.length > 0">
+                        <div class="form-group pb-3">
+                            <mat-label>Address </mat-label>
+                            <mat-select class="form-select" (selectionChange)="selectAddress($event.value)">
+                                <mat-option *ngFor="let item of addressLookup?.addresses; let i = index" [value]="i">
+                                    {{ item.line_1 }}
+                                </mat-option>
+                            </mat-select>
+                        </div>
                     </div>
                 </div>
-            </div>
 
-            <div class="row">
-                <div class="col-sm-6" *ngIf="addressLookup?.addresses?.length > 0">
-                    <div class="form-group pb-3">
-                        <mat-label>Address </mat-label>
-                        <mat-select class="form-select" (selectionChange)="selectAddress($event.value)">
-                            <mat-option value="">--Select--</mat-option>
-                            <mat-option *ngFor="let item of addressLookup?.addresses; let i = index" [value]="i">
-                                {{ item.line_1 }}
-                            </mat-option>
-                        </mat-select>
-                    </div>
-                </div>
+                <ng-container *ngIf="submitted && addressLookup?.addresses?.length <= 0">
+                    <p @fadeIn>No addresses found for {{ form.get('postcode').value }}.</p>
+                </ng-container>
+
             </div>
         </div>
-    </div>
-</form>
+    </form>
 
-<ng-container *ngIf="submitted && addressLookup?.addresses?.length <= 0">
-    <p>No addresses found for {{ form.get('postcode').value }}.</p>
-</ng-container>
+
+</div>
+
+
+
+

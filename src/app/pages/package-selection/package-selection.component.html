@@ -6,7 +6,7 @@
         <app-whatsincluded [package]="selectedPackage" style="width: 50%"></app-whatsincluded>
     </mat-drawer>
 
-    <mat-drawer-content>
+    <mat-drawer-content @fadeIn>
         <app-need-help></app-need-help>
 
         <!--Back button-->
@@ -18,11 +18,13 @@
         <div class="solar-fast-system">
             <div class="container-fluid">
                 <div class="row">
+                    <div class="col-12">
                     <div class="title-bar-heading">
                         <div>
                             <h1 class="title-top">Choose Your Solar Fast System</h1>
                             <p class="title">Based on the answers you gave, here is your recommended system.</p>
                         </div>
+                    </div>
                     </div>
                 </div>
 
@@ -30,7 +32,7 @@
                 <div class="package-list">
                     <div class="row mt-4" *ngFor="let item of packages">
                         <!--card-->
-                        <div class="position-relative d-flex justify-content-center" >
+                        <div class="position-relative d-flex justify-content-center">
                             <div
                                 class="card"
                                 [class.card-recommended]="item.packageType == 'Recommended'"
@@ -41,12 +43,12 @@
                                         <div class="col-md-3 package-column">
                                             <div class="package-content d-flex align-items-center">
                                                 <ng-container *ngIf="item?.imageDtos && item.imageDtos[0].dataFileUrl != null; else placeHolderImage">
-                                                    <img class=" package-image" [src]="item.imageDtos[0].dataFileUrl" />
+                                                    <img class="package-image" [src]="item.imageDtos[0].dataFileUrl" />
                                                     {{ item.imageDtos[0].dataFileUrl }}
                                                 </ng-container>
 
                                                 <ng-template #placeHolderImage>
-                                                    <img class=" package-image" src="./assets/package/full-system-posterImage.png" />
+                                                    <img class="package-image" src="./assets/package/full-system-posterImage.png" />
                                                 </ng-template>
                                             </div>
                                         </div>
@@ -55,7 +57,14 @@
                                             <div class="package-content">
                                                 <div class="package-panel-list">
                                                     <h2 class="lh-1 mt-3">{{ item?.name | titlecase }}</h2>
-                                                    <h3 class="lh-1">{{ item?.panelDtos[0]?.productDto.name }} {{item?.batteryDtos[0]?.productDto?.name != null ? " + " + item?.batteryDtos[0]?.productDto?.name : ""}}</h3>
+                                                    <h3 class="lh-1">
+                                                        {{ item?.panelDtos[0]?.productDto.name }}
+                                                        {{
+                                                            item?.batteryDtos[0]?.productDto?.name != null
+                                                                ? ' + ' + item?.batteryDtos[0]?.productDto?.name
+                                                                : ''
+                                                        }}
+                                                    </h3>
 
                                                     <span
                                                         class="features-list"
@@ -63,32 +72,34 @@
                                                         [class.feature-list-supercharged]="item.packageType == packageType.Supercharged"
                                                         [innerHTML]="item.htmlListDescription"></span>
 
-                                                    <button
-                                                        type="button"
-                                                        class="button-secondary send-quote-button w-75"
-                                                        (click)="sendQuote(item.dtoId)">
-                                                        <i class="bi bi-envelope"></i>
-                                                        <span class="fs-8 mx-2">Email Quote</span>
-                                                    </button>
+                                                    <p class="whats-included-button">
+                                                        <i class="bi bi-info-circle-fill"></i><a (click)="whatsIncluded(item)"> What's included?</a>
+                                                    </p>
                                                 </div>
 
                                                 <div class="tags">
                                                     <ng-container *ngIf="item.packageType == packageType.Recommended">
                                                         <div class="tag-container">
                                                             <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-                                                                <polygon points="50,50 100,0 100,100" fill="orangered" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                <polygon
+                                                                    points="50,50 100,0 100,100"
+                                                                    fill="orangered"
+                                                                    transform="rotate(-0 50 50) scale(0.5)" />
                                                             </svg>
                                                             <div class="tag">
                                                                 <i class="bi bi-star-fill"></i>
                                                                 <p>Recommended</p>
                                                             </div>
                                                         </div>
-                                                    </ng-container >
+                                                    </ng-container>
 
                                                     <ng-container *ngIf="item.systemSize < 5">
                                                         <div class="tag-container tag-blue">
                                                             <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-                                                                <polygon points="50,50 100,0 100,100" fill="blue" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                <polygon
+                                                                    points="50,50 100,0 100,100"
+                                                                    fill="blue"
+                                                                    transform="rotate(-0 50 50) scale(0.5)" />
                                                             </svg>
                                                             <div class="tag">
                                                                 <p>G98 Compliant</p>
@@ -99,7 +110,10 @@
                                                     <ng-container *ngIf="item.packageType == packageType.Supercharged">
                                                         <div class="tag-container tag-green">
                                                             <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-                                                                <polygon points="50,50 100,0 100,100" fill="green" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                <polygon
+                                                                    points="50,50 100,0 100,100"
+                                                                    fill="green"
+                                                                    transform="rotate(-0 50 50) scale(0.5)" />
                                                             </svg>
                                                             <div class="tag">
                                                                 <p>Supercharged</p>
@@ -110,15 +124,17 @@
                                                     <ng-container *ngIf="item.systemSize > 0">
                                                         <div class="tag-container tag-green">
                                                             <svg class="svg" width="50" height="50" xmlns="http://www.w3.org/2000/svg">
-                                                                <polygon points="50,50 100,0 100,100" fill="green" transform="rotate(-0 50 50) scale(0.5)" />
+                                                                <polygon
+                                                                    points="50,50 100,0 100,100"
+                                                                    fill="green"
+                                                                    transform="rotate(-0 50 50) scale(0.5)" />
                                                             </svg>
                                                             <div class="tag">
-                                                                <p>{{item.systemSize}}kW System</p>
+                                                                <p>{{ item.systemSize }}kW System</p>
                                                             </div>
                                                         </div>
                                                     </ng-container>
                                                 </div>
-
                                             </div>
                                         </div>
 
@@ -133,16 +149,26 @@
                                                             Month
                                                         </p>
                                                     </div>
-                                                    <p (click)="openPopup(item)">({{ environment.interestRate }}% APR) <a class="find-out-more-finance clickable" >Find out more</a> </p>
+                                                    <p (click)="openPopup(item)">
+                                                        ({{ environment.interestRate }}% APR)
+                                                        <a class="find-out-more-finance clickable">Find out more</a>
+                                                    </p>
 
                                                     <hr />
 
                                                     <h1 class="lh-1 fs-2 text-green">or {{ item.totalSalePrice | currency }}</h1>
 
-                                                    <button class="button-primary next-step-button w-75" (click)="answerGiven(item.dtoId)">Next Step</button>
-                                                    <p class="mt-3 whats-included-button">
-                                                        <i class="bi bi-info-circle-fill"></i><a (click)="whatsIncluded(item)"> What's included?</a>
-                                                    </p>
+                                                    <button class="button-primary next-step-button w-75" (click)="answerGiven(item.dtoId)">
+                                                        Next Step
+                                                    </button>
+
+                                                    <button
+                                                        type="button"
+                                                        class="button-secondary send-quote-button w-75"
+                                                        (click)="sendQuote(item.dtoId)">
+                                                        <i class="bi bi-envelope"></i>
+                                                        <span class="fs-8 mx-2">Email Quote</span>
+                                                    </button>
                                                 </div>
                                             </div>
                                         </div>
@@ -151,8 +177,6 @@
                                     </div>
                                 </div>
                             </div>
-
-
                         </div>
                         <!--Card Ends Here-->
                     </div>

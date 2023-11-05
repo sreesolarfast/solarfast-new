@@ -46,10 +46,15 @@
 
 .title-bar-heading {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     color: #000;
 
-    margin: 35px 0px 10px 65px;
+    align-items: center;
+
+    margin: 35px 0px 10px 0px;
+    //padding: 0px 0px 0px 70px;
+
+    text-align: center;
 
     .title {
         font-size: 1.25rem;
@@ -72,9 +77,9 @@
         }
     }
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1124px) {
         margin: 90px 0px 10px 0px;
-        padding: 0px 35px;
+        padding: 0px 10px;
     }
 }
 
@@ -134,7 +139,6 @@
 .package-panel-list ul li {
     font-size: 18px;
     line-height: 1.8;
-    color: #9ae488;
 }
 
 .payment-options {
@@ -186,6 +190,8 @@
         font-weight: 600;
         margin-bottom: 0px;
         margin-top: 5px;
+        margin-left: 5px;
+        margin-right: 5px;
     }
 
     h1 {
@@ -268,6 +274,53 @@
     color: #75c043;
 }
 
+.features-list {
+    ::ng-deep ul {
+        list-style: none;
+        padding: 0;
+        position: relative;
+
+        font-size: 18px;
+
+        margin-left: 27px;
+
+        display: flex;
+        flex-direction: column;
+        //gap: 7px;
+        margin-top: 0.5rem;
+
+        li::before {
+            content: '';
+            display: inline-block;
+            list-style-position: outside; /* Place the bullet point/icon outside the text content */
+            width: 20px;
+            height: 20px;
+
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
+
+            background-size: cover;
+            margin-right: 10px;
+            position: absolute;
+            left: -26px;
+            margin-top: 4px;
+        }
+    }
+
+    @media screen and (min-width: 1450px) {
+        ::ng-deep ul {
+            font-size: 22px;
+        }
+    }
+}
+
+.feature-list-supercharged {
+    ::ng-deep ul {
+        li::before {
+            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
+        }
+    }
+}
+
 @media screen and (min-width: 700px) {
     .payment-options h1 {
         font-weight: 700;
@@ -285,95 +338,6 @@
         //line-height: 3rem;
         font-weight: 600;
     }
-
-    .features-list {
-        ::ng-deep ul {
-            list-style: none;
-            padding: 0;
-            position: relative;
-
-            font-size: 18px;
-
-            margin-left: 26px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-            margin-top: 1rem;
-
-            li::before {
-                content: '';
-                display: inline-block;
-                list-style-position: outside; /* Place the bullet point/icon outside the text content */
-                width: 20px;
-                height: 20px;
-
-                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
-
-                background-size: cover;
-                margin-right: 10px;
-                position: absolute;
-                left: -23px;
-            }
-        }
-    }
-
-    .feature-list-recommended {
-        ::ng-deep ul {
-            list-style: none;
-            padding: 0;
-            position: relative;
-
-            margin-left: 26px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-
-            li::before {
-                content: '';
-                display: inline-block;
-                list-style-position: outside; /* Place the bullet point/icon outside the text content */
-                width: 20px;
-                height: 20px;
-                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='black' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='black' stroke-width='5' fill='none'/></svg>");
-
-                background-size: cover;
-                margin-right: 10px;
-                position: absolute;
-                left: -23px;
-            }
-        }
-    }
-
-    .feature-list-supercharged {
-        ::ng-deep ul {
-            list-style: none;
-            padding: 0;
-            position: relative;
-
-            margin-left: 26px;
-
-            display: flex;
-            flex-direction: column;
-            gap: 7px;
-
-            li::before {
-                content: '';
-                display: inline-block;
-                list-style-position: outside; /* Place the bullet point/icon outside the text content */
-                width: 20px;
-                height: 20px;
-
-                background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='115' height='115' viewBox='0 0 100 100'><circle cx='50' cy='50' r='45' stroke='white' stroke-width='5' fill='none'/><path d='M30 50 L45 65 L70 40' stroke='white' stroke-width='5' fill='none'/></svg>");
-
-                background-size: cover;
-                margin-right: 10px;
-                position: absolute;
-                left: -23px;
-            }
-        }
-    }
 }
 
 @media screen and (min-width: 1450px) {
@@ -385,12 +349,6 @@
     .payment-options p {
         font-weight: 500;
         font-size: 1.2rem;
-    }
-
-    .features-list {
-        ::ng-deep ul {
-            font-size: 22px;
-        }
     }
 
     .package-panel-list h2 {
@@ -420,11 +378,10 @@
 }
 
 .send-quote-button {
-    margin: 15px 0px;
+    margin: 8px 0px;
 
-    @media screen and (min-width: 1024px) {
+    @media screen and (max-width: 1024px) {
         margin-bottom: 50px;
-        margin-top: 1rem;
     }
 }
 
@@ -465,4 +422,9 @@
 
 .whats-included-button {
     margin-bottom: 50px;
+    margin-left: 10px;
+    a {
+        text-decoration: none;
+        color: inherit;
+    }
 }

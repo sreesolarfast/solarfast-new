@@ -1,17 +1,17 @@
-<div>
-    <h5 id="exampleModalLabel">Save and Send Quote</h5>
+<div class="send-quote">
+    <h2>Save and Send Quote</h2>
     <button class="btn btn-back" (click)="close()">
         <svg width="12" height="10" xmlns="http://www.w3.org/2000/svg">
             <line x1="2" y1="1" x2="10" y2="9" stroke="white" stroke-width="1" />
             <line x1="10" y1="1" x2="2" y2="9" stroke="white" stroke-width="1" />
         </svg>
     </button>
-</div>
+
 
 <!-- Customer details fields -->
-<form class="m-5" [formGroup]="form" (ngSubmit)="submitForm()">
+<form class="" [formGroup]="form" (ngSubmit)="submitForm()">
     <div class="form-group pb-3">
-        <div class="">
+        <div class="col-md-12">
             <div class="form-group">
                 <div class="input-group">
                     <span class="input-group-text" id="firstname"><i class="bi bi-person-fill"></i></span>
@@ -67,4 +67,5 @@
         [disabled]="!form.valid">
         Send Quote
     </button>
+</div>
 </div>

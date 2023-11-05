@@ -12,11 +12,18 @@ import { PackageType } from 'src/shared/enum/package-type';
 import { MatDrawer } from '@angular/material/sidenav';
 import { environment } from 'src/environments/environment';
 import { SendQuoteComponent } from '../../../shared/components/send-quote/send-quote.component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'page-package-selected',
     templateUrl: './package-selected.component.html',
     styleUrls: ['./package-selected.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class PackageSelectedComponent implements OnInit {
     @ViewChild('drawer', { static: true }) public drawer!: MatDrawer;

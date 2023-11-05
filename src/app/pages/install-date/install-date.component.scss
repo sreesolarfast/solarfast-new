@@ -1,18 +1,34 @@
 .title-bar-heading {
     display: flex;
     flex-direction: row;
-    margin-bottom: 30px;
     color: #000;
+
+    margin: 35px 0px 10px 65px;
 
     .title {
         font-size: 1.25rem;
         font-weight: 600;
-        margin-left: 50px;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1rem;
+            padding: 0px 5px;
+            margin: 0px;
+        }
     }
 
     .title-top {
         font-size: 2.5rem;
         font-weight: bold;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.8rem;
+            margin: 7px 0px;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        margin: 110px 0px 10px 0px;
+        padding: 0px 10px;
     }
 }
 
@@ -38,8 +54,8 @@
     border-radius: 100%;
     padding: 10px;
     position: absolute;
-    top: 60px;
-    left: 50px;
+    // top: 60px;
+    // left: 50px;
     cursor: pointer;
 }
 
@@ -47,6 +63,13 @@
     margin-top: 60px;
     margin-left: 50px;
     margin-right: 50px;
+    margin-bottom: 120px;
+
+    @media screen and (max-width: 768px) {
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-bottom: 70px;
+    }
 
     .card {
         border-radius: 1.5rem;
@@ -55,6 +78,11 @@
         box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.15);
         padding: 40px;
         margin-bottom: 20px;
+
+        @media screen and (max-width: 768px) {
+            padding: 20px;
+            border-color: transparent;
+        }
     }
 
     // Rest of your existing code
@@ -80,6 +108,10 @@
         grid-template-columns: repeat(12, 1fr);
         grid-auto-rows: minmax(25px, auto);
 
+        @media screen and (max-width: 768px) {
+            grid-template-columns: repeat(7, 1fr);
+        }
+
         .day-element {
             color: rgb(104, 104, 104);
             background: #f4f4f4;
@@ -91,7 +123,24 @@
             width: 100%;
             aspect-ratio: 1 / 1;
             height: 100%;
-            font-size: 1.2vw;
+            font-size: 16px;
+
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+
+
+            p{
+                margin: 0px;
+                margin-top: 3px;
+            }
+
+            .day-of-week {
+                margin-top: -3px;
+                font-size: 12px;
+                font-weight: 600;
+            }
         }
 
         .selected {
@@ -130,3 +179,33 @@
         }
     }
 }
+
+
+.desktop-image{
+    max-width: 40%;
+
+    @media screen and (max-width: 1024px) {
+        display: none;
+    }
+}
+
+.sub-heading{
+    p {
+        font-size: 1rem;
+
+        @media screen and (max-width: 768px) {
+            font-size: 0.8rem;
+        }
+    }
+
+    h1 {
+        font-size: 2rem;
+        font-weight: 600;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.2rem;
+            margin-bottom: 0px;
+        }
+    }
+}
+

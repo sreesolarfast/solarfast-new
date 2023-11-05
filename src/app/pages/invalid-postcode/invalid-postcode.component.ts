@@ -5,11 +5,18 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { GeocodingService } from '../../../shared/service/geocoding.service';
 import { IAddress } from '../../../shared/interface/address';
 import { OnlineEnquiryDto } from '../../../shared/dto/online-enquiry-dto';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'app-invalid-postcode',
     templateUrl: './invalid-postcode.component.html',
     styleUrls: ['./invalid-postcode.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class InvalidPostcodeComponent implements OnInit {
     form: FormGroup;
@@ -27,7 +34,7 @@ export class InvalidPostcodeComponent implements OnInit {
         // prevent load of page with a valid postcode
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
-                if (x != null && x?.postcode != null) this.formService.redirectToCorrectStep();
+                if (x != null && x?.latitude != null && x?.longitude != null) this.formService.redirectToCorrectStep();
             },
         });
 
@@ -47,7 +54,7 @@ export class InvalidPostcodeComponent implements OnInit {
     }
 
     selectAddress(index: any) {
-        if (index == "") return;
+        if (index == null) return;
         const address = this.addressLookup.addresses[index];
 
         const houseNameOrNumber =
@@ -62,8 +69,7 @@ export class InvalidPostcodeComponent implements OnInit {
                 : '';
 
         this.onlineEnquiryService.result = {
-            houseNameOrNumber: houseNameOrNumber,
-            addressLine1: address.thoroughfare,
+            addressLine1: `${houseNameOrNumber} ${address.thoroughfare}`,
             addressLine2: address.line_2,
             addressLine3: address.line_3,
             city: address.town_or_city,

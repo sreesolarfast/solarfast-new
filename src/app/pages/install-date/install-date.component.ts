@@ -2,11 +2,19 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormService } from '../../../shared/service/form.service';
 import { OnlineEnquiryService } from '../../../shared/service/online-enquiry.service';
+import { buffer } from 'rxjs';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
-  selector: 'page-install-date',
-  templateUrl: './install-date.component.html',
-  styleUrls: ['./install-date.component.scss']
+    selector: 'page-install-date',
+    templateUrl: './install-date.component.html',
+    styleUrls: ['./install-date.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class InstallDateComponent {
     selectedYear: number = new Date().getFullYear();
@@ -17,31 +25,29 @@ export class InstallDateComponent {
 
     months: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
-    constructor(
-        private router: Router,
-        private formService: FormService,
-        private onlineEnquiryService: OnlineEnquiryService
-    ) {}
+    constructor(private router: Router, private formService: FormService, private onlineEnquiryService: OnlineEnquiryService) {}
 
     ngOnInit(): void {
         const step = this.formService.getSteps().filter(x => x.component == 'page-install-date')[0];
         if (step != this.formService.activeStep) {
-          this.formService.redirectToCorrectStep();
+            this.formService.redirectToCorrectStep();
         }
 
         this.onlineEnquiryService.result$.subscribe({
-            next: (x) => {
+            next: x => {
                 if (x.provisionalInstallDate == null) return;
                 const date = new Date(x.provisionalInstallDate);
                 this.selectedYear = date.getFullYear();
                 this.selectedMonth = date.getMonth();
                 this.selectedDate = date;
-            }
-        })
+            },
+        });
+
+        this.getNextAvailableDate();
     }
 
     get calendarDays(): number[] {
-        const daysInMonth = new Date(this.selectedYear, this.selectedMonth , 0).getDate();
+        const daysInMonth = new Date(this.selectedYear, this.selectedMonth, 0).getDate();
         return Array.from({ length: daysInMonth }, (_, i) => i + 1);
     }
 
@@ -72,22 +78,85 @@ export class InstallDateComponent {
         return selectedDate < currentDate && selectedDate.getMonth() === currentDate.getMonth();
     }
 
-    isDayAvailable(day: number): boolean {
-        const currentDate = new Date();
-        const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+    getDayOfWeek(day: number): string {
+        const date = new Date();
+        date.setDate(day);
+        date.setMonth(this.selectedMonth);
+        const dayOfWeek = date.getDay();
 
-        if(selectedDate.getDay() == 0 || selectedDate.getDay() == 6) {
-            return false;
+        const days = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        const dayName = days[dayOfWeek];
+
+        return dayName;
+    }
+
+    isDayAvailable(day: number, month: number | null, year: number | null): boolean {
+        if (month == null || year == null) {
+            const currentDate = new Date();
+            const selectedDate = new Date(this.selectedYear, this.selectedMonth, day);
+            const bufferDate = new Date();
+            bufferDate.setDate(bufferDate.getDate() + 21); //this is to stop installs being booked next-day etc
+
+            //check if weekend
+            if (selectedDate.getDay() == 0 || selectedDate.getDay() == 6) {
+                return false;
+            }
+
+            //check if date is past, check if month is same, and if date isnt the exact same as a string.
+            if (
+                selectedDate < currentDate &&
+                selectedDate.getMonth() === currentDate.getMonth() &&
+                selectedDate.toDateString() !== currentDate.toDateString()
+            ) {
+                return false;
+            }
+
+            //check that the day is not within the buffer period
+            if (selectedDate < bufferDate) {
+                return false;
+            }
+        } else {
+            const currentDate = new Date();
+            const selectedDate = new Date(currentDate.getFullYear(), month, day);
+            const bufferDate = new Date();
+            bufferDate.setDate(bufferDate.getDate() + 21); //this is to stop installs being booked next-day etc
+
+            //check if weekend
+            if (selectedDate.getDay() == 0 || selectedDate.getDay() == 6) {
+                return false;
+            }
+
+            //check if date is past, check if month is same, and if date isnt the exact same as a string.
+            if (
+                selectedDate < currentDate &&
+                selectedDate.getMonth() === currentDate.getMonth() &&
+                selectedDate.toDateString() !== currentDate.toDateString()
+            ) {
+                return false;
+            }
+
+            //check that the day is not within the buffer period
+            if (selectedDate < bufferDate) {
+                return false;
+            }
         }
 
-        if (
-            selectedDate < currentDate &&
-            selectedDate.getMonth() === currentDate.getMonth() &&
-            selectedDate.toDateString() !== currentDate.toDateString()
-        ) {
-            return false;
-        }
         return true;
+    }
+
+    getNextAvailableDate(): void {
+        const date = new Date();
+
+        //cancel operation if the selected month has been chosen.
+        if (this.selectedDate != null && date.getMonth() == this.selectedMonth) return;
+
+        //if the date is not available, skip to the next, until it finds a date available.
+        while (!this.isDayAvailable(date.getDate(), date.getMonth(), date.getFullYear())) {
+            date.setDate(date.getDate() + 1);
+        }
+
+        //set the month to one that has a day available.
+        this.selectMonth(date.getMonth());
     }
 
     isDateSelected(day: number): boolean {
@@ -100,7 +169,6 @@ export class InstallDateComponent {
     }
 
     selectMonth(monthIndex: number) {
-
         this.selectedMonth = monthIndex;
 
         const currentDate = new Date();
@@ -113,17 +181,15 @@ export class InstallDateComponent {
 
         var selectedYear = currentDate.getFullYear();
 
-
-        if (futureMonth > 12 && ! (this.selectedMonth == this.currentDate.getMonth())) {
+        if (futureMonth > 12 && !(this.selectedMonth == this.currentDate.getMonth())) {
             selectedYear = selectedYear + 1;
         }
 
         this.selectedYear = selectedYear;
     }
 
-
     answerGiven() {
-        this.onlineEnquiryService.result.provisionalInstallDate =  new Date(this.selectedYear, this.selectedMonth, this.selectedDate.getDate(), 13, 0);
+        this.onlineEnquiryService.result.provisionalInstallDate = new Date(this.selectedYear, this.selectedMonth, this.selectedDate.getDate(), 13, 0);
         this.formService.next();
     }
 

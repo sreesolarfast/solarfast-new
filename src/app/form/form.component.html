@@ -21,28 +21,28 @@
             <div class="row">
                 <div class="col-md-12 col-md-offset-3 main-content" *ngIf="!activeStep.hideComponent">
                     <div class="card-content">
-                        <ng-container *ngIf="activeStep.component == 'step-property-ownership'">
-                            <step-property-ownership [step]="activeStep" (newStep)="formService.stepChange($event)"></step-property-ownership>
+                        <ng-container *ngIf="activeStep.component == 'step-property-ownership'" (transitionend)="onTransitionEnd($event)">
+                            <step-property-ownership [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-property-ownership>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.component == 'step-house-type'">
-                            <step-house-type [step]="activeStep" (newStep)="formService.stepChange($event)"></step-house-type>
+                            <step-house-type [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-house-type>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.component == 'step-roof-type'">
-                            <step-roof-type [step]="activeStep" (newStep)="formService.stepChange($event)"></step-roof-type>
+                            <step-roof-type [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-roof-type>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.component == 'step-shading'">
-                            <step-shading [step]="activeStep" (newStep)="formService.stepChange($event)"></step-shading>
+                            <step-shading [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-shading>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.component == 'step-annual-consumption'">
-                            <step-annual-consumption [step]="activeStep" (newStep)="formService.stepChange($event)"></step-annual-consumption>
+                            <step-annual-consumption [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-annual-consumption>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.component == 'step-unit-rate'">
-                            <step-unit-rate [step]="activeStep" (newStep)="formService.stepChange($event)"></step-unit-rate>
+                            <step-unit-rate [@fadeIn] [step]="activeStep" (newStep)="formService.stepChange($event)"></step-unit-rate>
                         </ng-container>
 
                         <ng-container *ngIf="activeStep.step == 6"> </ng-container>

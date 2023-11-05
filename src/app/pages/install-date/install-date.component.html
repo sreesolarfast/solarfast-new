@@ -9,7 +9,7 @@
     </svg>
 </a>
 
-<div>
+<div @fadeIn>
     <div class="content-main">
         <!-- Install Date -->
         <div class="install-date">
@@ -23,16 +23,16 @@
             <div class="card">
                 <!--Package-->
                 <div class="package-list d-flex align-items-center">
-                    <div class="" style="max-width: 40%">
+                    <div class="desktop-image">
                         <div class="me-3">
-                            <img src="./assets/package/Panels Pallet@2x.png" alt="" height="100%" width="100%" />
+                            <img class="" src="./assets/package/Panels Pallet@2x.png" alt="" height="100%" width="100%" />
                         </div>
                     </div>
 
                     <div class="w-100" style="display: flex; flex-direction: column; justify-content: center; align-items: center">
-                        <div class="mb-5">
-                            <h1 class="fw-bold fs-2">Your installation is included the price!</h1>
-                            <p class="fs-6">*Please note we will need to speak to the account holder to confirm your installation dates.</p>
+                        <div class="mb-5 sub-heading">
+                            <h1>Your installation is included the price!</h1>
+                            <p>*Please note we will need to speak to the account holder to confirm your installation dates.</p>
                         </div>
 
                         <!-- Date Picker -->
@@ -60,10 +60,12 @@
                                     (click)="selectDate(day)"
                                     class="btn day-element"
                                     [class.selected]="isDateSelected(day)"
-                                    [class.weekend]="!isDayAvailable(day)"
+                                    [class.weekend]="!isDayAvailable(day, null,null)"
                                     [class.past-date]="isPastDate(day)"
-                                    [disabled]="isPastDate(day) || !isDayAvailable(day)">
-                                    {{ day }}
+                                    [disabled]="isPastDate(day) || !isDayAvailable(day, null,null)">
+                                    <p>{{ day }}</p>
+
+                                    <p class="day-of-week">{{getDayOfWeek(day)}}</p>
                                 </button>
                             </div>
 
@@ -85,8 +87,9 @@
                                     [disabled]="!isConfirmSelectionReady()">
                                     Confirm Date Selection
                                 </button>
-                                <div class="text-black" >*Please note install dates are subject to change.</div>
+                                <div class="text-black" >Install dates are subject to change.</div>
                             </div>
+
                         </div>
                     </div>
                 </div>
@@ -98,3 +101,5 @@
     </div>
     <div></div>
 </div>
+<!--footer-->
+<page-footer></page-footer>

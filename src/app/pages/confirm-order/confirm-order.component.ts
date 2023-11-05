@@ -1,3 +1,4 @@
+import { trigger, state, style, transition, animate } from '@angular/animations';
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -9,6 +10,12 @@ import { OnlineEnquiryService } from 'src/shared/service/online-enquiry.service'
     selector: 'page-confirm-order',
     templateUrl: './confirm-order.component.html',
     styleUrls: ['./confirm-order.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class ConfirmOrderComponent {
     form: FormGroup;
@@ -55,7 +62,7 @@ export class ConfirmOrderComponent {
                     disabled: false,
                 },
             ],
-            subscribe: [null],
+            // subscribe: [null],
         });
 
         this.form.controls['phoneNumber'].valueChanges.subscribe((val: string) => {
@@ -89,5 +96,9 @@ export class ConfirmOrderComponent {
                 this.formSubmitted = false;
             },
         });
+    }
+
+    backButton() {
+        this.formService.back();
     }
 }

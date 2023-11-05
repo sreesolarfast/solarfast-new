@@ -30,7 +30,7 @@ export class InstallmentSummaryComponent {
   }
 
   ngOnInit() {
-    this.selectedPeriod = this.loanPeriods[1];
+    this.selectedPeriod = this.loanPeriods[2];
     this.calculate();
   }
 

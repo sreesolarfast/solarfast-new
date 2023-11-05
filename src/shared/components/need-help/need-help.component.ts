@@ -14,7 +14,6 @@ export class NeedHelpComponent implements OnInit {
   ngOnInit() {
   }
 
-
   open() {
     const dialogRef = this.dialog.open(ContactUsComponent, {
         panelClass: ['my-custom-class'],

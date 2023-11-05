@@ -20,6 +20,10 @@ export class NextStepsComponent {
         if (step != this.formService.activeStep) {
             this.formService.redirectToCorrectStep();
         }
+
+        // if we are here then we have a completed order.
+        localStorage.removeItem('onlineEnquiry');
+        localStorage.removeItem('step');
     }
 
     backButton() {

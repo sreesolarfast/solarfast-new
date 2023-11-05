@@ -1,3 +1,37 @@
+.title-bar-heading {
+    display: flex;
+    flex-direction: row;
+    color: #000;
+    margin: 20px 0px 20px 65px;
+
+    .title {
+        font-size: 1.25rem;
+        font-weight: 600;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1rem;
+            padding: 0px 5px;
+            margin: 0px;
+        }
+    }
+
+    .title-top {
+        font-size: 2.5rem;
+        font-weight: bold;
+
+        @media screen and (max-width: 768px) {
+            font-size: 1.8rem;
+            margin: 7px 0px;
+            text-align:center;
+        }
+    }
+
+    @media screen and (max-width: 768px) {
+        margin: 0px 0px 30px 0px;
+        padding: 0px 10px;
+    }
+}
+
 .btn.btn-success {
     background: linear-gradient(to bottom, #75c043, #44a900);
     -webkit-box-shadow: inset 0 1px 2px #9aa4b1;
@@ -23,6 +57,8 @@
     .content-main {
         margin-left: 0px;
 
+        max-height: 80vh;
+
         width: 100%;
         //padding: 0px 20px 0px 20px;
         background-color: #ffffff;
@@ -31,15 +67,17 @@
         margin: 0px !important;
     }
     .personal-details{
-        margin: 40px 40px 0px 40px;
+        margin: 0px 40px 0px 40px;
+        padding-top: 40px;
+        max-height: 100%;
     }
 
-    .title-top{
-        margin-top: 75px !important;
-    }
-    .title{
-        margin-left: 0px !important;
-    }
+    // .title-top{
+    //     margin-top: 75px !important;
+    // }
+    // .title{
+    //     margin-left: 0px !important;
+    // }
 
     .google-map{
         display:none !important;
@@ -52,8 +90,10 @@
 @media (min-width: 992px) {
     .content-main {
         margin-left: -20px;
-        overflow: hidden;
-        width: 57%;
+        // overflow: hidden;
+        // width: 57%;
+        max-height:80vh;
+        width: 50%;
         padding: 0px 20px 0px 20px;
         background-color: #ffffff;
     }
@@ -104,11 +144,12 @@
 }
 
 .personal-details {
-    margin-top: 50px;
+    // padding-top: 50px;
     margin-left: 50px;
     margin-right: 50px;
-    height: 94.7vh;
-    max-height: 100vh;
+    height: 100%;
+    max-height: 100%;
+    padding-bottom: 15px;
 
     .input-group-text {
         //icon
@@ -169,31 +210,31 @@
     }
 
 
-    .title-bar-heading {
-        display: flex;
-        flex-direction: row;
+    // .title-bar-heading {
+    //     display: flex;
+    //     flex-direction: row;
 
-        margin-bottom: 30px;
-        color: #000;
+    //     margin-bottom: 30px;
+    //     color: #000;
 
-        .title {
-            font-size: 1.25rem;
-            font-weight: 600;
-            margin-left: 50px;
-        }
-        .title-top {
-            margin-top: 10px;
-            font-size: 2.5rem;
-            font-weight: bold;
-        }
-    }
+    //     .title {
+    //         font-size: 1.25rem;
+    //         font-weight: 600;
+    //         margin-left: 50px;
+    //     }
+    //     .title-top {
+    //         margin-top: 10px;
+    //         font-size: 2.5rem;
+    //         font-weight: bold;
+    //     }
+    // }
 
 }
 
 .google-map {
     height: 100%;
     width: 50%;
-    position: absolute;
+    position:fixed;
     right: 0;
     top: 0;
     margin-left: auto;
@@ -219,3 +260,28 @@
 }
 
 
+@media screen and (max-width:768px) {
+    .btn-black{
+        top: 30px;
+        left: 10px;
+    }
+    .personal-details{
+    //     .title-bar-heading{
+
+    //     .title-top {
+    //         font-size:2rem;
+    //      }
+
+    //  }
+    //  .title{
+    //     font-size: 1rem;
+    //     line-height:30px;
+    //  }
+     .button-primary{
+        width: 100% !important;
+        margin-bottom: 3rem;
+     }
+
+   }
+
+}

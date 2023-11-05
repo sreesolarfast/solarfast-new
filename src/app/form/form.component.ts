@@ -6,11 +6,18 @@ import { FormStep } from '../../shared/model/form-step';
 import { OnlineEnquiryDto } from '../../shared/dto/online-enquiry-dto';
 import { Location } from '@angular/common';
 import { environment } from 'src/environments/environment';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'app-form',
     templateUrl: './form.component.html',
     styleUrls: ['./form.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class FormComponent implements OnInit {
     loading = true;
@@ -46,7 +53,8 @@ export class FormComponent implements OnInit {
 
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
-                if (x == null) {
+                if (x == null)  {
+
                     const dto = this.getDtoFromQueryStringParams();
                     const step = +this.route.snapshot.queryParamMap.get('step') ?? 0;
 
@@ -55,6 +63,9 @@ export class FormComponent implements OnInit {
                             this.location.replaceState('/');
                             this.loading = false;
                             this.formService.stepChange(step);
+
+                            if (x?.latitude == null && x?.longitude == null)
+                    this.router.navigate(['/pages/invalid-postcode']);
                         },
                     });
                 } else {
@@ -74,17 +85,22 @@ export class FormComponent implements OnInit {
                 },
             });
 
-
-          // we should have a lat and long
-          if (this.onlineEnquiryService?.result?.latitude == null && this.onlineEnquiryService?.result?.longitude == null) {
-            this.router.navigate(['/pages/invalid-postcode']);
-          }
+        // check if we have a result yet or not
+        if (this.onlineEnquiryService.result == null) {
+            const dto = this.getDtoFromQueryStringParams();
+            this.onlineEnquiryService.manage(dto).subscribe({
+                next: x => {
+                    // we should have a lat and long
+                    if (x?.latitude == null && x?.longitude == null) {
+                        this.router.navigate(['/pages/invalid-postcode']);
+                    }
+                },
+            });
+        }
     }
 
     backButton() {
-
-        if(this.activeStep?.step == 0 ) {
-
+        if (this.activeStep?.step == 0) {
             window.location.href = environment.originUrl;
             return;
         }
@@ -102,5 +118,12 @@ export class FormComponent implements OnInit {
         if (repId != null) dto.repId = repId;
 
         return dto;
+    }
+
+    onTransitionEnd(event: TransitionEvent) {
+        if (event.propertyName === 'opacity' && event.target === event.currentTarget) {
+            console.log('The fadeIn animation has completed.');
+            // You can add your code to handle the animation completion here.
+        }
     }
 }

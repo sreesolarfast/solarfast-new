@@ -21,7 +21,7 @@
 }
 
 .get-user {
-    width: 15%;
+    width: min-content;
     margin: 0;
 }
 
@@ -33,17 +33,18 @@
 .get-details {
     margin-top: 15px;
     width: 70%;
-}
+    padding: 0px 20px;
 
-.get-details h1 {
-    color: #242424;
-    font-weight: 700;
-    margin-bottom: 10px;
-    font-size: 1.85rem;
-}
+    h1 {
+        color: #242424;
+        font-weight: 700;
+        margin-bottom: 10px;
+        font-size: 1.85rem;
+    }
 
-.get-details p {
-    font-size: 0.9rem;
+    p {
+        font-size: 0.9rem;
+    }
 }
 
 .get-btn {
@@ -56,7 +57,7 @@
     justify-content: space-between;
     align-items: center;
 
-    @media screen and (max-width: 768px) {
+    @media screen and (max-width: 1024px) {
         flex-direction: column;
     }
 }

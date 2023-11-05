@@ -59,7 +59,7 @@ export class MapComponent implements OnInit {
     mapOptions: google.maps.MapOptions = {
         mapTypeId: google.maps.MapTypeId.HYBRID,
         zoomControl: false,
-        scrollwheel: false,
+        scrollwheel: true,
         disableDoubleClickZoom: true,
         maxZoom: 20,
         minZoom: 12,
@@ -74,7 +74,7 @@ export class MapComponent implements OnInit {
     markerOptions: google.maps.MarkerOptions = {
         draggable: true,
         animation: google.maps.Animation.DROP,
-        icon: './assets/map/map-icon.svg',
+        icon: './assets/map/map-asset-new.svg',
     };
 
     geocoderWorking = false;

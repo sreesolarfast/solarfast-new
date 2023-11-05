@@ -13,6 +13,7 @@ import { ShadingComponent } from './steps/shading/shading.component';
 import { AnnualConsumptionComponent } from './steps/annual-consumption/annual-consumption.component';
 import { RoofTypeComponent } from './steps/roof-type/roof-type.component';
 import { SharedModule } from 'src/shared/shared.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
     declarations: [

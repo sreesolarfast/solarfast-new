@@ -1,13 +1,15 @@
+
+/* Default styles */
+
 .order-progress {
-    // background: url('/assets/order-progress/SF-Vans-Carpark.png');
     background: url('../../../assets/order-progress/SF-Vans-Carpark.png');
     background-size: cover;
-    position: fixed;
+    position:relative;
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     left: 0;
-    overflow: hidden;
-
+    // overflow: hidden;
     padding-left: 30px;
 
     &::before {
@@ -31,10 +33,15 @@
             .title {
                 font-size: 2.5rem;
                 font-weight: 500;
-                margin-left: 30px;
+                margin-left: 0px;
                 margin-top: 18px;
+                line-height: 2.5rem;
             }
 
+            p {
+                font-size: 1rem;
+                font-weight: 400;
+            }
         }
     }
 
@@ -42,8 +49,8 @@
         padding: 20px 170px 20px 170px;
         font-size: 22px;
         width: max-content;
-        margin-top: 75px;
-        margin-left: 75px;
+        margin-top:60px;
+        margin-left:0px;
     }
 
     .back-buttons {
@@ -66,6 +73,14 @@
     line-height: 30px;
 }
 
+.bullet-point-text small{
+    position: absolute;
+    line-height:1rem;
+    margin-top:10px;
+    width: 80%;
+
+}
+
 .text-green {
     color: #75c043;
 }
@@ -86,32 +101,69 @@
     z-index: 2;
 }
 
-@media screen and (max-width:768px) {
+.step-min{
+   
+}
 
+/* Media Queries for Mobile and Tablet */
+
+@media screen and (max-width: 1024px) {
+
+}
+
+@media screen and (max-width: 768px) {
+    .order-progress {
+        padding:30px; /* Remove left padding for smaller screens */
+  
     .order-details {
-        .title-bar-heading {
-            line-height:2rem;
-            font-size: 2.2rem;
-        }
+        padding: 3rem 0; /* Adjust padding for smaller screens */
+    }
 
-        .bullet-point-text {
-            font-size:1.5rem ;
-            line-height:1.5rem;
-        }
+    .title-bar-heading {
+        line-height: 2rem;
+        font-size: 2.2rem;
+    }
+
+    .bullet-point-text {
+        font-size: 1.5rem;
+        line-height: 1.5rem;
+        margin-left: 15px; /* Adjust margin for smaller screens */
+    }
+
+    .button-primary {
+        padding: 20px 50px; /* Adjust button padding for smaller screens */
+        font-size: 18px; /* Adjust font size for smaller screens */
+        margin-top: 30px; /* Adjust margin for smaller screens */
+        width: 100%;
+    }
+
+    .btn-black {
+        top: 30px; /* Adjust top position for smaller screens */
+        left: 30px; /* Adjust left position for smaller screens */
+    }
+
+    .bullet-point-text small{
+        width: 70%;
 
     }
 
-.order-progress {  
-        overflow: auto;
+}
+}
+
+@media screen and (max-width: 420px) {
+    .order-progress {
+        .order-details{
+        .title-bar-heading{
+            .title{
+                font-size: 2rem;
+            }
+        }
     }
 
-.btn-black{
-    top: 10px;
-    top: 30px;
+    .bullet-point-text {
+        font-size: 1.2rem;
+        line-height: 1.2rem;
+        margin-left: 15px; /* Adjust margin for smaller screens */
+    }
 }
-
-.need-help{
-    right: 10px;
-}
-
 }

@@ -8,11 +8,18 @@ import { PackageType } from 'src/shared/enum/package-type';
 import { MatDrawer } from '@angular/material/sidenav';
 import { environment } from 'src/environments/environment';
 import { SendQuoteComponent } from '../../../shared/components/send-quote/send-quote.component';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'page-package-selection',
     templateUrl: './package-selection.component.html',
     styleUrls: ['./package-selection.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class PackageSelectionComponent {
     @ViewChild('drawer', { static: true }) public drawer!: MatDrawer;
@@ -97,6 +104,9 @@ export class PackageSelectionComponent {
 
     sendQuote(packageId: number)  {
         const dialog = this.dialog.open(SendQuoteComponent, {
+            height: 'auto',
+            maxHeight: '90vh',
+            disableClose: false,
             data: packageId
         });
     }

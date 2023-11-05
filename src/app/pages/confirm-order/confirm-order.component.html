@@ -3,12 +3,12 @@
 <app-need-help></app-need-help>
 
 <!--Back button-->
-<a class="btn-black" (click)="formService.back()">
+<a class="btn-black" (click)="backButton()">
     <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
         <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
     </svg>
 </a>
-
+<div @fadeIn>
 <div class="content-main">
     <!-- Customer Details -->
     <div class="personal-details text-black">
@@ -81,7 +81,7 @@
                     <div class="col-md-6">
                         <div class="form-group pb-3">
                             <div class="input-group position-relative">
-                                <input type="text" class="input-text-field" placeholder="City" formControlName="city" />
+                                <input type="text" class="input-text-field" placeholder="Town/City" formControlName="city" />
                                 <i class="bi bi-geo-alt-fill icon"></i>
                             </div>
                         </div>
@@ -97,14 +97,15 @@
                     </div>
                 </div>
 
-                <div class="w-100 d-flex justify-content-center">
+                <!-- <div class="w-100 d-flex justify-content-center">
                     <div class="form-check pb-3">
                         <input type="checkbox" class="form-check-input" formControlName="subscribe" />
                         <label class="form-check-label"> I want to stay updated with the latest news, offers and updates. </label>
                     </div>
-                </div>
+                </div> -->
+
                 <div class="w-100 d-flex justify-content-center">
-                    <button type="submit" class="button-primary w-50 mt-3" [class.button-disabled]="!form.valid || formSubmitted" [disabled]="!form.valid || formSubmitted">
+                    <button type="submit" class="button-primary  mt-3" [class.button-disabled]="!form.valid || formSubmitted" [disabled]="!form.valid || formSubmitted">
                         Submit
                     </button>
                 </div>
@@ -114,7 +115,8 @@
     <!-- Customer Details -->
 
     <!-- Map -->
-    <div class="w-50">
+    <div class="order-map">
         <app-googlemap class="google-map"></app-googlemap>
     </div>
+</div>
 </div>

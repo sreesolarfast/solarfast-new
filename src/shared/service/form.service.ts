@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { FormStep } from '../model/form-step';
 import { Router } from '@angular/router';
 import { BehaviorSubject, Observable, of } from 'rxjs';
+import { environment } from '../../environments/environment';
 
 @Injectable({
     providedIn: 'root',
@@ -135,24 +136,24 @@ export class FormService {
             hideComponent: false,
             route: '/pages/next-steps',
         },
-        {
-            step: 12,
-            component: 'photo-upload',
-            next: 13,
-            back: 11,
-            hideNavigation: true,
-            hideComponent: false,
-            route: '/pages/photo-upload',
-        },
-        {
-            step: 13,
-            component: 'page-thank-you',
-            next: 14,
-            back: 12,
-            hideNavigation: true,
-            hideComponent: false,
-            route: '/pages/thank-you',
-        },
+        // {
+        //     step: 12,
+        //     component: 'photo-upload',
+        //     next: 13,
+        //     back: 11,
+        //     hideNavigation: true,
+        //     hideComponent: false,
+        //     route: '/pages/photo-upload',
+        // },
+        // {
+        //     step: 13,
+        //     component: 'page-thank-you',
+        //     next: 14,
+        //     back: 12,
+        //     hideNavigation: true,
+        //     hideComponent: false,
+        //     route: '/pages/thank-you',
+        // },
     ];
 
     public getSteps() {
@@ -185,6 +186,12 @@ export class FormService {
 
     public back() {
         if (this._activeStep.value == null) this._activeStep.next(this.getSteps().filter(x => x.step == this.onlineEnquiryService.step)[0]);
+
+        if (this._activeStep?.value?.back == null) {
+            window.location.href = environment.originUrl;
+            return;
+        }
+
 
         this.stepChange(this._activeStep.value.back);
     }

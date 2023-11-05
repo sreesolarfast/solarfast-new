@@ -20,6 +20,22 @@
     color: #3d3d3d;
 }
 
+.send-quote{
+    padding:30px 60px;
+}
+
+.send-quote h2{
+    font-size: 1.65rem;
+    font-weight: 600;
+    margin-top:15px;
+}
+
+.send-quote .btn{
+    position: absolute;
+    top:10px;
+    right:5px;
+}
+
 .modal-title {
     font-size: 22px;
     padding: 15px 15px 0px 15px;
@@ -27,6 +43,14 @@
     color: #3d3d3d;
 }
 
+
 .btn-primary{
     padding: 15px 0px;
 }
+
+@media screen and (max-width: 768px) {
+    .send-quote{
+        padding:30px 5px;
+    }
+}
+

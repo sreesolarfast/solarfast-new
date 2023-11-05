@@ -19,7 +19,7 @@
     <div class="col-md-12">
       <div class="apr-tr">
       <h3 class="mt-4 text-center"><b>Select Deposit Amount</b></h3>
-      <input type="range" min="0" max="100" [(ngModel)]="depositPercent" (input)="calculate()" (ngModelChange)="onRangeChange()"  class="input-text-field-range">
+      <input type="range" min="0" max="50" [(ngModel)]="depositPercent" (input)="calculate()" (ngModelChange)="onRangeChange()"  class="input-text-field-range">
       <p class="mb-3">Deposit Amount: {{ depositPercent }}%</p>
     </div>
   </div>
@@ -32,7 +32,7 @@
           <td class="p-3">{{ calculation.label }}</td>
           <!-- <td class="p-2"><b>{{ calculation.value | currency }}</b></td> -->
           <td class="p-3" *ngIf="calculation.label!=='Number of Payments'"><b>{{ calculation.value | currency }}</b></td>
-          <td class="p-2" *ngIf="calculation.label=='Number of Payments'"><b>{{ calculation.value }}</b></td>
+          <td class="p-3" *ngIf="calculation.label=='Number of Payments'"><b>{{ calculation.value }}</b></td>
         </tr>
       </table>
     </div>

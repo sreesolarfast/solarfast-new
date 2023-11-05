@@ -4,16 +4,16 @@
     margin: auto;
 }
 
-.btn-black {
-    background: #000;
-    color: white;
-    border-radius: 100%;
-    padding: 10px;
-    position: absolute;
-    top: 60px;
-    left: 50px;
-    cursor: pointer;
-}
+// .btn-black {
+//     background: #000;
+//     color: white;
+//     border-radius: 100%;
+//     padding: 10px;
+//     position: absolute;
+//     top: 60px;
+//     left: 50px;
+//     cursor: pointer;
+// }
 
 .button-primary{
     padding:8px 40px;
@@ -59,11 +59,11 @@
 
     .roof-icon{
         width: 90px;
-        padding:0 10px;
+        padding:0;
     }
 
     .roof-icon img{
-        width: 80%;
+        width: 85%;
         height: auto;
     }
 
@@ -75,15 +75,17 @@
         font-size:1.5rem ;
         font-family: 'Poppins', sans-serif !important;
         font-weight: 700;
-        margin-bottom: 0;
+        margin-bottom:5px;
     }
 
     .roof-btn{
         width:auto;
+        
     }
 
-    .roof-btn .btn{
+    .roof-btn .button-primary{
         margin: 10px 5px;
+        min-height:60px;
     }
 
   }
@@ -147,4 +149,30 @@
     // cursor: pointer;
   }
 
+  @media screen and (max-width:768px) {
+  .roof-selected{
+    bottom: 5%;
+	width: 100%;
+	transform: translateY(-50%);
+    right: calc(100% - 100%);
 
+    .roof-content{
+        width: 100%;
+    }
+
+    .roof-icon{
+        width:80px
+    }
+
+    .roof-icon img{
+        width:40px;
+    }
+
+  }
+
+  .roof{
+    display:block;
+    text-align: center;
+  }
+
+}

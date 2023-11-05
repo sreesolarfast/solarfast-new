@@ -9,13 +9,13 @@
             <div class="card-items">
                 <div class="">
                     <ng-container *ngIf="!dayAndNight; else different">
-                        <div class="input-field-container-single">
+                        <div @fadeIn class="input-field-container-single">
                             <input [formControl]="controlDay" class="input-text-field" type="number" placeholder="Unit rate in pence." />
                         </div>
                     </ng-container>
 
                     <ng-template #different>
-                        <div class="input-field-container-double">
+                        <div @fadeIn class="input-field-container-double">
                             <div class="w-100 position-relative ">
                                 <input [formControl]="controlDay" class="w-100 input-text-field" type="number" placeholder="Day rate in pence" />
                             </div>

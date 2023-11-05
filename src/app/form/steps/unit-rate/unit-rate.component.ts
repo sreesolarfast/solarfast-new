@@ -3,11 +3,18 @@ import { Router } from '@angular/router';
 import { FormStep } from '../../../../shared/model/form-step';
 import { OnlineEnquiryService } from '../../../../shared/service/online-enquiry.service';
 import { FormControl, NgControlStatus } from '@angular/forms';
+import { trigger, state, style, transition, animate } from '@angular/animations';
 
 @Component({
     selector: 'step-unit-rate',
     templateUrl: './unit-rate.component.html',
     styleUrls: ['./unit-rate.component.scss'],
+    animations: [
+        trigger('fadeIn', [
+            state('void', style({ opacity: 0 })), // Initial state (invisible)
+            transition(':enter', [animate('100ms')]), // Transition to visible when added to the DOM
+        ]),
+    ],
 })
 export class UnitRateComponent implements OnInit {
     @Input() step: FormStep;

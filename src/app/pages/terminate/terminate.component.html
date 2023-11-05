@@ -1,123 +1,112 @@
 <app-need-help></app-need-help>
 
+     <!--Back button-->
+     <a class="btn-black" (click)="backButton()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="21" height="20" viewBox="0 0 25 20">
+            <path d="M20 10 L5 10 M10 5 L5 10 10 15" stroke="white" stroke-width="2" fill="none" />
+        </svg>
+    </a>
+
 <div class="property-bg"></div>
 <div class="overlay"></div>
-  <div class="container">
-    <div class="row justify-content-center">
-      <div class="col-md-6">
+<div class="">
+    <div class="">
         <div class="">
-          <div class="card-contents renting">
+            <div class="card-container">
+                <div class="card-contents renting">
+                    <ng-container *ngIf="reason === 'Property Ownership'">
+                        <ng-container *ngTemplateOutlet="propertyOwnership"></ng-container>
+                    </ng-container>
 
-            <ng-container *ngIf="reason === 'Property Ownership'">
-                <ng-container
-                    *ngTemplateOutlet="propertyOwnership"></ng-container>
-            </ng-container>
+                    <ng-container *ngIf="reason === 'Property Type'">
+                        <ng-container *ngTemplateOutlet="propertyType"></ng-container>
+                    </ng-container>
 
-            <ng-container *ngIf="reason === 'Property Type'">
-                <ng-container
-                    *ngTemplateOutlet="propertyType"></ng-container>
-            </ng-container>
+                    <p class="keep-in-touch mb-3 mt-5 fw-bold fs-5">
+                        Want to keep in touch?
+                    </p>
+                    <div class="form-container">
+                        <div class="">
+                            <form [formGroup]="form" (ngSubmit)="submitForm()" class="card">
+                                <div class="row">
+                                    <div class="form-group pb-3">
+                                        <div class="input-group position-relative">
+                                            <input type="text" class="input-text-field" placeholder="First Name" formControlName="firstName" />
+                                            <i class="bi bi-person-fill icon"></i>
+                                        </div>
+                                        <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">
+                                            First name is required.
+                                        </div>
+                                    </div>
+                                    <div class="form-group pb-3">
+                                        <div class="input-group position-relative">
+                                            <input type="text" class="input-text-field" placeholder="Last Name" formControlName="lastName" />
+                                            <i class="bi bi-person-fill icon"></i>
+                                        </div>
+                                        <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">
+                                            Last name is required.
+                                        </div>
+                                    </div>
 
-            <div class="container">
-                <div class="container-fluid">
-                    <form [formGroup]="form" (ngSubmit)="submitForm()" class="card p-5">
-                        <div class="row">
-                            <h1 class="mb-4">Your Details</h1>
-                            <div class="form-group pb-3">
-                                <div class="input-group position-relative">
-                                    <input type="text" class="input-text-field" placeholder="First Name" formControlName="firstName">
-                                    <i class="bi bi-person-fill icon"></i>
+                                    <div class="form-group pb-3">
+                                        <div class="input-group position-relative">
+                                            <input type="email" class="input-text-field" placeholder="Email" formControlName="email" />
+                                            <i class="bi bi-envelope-fill icon"></i>
+                                        </div>
+                                        <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">
+                                            Enter a valid email address.
+                                        </div>
+                                    </div>
+
+                                    <div class="form-group pb-3">
+                                        <div class="input-group position-relative">
+                                            <input type="tel" class="input-text-field" placeholder="Phone" formControlName="phoneNumber" />
+                                            <i class="bi bi-telephone-fill icon"></i>
+                                        </div>
+                                        <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">
+                                            Enter a valid phone number.
+                                        </div>
+                                    </div>
+
+                                    <div class="w-100 d-flex justify-content-center">
+                                        <button type="submit" class="button-primary submit-button fs-5" [disabled]="!form.valid">Submit</button>
+                                    </div>
                                 </div>
-                                <div *ngIf="form.get('firstName').invalid && form.get('firstName').touched" class="text-danger">First name is required.</div>
-                            </div>
-                            <div class="form-group pb-3">
-                                <div class="input-group position-relative">
-                                    <input type="text" class="input-text-field" placeholder="Last Name" formControlName="lastName" />
-                                    <i class="bi bi-person-fill icon"></i>
-                                </div>
-                                <div *ngIf="form.get('lastName').invalid && form.get('lastName').touched" class="text-danger">Last name is required.</div>
-                            </div>
-
-                            <div class="form-group pb-3">
-                                <div class="input-group position-relative">
-                                    <input type="email" class="input-text-field" placeholder="Email" formControlName="email" />
-                                    <i class="bi bi-envelope-fill icon"></i>
-                                </div>
-                                <div *ngIf="form.get('email').invalid && form.get('email').touched" class="text-danger">Enter a valid email address.</div>
-                            </div>
-
-                            <div class="form-group pb-3">
-                                <div class="input-group position-relative">
-                                    <input type="tel" class="input-text-field" placeholder="Phone" formControlName="phoneNumber" />
-                                    <i class="bi bi-telephone-fill icon"></i>
-                                </div>
-                                <div *ngIf="form.get('phoneNumber').invalid && form.get('phoneNumber').touched" class="text-danger">Enter a valid phone number.</div>
-                            </div>
-
-                            <div class="form-group pb-3">
-                                <label>Reason for Contact</label>
-                                <div class="input-group position-relative">
-                                    <textarea class="reason-box input-text-field w-100" placeholder="Reason" rows="3" formControlName="reason"></textarea>
-                                </div>
-                                <div *ngIf="form.get('reason').invalid && form.get('reason').touched" class="text-danger">A reason is required.</div>
-                            </div>
-
-                            <div class="w-100 d-flex justify-content-center">
-                                <button type="submit" class="button-primary submit-button fs-5" [disabled]="!form.valid">Submit</button>
-                            </div>
+                            </form>
                         </div>
-                    </form>
+                    </div>
+
                 </div>
-
             </div>
-
-            <div class="row text-center">
-              <div class="col-md-12">
-                <a class="btn btn-success" (click)="backButton()">Go Back</a>
-              </div>
-            </div>
-          </div>
         </div>
-      </div>
     </div>
-  </div>
+</div>
 
-
-
-  <ng-template #propertyOwnership let-result>
+<ng-template #propertyOwnership let-result>
     <div class="row">
         <div class="col-md-12">
-          <h1>
-            We are sorry but we can install only if your the owner of the
-            property
-          </h1>
+            <h1>We are sorry but we can install only if your the owner of the property</h1>
         </div>
-      </div>
-      <div class="row">
+    </div>
+    <div class="row ">
         <div class="col-md-12">
-          <p>
-              If you are enquiring on behalf of the property owner, please have them get in touch directly with us and we'll be more than happy to help.
-          </p>
+            <p>
+                If you are enquiring on behalf of the property owner, please have them get in touch directly with us and we'll be more than happy to
+                help.
+            </p>
         </div>
-      </div>
+    </div>
 </ng-template>
-
 
 <ng-template #propertyType let-result>
     <div class="row">
         <div class="col-md-12">
-          <h1>
-            We are sorry but we don't currently offer installations on your selected property type.
-          </h1>
+            <h1>We are sorry but we don't currently offer installations on your selected property type.</h1>
         </div>
-      </div>
-      <div class="row">
+    </div>
+    <div class="row">
         <div class="col-md-12">
-          <p>
-              If you leave your contact details we will get in touch when we are able to offer a solution for your property type.
-          </p>
+            <p>If you leave your contact details we will get in touch when we are able to offer a solution for your property type.</p>
         </div>
-      </div>
+    </div>
 </ng-template>
-
-
