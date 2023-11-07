@@ -117,6 +117,10 @@ export class OnlineEnquiryService {
     localStorage.setItem('onlineEnquiry', JSON.stringify(onlineEnquiry));
   }
 
+  public removeOnlineEnquiry(){
+    localStorage.removeItem('onlineEnquiry');
+  }
+
   public getOnlineEnquiry(): OnlineEnquiryDto {
     const result = localStorage.getItem('onlineEnquiry') as string;
     return JSON.parse(result) as OnlineEnquiryDto;

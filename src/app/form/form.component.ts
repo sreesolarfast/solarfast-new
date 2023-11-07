@@ -101,6 +101,7 @@ export class FormComponent implements OnInit {
 
     backButton() {
         if (this.activeStep?.step == 0) {
+            this.onlineEnquiryService.removeOnlineEnquiry();
             window.location.href = environment.originUrl;
             return;
         }
