@@ -64,10 +64,6 @@ export class MapComponent implements OnInit {
         maxZoom: 20,
         minZoom: 12,
         disableDefaultUI: true,
-        // zoomControlOptions:{
-        //     position:google.maps.ControlPosition.BOTTOM_CENTER,
-        // }
-
     };
     zoom: number = 20;
     markerInfoContent = '';

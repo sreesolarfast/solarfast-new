@@ -38,12 +38,14 @@ export class SendQuoteComponent implements OnInit {
     }
 
     submitForm() {
+        debugger;
         const value = this.form.getRawValue();
         this.onlineEnquiry.sendQuote = true;
         this.onlineEnquiry.firstName = value.firstName;
         this.onlineEnquiry.lastName = value.lastName;
         this.onlineEnquiry.email = value.email;
         this.onlineEnquiry.phoneNumber = value.phone;
+        this.onlineEnquiry.selectedPackageId = this.data;
 
         this.onlineEnquiryService.manage(this.onlineEnquiry).subscribe({
             next: x => {
