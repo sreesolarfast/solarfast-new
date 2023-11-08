@@ -53,7 +53,16 @@ export class FormComponent implements OnInit {
 
         this.onlineEnquiryService.result$.subscribe({
             next: x => {
-                if (x == null)  {
+                const psotalCodeObj = this.getDtoFromQueryStringParams();
+                const postCode = psotalCodeObj.postcode.replace(/\s/g, "");
+                let prevPostCode = null;
+                let postalCodeValid = false;
+
+                if(x !== null){
+                     prevPostCode = x.postcode;
+                     postalCodeValid = (prevPostCode === postCode)
+                }
+                if (x == null || !postalCodeValid)  {
 
                     const dto = this.getDtoFromQueryStringParams();
                     const step = +this.route.snapshot.queryParamMap.get('step') ?? 0;
@@ -86,7 +95,16 @@ export class FormComponent implements OnInit {
             });
 
         // check if we have a result yet or not
-        if (this.onlineEnquiryService.result == null) {
+        const psotalCodeObj = this.getDtoFromQueryStringParams();
+        const postCode = psotalCodeObj.postcode.replace(/\s/g, "");
+        let prevPostCode = null;
+        let postalCodeValid = false;
+
+        if(this.onlineEnquiryService.result!== null){
+             prevPostCode = this.onlineEnquiryService.result.postcode;
+             postalCodeValid = (prevPostCode === postCode)
+        }
+        if (this.onlineEnquiryService.result == null || !postalCodeValid) {
             const dto = this.getDtoFromQueryStringParams();
             this.onlineEnquiryService.manage(dto).subscribe({
                 next: x => {
@@ -101,7 +119,7 @@ export class FormComponent implements OnInit {
 
     backButton() {
         if (this.activeStep?.step == 0) {
-            this.onlineEnquiryService.removeOnlineEnquiry();
+            // this.onlineEnquiryService.removeOnlineEnquiry();
             window.location.href = environment.originUrl;
             return;
         }
