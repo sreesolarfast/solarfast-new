@@ -66,7 +66,10 @@ export class FormComponent implements OnInit {
 
         if (x !== null) {
           prevPostCode = x.postcode;
-          postalCodeValid = prevPostCode === postCode;
+          postalCodeValid = (prevPostCode === postCode);
+          if(!postCode){
+            postalCodeValid = true
+          }
         }
         if (x == null || !postalCodeValid) {
           const dto = this.getDtoFromQueryStringParams();
@@ -107,7 +110,10 @@ export class FormComponent implements OnInit {
 
     if (this.onlineEnquiryService.result !== null) {
       prevPostCode = this.onlineEnquiryService.result.postcode;
-      postalCodeValid = prevPostCode === postCode;
+      postalCodeValid = (prevPostCode === postCode);
+      if(!postCode){
+        postalCodeValid = true
+      }
     }
     if (this.onlineEnquiryService.result == null || !postalCodeValid) {
       const dto = this.getDtoFromQueryStringParams();
