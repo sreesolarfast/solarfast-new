@@ -150,13 +150,4 @@ export class FormComponent implements OnInit {
     return dto;
   }
 
-  onTransitionEnd(event: TransitionEvent) {
-    if (
-      event.propertyName === 'opacity' &&
-      event.target === event.currentTarget
-    ) {
-      console.log('The fadeIn animation has completed.');
-      // You can add your code to handle the animation completion here.
-    }
-  }
 }
